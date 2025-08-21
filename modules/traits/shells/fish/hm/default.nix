@@ -110,7 +110,7 @@ in
       };
 
       fzf = {
-        enable = true;
+        enable = false;
         defaultCommand = "fd --type f";
         defaultOptions = [
           "--height 40%"
@@ -124,6 +124,25 @@ in
           enableShellIntegration = true;
           shellIntegrationOptions = [ "-d 40%" ];
         };
+      };
+
+      television = {
+        enable = true;
+        settings = {
+          default_channel = "nix-search-tv";
+          ui = {
+            status_bar = {
+              separator_open = "";
+              separator_close = "";
+            };
+            theme = "dracula";
+          };
+        };
+      };
+
+      nix-search-tv = {
+        enable = true;
+        settings.experimental.render_docs_indexes.nvf = "https://notashelf.github.io/nvf/options.html";
       };
 
       pay-respects.enable = true;
