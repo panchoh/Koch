@@ -43,11 +43,6 @@ in
     hardware = {
       cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-      logitech.wireless = {
-        enable = true;
-        enableGraphical = true;
-      };
-
       graphics = {
         enable = true;
         extraPackages = with pkgs; [
