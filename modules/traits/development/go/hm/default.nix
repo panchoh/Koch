@@ -21,6 +21,7 @@ in
     ];
 
     home.packages = with pkgs; [
+      capslock
       go-task
       gotools
       go-tools
