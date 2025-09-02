@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }:
 let
@@ -10,7 +11,7 @@ in
 {
   options.traits.os.yubikey = {
     enable = lib.mkEnableOption "YubiKey" // {
-      default = true;
+      default = box.isStation or false;
     };
   };
 
