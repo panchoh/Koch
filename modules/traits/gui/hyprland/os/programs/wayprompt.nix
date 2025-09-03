@@ -1,19 +1,12 @@
 {
   config,
   lib,
-  box ? null,
   ...
 }:
 let
-  cfg = config.traits.os.gnupg;
+  cfg = config.traits.os.hyprland;
 in
 {
-  options.traits.os.gnupg = {
-    enable = lib.mkEnableOption "GnuPG" // {
-      default = box.isStation or false;
-    };
-  };
-
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [
       (final: prev: {

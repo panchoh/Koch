@@ -2,20 +2,13 @@
   config,
   lib,
   nixosConfig,
-  box ? null,
   ...
 }:
 let
-  cfg = config.traits.hm.fuzzel;
+  cfg = config.traits.hm.hyprland;
   size = toString (nixosConfig.stylix.fonts.sizes.desktop + 2);
 in
 {
-  options.traits.hm.fuzzel = {
-    enable = lib.mkEnableOption "Fuzzel" // {
-      default = box.isStation or false;
-    };
-  };
-
   config = lib.mkIf cfg.enable {
     programs.fuzzel = {
       enable = true;
@@ -26,6 +19,19 @@ in
           terminal = lib.getExe config.programs.foot.package;
         };
       };
+    };
+
+    wayland.windowManager.hyprland.settings = {
+      # Alternatively:
+      # Start fuzzel opens fuzzel on first press, closes it on second
+      # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
+
+      bind = [ "SUPER, P, exec, fuzzel" ];
+
+      layerrule = [
+        "xray 1,    launcher"
+        "dimaround, launcher"
+      ];
     };
   };
 }

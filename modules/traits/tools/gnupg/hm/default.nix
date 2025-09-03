@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   box ? null,
   ...
 }:
@@ -16,15 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.wayprompt = {
-      enable = true;
-      settings = {
-        general = {
-          pin-square-amount = 32;
-        };
-      };
-    };
-
     programs.gpg = {
       enable = true;
       scdaemonSettings = {
@@ -44,7 +34,6 @@ in
       maxCacheTtl = 1;
       maxCacheTtlSsh = 1;
       enableSshSupport = true;
-      pinentry.package = pkgs.wayprompt;
       extraConfig = ''
         no-allow-loopback-pinentry
       '';
