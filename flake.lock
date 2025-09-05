@@ -154,11 +154,11 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1756879693,
-        "narHash": "sha256-yOE1h01TcuAGJKjWlx2zaB5dNQfP55uhodoIZrBNDro=",
+        "lastModified": 1757104867,
+        "narHash": "sha256-EUdv+24dak//r8gOZpm1PDhVdLJEvsp625Zp7kUyc2s=",
         "owner": "panchoh",
         "repo": "doom",
-        "rev": "e2c78322a2907d5d3cdf116d89845a0607f582ca",
+        "rev": "4a7a9f444aadffd45a3e64ee525c9006d369e95b",
         "type": "github"
       },
       "original": {
@@ -437,11 +437,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1757094860,
-        "narHash": "sha256-OeMwZhwSnLJxRwzGUTBy5ZYvWoSN64IMNyp/Bgu43os=",
+        "lastModified": 1757103352,
+        "narHash": "sha256-PtT7ix43ss8PONJ1VJw3f6t2yAoGH+q462Sn8lrmWmk=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "af3dd1cb201703103896bb52991927bbef0810b9",
+        "rev": "11b2a10c7be726321bb854403fdeec391e798bf0",
         "type": "github"
       },
       "original": {
