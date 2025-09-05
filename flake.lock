@@ -170,11 +170,11 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1757099457,
-        "narHash": "sha256-RK5Ee56m8v8P9L2g8yRPr0iU7E1stjoDk4fAJDJRzS0=",
+        "lastModified": 1757106921,
+        "narHash": "sha256-vHwgENjip2+AFzs4oZfnKEAJKwf5Zid7fakImvxxQUw=",
         "owner": "doomemacs",
         "repo": "doomemacs",
-        "rev": "ddc447d9d5700e57a02d786211b842ee29cdb431",
+        "rev": "8f55404781edacf66fa330205533b002de3fb5ee",
         "type": "github"
       },
       "original": {
@@ -563,11 +563,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1757103726,
-        "narHash": "sha256-akuV5EFSnylF7Ff6tuSjv/u8n/a92/TfpoisyTwm9FY=",
+        "lastModified": 1757108497,
+        "narHash": "sha256-SQiKyPaKQJUO5iDS1YkL0ysD6i3BIHOI+M8pd4uA6kY=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "0e7b897c73c5dfe4651696953f1131d179625c7a",
+        "rev": "b1a84f898284de362536a91efaa4c0cd6b338973",
         "type": "github"
       },
       "original": {
