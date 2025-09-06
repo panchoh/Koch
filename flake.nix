@@ -36,6 +36,10 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.inputs.nixpkgs-stable.follows = "nixpkgs";
+    doomemacs.url = "github:doomemacs/doomemacs";
+    doomemacs.flake = false;
+    doom-config.url = "github:panchoh/doom";
+    doom-config.flake = false;
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
     nix-doom-emacs-unstraightened.inputs.systems.follows = "systems";
@@ -45,13 +49,6 @@
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     nvf.inputs.systems.follows = "systems";
     nvf.inputs.flake-parts.follows = "flake-parts";
-  };
-
-  inputs = {
-    doomemacs.url = "github:doomemacs/doomemacs";
-    doomemacs.flake = false;
-    doom-config.url = "github:panchoh/doom";
-    doom-config.flake = false;
     vmtools.url = "github:4km3/vmtools";
     vmtools.flake = false;
     kubelab.url = "github:4km3/kubelab";
