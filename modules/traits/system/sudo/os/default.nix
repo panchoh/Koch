@@ -14,8 +14,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [
-      (final: prev: { sudo = prev.sudo.override { withInsults = true; }; })
-    ];
+    nixpkgs.config.packageOverrides = pkgs: {
+      sudo = pkgs.sudo.override { withInsults = true; };
+    };
   };
 }
