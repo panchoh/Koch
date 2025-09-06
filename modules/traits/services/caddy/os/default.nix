@@ -20,6 +20,9 @@ in
       443
     ];
 
+    # Start manually
+    systemd.services.caddy.wantedBy = lib.mkForce [ ];
+
     services.caddy = {
       # acmeCA = "https://acme-v02.api.letsencrypt.org/directory"; # while in development
       enable = true;
