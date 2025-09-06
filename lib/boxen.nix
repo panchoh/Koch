@@ -1,7 +1,7 @@
 flake:
 let
   defaults = {
-    stateVersion = "24.05";
+    stateVersion = "25.11";
     system = "x86_64-linux";
     hostName = "nixos";
     macvlanAddr = "de:ad:be:ef:00:00";
@@ -48,7 +48,6 @@ in
   }
 
   {
-    stateVersion = "25.11";
     hostName = "aluminium";
     macvlanAddr = "68:5b:35:a7:2f:4c";
     isLaptop = true;
