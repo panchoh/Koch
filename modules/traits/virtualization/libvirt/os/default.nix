@@ -18,10 +18,10 @@ in
   config = lib.mkIf cfg.enable {
     users.users.${box.userName or "alice"}.extraGroups = [ "libvirtd" ];
 
-    environment.systemPackages = with pkgs; [
-      libguestfs
-      guestfs-tools
-      cloud-utils
+    environment.systemPackages = [
+      pkgs.libguestfs
+      pkgs.guestfs-tools
+      pkgs.cloud-utils
     ];
 
     virtualisation = {

@@ -22,11 +22,11 @@ let
           pkgs.writeShellApplication {
             name = "setup";
             meta.mainProgram = "setup";
-            runtimeInputs = with pkgs; [
-              efibootmgr
-              coreutils # for tee, chown, ln, mkdir and printf
-              util-linux # for blkdiscard
-              git
+            runtimeInputs = [
+              pkgs.efibootmgr
+              pkgs.coreutils # for tee, chown, ln, mkdir and printf
+              pkgs.util-linux # for blkdiscard
+              pkgs.git
             ];
             # bashOptions = ["errexit" "nounset" "pipefail" "xtrace"];
             # bashOptions = ["errexit" "nounset" "pipefail" "verbose"];

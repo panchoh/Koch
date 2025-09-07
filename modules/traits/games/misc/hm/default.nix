@@ -16,29 +16,29 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      abuse
-      beneath-a-steel-sky
-      bb
-      crawl
-      sl
-      neofetch
-      hyperrogue
-      notcurses
-      torus-trooper
+    home.packages = [
+      pkgs.abuse
+      pkgs.beneath-a-steel-sky
+      pkgs.bb
+      pkgs.crawl
+      pkgs.sl
+      pkgs.neofetch
+      pkgs.hyperrogue
+      pkgs.notcurses
+      pkgs.torus-trooper
 
-      figlet
-      toilet
-      banner
+      pkgs.figlet
+      pkgs.toilet
+      pkgs.banner
 
-      neo-cowsay
-      charasay
+      pkgs.neo-cowsay
+      pkgs.charasay
 
-      nbsdgames
+      pkgs.nbsdgames
       # bsdgames:
       # - provides `wtf`, which conflicts with `fish` shell
       # FIXME: PR with the current BSD Games, which fixes this and more
-      (stdenv.mkDerivation {
+      (pkgs.stdenv.mkDerivation {
         pname = "bsdgames-custom";
         version = pkgs.bsdgames.version;
         src = pkgs.bsdgames;

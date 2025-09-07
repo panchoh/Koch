@@ -16,13 +16,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      qmk
-      qmk_hid
-      keymapviz
-      clang-tools
-      dfu-programmer
-      dfu-util
+    home.packages = [
+      pkgs.qmk
+      pkgs.qmk_hid
+      pkgs.keymapviz
+      pkgs.clang-tools
+      pkgs.dfu-programmer
+      pkgs.dfu-util
     ];
   };
 }

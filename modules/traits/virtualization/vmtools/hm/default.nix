@@ -22,10 +22,10 @@ in
         version = vmtools.rev; # Use the commit ID as the version
         src = vmtools;
 
-        buildInputs = with pkgs; [
-          virt-manager
-          libguestfs
-          guestfs-tools
+        buildInputs = [
+          pkgs.virt-manager
+          pkgs.libguestfs
+          pkgs.guestfs-tools
         ];
 
         nativeBuildInputs = [ pkgs.makeWrapper ];

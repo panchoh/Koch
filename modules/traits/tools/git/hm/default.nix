@@ -16,22 +16,22 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      bvi
-      diffoscope
-      git-absorb
-      git-doc
-      git-dive
-      git-town
-      gitg
-      gti
-      gitui
-      gittyup
-      gource
-      lazygit
-      tig
-      meld
-      vbindiff
+    home.packages = [
+      pkgs.bvi
+      pkgs.diffoscope
+      pkgs.git-absorb
+      pkgs.git-doc
+      pkgs.git-dive
+      pkgs.git-town
+      pkgs.gitg
+      pkgs.gti
+      pkgs.gitui
+      pkgs.gittyup
+      pkgs.gource
+      pkgs.lazygit
+      pkgs.tig
+      pkgs.meld
+      pkgs.vbindiff
     ];
 
     programs.git = {

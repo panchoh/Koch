@@ -22,9 +22,9 @@ in
         version = kubelab.rev; # Use the commit ID as the version
         src = kubelab;
 
-        buildInputs = with pkgs; [
-          ansible
-          ansible-lint
+        buildInputs = [
+          pkgs.ansible
+          pkgs.ansible-lint
           # TODO: vmtools, when refactored into a proper package
         ];
 

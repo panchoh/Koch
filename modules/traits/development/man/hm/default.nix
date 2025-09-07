@@ -19,9 +19,9 @@ in
     manual.json.enable = true;
     manual.manpages.enable = true;
 
-    home.packages = with pkgs; [
-      man-pages
-      man-pages-posix
+    home.packages = [
+      pkgs.man-pages
+      pkgs.man-pages-posix
     ];
 
     programs.man = {
