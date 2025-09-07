@@ -23,15 +23,18 @@ in
       }
     ];
 
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    # users.mutableUsers = false;
-    users.users.${box.userName or "alice"} = {
-      isNormalUser = true;
-      description = box.userDesc or "Alice Q. User";
-      extraGroups = [ "wheel" ];
-      shell = pkgs.fish;
-      initialPassword = "password";
-      openssh.authorizedKeys.keys = box.userKeys;
+    users = {
+      # Define a user account. Don't forget to set a password with ‘passwd’.
+      # TODO sops/agenix would allow this:
+      # mutableUsers = false;
+      defaultUserShell = if !box.isStation or false then pkgs.bash else pkgs.fish;
+      users.${box.userName or "alice"} = {
+        isNormalUser = true;
+        description = box.userDesc or "Alice Q. User";
+        extraGroups = [ "wheel" ];
+        initialPassword = "password";
+        openssh.authorizedKeys.keys = box.userKeys;
+      };
     };
   };
 }
