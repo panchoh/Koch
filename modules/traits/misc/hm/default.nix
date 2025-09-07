@@ -128,9 +128,6 @@ in
       pkgs.fractal
       pkgs.session-desktop
 
-      # Editors
-      pkgs.lapce
-
       pkgs.wormhole-william
 
       pkgs.stellarium
