@@ -20,20 +20,20 @@ in
       "$HOME/.local/bin.go"
     ];
 
-    home.packages = with pkgs; [
-      capslock
-      go-task
-      gotools
-      go-tools
-      gopls
-      gofumpt
-      gomodifytags
-      gotests
-      gore
-      godef
-      delve
-      gdlv
-      golangci-lint
+    home.packages = [
+      pkgs.capslock
+      pkgs.go-task
+      pkgs.gotools
+      pkgs.go-tools
+      pkgs.gopls
+      pkgs.gofumpt
+      pkgs.gomodifytags
+      pkgs.gotests
+      pkgs.gore
+      pkgs.godef
+      pkgs.delve
+      pkgs.gdlv
+      pkgs.golangci-lint
     ];
 
     programs.go = {

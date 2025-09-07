@@ -24,8 +24,8 @@ in
       packages = [
         (pkgs.writeShellApplication {
           name = "m";
-          runtimeInputs = with pkgs; [
-            ripgrep
+          runtimeInputs = [
+            pkgs.ripgrep
           ];
           text = ''
             cd "$MDB_DIR"
@@ -35,10 +35,10 @@ in
 
         (pkgs.writeShellApplication {
           name = "mindex";
-          runtimeInputs = with pkgs; [
-            coreutils
-            findutils
-            util-linux
+          runtimeInputs = [
+            pkgs.coreutils
+            pkgs.findutils
+            pkgs.util-linux
           ];
           text = ''
             for dir in /media/*
@@ -53,9 +53,9 @@ in
 
         (pkgs.writeShellApplication {
           name = "normalize";
-          runtimeInputs = with pkgs; [
-            coreutils
-            findutils
+          runtimeInputs = [
+            pkgs.coreutils
+            pkgs.findutils
           ];
           text = ''
             chown --recursive ${config.home.username}:users .

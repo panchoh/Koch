@@ -16,12 +16,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      ansible
-      ansible-lint
-      ansible-language-server
-      sshpass
-      neo-cowsay
+    home.packages = [
+      pkgs.ansible
+      pkgs.ansible-lint
+      pkgs.ansible-language-server
+      pkgs.sshpass
+      pkgs.neo-cowsay
     ];
   };
 }

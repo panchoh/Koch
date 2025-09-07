@@ -45,15 +45,15 @@ in
 
       graphics = {
         enable = true;
-        extraPackages = with pkgs; [
+        extraPackages = [
           # https://wiki.nixos.org/wiki/Intel_Graphics
-          vpl-gpu-rt
+          pkgs.vpl-gpu-rt
           # https://nixos.wiki/wiki/Accelerated_Video_Playback
-          intel-ocl
-          intel-compute-runtime
-          intel-media-driver
-          libva-vdpau-driver
-          libvdpau-va-gl
+          pkgs.intel-ocl
+          pkgs.intel-compute-runtime
+          pkgs.intel-media-driver
+          pkgs.libva-vdpau-driver
+          pkgs.libvdpau-va-gl
         ];
       };
     };

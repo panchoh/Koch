@@ -16,127 +16,125 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages =
-      with pkgs;
-      [
-        dmidecode
-        efibootmgr
-        gptfdisk
-        parted
-        psmisc
-        sysstat
-        sysfsutils
-        pciutils
-        usbutils
-        usbtop
-        iotop-c
-        smartmontools
-        hdparm
-        nvme-cli
-        sg3_utils
-        lm_sensors
+    home.packages = [
+      pkgs.dmidecode
+      pkgs.efibootmgr
+      pkgs.gptfdisk
+      pkgs.parted
+      pkgs.psmisc
+      pkgs.sysstat
+      pkgs.sysfsutils
+      pkgs.pciutils
+      pkgs.usbutils
+      pkgs.usbtop
+      pkgs.iotop-c
+      pkgs.smartmontools
+      pkgs.hdparm
+      pkgs.nvme-cli
+      pkgs.sg3_utils
+      pkgs.lm_sensors
 
-        ldns
-        doggo
-        dogdns
-        nmap
-        speedtest-go
-        ipcalc
+      pkgs.ldns
+      pkgs.doggo
+      pkgs.dogdns
+      pkgs.nmap
+      pkgs.speedtest-go
+      pkgs.ipcalc
 
-        curl
-        wget2
-        xh
-        restish
-        slumber
+      pkgs.curl
+      pkgs.wget2
+      pkgs.xh
+      pkgs.restish
+      pkgs.slumber
 
-        moreutils
-        yq-go
-        hwloc
-        b3sum
-        unzip
-        zip
+      pkgs.moreutils
+      pkgs.yq-go
+      pkgs.hwloc
+      pkgs.b3sum
+      pkgs.unzip
+      pkgs.zip
 
-        binutils
-        dua
-        duf
-        du-dust
-        dysk
-        file
-        fdupes
-        rdfind
-        czkawka
-        fclones
-        gnutls
-        zstd
+      pkgs.binutils
+      pkgs.dua
+      pkgs.duf
+      pkgs.du-dust
+      pkgs.dysk
+      pkgs.file
+      pkgs.fdupes
+      pkgs.rdfind
+      pkgs.czkawka
+      pkgs.fclones
+      pkgs.gnutls
+      pkgs.zstd
 
-        inotify-info
+      pkgs.inotify-info
 
-        bc
-        cdrkit
+      pkgs.bc
+      pkgs.cdrkit
 
-        intel-gpu-tools
+      pkgs.intel-gpu-tools
 
-        glow
+      pkgs.glow
 
-        entr
+      pkgs.entr
 
-        pv
+      pkgs.pv
 
-        fx
-      ]
-      ++ lib.optionals (box.isStation or false) [
-        nixos-anywhere
+      pkgs.fx
+    ]
+    ++ lib.optionals (box.isStation or false) [
+      pkgs.nixos-anywhere
 
-        ddrescue
-        ddrescueview
+      pkgs.ddrescue
+      pkgs.ddrescueview
 
-        hwatch
+      pkgs.hwatch
 
-        recode
+      pkgs.recode
 
-        whois
+      pkgs.whois
 
-        pdf4qt
-        pdfchain
-        pdfcpu
-        pdfgrep
-        pdftk
+      pkgs.pdf4qt
+      pkgs.pdfchain
+      pkgs.pdfcpu
+      pkgs.pdfgrep
+      pkgs.pdftk
 
-        asciinema
-        asciinema-agg
-        asciinema-scenario
+      pkgs.asciinema
+      pkgs.asciinema-agg
+      pkgs.asciinema-scenario
 
-        pinact
+      pkgs.pinact
 
-        bgnet
+      pkgs.bgnet
 
-        flac
+      pkgs.flac
 
-        mission-center
-        v4l-utils
-        libation
-        ffmpeg
-        vlc
-        mkvtoolnix
-        gimp3
-        inkscape
-        youtube-tui
-        zoom-us
+      pkgs.mission-center
+      pkgs.v4l-utils
+      pkgs.libation
+      pkgs.ffmpeg
+      pkgs.vlc
+      pkgs.mkvtoolnix
+      pkgs.gimp3
+      pkgs.inkscape
+      pkgs.youtube-tui
+      pkgs.zoom-us
 
-        discord
-        dissent
-        # TODO: finish setting up nheko for Matrix comms
-        # nheko
-        fractal
-        session-desktop
+      pkgs.discord
+      pkgs.dissent
+      # TODO: finish setting up nheko for Matrix comms
+      # pkgs.nheko
+      pkgs.fractal
+      pkgs.session-desktop
 
-        # Editors
-        lapce
+      # Editors
+      pkgs.lapce
 
-        wormhole-william
+      pkgs.wormhole-william
 
-        stellarium
-        celestia
-      ];
+      pkgs.stellarium
+      pkgs.celestia
+    ];
   };
 }

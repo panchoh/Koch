@@ -16,16 +16,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages =
-      with pkgs;
-      [
-        dive
-        podman-tui
-        podman-compose
-      ]
-      ++ lib.optionals (box.isStation or false) [
-        podman-desktop
-      ];
+    environment.systemPackages = [
+      pkgs.dive
+      pkgs.podman-tui
+      pkgs.podman-compose
+    ]
+    ++ lib.optionals (box.isStation or false) [
+      pkgs.podman-desktop
+    ];
 
     virtualisation = {
       podman = {

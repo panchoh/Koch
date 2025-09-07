@@ -27,8 +27,8 @@ in
           customRC = ''
             set mouse=
           '';
-          packages.myVimPackage = with pkgs.vimPlugins; {
-            start = [ vim-nix ];
+          packages.myVimPackage = {
+            start = [ pkgs.vimPlugins.vim-nix ];
           };
         };
       };

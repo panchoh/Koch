@@ -16,25 +16,25 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      pam_u2f
-      pamtester
-      libfido2
+    home.packages = [
+      pkgs.pam_u2f
+      pkgs.pamtester
+      pkgs.libfido2
 
-      opensc
-      pcsctools
-      ccid
-      scmccid
+      pkgs.opensc
+      pkgs.pcsctools
+      pkgs.ccid
+      pkgs.scmccid
 
-      openssl
+      pkgs.openssl
 
-      pwgen
+      pkgs.pwgen
 
-      yubico-piv-tool
-      yubikey-manager
-      yubikey-personalization
-      yubikey-touch-detector
-      yubioath-flutter
+      pkgs.yubico-piv-tool
+      pkgs.yubikey-manager
+      pkgs.yubikey-personalization
+      pkgs.yubikey-touch-detector
+      pkgs.yubioath-flutter
     ];
   };
 }

@@ -46,8 +46,8 @@ in
       arguments = [ "--no-config" ];
     };
 
-    home.packages = with pkgs; [
-      (aspellWithDicts (
+    home.packages = [
+      (pkgs.aspellWithDicts (
         ds: with ds; [
           en
           en-computers
@@ -55,64 +55,64 @@ in
         ]
       ))
 
-      (writeShellApplication {
+      (pkgs.writeShellApplication {
         name = "doom-pristine";
-        runtimeInputs = [ coreutils ];
+        runtimeInputs = [ pkgs.coreutils ];
         text = ''
           echo 'Cleaning Doom state…'
           rm -rfv ~/.cache/doom ~/.local/state/doom ~/.local/share/doom
         '';
       })
 
-      nerd-fonts.symbols-only
-      emojione
-      twemoji-color-font
+      pkgs.nerd-fonts.symbols-only
+      pkgs.emojione
+      pkgs.twemoji-color-font
 
-      emacs-lsp-booster
+      pkgs.emacs-lsp-booster
 
-      findutils
-      coreutils
-      ddate
-      shfmt
-      shellcheck
-      nodejs_20
-      python3
-      pipenv
-      sqlite
+      pkgs.findutils
+      pkgs.coreutils
+      pkgs.ddate
+      pkgs.shfmt
+      pkgs.shellcheck
+      pkgs.nodejs_20
+      pkgs.python3
+      pkgs.pipenv
+      pkgs.sqlite
 
-      editorconfig-core-c
+      pkgs.editorconfig-core-c
 
       # clang # conflits with gcc, TODO: decide which one to set here
-      gcc
-      gnumake
-      ccls
+      pkgs.gcc
+      pkgs.gnumake
+      pkgs.ccls
 
-      zig
-      zls
+      pkgs.zig
+      pkgs.zls
 
-      graphviz
+      pkgs.graphviz
 
-      pyright
+      pkgs.pyright
 
-      go-grip
-      marksman # markdown language server
+      pkgs.go-grip
+      pkgs.marksman # markdown language server
 
-      hugo
+      pkgs.hugo
 
-      dockfmt
+      pkgs.dockfmt
 
-      semgrep
+      pkgs.semgrep
 
-      bash-language-server
-      yaml-language-server
+      pkgs.bash-language-server
+      pkgs.yaml-language-server
 
-      nil # nix language server
-      nixd
-      deadnix
+      pkgs.nil # nix language server
+      pkgs.nixd
+      pkgs.deadnix
 
-      nixpkgs-review
-      nix-output-monitor
-      nix-fast-build
+      pkgs.nixpkgs-review
+      pkgs.nix-output-monitor
+      pkgs.nix-fast-build
     ];
 
     home.sessionVariables = {

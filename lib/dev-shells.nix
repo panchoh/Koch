@@ -9,14 +9,14 @@ let
     in
     pkgs.mkShellNoCC {
       name = "copito--my-flaky-nixos-config";
-      packages = with pkgs; [
-        cacert
-        nix
-        nixfmt-tree
-        nixfmt
-        git
-        go-task
-        toilet
+      packages = [
+        pkgs.cacert
+        pkgs.nix
+        pkgs.nixfmt-tree
+        pkgs.nixfmt
+        pkgs.git
+        pkgs.go-task
+        pkgs.toilet
       ];
       shellHook = ''
         echo

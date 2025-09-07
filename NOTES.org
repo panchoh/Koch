@@ -267,9 +267,9 @@ nixpkgs.config.packageOverrides = pkgs: {
   customEmacs = emacsWithPackages (epkgs: with epkgs.melpaPackages; [magit pdf-tools vterm dracula-theme]);
 in {
   # ...
-    packages = with pkgs; [
-    customEmacs
-    emacs-all-the-icons-fonts
+    packages = [
+    pkgs.customEmacs
+    pkgs.emacs-all-the-icons-fonts
   ];
 }
 #+end_src
