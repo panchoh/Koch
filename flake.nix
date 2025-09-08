@@ -6,10 +6,7 @@
     allow-import-from-derivation = true; # for nix-doom-emacs-unstraightened
     extra-experimental-features = [ "pipe-operators" ];
     commit-lockfile-summary = "chore(flake): bump";
-
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
+    extra-substituters = [ "https://nix-community.cachix.org" ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
@@ -59,19 +56,12 @@
     { self, ... }:
     {
       lib = import ./lib self;
-
       formatter = import ./lib/nixfmt-tree.nix self;
-
       apps = import ./lib/apps-disko-and-funk.nix self;
-
       devShells = import ./lib/dev-shells.nix self;
-
       flakeModules.default = import ./modules self;
-
       homeModules.default = import ./lib/module.nix self "hm";
-
       nixosModules.default = import ./lib/module.nix self "os";
-
       nixosConfigurations = import ./lib/configurations.nix self;
     };
 }
