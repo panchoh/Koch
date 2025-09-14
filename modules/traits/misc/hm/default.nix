@@ -123,9 +123,9 @@ in
 
       pkgs.discord
       pkgs.dissent
-      # TODO: finish setting up nheko for Matrix comms
+      # TODO: finish setting up nheko and/or fractalfor Matrix comms
       # pkgs.nheko
-      pkgs.fractal
+      # pkgs.fractal
       pkgs.session-desktop
 
       pkgs.wormhole-william
