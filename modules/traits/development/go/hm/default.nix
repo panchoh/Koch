@@ -16,29 +16,28 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.sessionPath = [
-      "$HOME/.local/bin.go"
-    ];
-
-    home.packages = [
-      pkgs.capslock
-      pkgs.go-task
-      pkgs.gotools
-      pkgs.go-tools
-      pkgs.gopls
-      pkgs.gofumpt
-      pkgs.gomodifytags
-      pkgs.gotests
-      pkgs.gore
-      pkgs.godef
-      pkgs.delve
-      pkgs.gdlv
-      pkgs.golangci-lint
-    ];
-
     programs.go = {
       enable = true;
-      goBin = ".local/bin.go";
+      env.GOBIN = "${config.home.homeDirectory}/.local/bin.go";
+    };
+
+    home = {
+      sessionPath = [ config.programs.go.env.GOBIN ];
+      packages = [
+        pkgs.capslock
+        pkgs.go-task
+        pkgs.gotools
+        pkgs.go-tools
+        pkgs.gopls
+        pkgs.gofumpt
+        pkgs.gomodifytags
+        pkgs.gotests
+        pkgs.gore
+        pkgs.godef
+        pkgs.delve
+        pkgs.gdlv
+        pkgs.golangci-lint
+      ];
     };
   };
 }
