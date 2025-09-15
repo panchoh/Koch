@@ -14,13 +14,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    systems.url = "github:nix-systems/default";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "systems";
+    flake-parts.url = "flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-    disko.url = "github:nix-community/disko";
+    nixos-hardware.url = "nixos-hardware";
+    disko.url = "disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +30,7 @@
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
     autofirma-nix.inputs.flake-parts.follows = "flake-parts";
     autofirma-nix.inputs.home-manager.follows = "home-manager";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.url = "emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.inputs.nixpkgs-stable.follows = "nixpkgs";
     doomemacs.url = "github:doomemacs/doomemacs";
