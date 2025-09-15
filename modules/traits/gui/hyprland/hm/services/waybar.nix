@@ -29,6 +29,9 @@ in
           ];
           modules-right = [
             "temperature"
+          ]
+          ++ lib.optionals config.traits.hm.mpd.enable [
+            "mpd"
           ];
           "hyprland/workspaces" = {
             # active-only = true;
