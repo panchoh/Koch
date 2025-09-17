@@ -92,6 +92,8 @@ in
 
       pkgs.graphviz
 
+      pkgs.tuntox # for (collab +tunnel)
+
       pkgs.pyright
 
       pkgs.go-grip
