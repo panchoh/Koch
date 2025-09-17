@@ -59,7 +59,6 @@
       formatter = import ./lib/nixfmt-tree.nix self;
       apps = import ./lib/apps-disko-and-funk.nix self;
       devShells = import ./lib/dev-shells.nix self;
-      flakeModules.default = import ./modules self;
       homeModules.default = import ./lib/module.nix self "hm";
       nixosModules.default = import ./lib/module.nix self "os";
       nixosConfigurations = import ./lib/configurations.nix self;
