@@ -103,13 +103,31 @@ in
 
       pkgs.dockfmt
 
+      pkgs.terraform
+
+      pkgs.html-tidy
+      pkgs.stylelint
+      pkgs.stylelint-lsp
+      pkgs.jsbeautifier
+
       pkgs.semgrep
 
       pkgs.bash-language-server
       pkgs.yaml-language-server
+      pkgs.haskell-language-server
+      pkgs.haskellPackages.hoogle
+      pkgs.cabal-install
+
+      pkgs.black
+      pkgs.python313Packages.pyflakes
+      pkgs.isort
+      pkgs.python312Packages.pytest
+      pkgs.pyenv
 
       pkgs.nil # nix language server
       pkgs.nixd
+      pkgs.nixfmt
+      pkgs.nixfmt-tree
       pkgs.deadnix
 
       pkgs.nixpkgs-review
