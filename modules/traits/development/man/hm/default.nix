@@ -2,15 +2,20 @@
   config,
   lib,
   pkgs,
+  box ? null,
   ...
 }:
 let
   cfg = config.traits.hm.man;
 in
 {
+  imports = [
+    ./mangl.nix
+  ];
+
   options.traits.hm.man = {
-    enable = lib.mkEnableOption "man" // {
-      default = true;
+    enable = lib.mkEnableOption "Manual pages" // {
+      default = box.isStation or false;
     };
   };
 
