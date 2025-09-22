@@ -79,6 +79,7 @@ in
       pkgs.python3
       pkgs.pipenv
       pkgs.sqlite
+      pkgs.duckdb
 
       pkgs.editorconfig-core-c
 
