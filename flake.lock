@@ -433,16 +433,18 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1758663926,
-        "narHash": "sha256-6CFdj7Xs616t1W4jLDH7IohAAvl5Dyib3qEv/Uqw1rk=",
-        "owner": "NixOS",
+        "lastModified": 1758949896,
+        "narHash": "sha256-ELzn85jvmaez5oDbbrVEVMS7j4j5YPvU3r+6CH5lEsk=",
+        "owner": "panchoh",
         "repo": "nixos-hardware",
-        "rev": "170ff93c860b2a9868ed1e1102d4e52cb3d934e1",
+        "rev": "095a445675f0db39c1b42d62a7888df8670fe6b0",
         "type": "github"
       },
       "original": {
-        "id": "nixos-hardware",
-        "type": "indirect"
+        "owner": "panchoh",
+        "ref": "feat/init-apple-macbook-air-5",
+        "repo": "nixos-hardware",
+        "type": "github"
       }
     },
     "nixpkgs": {

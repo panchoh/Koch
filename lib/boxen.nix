@@ -57,7 +57,7 @@ in
     userDesc = "Alberto Peón";
     userEmail = "alberto.peon@FIXME.com";
     githubUser = "Alberto-Peon";
-    extraModules = [ flake.inputs.nixos-hardware.nixosModules.apple-macbook-air-6 ];
+    extraModules = [ flake.inputs.nixos-hardware.nixosModules.apple-macbook-air-5 ];
   }
 
   {
