@@ -15,11 +15,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services = {
-      upower = {
-        enable = true;
-        criticalPowerAction = "PowerOff";
-      };
+    services.upower = {
+      enable = true;
+      criticalPowerAction = "PowerOff";
     };
   };
 }
