@@ -43,6 +43,8 @@ in
     hardware = {
       cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+      intel-gpu-tools.enable = true;
+
       graphics = {
         enable = true;
         extraPackages = [
@@ -56,13 +58,6 @@ in
           pkgs.libvdpau-va-gl
         ];
       };
-    };
-
-    security.wrappers.intel_gpu_top = {
-      source = lib.getExe' pkgs.intel-gpu-tools "intel_gpu_top";
-      owner = "root";
-      group = "root";
-      capabilities = "cap_perfmon+ep";
     };
   };
 }
