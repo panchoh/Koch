@@ -58,6 +58,7 @@ in
     userEmail = "alberto.peon@FIXME.com";
     githubUser = "Alberto-Peon";
     extraModules = [ flake.inputs.nixos-hardware.nixosModules.apple-macbook-air-5 ];
+    extraHomeModules = [ { traits.hm.gopass.enable = false; } ];
   }
 
   {
