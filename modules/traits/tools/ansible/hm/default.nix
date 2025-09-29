@@ -19,7 +19,6 @@ in
     home.packages = [
       pkgs.ansible
       pkgs.ansible-lint
-      pkgs.ansible-language-server
       pkgs.sshpass
       pkgs.neo-cowsay
     ];
