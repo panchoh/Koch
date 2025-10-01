@@ -32,6 +32,7 @@ in
     home-manager = {
       inherit extraSpecialArgs;
       backupFileExtension = "backup";
+      overwriteBackup = true;
       verbose = true;
       useGlobalPkgs = true;
       useUserPackages = true;
