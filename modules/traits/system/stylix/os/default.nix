@@ -25,10 +25,7 @@ in
       enableDefaultPackages = true;
       packages = [
         pkgs.corefonts
-        pkgs.iosevka-comfy.comfy
-        pkgs.iosevka-comfy.comfy-fixed
-        pkgs.iosevka-comfy.comfy-duo
-        pkgs.iosevka-comfy.comfy-motion
+        pkgs.aporetic
       ];
     };
 
@@ -48,18 +45,18 @@ in
 
       fonts = {
         serif = {
-          name = "Iosevka Comfy Motion";
-          package = pkgs.iosevka-comfy.comfy-motion;
+          name = "Aporetic Serif Mono";
+          package = pkgs.aporetic;
         };
 
         sansSerif = {
-          name = "Iosevka Comfy";
-          package = pkgs.iosevka-comfy.comfy;
+          name = "Aporetic Sans Mono";
+          package = pkgs.aporetic;
         };
 
         monospace = {
-          name = "Iosevka Comfy Fixed";
-          package = pkgs.iosevka-comfy.comfy-fixed;
+          name = "Aporetic Sans Mono";
+          package = pkgs.aporetic;
         };
 
         emoji = {
