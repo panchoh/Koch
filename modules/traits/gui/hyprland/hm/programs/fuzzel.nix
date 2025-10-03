@@ -14,7 +14,7 @@ in
       enable = true;
       settings = {
         main = {
-          font = lib.mkForce "Iosevka Comfy Duo:size=${size}:weight=extralight";
+          font = lib.mkForce "Aporetic Sans Mono:size=${size}";
           layer = "overlay";
           terminal = lib.getExe config.programs.foot.package;
         };
