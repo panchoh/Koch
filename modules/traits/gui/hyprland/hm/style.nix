@@ -11,6 +11,9 @@ in
     wayland.windowManager.hyprland = {
       settings = {
         animations.enabled = true;
+        animation = [
+          "windows, 1, 8, default, popin 80%"
+        ];
         general = {
           border_size = 2;
           "col.active_border" = lib.mkForce "rgba(33ccffee) rgba(00ff99ee) 45deg";
