@@ -17,7 +17,7 @@
     systems.url = "systems";
     flake-parts.url = "flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-    nixos-hardware.url = "github:panchoh/nixos-hardware/feat/init-apple-macbook-air-5";
+    nixos-hardware.url = "nixos-hardware";
     disko.url = "disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "home-manager";
