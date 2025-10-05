@@ -46,6 +46,22 @@ in
       arguments = [ "--no-config" ];
     };
 
+    programs.amber = {
+      enable = true;
+      ambsSettings = {
+        column = true;
+        binary = true;
+        skipped = true;
+        recursive = true;
+      };
+      ambrSettings = {
+        regex = true;
+        row = true;
+        statistics = true;
+        interactive = false;
+      };
+    };
+
     home.packages = [
       (pkgs.aspellWithDicts (
         ds: with ds; [
