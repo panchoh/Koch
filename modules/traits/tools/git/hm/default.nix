@@ -55,7 +55,7 @@ in
       difftastic = {
         enable = true;
         # background = "dark";
-        display = "side-by-side-show-both";
+        options.display = "side-by-side-show-both";
       };
       signing = {
         key = box.gpgSigningKey;
