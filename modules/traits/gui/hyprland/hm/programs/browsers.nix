@@ -14,9 +14,9 @@ in
         "SUPER SHIFT, slash, exec, google-chrome-stable"
       ];
       workspace = [
-        "2, defaultName:Chromium, on-created-empty: chromium"
-        "3, defaultName:Chrome,   on-created-empty: google-chrome-stable"
-        "4, defaultName:Firefox,  on-created-empty: firefox"
+        "7, defaultName:Chromium, on-created-empty: chromium"
+        "8, defaultName:Chrome,   on-created-empty: google-chrome-stable"
+        "9, defaultName:Firefox,  on-created-empty: firefox"
       ];
     };
   };
