@@ -9,6 +9,10 @@ let
   cfg = config.traits.hm.git;
 in
 {
+  imports = [
+    ./programs/tig.nix
+  ];
+
   options.traits.hm.git = {
     enable = lib.mkEnableOption "Git" // {
       default = true;
@@ -29,7 +33,6 @@ in
       pkgs.gittyup
       pkgs.gource
       pkgs.lazygit
-      pkgs.tig
       pkgs.meld
       pkgs.vbindiff
     ];
