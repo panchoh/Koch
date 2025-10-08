@@ -16,5 +16,6 @@ in
 
   config = lib.mkIf cfg.enable {
     documentation.dev.enable = true;
+    programs.less.enable = lib.mkForce false;
   };
 }
