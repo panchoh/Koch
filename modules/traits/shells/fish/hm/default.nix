@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   box ? null,
   ...
 }:
@@ -107,11 +108,35 @@ in
         ];
       };
 
+      less = {
+        enable = true;
+        config = ''
+          #env
+          LESS = --clear-screen --Long-Prompt --Raw-Control-Chars --use-color --color=Pkm ''${LESS}
+        '';
+        # REVIEW: order is not preserved, and use-color must come before color.  Is there a workaround?
+        # options = {
+        #   clear-screen = true;
+        #   Long-Prompt = true;
+        #   Raw-Control-Chars = true;
+        #   use-color = true;
+        #   color = "Pkm";
+        # };
+      };
+
       bat = {
         enable = true;
         config = {
-          pager = "less -R";
+          italic-text = "always";
+          paging = "always";
+          style = "full";
         };
+        extraPackages = with pkgs.bat-extras; [
+          batdiff
+          batman
+          batgrep
+          batwatch
+        ];
       };
 
       fzf = {
