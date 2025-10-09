@@ -30,7 +30,8 @@ in
     ./radios.nix
     ./game.nix
     ./lifecycle.nix
-    ./layouts/master.nix
+    # ./layouts/master.nix
+    ./layouts/hyprscrolling.nix
     ./portal.nix
     ./workspace.nix
     ./fullscreen.nix
