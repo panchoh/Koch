@@ -12,6 +12,7 @@ in
     home.packages = [
       pkgs.wayland-utils # for wayland-info
       pkgs.vrrtest
+      pkgs.wlr-randr
     ];
     wayland.windowManager.hyprland.settings = {
       # https://wiki.hypr.land/Configuring/Monitors/#monitor-v2
