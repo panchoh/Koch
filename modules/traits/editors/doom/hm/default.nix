@@ -102,7 +102,8 @@ in
       # clang # conflits with gcc, TODO: decide which one to set here
       pkgs.gcc
       pkgs.gnumake
-      pkgs.ccls
+      # REVIEW: Uncomment when https://nixpkgs-tracker.ocfox.me/?pr=450049 gets through
+      # pkgs.ccls
 
       pkgs.zig
       pkgs.zls
