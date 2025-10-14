@@ -23,6 +23,12 @@ in
     programs = {
       fish = {
         enable = true;
+        shellAbbrs = {
+          g = "git";
+          l = "less";
+          t = "task";
+          "..." = "../..";
+        };
         shellAliases = {
           e = "$EDITOR --no-wait";
         };
