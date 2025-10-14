@@ -23,6 +23,7 @@ in
     ./programs/transmission.nix
     ./programs/wayprompt.nix
     ./programs/hyprsysteminfo.nix
+    ./programs/waypipe.nix
     ./monitor.nix
     ./mouse.nix
     ./keyboard.nix
