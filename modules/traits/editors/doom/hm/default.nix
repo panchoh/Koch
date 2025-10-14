@@ -129,6 +129,7 @@ in
       pkgs.jsbeautifier
 
       pkgs.semgrep
+      pkgs.ripgrep-all
 
       pkgs.bash-language-server
       pkgs.yaml-language-server
