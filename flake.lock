@@ -370,11 +370,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760517867,
-        "narHash": "sha256-RI2NlQcgO5W6QdHoJ6mMYu1yxspvQ9XHcJiyj8CFBLo=",
+        "lastModified": 1760526725,
+        "narHash": "sha256-TdI4EyTSwk53q7Afl3niug+bxYx+gUYoGkWUBFMwccU=",
         "owner": "marienz",
         "repo": "nix-doom-emacs-unstraightened",
-        "rev": "73184e9d070b603a6fa404de269f50cd0e4c1e2d",
+        "rev": "2297b3807cce978c33324c8f2e37fd902c85b4ca",
         "type": "github"
       },
       "original": {
