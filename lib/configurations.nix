@@ -8,10 +8,10 @@ let
     nameValuePair box.hostName (nixosSystem {
       modules = [ flake.nixosModules.default ] ++ box.extraModules;
       specialArgs = flake.inputs // {
-        inherit box;
+        inherit flake box;
         home.imports = [ flake.homeModules.default ] ++ box.extraHomeModules;
         extraSpecialArgs = flake.inputs // {
-          inherit box;
+          inherit flake box;
         };
       };
     });
