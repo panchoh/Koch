@@ -2,7 +2,6 @@
   config,
   lib,
   flake,
-  home,
   box ? null,
   ...
 }:
@@ -35,7 +34,7 @@ in
       verbose = true;
       useGlobalPkgs = true;
       useUserPackages = true;
-      users.${box.userName or "alice"} = home;
+      users.${box.userName or "alice"}.imports = [ flake.homeModules.default ] ++ box.extraHomeModules;
     };
   };
 }
