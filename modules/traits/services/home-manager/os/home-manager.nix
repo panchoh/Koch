@@ -2,7 +2,6 @@
   config,
   lib,
   flake,
-  extraSpecialArgs,
   home,
   box ? null,
   ...
@@ -30,7 +29,7 @@ in
     ];
 
     home-manager = {
-      inherit extraSpecialArgs;
+      extraSpecialArgs = { inherit flake box; };
       backupFileExtension = "backup";
       overwriteBackup = true;
       verbose = true;

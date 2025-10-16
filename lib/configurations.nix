@@ -10,9 +10,6 @@ let
       specialArgs = {
         inherit flake box;
         home.imports = [ flake.homeModules.default ] ++ box.extraHomeModules;
-        extraSpecialArgs = {
-          inherit flake box;
-        };
       };
     });
 
