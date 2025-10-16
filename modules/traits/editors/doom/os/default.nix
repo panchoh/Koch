@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  emacs-overlay,
+  flake,
   box ? null,
   ...
 }:
@@ -17,7 +17,7 @@ in
 
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [
-      emacs-overlay.overlays.default
+      flake.inputs.emacs-overlay.overlays.default
     ];
   };
 }

@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  nixpkgs,
+  flake,
   ...
 }:
 let
@@ -18,7 +18,7 @@ in
     # NIX_PATH is still used by many useful tools, such as Doom Emacs,  so we
     # set it to the same value as the one used by this flake.  Make `nix repl
     # '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
-    environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
+    environment.etc."nix/inputs/nixpkgs".source = "${flake.inputs.nixpkgs}";
 
     nix = {
       channel.enable = false;
