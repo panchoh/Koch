@@ -7,10 +7,7 @@ let
     box:
     nameValuePair box.hostName (nixosSystem {
       modules = [ flake.nixosModules.default ] ++ box.extraModules;
-      specialArgs = {
-        inherit flake box;
-        home.imports = [ flake.homeModules.default ] ++ box.extraHomeModules;
-      };
+      specialArgs = { inherit flake box; };
     });
 
   configurations = flake.lib.boxen |> map mkSystem |> builtins.listToAttrs;
