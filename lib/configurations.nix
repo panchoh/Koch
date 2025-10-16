@@ -6,7 +6,6 @@ let
   mkSystem =
     box:
     nameValuePair box.hostName (nixosSystem {
-      inherit (box) system;
       modules = [ flake.nixosModules.default ] ++ box.extraModules;
       specialArgs = flake.inputs // {
         inherit box;
