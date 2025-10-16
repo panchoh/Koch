@@ -9,11 +9,9 @@ let
       modules = [ flake.nixosModules.default ] ++ box.extraModules;
       specialArgs = flake.inputs // {
         inherit box;
-        inherit (flake.lib) boxen;
         home.imports = [ flake.homeModules.default ] ++ box.extraHomeModules;
         extraSpecialArgs = flake.inputs // {
           inherit box;
-          inherit (flake.lib) boxen;
         };
       };
     });
