@@ -2,8 +2,7 @@
   config,
   lib,
   pkgs,
-  nix-doom-emacs-unstraightened,
-  doom-config,
+  flake,
   box ? null,
   ...
 }:
@@ -12,7 +11,7 @@ let
 in
 {
   imports = [
-    nix-doom-emacs-unstraightened.homeModule
+    flake.inputs.nix-doom-emacs-unstraightened.homeModule
   ];
 
   options.traits.hm.doom-emacs = {
@@ -24,7 +23,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.doom-emacs = {
       enable = true;
-      doomDir = doom-config;
+      doomDir = flake.inputs.doom-config;
       emacs = pkgs.emacs-unstable-pgtk;
       experimentalFetchTree = true;
       provideEmacs = false;

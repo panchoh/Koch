@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  home-manager,
+  flake,
   extraSpecialArgs,
   home,
   box ? null,
@@ -12,7 +12,7 @@ let
 in
 {
   imports = [
-    home-manager.nixosModules.home-manager
+    flake.inputs.home-manager.nixosModules.home-manager
   ];
 
   options.traits.os.home-manager = {

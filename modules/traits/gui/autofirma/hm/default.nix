@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  autofirma-nix,
+  flake,
   box ? null,
   ...
 }:
@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    autofirma-nix.homeManagerModules.default
+    flake.inputs.autofirma-nix.homeManagerModules.default
   ];
 
   options.traits.hm.autofirma = {

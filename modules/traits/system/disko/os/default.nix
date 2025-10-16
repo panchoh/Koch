@@ -1,11 +1,11 @@
 {
-  disko,
+  flake,
   box ? null,
   ...
 }:
 {
   imports = [
-    disko.nixosModules.disko
+    flake.inputs.disko.nixosModules.disko
     (import ./disk-config.nix { device = box.diskDevice or "/dev/vda"; })
   ];
 }
