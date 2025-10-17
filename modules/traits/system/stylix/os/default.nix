@@ -43,6 +43,12 @@ in
 
       opacity.popups = 0.80;
 
+      cursor = {
+        package = pkgs.banana-cursor;
+        name = "Banana";
+        size = 42;
+      };
+
       fonts = {
         serif = {
           name = "Aporetic Serif Mono";
