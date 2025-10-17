@@ -1,16 +1,16 @@
-flake:
+self:
 let
-  inherit (flake.inputs.nixpkgs.lib.meta) getExe;
-  inherit (flake.inputs.nixpkgs.lib.attrsets) listToAttrs nameValuePair;
+  inherit (self.inputs.nixpkgs.lib.meta) getExe;
+  inherit (self.inputs.nixpkgs.lib.attrsets) listToAttrs nameValuePair;
 
   mkApp =
     box:
     let
-      inherit (flake.inputs.nixpkgs.legacyPackages.${box.system}) pkgs;
-      inherit (flake.nixosConfigurations.${box.hostName}.config.system.build)
+      inherit (self.inputs.nixpkgs.legacyPackages.${box.system}) pkgs;
+      inherit (self.nixosConfigurations.${box.hostName}.config.system.build)
         destroyFormatMount
         ;
-      inherit (flake.nixosConfigurations.${box.hostName}.config.users.users.${box.userName})
+      inherit (self.nixosConfigurations.${box.hostName}.config.users.users.${box.userName})
         home
         ;
     in
@@ -65,7 +65,7 @@ let
               ${getExe destroyFormatMount} --yes-wipe-all-disks
 
               echo -e '\nInstalling NixOS...'
-              nixos-install --no-root-password --no-channel-copy --flake "${flake}#${box.hostName}"
+              nixos-install --no-root-password --no-channel-copy --flake "${self}#${box.hostName}"
 
               echo -e '\nInstalling flake on target system...'
               FLAKE_PATH='/mnt${home}/sandbox/${box.githubUser}/${box.flakeRepoName}'
@@ -91,7 +91,7 @@ let
       );
     };
 in
-flake.lib.boxen
+self.lib.boxen
 |> builtins.groupBy (box: box.system)
 |> builtins.mapAttrs (
   _system: boxen: boxen |> map (box: nameValuePair box.hostName (mkApp box)) |> listToAttrs

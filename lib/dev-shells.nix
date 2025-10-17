@@ -1,11 +1,11 @@
-flake:
+self:
 let
-  inherit (flake.inputs.nixpkgs.lib.attrsets) genAttrs;
+  inherit (self.inputs.nixpkgs.lib.attrsets) genAttrs;
 
   mkDevShell =
     system:
     let
-      inherit (flake.inputs.nixpkgs.legacyPackages.${system}) pkgs;
+      inherit (self.inputs.nixpkgs.legacyPackages.${system}) pkgs;
     in
     pkgs.mkShellNoCC {
       name = "copito--my-flaky-nixos-config";
@@ -30,6 +30,6 @@ let
     default = mkDevShell system;
   };
 
-  dev-shells = genAttrs flake.lib.systems mkDefaultDevShellForSystem;
+  dev-shells = genAttrs self.lib.systems mkDefaultDevShellForSystem;
 in
 dev-shells

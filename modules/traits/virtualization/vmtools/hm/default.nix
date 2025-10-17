@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  flake,
+  self,
   ...
 }:
 let
@@ -19,8 +19,8 @@ in
     home.packages = [
       (pkgs.stdenvNoCC.mkDerivation rec {
         pname = "vmtools";
-        version = flake.inputs.vmtools.rev; # Use the commit ID as the version
-        src = flake.inputs.vmtools;
+        version = self.inputs.vmtools.rev; # Use the commit ID as the version
+        src = self.inputs.vmtools;
 
         buildInputs = [
           pkgs.virt-manager

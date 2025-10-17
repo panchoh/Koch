@@ -1,7 +1,7 @@
-flake:
+self:
 let
-  inherit (flake.inputs.nixpkgs.lib.lists) unique;
+  inherit (self.inputs.nixpkgs.lib.lists) unique;
 
-  systems = flake.lib.boxen |> builtins.catAttrs "system" |> unique;
+  systems = self.lib.boxen |> builtins.catAttrs "system" |> unique;
 in
 systems

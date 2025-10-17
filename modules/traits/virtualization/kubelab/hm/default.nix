@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  flake,
+  self,
   ...
 }:
 let
@@ -19,8 +19,8 @@ in
     home.packages = [
       (pkgs.stdenvNoCC.mkDerivation rec {
         pname = "kubelab";
-        version = flake.inputs.kubelab.rev; # Use the commit ID as the version
-        src = flake.inputs.kubelab;
+        version = self.inputs.kubelab.rev; # Use the commit ID as the version
+        src = self.inputs.kubelab;
 
         buildInputs = [
           pkgs.ansible

@@ -1,4 +1,4 @@
-flake: {
-  boxen = import ./boxen.nix flake;
-  systems = import ./systems.nix flake;
+self: {
+  boxen = import ./boxen.nix self;
+  systems = import ./systems.nix self;
 }
