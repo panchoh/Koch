@@ -22,6 +22,7 @@ in
       pkgs.bb
       pkgs.crawl
       pkgs.sl
+      pkgs.fastfetch
       pkgs.neofetch
       pkgs.hyperrogue
       pkgs.notcurses
