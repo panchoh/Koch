@@ -14,7 +14,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    systems.url = "systems";
+    systems.url = "github:nix-systems/default-linux";
     flake-parts.url = "flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     nixos-hardware.url = "nixos-hardware";
