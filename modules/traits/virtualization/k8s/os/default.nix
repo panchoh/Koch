@@ -16,6 +16,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # REVIEW: Remove when https://nixpkgs-tracker.ocfox.me/?pr=TBD gets through
+    systemd.services.kube-certmgr-bootstrap.enableStrictShellChecks = false;
+
     services.kubernetes = {
       masterAddress = "localhost";
       roles = [
