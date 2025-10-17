@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  flake,
+  self,
   box ? null,
   ...
 }:
@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    flake.inputs.stylix.nixosModules.stylix
+    self.inputs.stylix.nixosModules.stylix
   ];
 
   options.traits.os.stylix = {

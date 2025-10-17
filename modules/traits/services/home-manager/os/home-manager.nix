@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  flake,
+  self,
   box ? null,
   ...
 }:
@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    flake.inputs.home-manager.nixosModules.home-manager
+    self.inputs.home-manager.nixosModules.home-manager
   ];
 
   options.traits.os.home-manager = {
@@ -28,13 +28,13 @@ in
     ];
 
     home-manager = {
-      extraSpecialArgs = { inherit flake box; };
+      extraSpecialArgs = { inherit self box; };
       backupFileExtension = "backup";
       overwriteBackup = true;
       verbose = true;
       useGlobalPkgs = true;
       useUserPackages = true;
-      users.${box.userName or "alice"}.imports = [ flake.homeModules.default ] ++ box.extraHomeModules;
+      users.${box.userName or "alice"}.imports = [ self.homeModules.default ] ++ box.extraHomeModules;
     };
   };
 }

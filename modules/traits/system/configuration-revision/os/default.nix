@@ -1,5 +1,5 @@
-{ flake, ... }:
+{ self, ... }:
 {
   # nixos-version --configuration-revision
-  system.configurationRevision = flake.rev or flake.dirtyRev;
+  system.configurationRevision = self.rev or self.dirtyRev;
 }

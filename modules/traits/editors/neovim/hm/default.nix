@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  flake,
+  self,
   box ? null,
   ...
 }:
@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    flake.inputs.nvf.homeManagerModules.default
+    self.inputs.nvf.homeManagerModules.default
     ./neovide.nix
   ];
 

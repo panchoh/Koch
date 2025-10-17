@@ -1,6 +1,6 @@
-flake: moduleFamily:
+self: moduleFamily:
 let
-  inherit (flake.inputs.nixpkgs.lib.attrsets) mapAttrsToList;
+  inherit (self.inputs.nixpkgs.lib.attrsets) mapAttrsToList;
 
   nameTypePair = name: type: { inherit name type; };
 
