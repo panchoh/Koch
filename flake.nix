@@ -61,6 +61,6 @@
       devShells = import ./lib/dev-shells.nix self;
       homeModules.default = import ./lib/module.nix self "hm";
       nixosModules.default = import ./lib/module.nix self "os";
-      nixosConfigurations = import ./lib/configurations.nix self;
+      nixosConfigurations = import ./lib/nixos-configurations.nix self;
     };
 }
