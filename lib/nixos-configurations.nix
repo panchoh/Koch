@@ -10,6 +10,6 @@ let
       specialArgs = { inherit self box; };
     });
 
-  configurations = self.lib.boxen |> map mkSystem |> builtins.listToAttrs;
+  nixosConfigurations = self.lib.boxen |> map mkSystem |> builtins.listToAttrs;
 in
-configurations
+nixosConfigurations
