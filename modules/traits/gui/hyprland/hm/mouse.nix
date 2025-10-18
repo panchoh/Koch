@@ -32,9 +32,6 @@ in
         inactive_timeout = 5;
         hide_on_key_press = true;
       };
-      env = lib.mapAttrsToList (name: value: "${name}, ${toString value}") {
-        XCURSOR_SIZE = 24;
-      };
       general = {
         resize_on_border = true;
         hover_icon_on_border = true;
