@@ -39,9 +39,11 @@ in
 
     programs.git = {
       enable = true;
-      userName = box.userDesc or "Alice Q. User";
-      userEmail = box.userEmail or "alice@example.org";
-      extraConfig = {
+      settings = {
+        user = {
+          name = box.userDesc or "Alice Q. User";
+          email = box.userEmail or "alice@example.org";
+        };
         init.defaultBranch = "master";
         merge.conflictStyle = "zdiff3";
         github.user = box.githubUser or "aliceq";
@@ -51,19 +53,23 @@ in
           autoStageIfNothingStaged = true;
         };
       };
-      delta = {
-        enable = false;
-        options.side-by-side = true;
-      };
-      difftastic = {
-        enable = true;
-        # background = "dark";
-        options.display = "side-by-side-show-both";
-      };
       signing = {
         key = box.gpgSigningKey;
         signByDefault = true;
       };
+    };
+
+    programs.delta = {
+      enable = false;
+      enableGitIntegration = true;
+      options.side-by-side = true;
+    };
+
+    programs.difftastic = {
+      enable = true;
+      git.enable = true;
+      # background = "dark";
+      options.display = "side-by-side-show-both";
     };
 
     programs.gh = {
