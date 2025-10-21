@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="621" height="180">
+<g transform="translate(4,179)scale(0.02)"><g id="itD"><g id="itC"><g id="itB"><g id="itA"><g id="it9"><g id="it8"><g id="it7"><g id="it6"><g id="it5"><g id="it4"><g id="it3"><g id="it2"><g id="it1">
+<line x2="14" stroke="#000" stroke-width="12.8572" stroke-linecap="round" id="it0"/>
+<use xlink:href="#it0" transform="translate(14)rotate(-60)"/></g>
+<use xlink:href="#it1" transform="translate(42)scale(-1,1)"/></g>
+<use xlink:href="#it2" transform="translate(42)rotate(-60)"/></g>
+<use xlink:href="#it3" transform="translate(126)scale(-1,1)"/></g>
+<use xlink:href="#it4" transform="translate(126)rotate(-60)"/></g>
+<use xlink:href="#it5" transform="translate(378)scale(-1,1)"/></g>
+<use xlink:href="#it6" transform="translate(378)rotate(-60)"/></g>
+<use xlink:href="#it7" transform="translate(1134)scale(-1,1)"/></g>
+<use xlink:href="#it8" transform="translate(1134)rotate(-60)"/></g>
+<use xlink:href="#it9" transform="translate(3402)scale(-1,1)"/></g>
+<use xlink:href="#itA" transform="translate(3402)rotate(-60)"/></g>
+<use xlink:href="#itB" transform="translate(10206)scale(-1,1)"/></g>
+<use xlink:href="#itC" transform="translate(10206)rotate(-60)"/></g>
+<use xlink:href="#itD" transform="translate(30618)scale(-1,1)"/></g>
+</svg>
