@@ -1,7 +1,6 @@
 {
   lib,
   self,
-  inputs,
   ...
 }:
 {
@@ -10,9 +9,7 @@
       mkNixosSystem =
         box:
         (lib.nixosSystem {
-          specialArgs = {
-            inherit self inputs box;
-          };
+          specialArgs = { inherit box; };
           modules = [
             self.nixosModules.default
           ]

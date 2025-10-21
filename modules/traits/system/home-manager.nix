@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   ...
 }:
@@ -11,8 +12,6 @@
     {
       config,
       lib,
-      self,
-      inputs,
       box ? null,
       ...
     }:
@@ -39,7 +38,7 @@
         ];
 
         home-manager = {
-          extraSpecialArgs = { inherit self inputs box; };
+          extraSpecialArgs = { inherit box; };
           backupFileExtension = "backup";
           overwriteBackup = true;
           verbose = true;

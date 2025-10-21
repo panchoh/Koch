@@ -1,9 +1,12 @@
 {
+  inputs,
+  ...
+}:
+{
   flake.nixosModules.default =
     {
       config,
       lib,
-      inputs,
       ...
     }:
     let

@@ -1,10 +1,13 @@
 {
+  inputs,
+  ...
+}:
+{
   flake.nixosModules.default =
     {
       config,
       lib,
       pkgs,
-      inputs,
       box ? null,
       ...
     }:

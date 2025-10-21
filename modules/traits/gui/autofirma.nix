@@ -1,10 +1,13 @@
 {
+  inputs,
+  ...
+}:
+{
   flake = {
     homeModules.default =
       {
         config,
         lib,
-        inputs,
         box ? null,
         ...
       }:
