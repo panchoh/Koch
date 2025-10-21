@@ -15,7 +15,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
-    import-tree.url = "github:vic/import-tree";
     flake-parts.url = "flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     nixos-hardware.url = "nixos-hardware";
@@ -56,14 +55,13 @@
   outputs =
     inputs@{
       flake-parts,
-      import-tree,
+      nixpkgs,
       systems,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        (import-tree ./modules)
-      ];
+      imports = (import ./lib/import-tree.nix nixpkgs.lib ./modules);
+
       systems = import systems;
     };
 }
