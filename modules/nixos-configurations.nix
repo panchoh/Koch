@@ -1,4 +1,5 @@
 {
+  lib,
   self,
   inputs,
   ...
@@ -6,19 +7,19 @@
 {
   flake.nixosConfigurations =
     let
-      inherit (inputs.nixpkgs.lib.attrsets) nameValuePair;
-      inherit (inputs.nixpkgs.lib) nixosSystem;
-
-      mkSystem =
+      mkNixosSystem =
         box:
-        nameValuePair box.hostName (nixosSystem {
-          specialArgs = { inherit self inputs box; };
+        (lib.nixosSystem {
+          specialArgs = {
+            inherit self inputs box;
+          };
           modules = [
             self.nixosModules.default
           ]
           ++ box.extraModules;
         });
-
     in
-    self.lib.boxen |> map mkSystem |> builtins.listToAttrs;
+    self.lib.boxen
+    |> map (box: lib.nameValuePair box.hostName (mkNixosSystem box))
+    |> builtins.listToAttrs;
 }
