@@ -57,11 +57,13 @@
     inputs@{
       flake-parts,
       import-tree,
+      systems,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         (import-tree ./modules)
       ];
+      systems = import systems;
     };
 }
