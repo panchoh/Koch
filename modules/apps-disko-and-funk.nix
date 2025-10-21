@@ -1,4 +1,5 @@
 {
+  lib,
   self,
   inputs,
   ...
@@ -6,10 +7,7 @@
 {
   flake.apps =
     let
-      inherit (inputs.nixpkgs.lib.meta) getExe;
-      inherit (inputs.nixpkgs.lib.attrsets) listToAttrs nameValuePair;
-
-      mkApp =
+      mkAppDiskoAndFunk =
         box:
         let
           inherit (inputs.nixpkgs.legacyPackages.${box.system}) pkgs;
@@ -24,7 +22,7 @@
           type = "app";
           meta.description = "Fresh install of NixOS.";
           program = toString (
-            getExe (
+            lib.getExe (
               pkgs.writeShellApplication {
                 name = "setup";
                 meta.mainProgram = "setup";
@@ -68,7 +66,7 @@
                   blkdiscard --force "${box.diskDevice}" --quiet --verbose
 
                   echo -e '\nPartitioning, formatting and mounting with disko...'
-                  ${getExe destroyFormatMount} --yes-wipe-all-disks
+                  ${lib.getExe destroyFormatMount} --yes-wipe-all-disks
 
                   echo -e '\nInstalling NixOS...'
                   nixos-install --no-root-password --no-channel-copy --flake "${self}#${box.hostName}"
@@ -100,6 +98,7 @@
     self.lib.boxen
     |> builtins.groupBy (box: box.system)
     |> builtins.mapAttrs (
-      _system: boxen: boxen |> map (box: nameValuePair box.hostName (mkApp box)) |> listToAttrs
+      _system: boxen:
+      boxen |> map (box: lib.nameValuePair box.hostName (mkAppDiskoAndFunk box)) |> builtins.listToAttrs
     );
 }
