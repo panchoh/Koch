@@ -38,6 +38,12 @@ tasks:
     cmds:
       - nixos-rebuild build --verbose --print-build-logs
 
+  nixos-rebuild-buildvm:
+    desc: Build the new NixOS configuration and run it on a VM
+    cmds:
+      - nixos-rebuild build-vm --verbose --print-build-logs
+      - result/bin/run-*-vm
+
   revs:
     desc: Display the actual revisions the current flake, NixOS and nixpkgs are at
     cmds:
@@ -77,6 +83,11 @@ tasks:
     desc: Clear the history of Home Manager profiles
     cmds:
       - nix profile wipe-history --profile ~/.local/state/nix/profiles/home-manager
+
+  wipe-vm:
+    desc: Clear the VM build and the disk image
+    cmds:
+      - rm --verbose --force result *.qcow2
 
   gc:
     desc: Run garbage collection on the Nix store
