@@ -38,6 +38,11 @@ tasks:
     cmds:
       - nixos-rebuild build --verbose --print-build-logs
 
+  revs:
+    desc: Display the actual revisions the current flake, NixOS and nixpkgs are at
+    cmds:
+      - nixos-version --json | jq
+
   list-nixos-history:
     desc: Display the history of NixOS system profiles
     cmds:

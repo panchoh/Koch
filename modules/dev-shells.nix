@@ -15,6 +15,7 @@
           pkgs.nixfmt
           pkgs.git
           pkgs.go-task
+          pkgs.jq
           pkgs.toilet
         ];
 
