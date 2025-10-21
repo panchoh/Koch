@@ -1,13 +1,13 @@
-#+title: copito: my flaky NixOS config
+#+title: Koch: my flaky NixOS config
 
-[[file:images/copito.png]]
+[[https://commons.wikimedia.org/wiki/File:Koch_curve.svg][file:images/Koch_curve.svg]]
 
 * Bootstrapping
 1. Put a [[https://nixos.org/download.html#nixos-iso][bootable NixOS iso image]] on a usb thumbdrive, and boot it
 
 2. Prime the box
  #+begin_src shell
-sudo nix --experimental-features 'nix-command flakes' run github:panchoh/nixos#helium
+sudo nix --accept-flake-config --experimental-features 'nix-command flakes' run github:panchoh/Koch#oxygen
 #+end_src
 
 3. Manage your ssh key and then let Home Manager finish the setup
