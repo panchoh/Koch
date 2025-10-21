@@ -1,10 +1,13 @@
 {
+  inputs,
+  ...
+}:
+{
   flake.homeModules.default =
     {
       config,
       lib,
       pkgs,
-      inputs,
       ...
     }:
     let

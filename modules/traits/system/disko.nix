@@ -1,8 +1,11 @@
 {
+  self,
+  inputs,
+  ...
+}:
+{
   flake.nixosModules.default =
     {
-      self,
-      inputs,
       box ? null,
       ...
     }:
