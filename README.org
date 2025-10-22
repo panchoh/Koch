@@ -7,7 +7,7 @@
 
 2. Prime the box
  #+begin_src shell
-sudo nix --accept-flake-config --experimental-features 'nix-command flakes' run github:panchoh/Koch#oxygen
+sudo nix --experimental-features 'nix-command flakes' run github:panchoh/Koch#oxygen
 #+end_src
 
 3. Manage your ssh key and then let Home Manager finish the setup
