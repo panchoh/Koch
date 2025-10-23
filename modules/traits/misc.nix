@@ -132,7 +132,8 @@
 
           pkgs.wormhole-william
 
-          pkgs.stellarium
+          # REVIEW: Uncomment when https://nixpkgs-tracker.ocfox.me/?pr=454427 lands
+          # pkgs.stellarium
           pkgs.celestia
         ];
       };
