@@ -26,6 +26,7 @@
               window-decoration = false;
               cursor-style = "block";
               cursor-style-blink = false;
+              bell-features = "attention, title, border";
               shell-integration-features = "no-cursor";
             };
           };
