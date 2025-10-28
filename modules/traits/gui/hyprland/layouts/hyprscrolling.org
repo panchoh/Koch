@@ -34,10 +34,10 @@ See https://github.com/hyprwm/hyprland-plugins/tree/main/hyprscrolling
 
 * Example key bindings for your Hyprland config:
 #+begin_src
-bind = $mainMod, period, layoutmsg, move +col
-bind = $mainMod, comma, layoutmsg, move -col
-bind = $mainMod SHIFT, period, layoutmsg, movewindowto r
-bind = $mainMod SHIFT, comma, layoutmsg, movewindowto l
-bind = $mainMod SHIFT, up, layoutmsg, movewindowto u
-bind = $mainMod SHIFT, down, layoutmsg, movewindowto d
+bind = SUPER      , period, layoutmsg, move +col
+bind = SUPER      , comma , layoutmsg, move -col
+bind = SUPER SHIFT, period, layoutmsg, movewindowto r
+bind = SUPER SHIFT, comma , layoutmsg, movewindowto l
+bind = SUPER SHIFT, up    , layoutmsg, movewindowto u
+bind = SUPER SHIFT, down  , layoutmsg, movewindowto d
 #+end_src
