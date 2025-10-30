@@ -66,7 +66,7 @@
             pkgs.libfido2
 
             pkgs.opensc
-            pkgs.pcsctools
+            pkgs.pcsc-tools
             pkgs.ccid
             pkgs.scmccid
 
