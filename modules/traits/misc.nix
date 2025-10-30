@@ -59,7 +59,7 @@
           pkgs.binutils
           pkgs.dua
           pkgs.duf
-          pkgs.du-dust
+          pkgs.dust
           pkgs.dysk
           pkgs.file
           pkgs.fdupes
