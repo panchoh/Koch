@@ -16,7 +16,7 @@
           enable = true;
           settings = {
             main = {
-              font = lib.mkForce "Aporetic Sans Mono:size=${size}";
+              font = lib.mkForce "Iosevka Extended:size=${size}";
               layer = "overlay";
               terminal = lib.getExe config.programs.foot.package;
             };

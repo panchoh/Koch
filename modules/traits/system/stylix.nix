@@ -30,7 +30,7 @@
           enableDefaultPackages = true;
           packages = [
             pkgs.corefonts
-            pkgs.aporetic
+            (pkgs.iosevka-bin.override { variant = "Slab"; })
           ];
         };
 
@@ -56,18 +56,18 @@
 
           fonts = {
             serif = {
-              name = "Aporetic Serif Mono";
-              package = pkgs.aporetic;
+              name = "Iosevka Etoile";
+              package = (pkgs.iosevka-bin.override { variant = "Etoile"; });
             };
 
             sansSerif = {
-              name = "Aporetic Sans Mono";
-              package = pkgs.aporetic;
+              name = "Iosevka Aile";
+              package = (pkgs.iosevka-bin.override { variant = "Aile"; });
             };
 
             monospace = {
-              name = "Aporetic Sans Mono";
-              package = pkgs.aporetic;
+              name = "Iosevka";
+              package = pkgs.iosevka-bin;
             };
 
             emoji = {
