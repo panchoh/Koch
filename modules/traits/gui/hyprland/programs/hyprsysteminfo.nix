@@ -12,8 +12,7 @@
     {
       config = lib.mkIf cfg.enable {
         home.packages = [
-          # REVIEW: Uncomment when https://nixpkgs-tracker.ocfox.me/?pr=TBD lands
-          # pkgs.hyprsysteminfo
+          pkgs.hyprsysteminfo
         ];
       };
     };
