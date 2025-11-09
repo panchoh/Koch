@@ -25,6 +25,7 @@
           nixpkgs.overlays = [
             inputs.emacs-overlay.overlays.default
           ];
+          nixpkgs.config.joypixels.acceptLicense = true;
         };
       };
 
@@ -110,7 +111,7 @@
             })
 
             pkgs.nerd-fonts.symbols-only
-            pkgs.emojione
+            pkgs.joypixels
             pkgs.twemoji-color-font
 
             pkgs.emacs-lsp-booster
