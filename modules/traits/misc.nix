@@ -38,7 +38,6 @@
 
           pkgs.ldns
           pkgs.doggo
-          pkgs.dogdns
           pkgs.nmap
           pkgs.speedtest-go
           pkgs.ipcalc
