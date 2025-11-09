@@ -96,6 +96,9 @@
 
           pkgs.whois
 
+          pkgs.rmlint
+          pkgs.raider
+
           pkgs.pdf4qt
           pkgs.pdfchain
           pkgs.pdfcpu
