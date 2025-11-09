@@ -129,7 +129,7 @@
             eza = {
               enable = false;
               git = true;
-              icons = true;
+              icons = "auto";
               extraOptions = [
                 "--binary"
                 # "--context"
