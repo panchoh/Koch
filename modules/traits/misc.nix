@@ -106,6 +106,8 @@
           pkgs.asciinema-agg
           pkgs.asciinema-scenario
 
+          pkgs.viddy
+
           pkgs.pinact
 
           pkgs.bgnet
