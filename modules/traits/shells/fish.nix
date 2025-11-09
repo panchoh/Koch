@@ -168,13 +168,12 @@
                 paging = "always";
                 style = "full";
               };
-              # REVIEW: Uncomment when https://nixpkgs-tracker.ocfox.me/?pr=454542 lands
-              # extraPackages = with pkgs.bat-extras; [
-              #   batdiff
-              #   batman
-              #   batgrep
-              #   batwatch
-              # ];
+              extraPackages = with pkgs.bat-extras; [
+                batdiff
+                batman
+                batgrep
+                batwatch
+              ];
             };
 
             fzf = {
