@@ -49,22 +49,29 @@
           pkgs.slumber
 
           pkgs.moreutils
+          pkgs.fx
           pkgs.yq-go
           pkgs.hwloc
           pkgs.b3sum
           pkgs.unzip
           pkgs.zip
-
+        ]
+        ++ lib.optionals (box.isStation or false) [
           pkgs.binutils
           pkgs.dua
           pkgs.duf
           pkgs.dust
           pkgs.dysk
           pkgs.file
-          pkgs.fdupes
+
           pkgs.rdfind
+          pkgs.fdupes
+          pkgs.rmlint
+          pkgs.raider
           pkgs.czkawka
           pkgs.fclones
+          pkgs.fclones-gui
+
           pkgs.gnutls
           pkgs.zstd
 
@@ -81,9 +88,6 @@
 
           pkgs.pv
 
-          pkgs.fx
-        ]
-        ++ lib.optionals (box.isStation or false) [
           pkgs.nixos-anywhere
 
           pkgs.ddrescue
@@ -94,9 +98,6 @@
           pkgs.recode
 
           pkgs.whois
-
-          pkgs.rmlint
-          pkgs.raider
 
           pkgs.pdf4qt
           pkgs.pdfchain
