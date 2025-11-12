@@ -17,15 +17,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1762939683,
-        "narHash": "sha256-U2F9tK5LioLDfQizU4FWKv8Y3hE1WuPEeoe7ElkRa78=",
+        "lastModified": 1762846245,
+        "narHash": "sha256-tCuPUoeuB+DLDKzd8jO6F978TxoiakVLFgSg0i7T7UU=",
         "owner": "nix-community",
         "repo": "autofirma-nix",
-        "rev": "75770f68709e764659712ff152193d7986db2530",
+        "rev": "cc50a95d2c0352155fd0ee8fa51bef530270b56c",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+        "ref": "develop",
         "repo": "autofirma-nix",
         "type": "github"
       }
@@ -33,16 +34,16 @@
     "autofirma-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1716805628,
-        "narHash": "sha256-GQyj3QuWIHTkYwdJ4oKVsG923YG9mCUXfhqdIvEWNMA=",
+        "lastModified": 1747811913,
+        "narHash": "sha256-vk0I2wpaiwC5kY8R36i/1CLHGCtsl3scDcJ6qg1p50k=",
         "owner": "ctt-gob-es",
         "repo": "clienteafirma",
-        "rev": "f8888062394a4ca41c5802beb2524597a5ce465a",
+        "rev": "1f29aa7a2aae8eda40a70fed79b0428153c78df8",
         "type": "github"
       },
       "original": {
         "owner": "ctt-gob-es",
-        "ref": "v1.8.3",
+        "ref": "v1.9",
         "repo": "clienteafirma",
         "type": "github"
       }
@@ -118,16 +119,16 @@
     "clienteafirma-external-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1712248159,
-        "narHash": "sha256-iS3I6zIxuKG133s/FqDlXZzOZ2ZOJcqZK9X6Tv3+3lc=",
+        "lastModified": 1753702371,
+        "narHash": "sha256-3bXdZ6fQAId6nHqiJ60BDBhFI9cosN7jtI0soggcO9Q=",
         "owner": "ctt-gob-es",
         "repo": "clienteafirma-external",
-        "rev": "f450ac76094ffe387f6590b9ac61b5ada5a501e7",
+        "rev": "d3792cc3816906da7fff652f9bd122f84b29b5c7",
         "type": "github"
       },
       "original": {
         "owner": "ctt-gob-es",
-        "ref": "OT_14395",
+        "ref": "v1.0.6",
         "repo": "clienteafirma-external",
         "type": "github"
       }
@@ -193,11 +194,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762938833,
-        "narHash": "sha256-DAyy8XG0qsbv6JZ+AXTcEA+b9W//pQnNQJBiOzdOO/0=",
+        "lastModified": 1762964914,
+        "narHash": "sha256-5gLXEaWfPsPLF18EqC8uEutwZiX1POwFweiPWyFhaa8=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "d144aad6de2aeccf61ba8e3283059f95b93acb24",
+        "rev": "d668b397f3de05963fcccb1a7f3a2803739c59cd",
         "type": "github"
       },
       "original": {
@@ -296,11 +297,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762787259,
-        "narHash": "sha256-t2U/GLLXHa2+kJkwnFNRVc2fEJ/lUfyZXBE5iKzJdcs=",
+        "lastModified": 1762964643,
+        "narHash": "sha256-RYHN8O/Aja59XDji6WSJZPkJpYVUfpSkyH+PEupBJqM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "37a3d97f2873e0f68711117c34d04b7c7ead8f4e",
+        "rev": "827f2a23373a774a8805f84ca5344654c31f354b",
         "type": "github"
       },
       "original": {
@@ -311,16 +312,16 @@
     "jmulticard-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1686816513,
-        "narHash": "sha256-sCqMK4FvwRHsGIB6iQVyqrx0+EDiUfQSAsPqmDq2Giw=",
+        "lastModified": 1753703143,
+        "narHash": "sha256-XHX9MwWQe9BIjEfrrquU9gtzx3x6leGBhWjMPmVtALE=",
         "owner": "ctt-gob-es",
         "repo": "jmulticard",
-        "rev": "9983fc690f3b68dc2c8fde19db269766cf0fb387",
+        "rev": "2550e7eab43b9089673d0989959894846425f499",
         "type": "github"
       },
       "original": {
         "owner": "ctt-gob-es",
-        "ref": "v1.8",
+        "ref": "v2.0",
         "repo": "jmulticard",
         "type": "github"
       }
