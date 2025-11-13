@@ -51,7 +51,7 @@
           cursor = {
             package = pkgs.banana-cursor;
             name = "Banana";
-            size = 42;
+            size = 48;
           };
 
           fonts = {
