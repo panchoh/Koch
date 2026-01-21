@@ -15,7 +15,7 @@
           enable = true;
           restart = true;
           settings.default_session = {
-            command = "${lib.getExe config.programs.hyprland.package} &>~/.Wsession.errors";
+            command = "${lib.getExe' config.programs.hyprland.package "start-hyprland"} &>~/.Wsession.errors";
             user = box.userName or "alice";
           };
         };
