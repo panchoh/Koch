@@ -39,8 +39,10 @@
           fail2ban.enable = true;
           resolved = {
             enable = true;
-            dnssec = "true";
-            llmnr = "false";
+            settings.Resolve = {
+              DNSSEC = "true";
+              LLMNR = "false";
+            };
           };
         };
 
