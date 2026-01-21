@@ -114,6 +114,9 @@
               "steel"
               "titanium"
 
+              ## 6TB Emerald
+              "emerald"
+
               # 2022-08-20T15:57:56 CEST
               # Zeroed.
               # Seems to have trouble spinning up, maybe some connector issue.
