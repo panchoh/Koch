@@ -34,25 +34,30 @@
               WHEEL_DOWN = "seek -10";
               "Alt+0" = "set window-scale 0.5";
             };
+            # https://github.com/mpv-player/mpv/issues/12082#issuecomment-1666545541
             defaultProfiles = [ "gpu-hq" ];
             config = {
               fullscreen = true;
               sub-auto = "fuzzy";
 
-              vo = "gpu-next";
-              gpu-api = "vulkan";
+              # vo = "gpu-next";
+              vo = "gpu";
+              # gpu-api = "vulkan";
               gpu-context = "waylandvk";
 
               # https://github.com/mpv-player/mpv/issues/8981
-              hdr-compute-peak = false;
+              # hdr-compute-peak = false;
 
               # https://github.com/mpv-player/mpv/issues/10972#issuecomment-1340100762
-              vd-lavc-dr = false;
+              # vd-lavc-dr = false;
 
-              drm-vrr-enabled = "auto";
+              # drm-vrr-enabled = "auto";
 
               # HDR
+              # https://github.com/mpv-player/mpv/pull/16512
+              # https://mpv.io/manual/master/#options-target-colorspace-hint
               # target-colorspace-hint = "auto";
+              # https://mpv.io/manual/master/#options-target-colorspace-hint-mode
               # target-colorspace-hint-mode = "source"; # after mpv 0.40.0
             };
             profiles = {
