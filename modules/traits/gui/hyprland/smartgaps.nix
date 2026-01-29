@@ -17,11 +17,9 @@
             "s[false] w[tv1], gapsout:0,   gapsin:0"
             "s[false] f[1],   gapsout:0,   gapsin:0"
           ];
-          windowrulev2 = [
-            "bordersize 0, floating:0, onworkspace:s[false] w[tv1]"
-            "rounding   0, floating:0, onworkspace:s[false] w[tv1]"
-            "bordersize 0, floating:0, onworkspace:s[false] f[1]"
-            "rounding   0, floating:0, onworkspace:s[false] f[1]"
+          windowrule = [
+            "border_size 0, rounding 0, match:float 0, match:workspace s[false] w[tv1]"
+            "border_size 0, rounding 0, match:float 0, match:workspace s[false] f[1]"
           ];
         };
       };

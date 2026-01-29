@@ -30,9 +30,9 @@
             "SUPER,       Minus, togglespecialworkspace,         Telegram"
             "SUPER SHIFT, Minus, movetoworkspacesilent,  special:Telegram"
           ];
-          windowrulev2 = [
-            "float,                             class:^(org.telegram.desktop)$, title:^(Media viewer)$"
-            "workspace special:Telegram silent, class:^(org.telegram.desktop)$"
+          windowrule = [
+            "float on,                          match:class ^(org.telegram.desktop)$, match:title ^(Media viewer)$"
+            "workspace special:Telegram silent, match:class ^(org.telegram.desktop)$"
           ];
         };
       };
