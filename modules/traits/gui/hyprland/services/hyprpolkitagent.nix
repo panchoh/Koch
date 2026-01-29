@@ -13,12 +13,8 @@
         services.hyprpolkitagent.enable = true;
 
         wayland.windowManager.hyprland.settings = {
-          windowrulev2 = [
-            "pin,         initialTitle:Hyprland Polkit Agent"
-            "noanim 1,    initialTitle:Hyprland Polkit Agent"
-            "xray 1,      initialTitle:Hyprland Polkit Agent"
-            "dimaround 1, initialTitle:Hyprland Polkit Agent"
-            "stayfocused, initialTitle:Hyprland Polkit Agent"
+          windowrule = [
+            "pin on, no_anim 1, xray 1, dim_around 1, stay_focused on, match:initial_title Hyprland Polkit Agent"
           ];
         };
       };

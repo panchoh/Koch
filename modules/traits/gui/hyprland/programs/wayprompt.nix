@@ -45,8 +45,8 @@
           services.gpg-agent.pinentry.package = config.programs.wayprompt.package;
 
           wayland.windowManager.hyprland.settings.layerrule = [
-            "xray 1,    wayprompt"
-            "dimaround, wayprompt"
+            "match:class wayprompt, xray 1"
+            "match:class wayprompt, dim_around 1"
           ];
         };
       };

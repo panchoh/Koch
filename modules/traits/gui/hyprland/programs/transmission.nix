@@ -40,9 +40,9 @@
             "SUPER,       Equal, togglespecialworkspace,         Transmission"
             "SUPER SHIFT, Equal, movetoworkspacesilent,  special:Transmission"
           ];
-          windowrulev2 = [
-            "workspace special:Transmission silent, class:^(transmission-gtk)$, title:^(Transmission)$"
-            "center,                                class:^(transmission-gtk)$, title:^(Torrent Options)$"
+          windowrule = [
+            "workspace special:Transmission silent, match:class ^(transmission-gtk)$, match:title ^(Transmission)$"
+            "center on,                             match:class ^(transmission-gtk)$, match:title ^(Torrent Options)$"
           ];
         };
       };

@@ -31,8 +31,8 @@
           bind = [ "SUPER, P, exec, fuzzel" ];
 
           layerrule = [
-            "xray 1,    launcher"
-            "dimaround, launcher"
+            "match:class launcher, xray 1"
+            "match:class launcher, dim_around 1"
           ];
         };
       };
