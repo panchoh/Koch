@@ -46,8 +46,8 @@
             templates = null;
             videos = null;
             extraConfig = {
-              XDG_REPOS_DIR = "${config.home.homeDirectory}/sandbox";
-              XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/screenshots";
+              REPOS = "${config.home.homeDirectory}/sandbox";
+              SCREENSHOTS = "${config.home.homeDirectory}/screenshots";
             };
           };
         };
