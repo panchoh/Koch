@@ -26,7 +26,7 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.systems.follows = "systems";
     stylix.inputs.flake-parts.follows = "flake-parts";
-    autofirma-nix.url = "github:nix-community/autofirma-nix";
+    autofirma-nix.url = "github:nix-community/autofirma-nix/develop";
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
     autofirma-nix.inputs.flake-parts.follows = "flake-parts";
     autofirma-nix.inputs.home-manager.follows = "home-manager";
