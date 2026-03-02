@@ -14,15 +14,11 @@
       config = lib.mkIf cfg.enable {
 
         wayland.windowManager.hyprland = {
-          plugins = [
-            pkgs.hyprlandPlugins.hyprscrolling
-          ];
-
           settings = {
             general.layout = "scrolling";
 
-            # https://github.com/hyprwm/hyprland-plugins/tree/v0.51.0/hyprscrolling
-            plugin.hyprscrolling = {
+            # https://wiki.hypr.land/0.54.0/Configuring/Scrolling-Layout/
+            scrolling = {
               focus_fit_method = 1;
               follow_focus = false;
               fullscreen_on_one_column = box.isLaptop or false;
@@ -34,6 +30,9 @@
               "SUPER      , comma  , layoutmsg, move -col"
               "SUPER      , period , layoutmsg, move +col"
 
+              "SUPER ALT  , comma  , layoutmsg, swapcol l"
+              "SUPER ALT  , period , layoutmsg, swapcol r"
+
               "SUPER      , H      , layoutmsg, focus l"
               "SUPER      , Tab    , layoutmsg, focus l"
               "SUPER      , K      , layoutmsg, focus u"
@@ -41,10 +40,10 @@
               "SUPER      , L      , layoutmsg, focus r"
               "SUPER SHIFT, Tab    , layoutmsg, focus r"
 
-              "SUPER SHIFT, comma  , layoutmsg, movewindowto l"
-              "SUPER SHIFT, K      , layoutmsg, movewindowto u"
-              "SUPER SHIFT, J      , layoutmsg, movewindowto d"
-              "SUPER SHIFT, period , layoutmsg, movewindowto r"
+              "SUPER SHIFT, comma  , movewindow, l"
+              "SUPER SHIFT, K      , movewindow, u"
+              "SUPER SHIFT, J      , movewindow, d"
+              "SUPER SHIFT, period , movewindow, r"
 
               "SUPER      , space  , layoutmsg, colresize +conf"
               "SUPER SHIFT, space  , layoutmsg, colresize -conf"
