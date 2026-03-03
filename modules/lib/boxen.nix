@@ -13,6 +13,7 @@
         timeZone = "Europe/Madrid";
         isLaptop = false;
         isStation = false;
+        hasWideDisplay = false;
         diskDevice = "/dev/nvme0n1";
         hasMedia = false;
         userName = "pancho";
@@ -41,6 +42,7 @@
         hostName = "oxygen";
         macvlanAddr = "48:21:0b:3c:16:a9";
         isStation = true;
+        hasWideDisplay = true;
         extraModules = [ { traits.os.caddy.enable = true; } ];
       }
 
