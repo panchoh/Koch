@@ -21,8 +21,8 @@
             scrolling = {
               focus_fit_method = 1;
               follow_focus = false;
-              fullscreen_on_one_column = box.isLaptop or false;
-              column_width = if !box.isLaptop or false then 0.333 else 0.5;
+              fullscreen_on_one_column = !box.hasWideDisplay or false;
+              column_width = if !box.hasWideDisplay or false then 0.5 else 0.333;
               explicit_column_widths = "0.333, 0.5, 0.667, 0.8, 1.0";
             };
 
