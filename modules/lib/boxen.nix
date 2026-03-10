@@ -13,6 +13,7 @@
         timeZone = "Europe/Madrid";
         isLaptop = false;
         isStation = false;
+        isRestricted = false;
         hasWideDisplay = false;
         diskDevice = "/dev/nvme0n1";
         hasMedia = false;

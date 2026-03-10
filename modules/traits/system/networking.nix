@@ -30,6 +30,16 @@
 
         networking = {
           hostName = box.hostName or "nixos";
+          hosts = lib.optionalAttrs box.isRestricted or false {
+            "0.0.0.0" = [
+              "youtu.be"
+              "youtube.com"
+              "m.youtube.com"
+              "music.youtube.com"
+              "www.youtube.com"
+              "www.youtubekids.com"
+            ];
+          };
           useDHCP = false;
           enableIPv6 = false;
           wireless.iwd.enable = box.isLaptop or false;
