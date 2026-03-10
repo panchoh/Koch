@@ -44,7 +44,7 @@
         config = lib.mkIf cfg.enable {
           home.packages = [
             pkgs.audacity
-            pkgs.helvum
+            pkgs.crosspipe
             pkgs.picard
             pkgs.pwvucontrol
             pkgs.qastools
