@@ -93,19 +93,22 @@
                   whichKey.enable = true;
                   hardtime-nvim = {
                     enable = true;
-                    setupOpts.disabled_keys =
-                      [
-                        "<Insert>"
-                        "<Del>"
-                        "<Home>"
-                        "<End>"
-                        "<PageUp>"
-                        "<PageDown>"
-                      ]
-                      |> lib.flip lib.attrsets.genAttrs (_key: [
-                        ""
-                        "i"
-                      ]);
+                    setupOpts = {
+                      restriction_mode = "hint";
+                      disabled_keys =
+                        [
+                          "<Insert>"
+                          "<Del>"
+                          "<Home>"
+                          "<End>"
+                          "<PageUp>"
+                          "<PageDown>"
+                        ]
+                        |> lib.flip lib.attrsets.genAttrs (_key: [
+                          ""
+                          "i"
+                        ]);
+                    };
                   };
                 };
 
