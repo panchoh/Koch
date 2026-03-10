@@ -13,6 +13,7 @@
         timeZone = "Europe/Madrid";
         isLaptop = false;
         isStation = false;
+        isRestricted = false;
         hasWideDisplay = false;
         diskDevice = "/dev/nvme0n1";
         hasMedia = false;
@@ -59,6 +60,7 @@
         macvlanAddr = "68:5b:35:a7:2f:4c";
         isLaptop = true;
         isStation = true;
+        isRestricted = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
         userDesc = "Alberto Peón";
@@ -89,6 +91,7 @@
         hostName = "scandium";
         macvlanAddr = "1c:69:7a:a7:e4:e5";
         isStation = true;
+        isRestricted = true;
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
       }
 
