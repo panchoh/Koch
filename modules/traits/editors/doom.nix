@@ -110,6 +110,7 @@
               '';
             })
 
+            pkgs.symbola
             pkgs.nerd-fonts.symbols-only
             pkgs.joypixels
             pkgs.twemoji-color-font
