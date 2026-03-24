@@ -17,11 +17,13 @@
       };
 
       config = lib.mkIf cfg.enable {
-        services.kmscon = {
-          enable = true;
-          hwRender = true;
-          autologinUser = box.userName or "alice";
-          useXkbConfig = true;
+        services = {
+          getty.autologinUser = box.userName or "alice";
+          kmscon = {
+            enable = true;
+            hwRender = true;
+            useXkbConfig = true;
+          };
         };
       };
     };
