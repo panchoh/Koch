@@ -28,6 +28,7 @@
           pkgs.hyperrogue
           pkgs.notcurses
           pkgs.torus-trooper
+          pkgs.openarena
 
           pkgs.figlet
           pkgs.toilet
