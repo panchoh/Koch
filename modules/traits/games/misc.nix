@@ -26,6 +26,7 @@
           pkgs.sl
           pkgs.fastfetch
           pkgs.hyperrogue
+          pkgs.hyperspeedcube
           pkgs.notcurses
           pkgs.torus-trooper
           pkgs.openarena
