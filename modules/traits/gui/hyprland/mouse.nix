@@ -33,6 +33,7 @@
           cursor = {
             inactive_timeout = 5;
             hide_on_key_press = true;
+            warp_on_toggle_special = 2;
           };
           general = {
             resize_on_border = true;
