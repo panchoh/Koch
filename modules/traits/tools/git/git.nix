@@ -19,7 +19,7 @@
 
         config = lib.mkIf cfg.enable {
           environment.systemPackages = [
-            pkgs.git
+            pkgs.gitFull
           ];
         };
       };
