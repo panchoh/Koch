@@ -20,11 +20,10 @@
       config = lib.mkIf cfg.enable {
         programs.go = {
           enable = true;
-          env.GOBIN = "${config.home.homeDirectory}/.local/bin.go";
+          env.GOBIN = "${config.xdg.binHome}";
         };
 
         home = {
-          sessionPath = [ config.programs.go.env.GOBIN ];
           packages = [
             pkgs.capslock
             pkgs.go-task
