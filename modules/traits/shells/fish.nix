@@ -47,10 +47,6 @@
         };
 
         config = lib.mkIf cfg.enable {
-          home.sessionPath = [
-            "$HOME/.local/bin"
-          ];
-
           programs = {
             fish = {
               enable = true;
