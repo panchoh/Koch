@@ -20,7 +20,11 @@
       config = lib.mkIf cfg.enable {
         programs.go = {
           enable = true;
-          env.GOBIN = "${config.xdg.binHome}";
+          env = {
+            GOPATH = "${config.xdg.dataHome}/go";
+            GOBIN = "${config.xdg.binHome}";
+            GOMODCACHE = "${config.xdg.cacheHome}/go-mod";
+          };
         };
 
         home = {
