@@ -43,13 +43,11 @@
             # TODO: Handle Music/Libation (audiobooks)
             # music = null;
             pictures = null;
+            projects = "${config.home.homeDirectory}/sandbox";
             publicShare = null;
             templates = null;
             videos = null;
-            extraConfig = {
-              REPOS = "${config.home.homeDirectory}/sandbox";
-              SCREENSHOTS = "${config.home.homeDirectory}/screenshots";
-            };
+            extraConfig.SCREENSHOTS = "${config.home.homeDirectory}/screenshots";
           };
         };
       };
