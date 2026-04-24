@@ -137,6 +137,8 @@
 
           pkgs.wormhole-william
 
+          pkgs.zizmor
+
           pkgs.stellarium
           pkgs.celestia
         ];
