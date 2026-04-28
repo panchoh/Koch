@@ -11,6 +11,8 @@
     in
     {
       config = lib.mkIf cfg.enable {
+        systemd.services.greetd.unitConfig.Conflicts = [ "kmsconvt@tty1.service" ];
+        systemd.services."kmsconvt@tty1".enable = false;
         services.greetd = {
           enable = true;
           restart = true;
