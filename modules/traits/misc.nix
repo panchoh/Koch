@@ -74,6 +74,7 @@
 
           pkgs.gnutls
           pkgs.zstd
+          pkgs.udftools
 
           pkgs.inotify-info
 
