@@ -127,6 +127,7 @@
             pkgs.pipenv
             pkgs.sqlite
             pkgs.duckdb
+            pkgs.wordnet
 
             pkgs.editorconfig-core-c
 
