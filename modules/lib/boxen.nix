@@ -44,7 +44,10 @@
         macvlanAddr = "48:21:0b:3c:16:a9";
         isStation = true;
         hasWideDisplay = true;
-        extraModules = [ { traits.os.caddy.enable = true; } ];
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.intel-nuc-12wshi7
+          { traits.os.caddy.enable = true; }
+        ];
       }
 
       {
