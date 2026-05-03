@@ -14,7 +14,7 @@
           bind = [ "SUPER, S, toggleswallow," ];
           misc = {
             enable_swallow = true;
-            swallow_regex = "^foot$";
+            swallow_regex = "^foot(client)?$";
             swallow_exception_regex = "^(.* *\.tex|wev.*|xkbcli.*)$";
           };
         };

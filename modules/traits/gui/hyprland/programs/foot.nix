@@ -17,6 +17,7 @@
         ];
         programs.foot = {
           enable = true;
+          server.enable = true;
           settings = {
             bell = {
               urgent = true;
@@ -32,10 +33,10 @@
             "specialWorkspace, 1, 8, default, slidefadevert 20%"
           ];
           workspace = [
-            "special:Foot, on-created-empty: foot"
+            "special:Foot, on-created-empty: footclient"
           ];
           bind = [
-            "SUPER SHIFT, Return, exec, foot"
+            "SUPER SHIFT, Return, exec, footclient"
             # Select / Move to scratchpad
             "SUPER,       grave, togglespecialworkspace,        Foot"
             "SUPER SHIFT, grave, movetoworkspacesilent, special:Foot"
