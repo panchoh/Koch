@@ -93,13 +93,17 @@
           };
 
           home.packages = [
-            (pkgs.aspellWithDicts (
-              ds: with ds; [
-                en
-                en-computers
-                en-science
-              ]
-            ))
+            (pkgs.aspellWithDicts (dicts: [
+              dicts.en
+              dicts.en-computers
+              dicts.en-science
+            ]))
+
+            (pkgs.hunspell.withDicts (dicts: [
+              dicts.en_US
+            ]))
+
+            pkgs.languagetool
 
             (pkgs.writeShellApplication {
               name = "doom-pristine";
