@@ -18,7 +18,16 @@
         };
 
         config = lib.mkIf cfg.enable {
-          documentation.dev.enable = true;
+          documentation = {
+            dev.enable = true;
+            info.enable = true;
+            man = {
+              enable = true;
+              man-db.enable = false;
+              mandoc.enable = true;
+              cache.enable = true;
+            };
+          };
           programs.less.enable = lib.mkForce false;
         };
       };
@@ -28,6 +37,7 @@
         config,
         lib,
         pkgs,
+        nixosConfig,
         box ? null,
         ...
       }:
@@ -47,17 +57,24 @@
           manual.manpages.enable = true;
 
           home = {
-            sessionVariables.MANROFFOPT = "-P-i";
+            sessionVariables = lib.mkIf nixosConfig.documentation.man.man-db.enable {
+              MANROFFOPT = "-P-i";
+            };
             packages = [
-              pkgs.groff
               pkgs.man-pages
               pkgs.man-pages-posix
+            ]
+            ++ lib.optionals (nixosConfig.documentation.man.man-db.enable) [
+              pkgs.groff
             ];
+
           };
 
           programs.man = {
-            enable = true;
-            generateCaches = true;
+            enable = nixosConfig.documentation.man.enable;
+            man-db.enable = nixosConfig.documentation.man.man-db.enable;
+            mandoc.enable = nixosConfig.documentation.man.mandoc.enable;
+            generateCaches = nixosConfig.documentation.man.cache.enable;
           };
         };
       };
