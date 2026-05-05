@@ -240,7 +240,6 @@
             yazi = {
               enable = true;
               enableFishIntegration = true;
-              shellWrapperName = "yy"; # TODO drop line after reinstall with home.stateVersion >= 26.05
             };
           };
         };
