@@ -18,12 +18,15 @@
         };
 
         config = lib.mkIf cfg.enable {
-          programs.fish = {
-            enable = true;
-            useBabelfish = true;
-            interactiveShellInit = ''
-              set -g fish_greeting
-            '';
+          programs = {
+            less.enable = lib.mkForce false;
+            fish = {
+              enable = true;
+              useBabelfish = true;
+              interactiveShellInit = ''
+                set -g fish_greeting
+              '';
+            };
           };
         };
       };
