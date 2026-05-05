@@ -118,6 +118,8 @@
 
           pkgs.flac
 
+          pkgs.cliamp
+
           pkgs.mission-center
           pkgs.v4l-utils
           pkgs.libation
