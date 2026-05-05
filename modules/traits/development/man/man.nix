@@ -28,7 +28,6 @@
               cache.enable = true;
             };
           };
-          programs.less.enable = lib.mkForce false;
         };
       };
 
