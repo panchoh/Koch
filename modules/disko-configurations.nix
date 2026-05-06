@@ -47,7 +47,7 @@
                 size = "4G";
                 content = {
                   type = "swap";
-                  # randomEncryption = true;
+                  discardPolicy = "both";
                 };
               };
               root = {
