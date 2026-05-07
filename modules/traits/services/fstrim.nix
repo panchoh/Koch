@@ -16,7 +16,10 @@
       };
 
       config = lib.mkIf cfg.enable {
-        services.fstrim.enable = true;
+        services.fstrim = {
+          enable = true;
+          interval = "daily";
+        };
       };
     };
 }
