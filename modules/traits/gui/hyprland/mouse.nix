@@ -42,7 +42,10 @@
           input = {
             follow_mouse = 1;
             sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
-            touchpad.natural_scroll = false;
+            touchpad = {
+              natural_scroll = false;
+              disable_while_typing = true;
+            };
           };
           misc.mouse_move_enables_dpms = true;
         };
