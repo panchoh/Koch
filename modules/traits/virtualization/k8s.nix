@@ -22,6 +22,10 @@
           # REVIEW: Remove when https://nixpkgs-tracker.ocfox.me/?pr=TBD gets through
           systemd.services.kube-certmgr-bootstrap.enableStrictShellChecks = false;
 
+          # Kubelet does not support running with swap
+          # TODO: this doesn't prevent swapon from being run on bootup!
+          swapDevices = lib.mkForce [ ];
+
           services.kubernetes = {
             masterAddress = "localhost";
             roles = [
