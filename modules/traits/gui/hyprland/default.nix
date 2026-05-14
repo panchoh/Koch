@@ -44,6 +44,8 @@
           wayland.windowManager.hyprland = {
             enable = true;
             package = nixosConfig.programs.hyprland.package;
+            # REVIEW: drop once hyprland 0.55 lands
+            configType = "hyprlang";
           };
         };
       };
