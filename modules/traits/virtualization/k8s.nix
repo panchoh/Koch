@@ -33,12 +33,6 @@
               "node"
             ];
           };
-          environment.systemPackages = [
-            pkgs.kubectl
-            pkgs.cri-tools
-            # pkgs.kubernetes
-            pkgs.talosctl
-          ];
         };
       };
 
@@ -46,6 +40,7 @@
       {
         config,
         lib,
+        pkgs,
         box ? null,
         ...
       }:
@@ -60,6 +55,11 @@
         };
 
         config = lib.mkIf cfg.enable {
+          home.packages = [
+            pkgs.talosctl
+            pkgs.cri-tools
+            pkgs.kubectl
+          ];
           programs.kubecolor = {
             enable = true;
             enableAlias = true;
