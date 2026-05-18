@@ -82,6 +82,11 @@
             };
           };
 
+          programs.ec = {
+            enable = true;
+            enableGitIntegration = true;
+          };
+
           programs.delta = {
             enable = false;
             enableGitIntegration = true;
