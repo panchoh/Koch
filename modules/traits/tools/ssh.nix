@@ -64,22 +64,18 @@
             enable = true;
             enableDefaultConfig = false;
             package = pkgs.openssh;
-            matchBlocks = {
+            settings = {
               "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
                 user = "sysadmin";
                 identityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
-                extraOptions = {
-                  GlobalKnownHostsFile = "/dev/null";
-                  UserKnownHostsFile = "/dev/null";
-                  StrictHostKeyChecking = "no";
-                };
+                GlobalKnownHostsFile = "/dev/null";
+                UserKnownHostsFile = "/dev/null";
+                StrictHostKeyChecking = "no";
               };
               "*.vm" = lib.hm.dag.entryAnywhere {
-                extraOptions = {
-                  GlobalKnownHostsFile = "/dev/null";
-                  UserKnownHostsFile = "/dev/null";
-                  StrictHostKeyChecking = "no";
-                };
+                GlobalKnownHostsFile = "/dev/null";
+                UserKnownHostsFile = "/dev/null";
+                StrictHostKeyChecking = "no";
                 identityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
                 proxyCommand = "nc ( string replace .vm '' %h ) %p";
               };
@@ -98,11 +94,9 @@
                   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h"
                   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h"
                 ];
-                extraOptions = {
-                  ExitOnForwardFailure = "yes";
-                  HostKeyAlgorithms = "ssh-ed25519";
-                  VisualHostKey = "yes";
-                };
+                ExitOnForwardFailure = "yes";
+                HostKeyAlgorithms = "ssh-ed25519";
+                VisualHostKey = "yes";
               };
             };
           };
