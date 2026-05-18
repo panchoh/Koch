@@ -38,6 +38,9 @@
           pkgs.neo-cowsay
           pkgs.charasay
 
+          pkgs.stockfish
+          pkgs.gnome-chess
+
           pkgs.nbsdgames
           # bsdgames:
           # - provides `wtf`, which conflicts with `fish` shell
