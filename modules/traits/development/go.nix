@@ -29,6 +29,7 @@
 
         home.packages = [
           pkgs.capslock
+          pkgs.govulncheck
           pkgs.go-task
           pkgs.gotools
           pkgs.go-tools
