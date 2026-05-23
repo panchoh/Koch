@@ -38,6 +38,8 @@
           pkgs.neo-cowsay
           pkgs.charasay
 
+          pkgs.ratty
+
           pkgs.stockfish
           pkgs.gnome-chess
 
