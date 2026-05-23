@@ -31,6 +31,8 @@
               position = "auto";
               scale = "auto";
               bitdepth = 10;
+              # REVIEW: not enabling VRR since apparently it’s only supported via HDMI
+              # vrr = 3;
             }
             {
               output = "desc:Dell Inc. DELL U3818DW 5KC0386E05KL";
