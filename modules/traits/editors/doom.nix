@@ -122,7 +122,7 @@
             pkgs.ddate
             pkgs.shfmt
             pkgs.shellcheck
-            pkgs.nodejs_20
+            pkgs.nodejs_24
             pkgs.python3
             pkgs.pipenv
             pkgs.sqlite
