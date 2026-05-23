@@ -90,28 +90,7 @@
               vim = {
                 autocomplete.blink-cmp.enable = true;
 
-                binds = {
-                  whichKey.enable = true;
-                  hardtime-nvim = {
-                    enable = true;
-                    setupOpts = {
-                      restriction_mode = "hint";
-                      disabled_keys =
-                        [
-                          "<Insert>"
-                          "<Del>"
-                          "<Home>"
-                          "<End>"
-                          "<PageUp>"
-                          "<PageDown>"
-                        ]
-                        |> lib.flip lib.attrsets.genAttrs (_key: [
-                          ""
-                          "i"
-                        ]);
-                    };
-                  };
-                };
+                binds.whichKey.enable = true;
 
                 # enableLuaLoader = true;
 
