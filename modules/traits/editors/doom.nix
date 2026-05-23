@@ -129,6 +129,11 @@
             pkgs.duckdb
             pkgs.wordnet
 
+            # :emacs dired +dirvish (for file previews)
+            pkgs.ffmpegthumbnailer
+            pkgs.mediainfo
+            pkgs.vips
+
             pkgs.editorconfig-core-c
 
             # clang # conflits with gcc, TODO: decide which one to set here
