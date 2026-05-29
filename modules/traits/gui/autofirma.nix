@@ -29,6 +29,8 @@
           programs.autofirma = {
             enable = true;
             config.omitAskOnClose = true;
+            # DEBUG:
+            # config.secureConnections = false;
             firefoxIntegration.profiles.default.enable = config.traits.hm.firefox.enable;
           };
 
