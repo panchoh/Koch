@@ -28,6 +28,7 @@
         config = lib.mkIf cfg.enable {
           programs.autofirma = {
             enable = true;
+            config.omitAskOnClose = true;
             firefoxIntegration.profiles.default.enable = config.traits.hm.firefox.enable;
           };
 
