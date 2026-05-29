@@ -167,6 +167,9 @@
             pkgs.semgrep
             pkgs.ripgrep-all
 
+            pkgs.jdk
+            pkgs.jdt-language-server
+
             pkgs.bash-language-server
             pkgs.yaml-language-server
             pkgs.haskell-language-server
