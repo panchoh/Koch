@@ -109,7 +109,7 @@ tasks:
   clean-firefox:
     desc: Remove Firefox-related user data
     cmds:
-      - rm -rf ~/.afirma ~/.java ~/.mozilla
+      - rm -rf ~/.config/mozilla ~/.cache/mozilla
 
   clean-chromium:
     desc: Remove Chromium-related user data
