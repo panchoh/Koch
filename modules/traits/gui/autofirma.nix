@@ -28,9 +28,25 @@
         config = lib.mkIf cfg.enable {
           programs.autofirma = {
             enable = true;
-            config.omitAskOnClose = true;
-            # DEBUG:
-            # config.secureConnections = false;
+            config = {
+              omitAskOnClose = true;
+              hideDnieStartScreen = true;
+              useDefaultStoreInBrowserCalls = true;
+              skipAuthCertDnie = true;
+              # DEBUG:
+              # secureConnections = false;
+              #
+              # Manual selection of KeyStore
+              # See the names here:
+              # https://github.com/ctt-gob-es/clienteafirma/blob/develop/afirma-core-keystores/src/main/java/es/gob/afirma/keystores/AOKeyStore.java
+              # defaultKeystore = "SHARED_NSS";
+              # defaultKeystore = "JAVA";
+              # defaultKeystore = "PKCS11";
+              # defaultKeystore = "MOZ_UNI";
+              # defaultKeystore = "MOZ_UNI_WITH_OS";
+              # defaultKeystore = "NSS";
+              # defaultKeystore = "JKS";
+            };
             firefoxIntegration.profiles.default.enable = config.traits.hm.firefox.enable;
           };
 
