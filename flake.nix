@@ -18,6 +18,7 @@
     flake-parts.url = "flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     nixos-hardware.url = "nixos-hardware";
+    nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "home-manager";
