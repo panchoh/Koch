@@ -21,7 +21,7 @@
           getty.autologinUser = box.userName or "alice";
           kmscon = {
             enable = true;
-            hwRender = true;
+            config.hwaccel = true;
             useXkbConfig = true;
           };
         };
