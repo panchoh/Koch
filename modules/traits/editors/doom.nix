@@ -167,6 +167,8 @@
             pkgs.semgrep
             pkgs.ripgrep-all
 
+            pkgs.universal-ctags
+
             pkgs.jdk
             pkgs.jdt-language-server
 
