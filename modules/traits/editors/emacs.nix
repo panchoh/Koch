@@ -20,7 +20,7 @@
       config = lib.mkIf cfg.enable {
         programs.emacs = {
           enable = true;
-          package = pkgs.emacs-unstable-pgtk;
+          package = pkgs.emacs31-pgtk;
           extraPackages =
             epkgs: with epkgs; [
               nix-ts-mode
