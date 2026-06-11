@@ -187,11 +187,11 @@
     "doomemacs-modules": {
       "flake": false,
       "locked": {
-        "lastModified": 1780954812,
-        "narHash": "sha256-kznQDqklH8b37CbL9/dvOxi7v13nZ9VQU6VKalcgQU4=",
+        "lastModified": 1781199266,
+        "narHash": "sha256-8e3x6t01G+lykHpkNqGTgKWVQ+CzFyV9QDLaA8mqLTc=",
         "owner": "doomemacs",
         "repo": "modules",
-        "rev": "bdb9a0ce826269903f88887037dc86caf8dd4ed9",
+        "rev": "1bd5afcead19aef84559ec6677060db73aa55fc6",
         "type": "github"
       },
       "original": {
@@ -202,12 +202,8 @@
     },
     "emacs-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-stable": [
-          "nixpkgs"
-        ]
+        "nixpkgs": [],
+        "nixpkgs-stable": []
       },
       "locked": {
         "lastModified": 1781206392,
@@ -400,7 +396,9 @@
         "doomemacs": [
           "doomemacs"
         ],
-        "doomemacs-modules": "doomemacs-modules",
+        "doomemacs-modules": [
+          "doomemacs-modules"
+        ],
         "emacs-overlay": [
           "emacs-overlay"
         ],
@@ -561,6 +559,7 @@
         "disko": "disko",
         "doom-config": "doom-config",
         "doomemacs": "doomemacs",
+        "doomemacs-modules": "doomemacs-modules",
         "emacs-overlay": "emacs-overlay",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",

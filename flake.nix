@@ -33,10 +33,12 @@
     autofirma-nix.inputs.home-manager.follows = "home-manager";
     autofirma-nix.inputs.nix-unit.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.url = "emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.inputs.nixpkgs-stable.follows = "nixpkgs";
+    emacs-overlay.inputs.nixpkgs.follows = "";
+    emacs-overlay.inputs.nixpkgs-stable.follows = "";
     doomemacs.url = "github:doomemacs/core";
     doomemacs.flake = false;
+    doomemacs-modules.url = "github:doomemacs/modules";
+    doomemacs-modules.flake = false;
     doom-config.url = "github:panchoh/doom";
     doom-config.flake = false;
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
@@ -44,6 +46,7 @@
     nix-doom-emacs-unstraightened.inputs.systems.follows = "systems";
     nix-doom-emacs-unstraightened.inputs.emacs-overlay.follows = "emacs-overlay";
     nix-doom-emacs-unstraightened.inputs.doomemacs.follows = "doomemacs";
+    nix-doom-emacs-unstraightened.inputs.doomemacs-modules.follows = "doomemacs-modules";
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     nvf.inputs.systems.follows = "systems";
