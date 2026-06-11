@@ -35,7 +35,7 @@
     emacs-overlay.url = "emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.inputs.nixpkgs-stable.follows = "nixpkgs";
-    doomemacs.url = "github:doomemacs/doomemacs";
+    doomemacs.url = "github:doomemacs/core";
     doomemacs.flake = false;
     doom-config.url = "github:panchoh/doom";
     doom-config.flake = false;
