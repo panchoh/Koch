@@ -41,12 +41,13 @@
             enable = true;
             settings.general.pin-square-amount = 32;
           };
-
           services.gpg-agent.pinentry.package = config.programs.wayprompt.package;
-
-          wayland.windowManager.hyprland.settings.layerrule = [
-            "match:class wayprompt, xray 1"
-            "match:class wayprompt, dim_around 1"
+          wayland.windowManager.hyprland.settings.layer_rule = [
+            {
+              match.namespace = "^wayprompt$";
+              xray = true;
+              dim_around = true;
+            }
           ];
         };
       };

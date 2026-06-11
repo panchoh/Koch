@@ -44,10 +44,25 @@
           };
         };
 
-        wayland.windowManager.hyprland.settings.bind = [
-          # Toggle Waybar visibility
-          "SUPER, B, exec, killall -USR1 .waybar-wrapped"
-        ];
+        # TODO: don’t darken other layers
+        wayland.windowManager.hyprland.settings = {
+          layer_rule = [
+            {
+              match.namespace = "^waybar$";
+              dim_around = false;
+              no_anim = true;
+            }
+          ];
+          bind = [
+            {
+              _args = [
+                # Toggle Waybar visibility
+                "SUPER + B"
+                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("killall -USR1 .waybar-wrapped")'')
+              ];
+            }
+          ];
+        };
       };
     };
 }

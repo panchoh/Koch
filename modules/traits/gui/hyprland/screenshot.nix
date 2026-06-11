@@ -17,35 +17,43 @@
           pkgs.hyprpicker
           pkgs.jq
           pkgs.libnotify # For notify-send
-          pkgs.satty # TODO: also configure hyprland keybinding
           pkgs.slurp
           pkgs.wl-clipboard
           # REVIEW
           # pkgs.wl-clipboard-rs
         ];
-        programs.hyprshot = {
+        programs.satty = {
           enable = true;
-          saveLocation = "${config.home.homeDirectory}/screenshots";
+          settings.general = {
+            floating-hack = true;
+            default-hide-toolbars = true;
+            focus-toggles-toolbars = true;
+            actions-on-enter = [
+              "save-to-file"
+              "exit"
+            ];
+            output-filename = "${config.xdg.userDirs.extraConfig.SCREENSHOTS}/test-%Y-%m-%d_%H:%M:%S.png";
+          };
         };
-        wayland.windowManager.hyprland.settings.bind = [
-          # TODO: evaluate hyprshot¹ and grimblast²
-          # ¹: https://github.com/Gustash/Hyprshot/blob/main/hyprshot
-          # ²: https://github.com/hyprwm/contrib/blob/main/grimblast/grimblast
-          #
-          # If hyprshot is selected, drop explicit deps shown up
-          # already provided by:
-          # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/hy/hyprshot/package.nix#L53
-
-          # Screenshots
-          # "SUPER,       P, exec, grimblast save active"
-          # "SUPER SHIFT, P, exec, grimblast save screen"
-          # "SUPER ALT,   P, exec, grimblast save output"
-          # "SUPER CTRL,  P, exec, grimblast save area"
-          "     , Print, exec, grimblast save active"
-          "SHIFT, Print, exec, grimblast save screen"
-          "ALT,   Print, exec, grimblast save output"
-          "CTRL,  Print, exec, grimblast save area"
-        ];
+        wayland.windowManager.hyprland.settings.bind =
+          {
+            "Print" = "active";
+            "SHIFT + Print" = "screen";
+            "ALT + Print" = "output";
+            "CONTROL + Print" = "area";
+            # https://youtu.be/mZSFA7vUEnI
+            # https://github.com/Satty-org/Satty
+            "SUPER + Print" = "area - | satty --filename -";
+          }
+          |> lib.mapAttrsToList (
+            keys: scope: {
+              _args = [
+                keys
+                #  https://github.com/hyprwm/contrib/blob/main/grimblast/grimblast
+                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("grimblast save ${scope}")'')
+              ];
+            }
+          );
       };
     };
 }

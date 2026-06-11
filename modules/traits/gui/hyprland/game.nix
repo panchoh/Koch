@@ -10,8 +10,8 @@
     in
     {
       config = lib.mkIf cfg.enable {
-        # https://wiki.hypr.land/Configuring/Variables/#render
-        wayland.windowManager.hyprland.settings.render.direct_scanout = 2;
+        # https://wiki.hypr.land/Configuring/Basics/Variables/#render
+        wayland.windowManager.hyprland.settings.config.render.direct_scanout = 2;
       };
     };
 }

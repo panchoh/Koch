@@ -30,20 +30,45 @@
           pkgs.transmission_4-gtk
         ];
         xdg.mimeApps.defaultApplications."x-scheme-handler/magnet" = "transmission-gtk.desktop";
-
         wayland.windowManager.hyprland.settings = {
-          workspace = [
-            "special:Transmission, on-created-empty: transmission-gtk"
+          workspace_rule = [
+            {
+              workspace = "special:Transmission";
+              on_created_empty = "transmission-gtk";
+            }
           ];
-          bind = [
-            # Select / Move to special:Transmission workspace
-            "SUPER,       Equal, togglespecialworkspace,         Transmission"
-            "SUPER SHIFT, Equal, movetoworkspacesilent,  special:Transmission"
+          window_rule = [
+            {
+              match = {
+                class = "^(transmission-gtk)$";
+                title = "^(Transmission)$";
+              };
+              workspace = "special:Transmission silent";
+            }
+            {
+              match = {
+                class = "^(transmission-gtk)$";
+                title = "^(Torrent Options)$";
+              };
+              center = true;
+            }
           ];
-          windowrule = [
-            "workspace special:Transmission silent, match:class ^(transmission-gtk)$, match:title ^(Transmission)$"
-            "center on,                             match:class ^(transmission-gtk)$, match:title ^(Torrent Options)$"
-          ];
+          bind =
+            {
+              # Select to special:Transmission workspace
+              "SUPER + Equal" = ''hl.dsp.workspace.toggle_special("Transmission")'';
+
+              # Move to special:Telegram workspace
+              "SUPER + SHIFT + Equal" = ''hl.dsp.window.move({ workspace = "special:Transmission" })'';
+            }
+            |> lib.mapAttrsToList (
+              keys: dispatcher: {
+                _args = [
+                  keys
+                  (lib.generators.mkLuaInline dispatcher)
+                ];
+              }
+            );
         };
       };
     };

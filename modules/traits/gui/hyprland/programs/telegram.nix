@@ -22,18 +22,34 @@
           |> lib.flip lib.attrsets.genAttrs (_scheme: "telegram.desktop.desktop");
 
         wayland.windowManager.hyprland.settings = {
-          workspace = [
-            "special:Telegram, on-created-empty: Telegram"
+          workspace_rule = [
+            {
+              workspace = "special:Telegram";
+              on_created_empty = "Telegram";
+            }
           ];
-          bind = [
-            # Select / Move to special:Telegram workspace
-            "SUPER,       Minus, togglespecialworkspace,         Telegram"
-            "SUPER SHIFT, Minus, movetoworkspacesilent,  special:Telegram"
+          window_rule = [
+            {
+              match.class = "^org\\.telegram\\.desktop$";
+              workspace = "special:Telegram silent";
+            }
           ];
-          windowrule = [
-            "float on,                          match:class ^(org.telegram.desktop)$, match:title ^(Media viewer)$"
-            "workspace special:Telegram silent, match:class ^(org.telegram.desktop)$"
-          ];
+          bind =
+            {
+              # Select to special:Telegram workspace
+              "SUPER + Minus" = ''hl.dsp.workspace.toggle_special("Telegram")'';
+
+              # Move to special:Telegram workspace
+              "SUPER + SHIFT + Minus" = ''hl.dsp.window.move({ workspace = "special:Telegram" })'';
+            }
+            |> lib.mapAttrsToList (
+              keys: dispatcher: {
+                _args = [
+                  keys
+                  (lib.generators.mkLuaInline dispatcher)
+                ];
+              }
+            );
         };
       };
     };

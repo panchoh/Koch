@@ -11,15 +11,41 @@
     {
       config = lib.mkIf cfg.enable {
         wayland.windowManager.hyprland.settings = {
-          # https://wiki.hypr.land/Configuring/Workspace-Rules/#smart-gaps-ignoring-special-workspaces
-          workspace = [
-            "s[true],         gapsout:100, gapsin:50"
-            "s[false] w[tv1], gapsout:0,   gapsin:0"
-            "s[false] f[1],   gapsout:0,   gapsin:0"
+          # https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/#smart-gaps-ignoring-special-workspaces
+          workspace_rule = [
+            {
+              workspace = "s[true]";
+              gaps_out = 100;
+              gaps_in = 50;
+            }
+            {
+              workspace = "w[tv1] s[false]";
+              gaps_out = 0;
+              gaps_in = 0;
+            }
+            {
+              workspace = "f[1] s[false]";
+              gaps_out = 0;
+              gaps_in = 0;
+            }
           ];
-          windowrule = [
-            "border_size 0, rounding 0, match:float 0, match:workspace s[false] w[tv1]"
-            "border_size 0, rounding 0, match:float 0, match:workspace s[false] f[1]"
+          window_rule = [
+            {
+              match = {
+                float = false;
+                workspace = "w[tv1] s[false]";
+              };
+              border_size = 0;
+              rounding = 0;
+            }
+            {
+              match = {
+                float = false;
+                workspace = "f[1] s[false]";
+              };
+              border_size = 0;
+              rounding = 0;
+            }
           ];
         };
       };

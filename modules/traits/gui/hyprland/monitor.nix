@@ -17,8 +17,8 @@
           pkgs.wlr-randr
         ];
         wayland.windowManager.hyprland.settings = {
-          # https://wiki.hypr.land/Configuring/Monitors/#monitor-v2
-          monitorv2 = [
+          # https://wiki.hypr.land/Configuring/Basics/Monitors/
+          monitor = [
             {
               output = "desc:Chimei Innolux Corporation 0x14D4";
               mode = "preferred";
@@ -31,6 +31,7 @@
               position = "auto";
               scale = "auto";
               bitdepth = 10;
+              cm = "auto";
               # REVIEW: not enabling VRR since apparently it’s only supported via HDMI
               # vrr = 3;
             }
@@ -40,6 +41,7 @@
               position = "auto";
               scale = "auto";
               bitdepth = 10;
+              cm = "auto";
             }
             {
               output = "desc:XXX Beyond TV 0x00010000";
@@ -47,6 +49,7 @@
               position = "auto";
               scale = 1.5;
               bitdepth = 10;
+              cm = "auto";
             }
           ];
         };

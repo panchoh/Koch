@@ -10,24 +10,35 @@
     in
     {
       config = lib.mkIf cfg.enable {
-        wayland.windowManager.hyprland = {
-          settings = {
+        wayland.windowManager.hyprland.settings = {
+          animation = [
+            {
+              leaf = "windows";
+              enabled = true;
+              speed = 8;
+              bezier = "default";
+              style = "popin 80%";
+            }
+          ];
+          config = {
             animations.enabled = true;
-            animation = [
-              "windows, 1, 8, default, popin 80%"
-            ];
             general = {
               border_size = 2;
-              "col.active_border" = lib.mkForce "rgba(33ccffee) rgba(00ff99ee) 45deg";
-              # "col.inactive_border" = lib.mkForce "rgba(595959aa)";
+              "col.active_border" = lib.mkForce (
+                lib.generators.mkLuaInline ''{ colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 }''
+              );
+              "col.inactive_border" = lib.mkForce (
+                lib.generators.mkLuaInline ''{ colors = { "rgba(595959aa)" } }''
+              );
             };
             decoration = {
               rounding = 5;
+              dim_around = 0.66;
               dim_inactive = true;
-              dim_strength = 0.1;
+              dim_strength = 0.15;
             };
             misc = {
-              # https://www.reddit.com/r/hyprland/comments/zoeqoz/anyway_to_remove_the_hyprland_startup_logo/
+              # https://wiki.hypr.land/Configuring/Basics/Variables/#misc
               disable_hyprland_logo = true;
               disable_splash_rendering = true;
               force_default_wallpaper = 2;

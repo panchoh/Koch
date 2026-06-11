@@ -10,10 +10,9 @@
     in
     {
       config = lib.mkIf cfg.enable {
-        services.hyprpolkitagent.enable = true;
         wayland.windowManager.hyprland.settings.window_rule = [
           {
-            match.initial_title = "Hyprland Polkit Agent";
+            match.class = "^(gcr-prompter)$";
             no_anim = true;
             xray = true;
             dim_around = true;
