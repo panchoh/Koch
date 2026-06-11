@@ -22,17 +22,24 @@
             };
           };
         };
-
         wayland.windowManager.hyprland.settings = {
+          layer_rule = [
+            {
+              match.namespace = "^launcher$";
+              xray = true;
+              dim_around = true;
+            }
+          ];
           # Alternatively:
           # Start fuzzel opens fuzzel on first press, closes it on second
           # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
-
-          bind = [ "SUPER, P, exec, fuzzel" ];
-
-          layerrule = [
-            "match:class launcher, xray 1"
-            "match:class launcher, dim_around 1"
+          bind = [
+            {
+              _args = [
+                "SUPER + P"
+                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("fuzzel")'')
+              ];
+            }
           ];
         };
       };

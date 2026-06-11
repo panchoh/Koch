@@ -26,7 +26,7 @@
       {
         config,
         lib,
-        nixosConfig,
+        pkgs,
         box ? null,
         ...
       }:
@@ -39,13 +39,15 @@
             default = box.isStation or false;
           };
         };
-
         config = lib.mkIf cfg.enable {
+          home.packages = [
+            pkgs.d-spy
+          ];
           wayland.windowManager.hyprland = {
+            # https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
             enable = true;
-            package = nixosConfig.programs.hyprland.package;
-            # REVIEW: drop once hyprland 0.55 lands
-            configType = "hyprlang";
+            package = null;
+            portalPackage = null;
           };
         };
       };

@@ -25,6 +25,19 @@
 
           programs.mangohud.enable = true;
 
+          wayland.windowManager.hyprland.settings = {
+            window_rule = [
+              {
+                match.class = "^mpv$";
+                float = true;
+                center = true;
+                no_anim = true;
+                no_dim = true;
+                content = "video";
+              }
+            ];
+          };
+
           programs.mpv = {
             enable = true;
             scripts = [ pkgs.mpvScripts.mpris ];
@@ -58,6 +71,8 @@
               # https://mpv.io/manual/master/#options-target-colorspace-hint
               # target-colorspace-hint = "auto";
               # https://mpv.io/manual/master/#options-target-colorspace-hint-mode
+              # https://wiki.hypr.land/Configuring/Basics/Variables/#render
+              # requires vo = "gpu-next"
               # target-colorspace-hint-mode = "source"; # after mpv 0.40.0
             };
             profiles = {

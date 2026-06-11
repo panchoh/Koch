@@ -19,10 +19,7 @@
           pkgs.wlrctl # for wlrctl keyboard <action>
           pkgs.wtype
         ];
-
         wayland.windowManager.hyprland.settings = {
-          misc.key_press_enables_dpms = true;
-
           device =
             let
               defaults = {

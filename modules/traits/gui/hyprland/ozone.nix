@@ -10,11 +10,7 @@
     in
     {
       config = lib.mkIf cfg.enable {
-        wayland.windowManager.hyprland.settings = {
-          env = lib.mapAttrsToList (name: value: "${name}, ${toString value}") {
-            NIXOS_OZONE_WL = 1;
-          };
-        };
+        home.sessionVariables.NIXOS_OZONE_WL = 1;
       };
     };
 }

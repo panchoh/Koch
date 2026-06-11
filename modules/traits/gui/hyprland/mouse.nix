@@ -17,37 +17,77 @@
           pkgs.wlrctl # for wlrctl pointer click left
         ];
         wayland.windowManager.hyprland.settings = {
-          bind = [
-            # Paste
-            "SUPER, V, sendshortcut, , mouse:274, activewindow"
-
-            # Cycle through active workspaces
-            "SUPER, mouse_down, workspace, e+1"
-            "SUPER, mouse_up,   workspace, e-1"
-          ];
-          bindm = [
-            # Move/resize windows with SUPER + LMB/RMB and dragging
-            "SUPER, mouse:272, movewindow"
-            "SUPER, mouse:273, resizewindow"
-          ];
-          cursor = {
-            inactive_timeout = 5;
-            hide_on_key_press = true;
-            warp_on_toggle_special = 2;
-          };
-          general = {
-            resize_on_border = true;
-            hover_icon_on_border = true;
-          };
-          input = {
-            follow_mouse = 1;
-            sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
-            touchpad = {
-              natural_scroll = false;
-              disable_while_typing = true;
+          config = {
+            cursor = {
+              inactive_timeout = 5;
+              hide_on_key_press = true;
+              warp_on_toggle_special = 2;
             };
+            general = {
+              resize_on_border = true;
+              hover_icon_on_border = true;
+            };
+            input = {
+              follow_mouse = 1;
+              sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+              touchpad = {
+                natural_scroll = false;
+                disable_while_typing = true;
+              };
+            };
+            misc.middle_click_paste = true;
+            binds.drag_threshold = 10; # Fire a drag event only after dragging for more than 10 px
           };
-          misc.mouse_move_enables_dpms = true;
+          bind = [
+            {
+              _args = [
+                "SUPER + V"
+                # Paste
+                (lib.generators.mkLuaInline ''hl.dsp.send_shortcut({ mods = "", key = "mouse:274", window = "activewindow" })'')
+              ];
+            }
+            {
+              _args = [
+                "SUPER + mouse_up"
+                # Cycle down through active workspaces
+                (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e-1" })'')
+              ];
+            }
+            {
+              _args = [
+                "SUPER + mouse_down"
+                # Cycle up through active workspaces
+                (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e+1" })'')
+              ];
+            }
+            {
+              _args = [
+                "SUPER + mouse:272"
+                # Float window with SUPER + LMB and dragging less than 10 px
+                (lib.generators.mkLuaInline "hl.dsp.window.float()")
+                {
+                  mouse = true;
+                  click = true;
+                }
+              ];
+            }
+            {
+              _args = [
+                "SUPER + mouse:272"
+                # Move window with SUPER + LMB and dragging more than 10 px
+                (lib.generators.mkLuaInline "hl.dsp.window.drag()")
+                { mouse = true; }
+              ];
+            }
+            {
+              _args = [
+                "SUPER + mouse:273"
+                # Resize window with SUPER + RMB and dragging
+                (lib.generators.mkLuaInline "hl.dsp.window.resize()")
+                { mouse = true; }
+              ];
+            }
+          ];
         };
       };
     };

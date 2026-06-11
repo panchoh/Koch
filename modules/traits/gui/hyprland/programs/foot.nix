@@ -30,17 +30,34 @@
         };
         wayland.windowManager.hyprland.settings = {
           animation = [
-            "specialWorkspace, 1, 8, default, slidefadevert 20%"
+            {
+              leaf = "specialWorkspace";
+              enabled = true;
+              speed = 8;
+              bezier = "default";
+              style = "slidefadevert 20%";
+            }
           ];
-          workspace = [
-            "special:Foot, on-created-empty: footclient"
+          workspace_rule = [
+            {
+              workspace = "special:Foot";
+              on_created_empty = "footclient";
+            }
           ];
-          bind = [
-            "SUPER SHIFT, Return, exec, footclient"
-            # Select / Move to scratchpad
-            "SUPER,       grave, togglespecialworkspace,        Foot"
-            "SUPER SHIFT, grave, movetoworkspacesilent, special:Foot"
-          ];
+          bind =
+            {
+              "SUPER + Return" = ''hl.dsp.exec_cmd("footclient")'';
+              "SUPER + grave" = ''hl.dsp.workspace.toggle_special("Foot")'';
+              "SUPER + SHIFT + grave" = ''hl.dsp.window.move({ workspace = "special:Foot", follow = false })'';
+            }
+            |> lib.mapAttrsToList (
+              keys: dispatcher: {
+                _args = [
+                  keys
+                  (lib.generators.mkLuaInline dispatcher)
+                ];
+              }
+            );
         };
       };
     };

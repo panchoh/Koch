@@ -10,15 +10,24 @@
     in
     {
       config = lib.mkIf cfg.enable {
-        wayland.windowManager.hyprland.settings.bind = [
-          "CONTROL ALT,   BackSpace, exit,"
-
-          "SUPER,         Q,         forcerendererreload,"
-
-          "SUPER,         X,         killactive,"
-          "SUPER SHIFT,   X,         forcekillactive,"
-          "SUPER CONTROL, X,         exec, hyprctl kill"
-        ];
+        wayland.windowManager.hyprland.settings.bind =
+          {
+            # TODO: replace bare exit() call with hyprshutdown
+            # https://wiki.hypr.land/Hypr-Ecosystem/hyprshutdown/
+            "CONTROL + ALT + BackSpace" = "hl.dsp.exit()";
+            "SUPER + Q" = "hl.dsp.force_renderer_reload()";
+            "SUPER + X" = "hl.dsp.window.close()";
+            "SUPER + SHIFT + X" = "hl.dsp.window.kill()";
+            "SUPER + CONTROL + X" = ''hl.dsp.exec_cmd("hyprctl kill")'';
+          }
+          |> lib.mapAttrsToList (
+            keys: dispatcher: {
+              _args = [
+                keys
+                (lib.generators.mkLuaInline dispatcher)
+              ];
+            }
+          );
       };
     };
 }
