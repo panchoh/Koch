@@ -174,13 +174,13 @@
         "lastModified": 1781202159,
         "narHash": "sha256-Ok3fVTdP9RC6B2IW18iFPzPn1oDClqPMdy+TEnx8+r0=",
         "owner": "doomemacs",
-        "repo": "doomemacs",
+        "repo": "core",
         "rev": "6d5b676fcedcfb05834aa91f8157300ca5d86b1f",
         "type": "github"
       },
       "original": {
         "owner": "doomemacs",
-        "repo": "doomemacs",
+        "repo": "core",
         "type": "github"
       }
     },
