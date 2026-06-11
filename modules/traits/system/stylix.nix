@@ -36,6 +36,7 @@
 
         stylix = {
           enable = true;
+          polarity = "dark";
           targets.plymouth.enable = false;
 
           # Either image or base16Scheme is required
