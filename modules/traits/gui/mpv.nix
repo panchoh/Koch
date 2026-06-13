@@ -78,17 +78,14 @@
             profiles = {
               alsa-mm1 = {
                 profile-desc = "Sound via alsa interface: MM-1";
-                profile = "gpu-hq";
                 audio-device = "alsa/iec958:CARD=MM1,DEV=0";
               };
               alsa-x = {
                 profile-desc = "Sound via alsa interface: X";
-                profile = "gpu-hq";
                 audio-device = "alsa/iec958:CARD=X,DEV=0";
               };
               alsa-hdmi = {
                 profile-desc = "Sound via alsa interface: HDMI";
-                profile = "gpu-hq";
                 audio-device = "alsa/hdmi:CARD=PCH,DEV=0";
               };
               "extension.mkv" = {
