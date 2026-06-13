@@ -146,18 +146,32 @@
 
             less = {
               enable = true;
-              config = ''
-                #env
-                LESS = --clear-screen --Long-Prompt --Raw-Control-Chars --use-color --color=Pkm ''${LESS}
-              '';
-              # REVIEW: order is not preserved, and use-color must come before color.  Is there a workaround?
-              # options = {
-              #   clear-screen = true;
-              #   Long-Prompt = true;
-              #   Raw-Control-Chars = true;
-              #   use-color = true;
-              #   color = "Pkm";
-              # };
+              options = lib.mkMerge [
+                {
+                  clear-screen = false;
+                  form-feed = true;
+                  incsearch = true;
+                  Long-Prompt = true;
+                  mouse = true;
+                  no-histdups = true;
+                  quit-at-eof = true;
+                  quit-if-one-screen = true;
+                  Raw-Control-Chars = true;
+                  redraw-on-quit = true;
+                  save-marks = true;
+                  status-column = true;
+                  status-line = false;
+                  use-color = true;
+                  wheel-lines = 3;
+                }
+                # Ordering issue fixed on https://github.com/nix-community/home-manager/pull/8204
+                (lib.mkAfter {
+                  color = [
+                    "Pkmsd"
+                    "Mkmsd"
+                  ];
+                })
+              ];
             };
 
             bat = {
