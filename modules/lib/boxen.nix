@@ -14,6 +14,7 @@
         isLaptop = false;
         isStation = false;
         isRestricted = false;
+        hasBeefyGPU = false;
         hasWideDisplay = false;
         diskDevice = "/dev/nvme0n1";
         hasMedia = false;
@@ -43,6 +44,7 @@
         hostName = "oxygen";
         macvlanAddr = "48:21:0b:3c:16:a9";
         isStation = true;
+        hasBeefyGPU = true;
         hasWideDisplay = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-12wshi7
