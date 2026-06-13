@@ -39,7 +39,12 @@
               "SUPER + SHIFT + Escape" = ''hl.dsp.exec_cmd("makoctl dismiss --all")'';
               "SUPER + ALT + Escape" = ''hl.dsp.exec_cmd("makoctl restore")'';
               # Togle DND
-              "SUPER + CONTROL + Escape" = ''hl.dsp.exec_cmd("makoctl mode -t do-not-disturb")'';
+              "SUPER + CONTROL + Escape" = ''
+                function ()
+                    hl.dsp.exec_cmd("makoctl mode -t do-not-disturb")
+                    hl.notification.create({ text = "DND toggled", duration = "2000", icon = "INFO" })
+                end
+              '';
             }
             |> lib.mapAttrsToList (
               keys: dispatcher: {
