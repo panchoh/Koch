@@ -47,8 +47,10 @@
               WHEEL_DOWN = "seek -10";
               "Alt+0" = "set window-scale 0.5";
             };
+            # TODO: enable this for beefy-enough GPUs
             # https://github.com/mpv-player/mpv/issues/12082#issuecomment-1666545541
-            defaultProfiles = [ "gpu-hq" ];
+            # defaultProfiles = [ "gpu-hq" ];
+            defaultProfiles = [ "fast" ];
             config = {
               fullscreen = true;
               sub-auto = "fuzzy";
