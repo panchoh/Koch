@@ -68,12 +68,10 @@
 
             starship = {
               enable = true;
+              presets = [ "nerd-font-symbols" ];
               settings = {
                 hostname = {
                   ssh_only = false;
-                };
-                golang = {
-                  symbol = " ";
                 };
               };
             };
