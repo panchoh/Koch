@@ -68,6 +68,7 @@
 
             starship = {
               enable = true;
+              enableTransience = true;
               presets = [ "nerd-font-symbols" ];
               settings = {
                 hostname = {
