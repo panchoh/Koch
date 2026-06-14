@@ -55,6 +55,8 @@
               enable = true;
               shellAbbrs = {
                 g = "git";
+                gf = "git fetch --prune --prune-tags --all";
+                tf = "tig FETCH_HEAD";
                 l = "less";
                 t = "task";
                 "..." = "../..";
