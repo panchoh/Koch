@@ -56,6 +56,7 @@
               shellAbbrs = {
                 g = "git";
                 gf = "git fetch --prune --prune-tags --all";
+                gm = "git merge";
                 tf = "tig FETCH_HEAD";
                 l = "less";
                 t = "task";
