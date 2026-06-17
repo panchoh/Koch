@@ -15,6 +15,7 @@
           pkgs.libinput # for libinput list-devices
           pkgs.libxkbcommon # for xkbcli interactive-wayland
           pkgs.xkeyboard_config
+          pkgs.evtest # for evtest /dev/input/event0
           pkgs.wev # for wev -f wl_keyboard
           pkgs.wlrctl # for wlrctl keyboard <action>
           pkgs.wtype
