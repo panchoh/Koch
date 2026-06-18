@@ -63,7 +63,7 @@
               pkgs.man-pages
               pkgs.man-pages-posix
             ]
-            ++ lib.optionals (nixosConfig.documentation.man.man-db.enable) [
+            ++ lib.optionals nixosConfig.documentation.man.man-db.enable [
               pkgs.groff
             ];
 
