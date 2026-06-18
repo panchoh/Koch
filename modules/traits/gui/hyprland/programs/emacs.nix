@@ -20,6 +20,7 @@
           workspace_rule = [
             {
               workspace = 1;
+              monitor = "DP-1";
               default = true;
               default_name = "Doom";
               on_created_empty = "doom-emacs";
