@@ -35,6 +35,9 @@
                 float = false;
                 workspace = "w[tv1] s[false]";
               };
+              # REVIEW: use these when they land with Hyprland 0.55.5
+              # no_border = true;
+              # no_rounding = true;
               border_size = 0;
               rounding = 0;
             }
@@ -43,6 +46,9 @@
                 float = false;
                 workspace = "f[1] s[false]";
               };
+              # REVIEW: use these when they land with Hyprland 0.55.5
+              # no_border = true;
+              # no_rounding = true;
               border_size = 0;
               rounding = 0;
             }
