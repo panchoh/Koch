@@ -48,20 +48,6 @@
             }
             {
               _args = [
-                "SUPER + mouse_up"
-                # Cycle down through active workspaces
-                (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e-1" })'')
-              ];
-            }
-            {
-              _args = [
-                "SUPER + mouse_down"
-                # Cycle up through active workspaces
-                (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e+1" })'')
-              ];
-            }
-            {
-              _args = [
                 "SUPER + mouse:272"
                 # Float window with SUPER + LMB and dragging less than 10 px
                 (lib.generators.mkLuaInline "hl.dsp.window.float()")
