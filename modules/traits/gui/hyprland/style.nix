@@ -24,11 +24,11 @@
             animations.enabled = true;
             general = {
               border_size = 2;
+              # https://github.com/dracula/draculatheme.com/blob/main/content/spec.mdx
               "col.active_border" = lib.mkForce (
-                lib.generators.mkLuaInline ''{ colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 }''
-              );
-              "col.inactive_border" = lib.mkForce (
-                lib.generators.mkLuaInline ''{ colors = { "rgba(595959aa)" } }''
+                # Color Palette > Pink
+                # UI Color Palette > Functional Colors > Functional Purple : Focus indicators
+                lib.generators.mkLuaInline ''{ colors = { "rgba(ff79c6ee)", "rgba(815cd6ee)" }, angle = 45 }''
               );
             };
             decoration = {
