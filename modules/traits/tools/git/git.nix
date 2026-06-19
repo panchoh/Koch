@@ -63,17 +63,25 @@
           programs.git = {
             enable = true;
             settings = {
-              user = {
-                name = box.userDesc or "Alice Q. User";
-                email = box.userEmail or "alice@example.org";
-              };
-              init.defaultBranch = "master";
-              merge.conflictStyle = "zdiff3";
-              github.user = box.githubUser or "aliceq";
               absorb = {
                 maxStack = 50;
                 oneFixupPerCommit = true;
                 autoStageIfNothingStaged = true;
+              };
+              alias = {
+                ddiff = "diff --no-ext-diff";
+                dlog = "log --ext-diff";
+                dshow = "show --ext-diff";
+              };
+              diff.guitool = "meld";
+              difftool.prompt = false;
+              github.user = box.githubUser or "aliceq";
+              init.defaultBranch = "master";
+              merge.conflictStyle = "zdiff3";
+              pager.difftool = true;
+              user = {
+                name = box.userDesc or "Alice Q. User";
+                email = box.userEmail or "alice@example.org";
               };
             };
             signing = {
@@ -95,9 +103,16 @@
 
           programs.difftastic = {
             enable = true;
-            git.enable = true;
-            # background = "dark";
-            options.display = "side-by-side-show-both";
+            git = {
+              enable = true;
+              mode = "both";
+            };
+            options = {
+              color = "always";
+              display = "side-by-side-show-both";
+              sort-paths = true;
+              tab-width = 8;
+            };
           };
 
           programs.gh = {
