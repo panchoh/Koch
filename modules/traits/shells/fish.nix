@@ -58,6 +58,8 @@
                 gf = "git fetch --prune --prune-tags";
                 gfa = "git fetch --prune --prune-tags --all";
                 gm = "git merge";
+                gp = "git push";
+                gpf = "git push --force-with-lease";
                 tf = "tig FETCH_HEAD";
                 l = "less";
                 t = "task";
