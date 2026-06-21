@@ -26,52 +26,34 @@
               };
             };
             bind =
-              # https://wiki.hypr.land/Configuring/Basics/Binds/#multiple-binds-to-one-key
               lib.mapAttrsToList
-                (keys: dir: {
+                (keys: msg: {
                   _args = [
                     keys
-                    (lib.generators.mkLuaInline ''
-                      function()
-                        hl.dispatch(hl.dsp.window.cycle_${dir}())
-                        hl.dispatch(hl.dsp.window.bring_to_top())
-                      end
-                    '')
+                    (lib.generators.mkLuaInline ''hl.dsp.layout("${msg}")'')
                   ];
                 })
                 {
-                  "SUPER + Tab" = "next";
-                  "SUPER + SHIFT + Tab" = "prev";
+                  "SUPER + H" = "focus l";
+                  "SUPER + K" = "focus u";
+                  "SUPER + J" = "focus d";
+                  "SUPER + L" = "focus r";
+
+                  "SUPER + space" = "colresize +conf";
+                  "SUPER + SHIFT + space" = "colresize -conf";
+                  "SUPER + ALT + space" = "colresize all 0.333";
+                  "SUPER + CONTROL + space" = "inhibit_scroll";
+
+                  "SUPER + SHIFT + Return" = "promote";
+                  "SUPER + comma" = "move -col";
+                  "SUPER + period" = "move +col";
+                  "SUPER + SHIFT + comma" = "swapcol l";
+                  "SUPER + SHIFT + period" = "swapcol r";
+                  "SUPER + ALT + comma" = "consume";
+                  "SUPER + ALT + period" = "expel";
+                  "SUPER + CONTROL + comma" = "consume_or_expel prev";
+                  "SUPER + CONTROL + period" = "consume_or_expel next";
                 }
-              ++
-                lib.mapAttrsToList
-                  (keys: msg: {
-                    _args = [
-                      keys
-                      (lib.generators.mkLuaInline ''hl.dsp.layout("${msg}")'')
-                    ];
-                  })
-                  {
-                    "SUPER + H" = "focus l";
-                    "SUPER + K" = "focus u";
-                    "SUPER + J" = "focus d";
-                    "SUPER + L" = "focus r";
-
-                    "SUPER + space" = "colresize +conf";
-                    "SUPER + SHIFT + space" = "colresize -conf";
-                    "SUPER + ALT + space" = "colresize all 0.333";
-                    "SUPER + CONTROL + space" = "inhibit_scroll";
-
-                    "SUPER + SHIFT + Return" = "promote";
-                    "SUPER + comma" = "move -col";
-                    "SUPER + period" = "move +col";
-                    "SUPER + SHIFT + comma" = "swapcol l";
-                    "SUPER + SHIFT + period" = "swapcol r";
-                    "SUPER + ALT + comma" = "consume";
-                    "SUPER + ALT + period" = "expel";
-                    "SUPER + CONTROL + comma" = "consume_or_expel prev";
-                    "SUPER + CONTROL + period" = "consume_or_expel next";
-                  }
               ++
                 lib.mapAttrsToList
                   (keys: dir: {
