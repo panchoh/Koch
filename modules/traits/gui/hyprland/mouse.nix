@@ -21,7 +21,9 @@
             cursor = {
               inactive_timeout = 5;
               hide_on_key_press = true;
-              warp_on_toggle_special = 2;
+              persistent_warps = true;
+              warp_on_change_workspace = 1;
+              warp_on_toggle_special = 1;
             };
             general = {
               resize_on_border = true;
@@ -36,7 +38,10 @@
               };
             };
             misc.middle_click_paste = true;
-            binds.drag_threshold = 10; # Fire a drag event only after dragging for more than 10 px
+            binds = {
+              drag_threshold = 10; # Fire a drag event only after dragging for more than 10 px
+              workspace_center_on = 1; # Center cursor on last active window for the workspace
+            };
           };
           bind = [
             {

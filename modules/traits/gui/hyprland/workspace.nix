@@ -17,7 +17,6 @@
             allow_workspace_cycles = true;
             hide_special_on_workspace_change = true;
             workspace_back_and_forth = false;
-            workspace_center_on = 1;
           };
           bind =
             (
