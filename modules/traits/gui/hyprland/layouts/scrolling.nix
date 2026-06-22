@@ -26,13 +26,7 @@
               };
             };
             bind =
-              lib.mapAttrsToList
-                (keys: msg: {
-                  _args = [
-                    keys
-                    (lib.generators.mkLuaInline ''hl.dsp.layout("${msg}")'')
-                  ];
-                })
+              (
                 {
                   "SUPER + H" = "focus l";
                   "SUPER + K" = "focus u";
@@ -54,20 +48,31 @@
                   "SUPER + CONTROL + comma" = "consume_or_expel prev";
                   "SUPER + CONTROL + period" = "consume_or_expel next";
                 }
-              ++
-                lib.mapAttrsToList
-                  (keys: dir: {
+                |> lib.mapAttrsToList (
+                  keys: msg: {
+                    _args = [
+                      keys
+                      (lib.generators.mkLuaInline ''hl.dsp.layout("${msg}")'')
+                    ];
+                  }
+                )
+              )
+              ++ (
+                {
+                  "SUPER + SHIFT + H" = "l";
+                  "SUPER + SHIFT + K" = "u";
+                  "SUPER + SHIFT + J" = "d";
+                  "SUPER + SHIFT + L" = "r";
+                }
+                |> lib.mapAttrsToList (
+                  keys: dir: {
                     _args = [
                       keys
                       (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "${dir}" })'')
                     ];
-                  })
-                  {
-                    "SUPER + SHIFT + H" = "l";
-                    "SUPER + SHIFT + K" = "u";
-                    "SUPER + SHIFT + J" = "d";
-                    "SUPER + SHIFT + L" = "r";
-                  };
+                  }
+                )
+              );
           };
         };
       };
