@@ -59,14 +59,13 @@
             experimentalFetchTree = true;
             provideEmacs = false;
 
-            extraPackages =
-              epkgs: with epkgs; [
-                eglot-booster
-                nix-ts-mode
-                ghostel
-                vterm
-                treesit-grammars.with-all-grammars
-              ];
+            extraPackages = epkgs: [
+              epkgs.eglot-booster
+              epkgs.nix-ts-mode
+              epkgs.ghostel
+              epkgs.vterm
+              epkgs.treesit-grammars.with-all-grammars
+            ];
           };
 
           programs.fd.enable = true;

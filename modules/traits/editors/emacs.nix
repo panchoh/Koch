@@ -21,14 +21,13 @@
         programs.emacs = {
           enable = true;
           package = pkgs.emacs31-pgtk;
-          extraPackages =
-            epkgs: with epkgs; [
-              nix-ts-mode
-              ghostel
-              vterm
-              pdf-tools
-              treesit-grammars.with-all-grammars
-            ];
+          extraPackages = epkgs: [
+            epkgs.nix-ts-mode
+            epkgs.ghostel
+            epkgs.vterm
+            epkgs.pdf-tools
+            epkgs.treesit-grammars.with-all-grammars
+          ];
         };
       };
     };
