@@ -63,6 +63,7 @@
               epkgs: with epkgs; [
                 eglot-booster
                 nix-ts-mode
+                ghostel
                 vterm
                 treesit-grammars.with-all-grammars
               ];

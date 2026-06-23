@@ -24,6 +24,7 @@
           extraPackages =
             epkgs: with epkgs; [
               nix-ts-mode
+              ghostel
               vterm
               pdf-tools
               treesit-grammars.with-all-grammars
