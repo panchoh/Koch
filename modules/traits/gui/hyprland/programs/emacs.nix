@@ -11,10 +11,6 @@
     {
       config = lib.mkIf cfg.enable {
         wayland.windowManager.hyprland.settings = {
-          # https://github.com/hyprwm/Hyprland/issues/3073
-          # TODO: set this prop just for the Emacs windows
-          # ...set_prop(focus_on_activate)
-          config.misc.focus_on_activate = true;
           # REVIEW: https://github.com/hyprwm/Hyprland/discussions/15047
           # Currently, default workspace gets ID 2, not 1
           workspace_rule = [
@@ -24,6 +20,14 @@
               default = true;
               default_name = "Doom";
               on_created_empty = "doom-emacs";
+            }
+          ];
+          window_rule = [
+            {
+              # https://github.com/hyprwm/Hyprland/issues/3073
+              name = "honor-focus-events-for-emacs-windows";
+              match.initial_class = "^emacs$";
+              focus_on_activate = true;
             }
           ];
           bind =
