@@ -32,11 +32,11 @@
                 hl.config({ cursor = { zoom_factor = current } })
             end
 
-            hl.bind("SUPER + Z", zoom)
-            hl.bind("SUPER + mouse_up", function()
+            hl.bind("SUPER + SHIFT + Z", zoom)
+            hl.bind("SUPER + SHIFT + mouse_up", function()
                 zoom(0.5)
             end)
-            hl.bind("SUPER + mouse_down", function()
+            hl.bind("SUPER + SHIFT + mouse_down", function()
                 zoom(-0.5)
             end)
           '';
