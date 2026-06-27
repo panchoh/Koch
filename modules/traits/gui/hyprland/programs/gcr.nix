@@ -12,7 +12,7 @@
       config = lib.mkIf cfg.enable {
         wayland.windowManager.hyprland.settings.window_rule = [
           {
-            match.class = "^(gcr-prompter)$";
+            match.class = "^gcr-prompter$";
             no_anim = true;
             xray = true;
             dim_around = true;
