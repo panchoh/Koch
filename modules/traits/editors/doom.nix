@@ -196,14 +196,14 @@
           ];
 
           home.sessionVariables = {
+            ALTERNATE_EDITOR = lib.getExe config.programs.neovide.package;
             EDITOR = lib.getBin (
               pkgs.writeShellScript "editor" ''
-                exec ${lib.getExe' config.programs.emacs.finalPackage "emacsclient"} \
-                  --reuse-frame                                                      \
+                exec ${lib.getExe' config.programs.doom-emacs.finalEmacsPackage "emacsclient"} \
+                  --reuse-frame                                                                \
                   "$@"
               ''
             );
-            ALTERNATE_EDITOR = lib.getExe config.programs.neovide.package;
           };
 
           # TODO: enable this, but also take care of `config.doom-emacs.provideEmacs`
