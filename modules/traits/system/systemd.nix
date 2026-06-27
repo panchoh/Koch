@@ -20,8 +20,21 @@
           systemd = {
             enableStrictShellChecks = true;
           };
-
-          security.pam.services.systemd-run0 = { };
+          security = {
+            # https://github.com/NixOS/nixpkgs/pull/468166/changes
+            sudo.enable = false;
+            run0 = {
+              enable = true;
+              sudo-shim.enable = true;
+              persistentAuth = {
+                enable = true;
+                enableRemote = true;
+              };
+            };
+          };
+          # For nixos-rebuild switch --elevate=run0 --ask-elevate-password
+          # For nixos-rebuild switch -S # works thanks to sudo-shim
+          system.tools.nixos-rebuild.enableRun0Elevation = true;
         };
       };
 
