@@ -37,7 +37,6 @@
                 disable_while_typing = true;
               };
             };
-            misc.middle_click_paste = true;
             binds = {
               drag_threshold = 10; # Fire a drag event only after dragging for more than 10 px
               workspace_center_on = 1; # Center cursor on last active window for the workspace
