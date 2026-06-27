@@ -39,18 +39,8 @@
           ];
           window_rule = [
             {
-              match = {
-                class = "^(transmission-gtk)$";
-                title = "^(Transmission)$";
-              };
+              match.class = "^com\\.transmissionbt\\.transmission_\\d+_\\d+$";
               workspace = "special:Transmission silent";
-            }
-            {
-              match = {
-                class = "^(transmission-gtk)$";
-                title = "^(Torrent Options)$";
-              };
-              center = true;
             }
           ];
           bind =
