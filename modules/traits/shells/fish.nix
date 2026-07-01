@@ -50,8 +50,6 @@
         };
 
         config = lib.mkIf cfg.enable {
-          # REVIEW: https://github.com/nix-community/home-manager/issues/9566
-          home.packages = [ pkgs.herdr ];
           programs = {
             fish = {
               enable = true;
