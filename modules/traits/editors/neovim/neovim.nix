@@ -171,7 +171,7 @@
                   clang.enable = true;
                   go.enable = true;
                   go.dap.enable = true;
-                  go.format.type = "gofumpt";
+                  go.format.type = [ "gofumpt" ];
                   lua.enable = true;
                   nix.enable = true;
                   typst.enable = true;
