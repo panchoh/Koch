@@ -202,8 +202,8 @@
                 "--height 40%"
                 "--border"
               ];
-              fileWidgetCommand = "fd --type f";
-              fileWidgetOptions = [
+              fileWidget.command = "fd --type f";
+              fileWidget.options = [
                 "--preview 'head {}'"
               ];
               tmux = {
