@@ -77,7 +77,8 @@
               difftool.prompt = false;
               github.user = box.githubUser or "aliceq";
               init.defaultBranch = "master";
-              merge.conflictStyle = "zdiff3";
+              # REVIEW: reenable if mergiraf git integration is not enabled
+              # merge.conflictStyle = "zdiff3";
               pager.difftool = true;
               user = {
                 name = box.userDesc or "Alice Q. User";
@@ -125,6 +126,12 @@
               sort-paths = true;
               tab-width = 8;
             };
+          };
+
+          programs.mergiraf = {
+            enable = true;
+            enableGitIntegration = true;
+            enableJujutsuIntegration = true;
           };
 
           programs.gh = {
