@@ -6,7 +6,7 @@
   flake.lib.boxen =
     let
       defaults = {
-        stateVersion = "26.05";
+        stateVersion = "26.11";
         system = "x86_64-linux";
         hostName = "nixos";
         macvlanAddr = "de:ad:be:ef:00:00";
