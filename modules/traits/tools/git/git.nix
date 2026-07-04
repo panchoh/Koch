@@ -90,6 +90,16 @@
             };
           };
 
+          programs.jujutsu = {
+            enable = true;
+            settings = {
+              user = {
+                name = box.userDesc or "Alice Q. User";
+                email = box.userEmail or "alice@example.org";
+              };
+            };
+          };
+
           programs.ec = {
             enable = true;
             enableGitIntegration = true;
@@ -98,6 +108,7 @@
           programs.delta = {
             enable = false;
             enableGitIntegration = true;
+            enableJujutsuIntegration = true;
             options.side-by-side = true;
           };
 
@@ -107,6 +118,7 @@
               enable = true;
               mode = "both";
             };
+            jujutsu.enable = true;
             options = {
               color = "always";
               display = "side-by-side-show-both";
