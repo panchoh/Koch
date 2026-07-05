@@ -49,8 +49,6 @@
     nix-doom-emacs-unstraightened.inputs.doomemacs-modules.follows = "doomemacs-modules";
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
-    nvf.inputs.systems.follows = "systems";
-    nvf.inputs.flake-parts.follows = "flake-parts";
     vmtools.url = "github:4km3/vmtools";
     vmtools.flake = false;
     kubelab.url = "github:4km3/kubelab";
