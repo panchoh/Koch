@@ -154,16 +154,15 @@
               enable = true;
               options = lib.mkMerge [
                 {
-                  clear-screen = false;
+                  clear-screen = true;
                   form-feed = true;
                   incsearch = true;
                   Long-Prompt = true;
                   mouse = true;
                   no-histdups = true;
-                  quit-at-eof = true;
-                  quit-if-one-screen = true;
                   Raw-Control-Chars = true;
-                  redraw-on-quit = true;
+                  # Uncomment to keep the output of less upon quit
+                  # redraw-on-quit = true;
                   save-marks = true;
                   status-column = true;
                   status-line = false;
@@ -184,6 +183,9 @@
               enable = true;
               config = {
                 italic-text = "always";
+                # https://github.com/sharkdp/bat/issues/376
+                # pager = "less --+status-column";
+                terminal-width = "-2";
                 paging = "always";
                 style = "full";
               };
