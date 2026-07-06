@@ -112,7 +112,9 @@
 
           pkgs.viddy
 
+          # GitHub Actions SHA pinners
           pkgs.pinact
+          pkgs.ratchet
 
           pkgs.bgnet
 
