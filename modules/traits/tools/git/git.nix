@@ -58,6 +58,7 @@
             pkgs.lazygit
             pkgs.meld
             pkgs.vbindiff
+            pkgs.diffnav
           ];
 
           programs.git = {
@@ -137,7 +138,11 @@
           programs.gh = {
             enable = true;
             settings.git_protocol = "ssh";
-            extensions = [ pkgs.gh-eco ];
+            extensions = [
+              pkgs.gh-eco
+              pkgs.gh-dash
+              pkgs.gh-enhance
+            ];
           };
         };
       };
