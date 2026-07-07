@@ -161,7 +161,8 @@
 
             pkgs.html-tidy
             pkgs.stylelint
-            pkgs.stylelint-lsp
+            # REVIEW: uncomment when https://github.com/NixOS/nixpkgs/pull/536260 lands
+            # pkgs.stylelint-lsp
             pkgs.jsbeautifier
 
             pkgs.semgrep
