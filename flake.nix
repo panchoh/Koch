@@ -39,14 +39,15 @@
     doomemacs.flake = false;
     doomemacs-modules.url = "github:doomemacs/modules";
     doomemacs-modules.flake = false;
-    doom-config.url = "github:panchoh/doom";
-    doom-config.flake = false;
+    doomdir.url = "github:panchoh/doom";
+    doomdir.flake = false;
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
     nix-doom-emacs-unstraightened.inputs.systems.follows = "systems";
     nix-doom-emacs-unstraightened.inputs.emacs-overlay.follows = "emacs-overlay";
     nix-doom-emacs-unstraightened.inputs.doomemacs.follows = "doomemacs";
     nix-doom-emacs-unstraightened.inputs.doomemacs-modules.follows = "doomemacs-modules";
+    nix-doom-emacs-unstraightened.inputs.doomdir.follows = "doomdir";
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     vmtools.url = "github:4km3/vmtools";
