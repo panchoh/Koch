@@ -63,6 +63,7 @@
           pkgs.dust
           pkgs.dysk
           pkgs.file
+          pkgs.gdu
 
           pkgs.rdfind
           pkgs.fdupes
