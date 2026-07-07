@@ -91,6 +91,10 @@
 
           pkgs.nixos-anywhere
 
+          # Show details about outdated packages in your NixOS system
+          # https://github.com/trofi/nix-olde
+          pkgs.nix-olde
+
           pkgs.ddrescue
           pkgs.ddrescueview
 
