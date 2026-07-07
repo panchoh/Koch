@@ -54,7 +54,6 @@
         config = lib.mkIf cfg.enable {
           programs.doom-emacs = {
             enable = true;
-            doomDir = inputs.doom-config;
 
             # Pick one:
             # emacs = pkgs.emacs-igc-pgtk;

@@ -152,7 +152,7 @@
         "type": "indirect"
       }
     },
-    "doom-config": {
+    "doomdir": {
       "flake": false,
       "locked": {
         "lastModified": 1783395995,
@@ -167,20 +167,6 @@
         "repo": "doom",
         "type": "github"
       }
-    },
-    "doomdir": {
-      "flake": false,
-      "locked": {
-        "path": "doomdir",
-        "type": "path"
-      },
-      "original": {
-        "path": "doomdir",
-        "type": "path"
-      },
-      "parent": [
-        "nix-doom-emacs-unstraightened"
-      ]
     },
     "doomemacs": {
       "flake": false,
@@ -385,7 +371,9 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomdir": "doomdir",
+        "doomdir": [
+          "doomdir"
+        ],
         "doomemacs": [
           "doomemacs"
         ],
@@ -542,7 +530,7 @@
       "inputs": {
         "autofirma-nix": "autofirma-nix",
         "disko": "disko",
-        "doom-config": "doom-config",
+        "doomdir": "doomdir",
         "doomemacs": "doomemacs",
         "doomemacs-modules": "doomemacs-modules",
         "emacs-overlay": "emacs-overlay",
