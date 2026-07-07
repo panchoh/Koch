@@ -20,7 +20,14 @@
       config = lib.mkIf cfg.enable {
         programs.emacs = {
           enable = true;
+
+          # Pick one:
+          # package = pkgs.emacs-igc-pgtk;
+          # package = pkgs.emacs-git-pgtk;
           package = pkgs.emacs31-pgtk;
+          # package = pkgs.emacs30-pgtk;
+          # package = config.programs.doom-emacs.emacs;
+
           extraPackages = epkgs: [
             epkgs.nix-ts-mode
             epkgs.ghostel
