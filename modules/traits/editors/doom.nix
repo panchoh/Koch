@@ -55,7 +55,14 @@
           programs.doom-emacs = {
             enable = true;
             doomDir = inputs.doom-config;
+
+            # Pick one:
+            # emacs = pkgs.emacs-igc-pgtk;
+            # emacs = pkgs.emacs-git-pgtk;
             emacs = pkgs.emacs31-pgtk;
+            # emacs = pkgs.emacs30-pgtk;
+            # emacs = config.programs.emacs.package;
+
             experimentalFetchTree = true;
             provideEmacs = false;
 
