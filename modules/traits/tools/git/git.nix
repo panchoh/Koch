@@ -74,6 +74,7 @@
                 dlog = "log --ext-diff";
                 dshow = "show --ext-diff";
               };
+              core.pager = "less --+clear-screen --quit-if-one-screen";
               diff.guitool = "meld";
               difftool.prompt = false;
               github.user = box.githubUser or "aliceq";
@@ -94,6 +95,11 @@
           programs.jujutsu = {
             enable = true;
             settings = {
+              ui.pager.command = [
+                "less"
+                "--+clear-screen"
+                "--quit-if-one-screen"
+              ];
               user = {
                 name = box.userDesc or "Alice Q. User";
                 email = box.userEmail or "alice@example.org";
