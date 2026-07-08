@@ -78,8 +78,7 @@
               difftool.prompt = false;
               github.user = box.githubUser or "aliceq";
               init.defaultBranch = "master";
-              # REVIEW: reenable if mergiraf git integration is not enabled
-              # merge.conflictStyle = "zdiff3";
+              merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
               pager.difftool = true;
               user = {
                 name = box.userDesc or "Alice Q. User";
