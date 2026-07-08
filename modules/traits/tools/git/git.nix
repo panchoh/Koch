@@ -102,6 +102,8 @@
             };
           };
 
+          programs.jjui.enable = true;
+
           programs.ec = {
             enable = true;
             enableGitIntegration = true;
