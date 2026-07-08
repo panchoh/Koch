@@ -371,9 +371,7 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomdir": [
-          "doomdir"
-        ],
+        "doomdir": "doomdir",
         "doomemacs": [
           "doomemacs"
         ],
@@ -530,7 +528,6 @@
       "inputs": {
         "autofirma-nix": "autofirma-nix",
         "disko": "disko",
-        "doomdir": "doomdir",
         "doomemacs": "doomemacs",
         "doomemacs-modules": "doomemacs-modules",
         "emacs-overlay": "emacs-overlay",
