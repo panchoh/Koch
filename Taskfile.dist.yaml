@@ -116,9 +116,15 @@ tasks:
     cmds:
       - rm -rf ~/.config/chromium ~/.cache/chromium
 
+  clean-doom:
+    desc: Remove Doom-related user data
+    cmds:
+      - rm -rf ~/.cache/doom ~/.local/share/doom ~/.local/state/doom
+
   pristine:
     desc: Perform a full cleanup (gc-all, clean-firefox, clean-chromium)
     cmds:
       - task: gc-all
       - task: clean-firefox
       - task: clean-chromium
+      - task: clean-doom
