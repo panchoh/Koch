@@ -187,11 +187,11 @@
     "doomemacs-modules": {
       "flake": false,
       "locked": {
-        "lastModified": 1783397307,
-        "narHash": "sha256-vqy8/HxxMmoKIrO3Wc+afiU1yofc1M9rtOoESA2DfQw=",
+        "lastModified": 1782931200,
+        "narHash": "sha256-jzC96RZXEVuGD+qdoTmuzd8PcrqnH+38B7jc6kVfTeQ=",
         "owner": "doomemacs",
         "repo": "modules",
-        "rev": "82de4221ef9062b785bce44035642e59cb1c1d89",
+        "rev": "7a3c5a14ec18b088183166dfab560000078e4bea",
         "type": "github"
       },
       "original": {
@@ -372,12 +372,8 @@
     "nix-doom-emacs-unstraightened": {
       "inputs": {
         "doomdir": "doomdir",
-        "doomemacs": [
-          "doomemacs"
-        ],
-        "doomemacs-modules": [
-          "doomemacs-modules"
-        ],
+        "doomemacs": "doomemacs",
+        "doomemacs-modules": "doomemacs-modules",
         "emacs-overlay": [
           "emacs-overlay"
         ],
@@ -528,8 +524,6 @@
       "inputs": {
         "autofirma-nix": "autofirma-nix",
         "disko": "disko",
-        "doomemacs": "doomemacs",
-        "doomemacs-modules": "doomemacs-modules",
         "emacs-overlay": "emacs-overlay",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
