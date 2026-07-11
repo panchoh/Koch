@@ -104,6 +104,12 @@
                   "--quit-if-one-screen"
                 ];
               };
+              git.sign-on-push = true;
+              signing = {
+                behavior = "drop";
+                backend = "gpg";
+                key = box.gpgSigningKey;
+              };
               user = {
                 name = box.userDesc or "Alice Q. User";
                 email = box.userEmail or "alice@example.org";
