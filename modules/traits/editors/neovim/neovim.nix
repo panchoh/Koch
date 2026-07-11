@@ -157,6 +157,18 @@
                     mode = "n";
                   }
                   {
+                    action = "<Cmd>Pick buffers<Enter>";
+                    desc = "Select buffers";
+                    key = "<Leader>bb";
+                    mode = "n";
+                  }
+                  {
+                    action = "<Cmd>Pick resume<Enter>";
+                    desc = "Resume last picker";
+                    key = "<Leader>'";
+                    mode = "n";
+                  }
+                  {
                     action = "<Cmd>Neotree<Enter>";
                     desc = "Neo-tree";
                     key = "<Leader>op";
@@ -172,11 +184,15 @@
                 ];
 
                 languages = {
+                  enableFormat = true;
+                  enableTreesitter = true;
                   bash.enable = true;
                   clang.enable = true;
-                  go.enable = true;
-                  go.dap.enable = true;
-                  go.format.type = [ "gofumpt" ];
+                  go = {
+                    enable = true;
+                    dap.enable = true;
+                    format.type = [ "gofumpt" ];
+                  };
                   lua.enable = true;
                   nix.enable = true;
                   typst.enable = true;
@@ -187,6 +203,7 @@
                   formatOnSave = true;
                   inlayHints.enable = true;
                   lightbulb.enable = true;
+                  lspSignature.enable = !config.programs.nvf.settings.vim.autocomplete.blink-cmp.enable;
                 };
 
                 mini.pick.enable = true;
@@ -224,10 +241,7 @@
                   style = "dark";
                 };
 
-                treesitter = {
-                  enable = true;
-                  fold = true;
-                };
+                treesitter.enable = true;
 
                 ui = {
                   borders.enable = true;
