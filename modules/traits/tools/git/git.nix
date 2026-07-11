@@ -57,6 +57,7 @@
             pkgs.gource
             pkgs.lazygit
             pkgs.meld
+            pkgs.gg-jj
             pkgs.vbindiff
             pkgs.diffnav
           ];
