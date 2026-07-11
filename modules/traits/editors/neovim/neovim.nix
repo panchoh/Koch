@@ -88,7 +88,12 @@
 
             settings = {
               vim = {
-                autocomplete.blink-cmp.enable = true;
+                # https://cmp.saghen.dev/
+                autocomplete.blink-cmp = {
+                  enable = true;
+                  mappings.close = "<Esc>";
+                  setupOpts.completion.menu.auto_show = false;
+                };
 
                 binds.whichKey.enable = true;
 
