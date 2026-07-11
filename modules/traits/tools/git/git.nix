@@ -96,11 +96,14 @@
           programs.jujutsu = {
             enable = true;
             settings = {
-              ui.pager.command = [
-                "less"
-                "--+clear-screen"
-                "--quit-if-one-screen"
-              ];
+              ui = {
+                default-command = "log";
+                pager.command = [
+                  "less"
+                  "--+clear-screen"
+                  "--quit-if-one-screen"
+                ];
+              };
               user = {
                 name = box.userDesc or "Alice Q. User";
                 email = box.userEmail or "alice@example.org";
