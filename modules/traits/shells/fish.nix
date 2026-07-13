@@ -112,10 +112,6 @@
                 sorting.dir-grouping = "first";
                 literal = true;
                 total-size = false;
-                ignore-globs = [
-                  ".git"
-                  ".hg"
-                ];
                 blocks = [
                   "permission"
                   "links"
