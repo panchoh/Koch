@@ -3,12 +3,19 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
-      cfg = config.traits.hm.fish;
+      cfg = config.traits.hm.atuin;
     in
     {
+      options.traits.hm.atuin = {
+        enable = lib.mkEnableOption "atuin" // {
+          default = box.isStation or false;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs.atuin = {
           enable = true;
