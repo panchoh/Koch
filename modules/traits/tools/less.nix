@@ -4,12 +4,19 @@
       {
         config,
         lib,
+        box ? null,
         ...
       }:
       let
-        cfg = config.traits.os.fish;
+        cfg = config.traits.os.less;
       in
       {
+        options.traits.os.less = {
+          enable = lib.mkEnableOption "less" // {
+            default = box.isStation or false;
+          };
+        };
+
         config = lib.mkIf cfg.enable {
           programs.less.enable = lib.mkForce false;
         };
@@ -19,12 +26,19 @@
       {
         config,
         lib,
+        box ? null,
         ...
       }:
       let
-        cfg = config.traits.hm.fish;
+        cfg = config.traits.hm.less;
       in
       {
+        options.traits.hm.less = {
+          enable = lib.mkEnableOption "less" // {
+            default = box.isStation or false;
+          };
+        };
+
         config = lib.mkIf cfg.enable {
           programs.less = {
             enable = true;
