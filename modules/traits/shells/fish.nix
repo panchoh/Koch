@@ -5,12 +5,19 @@
         config,
         lib,
         pkgs,
+        box ? null,
         ...
       }:
       let
         cfg = config.traits.os.fish;
       in
       {
+        options.traits.os.fish = {
+          enable = lib.mkEnableOption "fish" // {
+            default = box.isStation or false;
+          };
+        };
+
         config = lib.mkIf cfg.enable {
           users.defaultUserShell = pkgs.fish;
           programs.fish = {
@@ -27,12 +34,19 @@
       {
         config,
         lib,
+        box ? null,
         ...
       }:
       let
         cfg = config.traits.hm.fish;
       in
       {
+        options.traits.hm.fish = {
+          enable = lib.mkEnableOption "fish" // {
+            default = box.isStation or false;
+          };
+        };
+
         config = lib.mkIf cfg.enable {
           programs = {
             fish = {
