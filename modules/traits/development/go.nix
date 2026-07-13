@@ -33,15 +33,7 @@
           pkgs.go-task
           pkgs.gotools
           pkgs.go-tools
-          # REVIEW: when NixOS/nixpkgs#509480 gets addressed
-          # pkgs.gopls
-          (pkgs.symlinkJoin {
-            name = "gopls-sans-modernize";
-            paths = [ pkgs.gopls ];
-            postBuild = ''
-              rm -f "$out/bin/modernize"
-            '';
-          })
+          pkgs.gopls
           pkgs.gofumpt
           pkgs.gomodifytags
           pkgs.gotests
