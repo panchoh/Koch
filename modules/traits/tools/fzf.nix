@@ -3,15 +3,24 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
-      cfg = config.traits.hm.fish;
+      cfg = config.traits.hm.fzf;
     in
     {
+      options.traits.hm.fzf = {
+        enable = lib.mkEnableOption "fzf" // {
+          default = box.isStation or false;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs.fzf = {
-          enable = false;
+          enable = true;
+          enableBashIntegration = !config.programs.television.enable;
+          enableFishIntegration = !config.programs.television.enable;
           defaultCommand = "fd --type f";
           defaultOptions = [
             "--height 40%"
