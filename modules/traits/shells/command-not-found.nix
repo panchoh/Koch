@@ -3,6 +3,7 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
@@ -11,7 +12,7 @@
     {
       options.traits.os.command-not-found = {
         enable = lib.mkEnableOption "command-not-found" // {
-          default = true;
+          default = box.isStation or false;
         };
       };
 
