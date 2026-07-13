@@ -3,12 +3,19 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
-      cfg = config.traits.hm.fish;
+      cfg = config.traits.hm.television;
     in
     {
+      options.traits.hm.television = {
+        enable = lib.mkEnableOption "television" // {
+          default = box.isStation or false;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs = {
           television = {
