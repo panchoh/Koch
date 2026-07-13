@@ -6,9 +6,15 @@
       ...
     }:
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = config.traits.hm.herdr;
     in
     {
+      options.traits.hm.herdr = {
+        enable = lib.mkEnableOption "herdr" // {
+          default = true;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs.herdr = {
           enable = true;
