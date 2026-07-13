@@ -4,6 +4,7 @@
       {
         config,
         lib,
+        pkgs,
         ...
       }:
       let
@@ -11,6 +12,7 @@
       in
       {
         config = lib.mkIf cfg.enable {
+          users.defaultUserShell = pkgs.fish;
           programs.fish = {
             enable = true;
             useBabelfish = true; # https://github.com/bouk/babelfish

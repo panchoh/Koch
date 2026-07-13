@@ -3,7 +3,6 @@
     {
       config,
       lib,
-      pkgs,
       box ? null,
       ...
     }:
@@ -29,7 +28,6 @@
           # Define a user account. Don't forget to set a password with ‘passwd’.
           # TODO sops/agenix would allow this:
           # mutableUsers = false;
-          defaultUserShell = if !box.isStation or false then pkgs.bash else pkgs.fish;
           users.${box.userName or "alice"} = {
             isNormalUser = true;
             description = box.userDesc or "Alice Q. User";
