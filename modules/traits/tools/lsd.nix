@@ -3,12 +3,19 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
-      cfg = config.traits.hm.fish;
+      cfg = config.traits.hm.lsd;
     in
     {
+      options.traits.hm.lsd = {
+        enable = lib.mkEnableOption "lsd" // {
+          default = box.isStation or false;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs.lsd = {
           enable = !config.programs.eza.enable;
