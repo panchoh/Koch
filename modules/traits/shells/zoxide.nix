@@ -3,6 +3,7 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
@@ -11,7 +12,7 @@
     {
       options.traits.hm.zoxide = {
         enable = lib.mkEnableOption "zoxide" // {
-          default = true;
+          default = box.isStation or false;
         };
       };
 
