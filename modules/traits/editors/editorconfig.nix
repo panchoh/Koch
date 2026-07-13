@@ -19,12 +19,13 @@
       config = lib.mkIf cfg.enable {
         editorconfig = {
           enable = true;
-          settings = {
-            "*" = {
-              indent_style = "tab";
-              indent_size = 4;
-            };
-          };
+          # REVIEW: these are global
+          # settings = {
+          #   "*" = {
+          #     indent_style = "tab";
+          #     indent_size = 4;
+          #   };
+          # };
         };
       };
     };
