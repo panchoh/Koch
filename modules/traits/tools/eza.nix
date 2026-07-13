@@ -3,12 +3,19 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
-      cfg = config.traits.hm.fish;
+      cfg = config.traits.hm.eza;
     in
     {
+      options.traits.hm.eza = {
+        enable = lib.mkEnableOption "eza" // {
+          default = box.isStation or false;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs.eza = {
           enable = true;
