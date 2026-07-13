@@ -13,7 +13,7 @@
           pkgs.nix
           pkgs.nixfmt-tree
           pkgs.nixfmt
-          pkgs.git
+          pkgs.gitFull
           pkgs.go-task
           pkgs.jq
           pkgs.toilet
