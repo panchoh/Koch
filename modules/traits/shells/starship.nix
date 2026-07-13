@@ -3,12 +3,19 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
     let
-      cfg = config.traits.hm.fish;
+      cfg = config.traits.hm.starship;
     in
     {
+      options.traits.hm.starship = {
+        enable = lib.mkEnableOption "starship" // {
+          default = box.isStation or false;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs.starship = {
           enable = true;
