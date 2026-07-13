@@ -2,11 +2,17 @@
   flake.nixosModules.default =
     {
       config,
+      lib,
       pkgs,
       ...
     }:
+    let
+      cfg = config.traits.os.hyprland;
+    in
     {
-      services.dbus.packages = [ pkgs.gcr ]; # for pinentry-gnome3
+      config = lib.mkIf cfg.enable {
+        services.dbus.packages = [ pkgs.gcr ]; # for pinentry-gnome3
+      };
     };
 
   flake.homeModules.default =
