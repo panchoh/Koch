@@ -4,7 +4,6 @@
       {
         config,
         lib,
-        pkgs,
         box ? null,
         ...
       }:
