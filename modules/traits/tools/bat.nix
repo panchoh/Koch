@@ -4,12 +4,19 @@
       config,
       lib,
       pkgs,
+      box ? null,
       ...
     }:
     let
-      cfg = config.traits.hm.fish;
+      cfg = config.traits.hm.bat;
     in
     {
+      options.traits.hm.bat = {
+        enable = lib.mkEnableOption "bat" // {
+          default = box.isStation or false;
+        };
+      };
+
       config = lib.mkIf cfg.enable {
         programs.bat = {
           enable = true;
