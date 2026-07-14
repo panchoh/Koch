@@ -46,7 +46,10 @@
         };
 
         services = {
-          fail2ban.enable = true;
+          # TODO: configure to protect caddy
+          # reaction.enable = true;
+          # TODO: add jails
+          # fail2ban.enable = true;
           resolved = {
             enable = true;
             settings.Resolve = {
