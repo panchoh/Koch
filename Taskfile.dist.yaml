@@ -119,7 +119,7 @@ tasks:
   clean-doom:
     desc: Remove Doom-related user data
     cmds:
-      - rm -rf ~/.cache/doom ~/.local/share/doom ~/.local/state/doom
+      - rm -rf ~/.cache/doom ~/.local/share/{nix-,}doom ~/.local/state/doom
 
   pristine:
     desc: Perform a full cleanup (gc-all, clean-firefox, clean-chromium)
