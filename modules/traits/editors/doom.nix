@@ -165,6 +165,7 @@
 
             pkgs.terraform
 
+            pkgs.libxml2 # for xmllint
             pkgs.html-tidy
             pkgs.stylelint
             # REVIEW: uncomment when https://github.com/NixOS/nixpkgs/pull/536260 lands
