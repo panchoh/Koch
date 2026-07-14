@@ -8,6 +8,7 @@ insert_final_newline = true
 charset = utf-8
 trim_trailing_whitespace = true
 
-[*.{nix,yaml}]
-ident_style = space
-ident_size = 2
+# REVIEW: drop when yaml-ts-mode supports indentation
+[*.yaml]
+indent_style = space
+indent_size = 2
