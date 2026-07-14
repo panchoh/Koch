@@ -98,6 +98,9 @@
             };
           };
 
+          # https://pandoc.org/
+          programs.pandoc.enable = true; # for M-x markdown-preview
+
           home.packages = [
             (pkgs.aspellWithDicts (dicts: [
               dicts.en
