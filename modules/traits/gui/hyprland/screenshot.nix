@@ -16,9 +16,9 @@
           pkgs.grimblast
           pkgs.hyprpicker
           pkgs.jq
-          pkgs.libnotify # For notify-send
+          pkgs.libnotify # for notify-send
           pkgs.slurp
-          pkgs.wl-clipboard
+          pkgs.wl-clipboard # for wl-copy and wl-paste
           # REVIEW
           # pkgs.wl-clipboard-rs
         ];
