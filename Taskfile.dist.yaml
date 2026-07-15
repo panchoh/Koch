@@ -116,6 +116,11 @@ tasks:
     cmds:
       - rm -rf ~/.config/chromium ~/.cache/chromium
 
+  clean-emacs:
+    desc: Remove Emacs-related user data
+    cmds:
+      - rm -rf ~/.emacs{,.d} ~/.cache/{emacs,org-persist} ~/.local/share/emacs ~/.local/state/emacs
+
   clean-doom:
     desc: Remove Doom-related user data
     cmds:
@@ -127,4 +132,5 @@ tasks:
       - task: gc-all
       - task: clean-firefox
       - task: clean-chromium
+      - task: clean-emacs
       - task: clean-doom
