@@ -18,7 +18,7 @@
 
       config = lib.mkIf cfg.enable {
         programs.lsd = {
-          enable = !config.programs.eza.enable;
+          enable = true;
           settings = {
             date = "relative";
             header = true;
