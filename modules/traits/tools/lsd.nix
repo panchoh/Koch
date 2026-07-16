@@ -19,6 +19,8 @@
       config = lib.mkIf cfg.enable {
         programs.lsd = {
           enable = true;
+          enableBashIntegration = false;
+          enableZshIntegration = false;
           settings = {
             date = "relative";
             header = true;
