@@ -51,6 +51,7 @@
           programs = {
             fish = {
               enable = true;
+              preferAbbrs = true;
               shellAbbrs = {
                 g = "git";
                 gf = "git fetch --prune --prune-tags";
