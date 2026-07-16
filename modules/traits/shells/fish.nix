@@ -60,8 +60,6 @@
                 gp = "git push";
                 gpf = "git push --force-with-lease";
                 tf = "tig FETCH_HEAD";
-                l = "less";
-                t = "task";
                 "..." = "../..";
               };
               shellAliases = {
