@@ -19,6 +19,9 @@
       config = lib.mkIf cfg.enable {
         programs.eza = {
           enable = true;
+          enableBashIntegration = false;
+          enableFishIntegration = false;
+          enableIonIntegration = false;
           git = true;
           icons = "auto";
           extraOptions = [
