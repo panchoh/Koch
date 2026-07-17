@@ -71,6 +71,9 @@
 
           stylix.targets.nvf.enable = false;
 
+          # home.shellAliases.vimdiff = "nvim -d";
+          programs.fish.shellAbbrs.vimdiff = "nvim -d";
+
           home.packages = [
             (pkgs.writeShellApplication {
               name = "nvf-pristine";
