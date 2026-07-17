@@ -78,6 +78,9 @@
               signByDefault = true;
             };
           };
+
+          # https://github.com/mateusauler/git-worktree-switcher
+          programs.git-worktree-switcher.enable = true;
         };
       };
   };
