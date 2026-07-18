@@ -12,7 +12,8 @@
     {
       config = lib.mkIf cfg.enable {
         home.packages = [
-          pkgs.grim
+          pkgs.grim # for org-download-screenshot
+          pkgs.slurp # for org-download-screenshot
           pkgs.grimblast
           pkgs.hyprpicker
           pkgs.jq
