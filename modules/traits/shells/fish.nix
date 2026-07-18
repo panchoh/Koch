@@ -66,7 +66,10 @@
                 e = "$EDITOR --no-wait";
               };
             };
-            starship.enableTransience = true;
+            starship = {
+              enableInteractive = true;
+              enableTransience = true;
+            };
           };
         };
       };
