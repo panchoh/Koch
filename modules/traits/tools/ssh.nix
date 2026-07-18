@@ -11,7 +11,7 @@
       in
       {
         options.traits.os.ssh = {
-          enable = lib.mkEnableOption "ssh and mosh" // {
+          enable = lib.mkEnableOption "OpenSSH and Mosh" // {
             default = true;
           };
         };
@@ -50,10 +50,10 @@
         ...
       }:
       let
-        cfg = config.traits.hm.openssh;
+        cfg = config.traits.hm.ssh;
       in
       {
-        options.traits.hm.openssh = {
+        options.traits.hm.ssh = {
           enable = lib.mkEnableOption "OpenSSH" // {
             default = true;
           };
