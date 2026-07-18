@@ -62,7 +62,7 @@
             mpd-mpris.enable = true;
             mpd = {
               enable = true;
-              musicDirectory = "/srv/media/audio";
+              musicDirectory = if (!box.hasMedia or false) then config.xdg.userDirs.music else "/srv/media/audio";
               network.startWhenNeeded = true;
               extraConfig = ''
                 audio_output {
