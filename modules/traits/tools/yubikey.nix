@@ -73,6 +73,7 @@
             pkgs.openssl
 
             pkgs.pwgen
+            pkgs.rusty-diceware # https://gitlab.com/yuvallanger/rusty-diceware
 
             pkgs.yubico-piv-tool
             pkgs.yubikey-manager
