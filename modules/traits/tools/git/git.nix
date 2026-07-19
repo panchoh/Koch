@@ -83,6 +83,17 @@
 
           # https://github.com/mateusauler/git-worktree-switcher
           programs.git-worktree-switcher.enable = true;
+
+          programs.fish.shellAbbrs = {
+            g = "git";
+            gb = "git branch";
+            gf = "git fetch --prune --prune-tags";
+            gfa = "git fetch --prune --prune-tags --all";
+            gm = "git merge";
+            gP = "git pull";
+            gp = "git push";
+            gpf = "git push --force-with-lease";
+          };
         };
       };
   };

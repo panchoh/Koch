@@ -24,6 +24,10 @@
 
         # Otherwise mouse wheel will wreak havoc
         programs.foot.settings.mouse.alternate-scroll-mode = false;
+
+        programs.fish.shellAbbrs = {
+          tf = "tig FETCH_HEAD";
+        };
       };
     };
 }
