@@ -44,7 +44,6 @@
           };
         };
 
-        # TODO: don’t darken other layers
         wayland.windowManager.hyprland.settings = {
           layer_rule = [
             {
