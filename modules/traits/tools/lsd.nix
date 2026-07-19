@@ -23,6 +23,7 @@
             ls = "lsd";
             lso = "lsd --oneline";
             ll = "lsd --long";
+            lrt = "lsd --long --reverse --timesort";
             la = "lsd --almost-all";
             lao = "lsd --almost-all --one-line";
             lt = "lsd --tree";
