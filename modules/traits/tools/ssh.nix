@@ -68,8 +68,8 @@
             package = pkgs.openssh;
             settings = {
               "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
-                user = "sysadmin";
-                identityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
+                User = "sysadmin";
+                IdentityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
                 GlobalKnownHostsFile = "/dev/null";
                 UserKnownHostsFile = "/dev/null";
                 StrictHostKeyChecking = "no";
@@ -78,17 +78,18 @@
                 GlobalKnownHostsFile = "/dev/null";
                 UserKnownHostsFile = "/dev/null";
                 StrictHostKeyChecking = "no";
-                identityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
-                proxyCommand = "nc ( string replace .vm '' %h ) %p";
+                IdentityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
+                ProxyCommand = "nc ( string replace .vm '' %h ) %p";
               };
               "*" = {
-                addKeysToAgent = "yes";
-                serverAliveInterval = 60;
-                controlMaster = "no";
-                controlPersist = "yes";
-                sendEnv = [ "LC_*" ];
-                identitiesOnly = true;
-                identityFile = [
+                AddKeysToAgent = "yes";
+                ServerAliveInterval = 60;
+                ControlMaster = "auto";
+                ControlPath = "~/.ssh/master-%C";
+                ControlPersist = "yes";
+                SendEnv = [ "LC_*" ];
+                IdentitiesOnly = true;
+                IdentityFile = [
                   # "~/.ssh/keys.d/id_ed25519-%r@%h"
                   "~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h"
                   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h"
