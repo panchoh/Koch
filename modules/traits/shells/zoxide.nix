@@ -21,13 +21,7 @@
           _ZO_ECHO = "1";
         };
 
-        programs.zoxide = {
-          enable = true;
-          # TODO: debug why fish completion doesn't work with this on:
-          # options = [
-          #   "--cmd cd"
-          # ];
-        };
+        programs.zoxide.enable = true;
       };
     };
 }
