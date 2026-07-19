@@ -129,7 +129,11 @@
 
           pkgs.mission-center
           pkgs.v4l-utils
+
+          pkgs.audible-cli
+          pkgs.aaxtomp3
           pkgs.libation
+
           pkgs.ffmpeg
           pkgs.vlc
           pkgs.mkvtoolnix
