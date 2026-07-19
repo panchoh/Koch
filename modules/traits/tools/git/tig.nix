@@ -21,12 +21,11 @@
           color cursor      black green bold
           color cursor-blur green black dim
         '';
+        programs = {
+          # Otherwise mouse wheel will wreak havoc
+          foot.settings.mouse.alternate-scroll-mode = false;
 
-        # Otherwise mouse wheel will wreak havoc
-        programs.foot.settings.mouse.alternate-scroll-mode = false;
-
-        programs.fish.shellAbbrs = {
-          tf = "tig FETCH_HEAD";
+          fish.shellAbbrs.tf = "tig FETCH_HEAD";
         };
       };
     };
