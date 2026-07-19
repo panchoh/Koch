@@ -19,12 +19,58 @@
       };
 
       config = lib.mkIf cfg.enable {
-        home.packages = lib.optionals nixosConfig.documentation.man.man-db.enable [
-          # BUG: mangl is based on mandoc lib, but misses env: ‘manpath’
-          pkgs.mangl # https://github.com/zigalenarcic/mangl
+
+        home.packages = [
+
+          # https://github.com/zigalenarcic/mangl
+          pkgs.mangl
+
+          # https://mandoc.bsd.lv/NEWS
+          # man -w behaves like manpath
+          (pkgs.writeShellApplication {
+            name = "manpath";
+            meta.mainProgram = "manpath";
+            runtimeInputs = [ pkgs.mandoc ];
+            text = "exec man -w";
+          })
         ];
 
-        # TODO: generate ~/.manglrc
+        home.file.".manglrc".source =
+          let
+            # https://github.com/zigalenarcic/mangl#manglrc
+            defaults = {
+              font = "Anonymous Pro";
+              font_size = 10;
+              gui_scale = 1;
+              line_spacing = 1;
+              line_length = 78;
+              initial_window_rows = 40;
+              color_background = "#151515";
+              color_foreground = "#fdfde8";
+              color_bold = "#a4d4f1";
+              color_italic = "#ffce79";
+              color_dim = "#7b7b7b";
+              color_scrollbar_background = "#262626";
+              color_scrollbar_thumb = "#454545";
+              color_scrollbar_thumb_hover = "#545454";
+              color_link = "#4515ff";
+              color_gui_1 = "#ebb470";
+              color_gui_2 = "#8fbfdc";
+              color_error = "#ff1515";
+              color_searches = "#1515ff";
+              color_search_selected = "#15ff15";
+            };
+
+            config = defaults // {
+              font = "Iosevka";
+              font_size = 16;
+            };
+
+            configText =
+              lib.concatStringsSep "\n" (lib.mapAttrsToList (name: value: "${name}: ${toString value}") config)
+              + "\n";
+          in
+          pkgs.writeText ".manglrc" configText;
       };
     };
 }
