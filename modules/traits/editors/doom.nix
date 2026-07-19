@@ -52,54 +52,56 @@
         };
 
         config = lib.mkIf cfg.enable {
-          programs.doom-emacs = {
-            enable = true;
+          programs = {
+            doom-emacs = {
+              enable = true;
 
-            # Pick one:
-            # emacs = pkgs.emacs-igc-pgtk;
-            # emacs = pkgs.emacs-git-pgtk;
-            emacs = pkgs.emacs31-pgtk;
-            # emacs = pkgs.emacs30-pgtk;
-            # emacs = config.programs.emacs.package;
+              # Pick one:
+              # emacs = pkgs.emacs-igc-pgtk;
+              # emacs = pkgs.emacs-git-pgtk;
+              emacs = pkgs.emacs31-pgtk;
+              # emacs = pkgs.emacs30-pgtk;
+              # emacs = config.programs.emacs.package;
 
-            experimentalFetchTree = true;
-            provideEmacs = false;
+              experimentalFetchTree = true;
+              provideEmacs = false;
 
-            extraPackages = epkgs: [
-              epkgs.eglot-booster
-              epkgs.nix-ts-mode
-              epkgs.ghostel
-              epkgs.vterm
-              epkgs.treesit-grammars.with-all-grammars
-            ];
-          };
-
-          programs.fd.enable = true;
-
-          programs.ripgrep = {
-            enable = true;
-            package = pkgs.ripgrep.override { withPCRE2 = true; };
-            arguments = [ "--no-config" ];
-          };
-
-          programs.amber = {
-            enable = true;
-            ambsSettings = {
-              column = true;
-              binary = true;
-              skipped = true;
-              recursive = true;
+              extraPackages = epkgs: [
+                epkgs.eglot-booster
+                epkgs.nix-ts-mode
+                epkgs.ghostel
+                epkgs.vterm
+                epkgs.treesit-grammars.with-all-grammars
+              ];
             };
-            ambrSettings = {
-              regex = true;
-              row = true;
-              statistics = true;
-              interactive = false;
-            };
-          };
 
-          # https://pandoc.org/
-          programs.pandoc.enable = true; # for M-x markdown-preview
+            fd.enable = true;
+
+            ripgrep = {
+              enable = true;
+              package = pkgs.ripgrep.override { withPCRE2 = true; };
+              arguments = [ "--no-config" ];
+            };
+
+            amber = {
+              enable = true;
+              ambsSettings = {
+                column = true;
+                binary = true;
+                skipped = true;
+                recursive = true;
+              };
+              ambrSettings = {
+                regex = true;
+                row = true;
+                statistics = true;
+                interactive = false;
+              };
+            };
+
+            # https://pandoc.org/
+            pandoc.enable = true;
+          }; # for M-x markdown-preview
 
           home.packages = [
             (pkgs.aspellWithDicts (dicts: [

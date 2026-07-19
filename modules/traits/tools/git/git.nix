@@ -60,39 +60,41 @@
             pkgs.diffnav
           ];
 
-          programs.git = {
-            enable = true;
-            package = pkgs.gitFull;
-            settings = {
-              core.pager = "less --+clear-screen --quit-if-one-screen";
-              difftool.prompt = false;
-              github.user = box.githubUser or "aliceq";
-              init.defaultBranch = nixosConfig.programs.git.config.init.defaultBranch or "master";
-              merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
-              pager.difftool = true;
-              user = {
-                name = box.userDesc or "Alice Q. User";
-                email = box.userEmail or "alice@example.org";
+          programs = {
+            git = {
+              enable = true;
+              package = pkgs.gitFull;
+              settings = {
+                core.pager = "less --+clear-screen --quit-if-one-screen";
+                difftool.prompt = false;
+                github.user = box.githubUser or "aliceq";
+                init.defaultBranch = nixosConfig.programs.git.config.init.defaultBranch or "master";
+                merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
+                pager.difftool = true;
+                user = {
+                  name = box.userDesc or "Alice Q. User";
+                  email = box.userEmail or "alice@example.org";
+                };
+              };
+              signing = {
+                key = box.gpgSigningKey;
+                signByDefault = true;
               };
             };
-            signing = {
-              key = box.gpgSigningKey;
-              signByDefault = true;
+
+            # https://github.com/mateusauler/git-worktree-switcher
+            git-worktree-switcher.enable = true;
+
+            fish.shellAbbrs = {
+              g = "git";
+              gb = "git branch";
+              gf = "git fetch --prune --prune-tags";
+              gfa = "git fetch --prune --prune-tags --all";
+              gm = "git merge";
+              gP = "git pull";
+              gp = "git push";
+              gpf = "git push --force-with-lease";
             };
-          };
-
-          # https://github.com/mateusauler/git-worktree-switcher
-          programs.git-worktree-switcher.enable = true;
-
-          programs.fish.shellAbbrs = {
-            g = "git";
-            gb = "git branch";
-            gf = "git fetch --prune --prune-tags";
-            gfa = "git fetch --prune --prune-tags --all";
-            gm = "git merge";
-            gP = "git pull";
-            gp = "git push";
-            gpf = "git push --force-with-lease";
           };
         };
       };
