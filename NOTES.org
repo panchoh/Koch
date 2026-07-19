@@ -91,6 +91,17 @@ Adhere to Semantic Commit Messages
 *** Wayland under QEMU
 - https://github.com/NixOS/nixpkgs/blob/653038c38dee95539f74480e955a2c95000be732/nixos/tests/sway.nix#L49
 
+** Dendritic Pattern
+*** [[https://flake.parts/][Flake Parts]]
+*** https://github.com/Doc-Steve/dendritic-design-with-flake-parts
+*** [[https://github.com/mightyiam/infra][mightyiam/infra]]
+*** [[https://github.com/denful][denful]] https://denful.dev/
+*** [[https://github.com/denful/den][denful/den]] https://den.denful.dev/
+*** [[https://github.com/den/flake-file][den/flake-file]] https://flake-file.denful.dev/
+*** [[https://github.com/den/import-tree][den/import-tree]] https://import-tree.denful.dev/
+*** [[https://github.com/vic/vix][vic/vix]]
+*** [[https://github.com/tsandrini/flake-parts-builder][tsandrini/flake-parts-builder]]
+
 ** dotfiles to Explore
 - [ ] https://github.com/alyraffauf/nixcfg # with flake-parts
 - [ ] https://github.com/SenchoPens/base16.nix flake.nix lib
