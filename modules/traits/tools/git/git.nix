@@ -68,6 +68,7 @@
                 core.pager = "less --+clear-screen --quit-if-one-screen";
                 difftool.prompt = false;
                 fetch = {
+                  all = true;
                   prune = true;
                   pruneTags = true;
                 };
@@ -95,7 +96,7 @@
               g = "git";
               gb = "git branch";
               gf = "git fetch";
-              gfa = "git fetch --all";
+              gfa = "git fetch --no-all";
               gm = "git merge";
               gP = "git pull";
               gp = "git push";
