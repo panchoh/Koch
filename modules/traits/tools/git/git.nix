@@ -67,6 +67,11 @@
               settings = {
                 core.pager = "less --+clear-screen --quit-if-one-screen";
                 difftool.prompt = false;
+                fetch = {
+                  prune = true;
+                  pruneTags = true;
+                };
+                gui.pruneDuringFetch = true;
                 github.user = box.githubUser or "aliceq";
                 init.defaultBranch = nixosConfig.programs.git.config.init.defaultBranch or "master";
                 merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
@@ -89,8 +94,8 @@
             fish.shellAbbrs = {
               g = "git";
               gb = "git branch";
-              gf = "git fetch --prune --prune-tags";
-              gfa = "git fetch --prune --prune-tags --all";
+              gf = "git fetch";
+              gfa = "git fetch --all";
               gm = "git merge";
               gP = "git pull";
               gp = "git push";
