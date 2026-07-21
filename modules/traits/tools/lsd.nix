@@ -27,6 +27,7 @@
             la = "lsd --almost-all";
             lao = "lsd --almost-all --one-line";
             lt = "lsd --tree";
+            lat = "lsd --almost-all --tree";
             lla = "lsd --long --almost-all";
             llt = "lsd --long --tree";
             llat = "lsd --long --almost-all --tree";
