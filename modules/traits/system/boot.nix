@@ -48,8 +48,6 @@
           };
 
           consoleLogLevel = 0;
-
-          plymouth.enable = box.isStation or false;
         };
       };
     };
