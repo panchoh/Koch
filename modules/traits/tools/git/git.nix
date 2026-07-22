@@ -77,7 +77,12 @@
                 init.defaultBranch = nixosConfig.programs.git.config.init.defaultBranch or "master";
                 merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
                 pager.difftool = true;
-                push.autoSetupRemote = true;
+                pull.ff = "only";
+                push = {
+                  autoSetupRemote = true;
+                  default = "matching";
+                };
+                remote.pushDefault = "origin";
                 user = {
                   name = box.userDesc or "Alice Q. User";
                   email = box.userEmail or "alice@example.org";
