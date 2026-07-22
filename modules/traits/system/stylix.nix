@@ -37,7 +37,6 @@
         stylix = {
           enable = true;
           polarity = "dark";
-          targets.plymouth.enable = false;
 
           # Either image or base16Scheme is required
           base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
