@@ -65,6 +65,7 @@
               enable = true;
               package = pkgs.gitFull;
               settings = {
+                branch.autoSetupMerge = "inherit";
                 core.pager = "less --+clear-screen --quit-if-one-screen";
                 difftool.prompt = false;
                 fetch = {
