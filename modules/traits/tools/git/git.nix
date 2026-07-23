@@ -82,6 +82,7 @@
                 push = {
                   autoSetupRemote = true;
                   default = "matching";
+                  followTags = true;
                 };
                 remote.pushDefault = "origin";
                 user = {
