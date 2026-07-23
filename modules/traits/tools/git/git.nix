@@ -89,10 +89,13 @@
                   email = box.userEmail or "alice@example.org";
                 };
               };
-              signing = {
-                key = box.gpgSigningKey;
-                signByDefault = true;
-              };
+              signing =
+                lib.optionalAttrs (box ? gpgSigningKey) {
+                  key = box.gpgSigningKey;
+                }
+                // {
+                  signByDefault = box ? gpgSigningKey;
+                };
             };
 
             # https://github.com/mateusauler/git-worktree-switcher
