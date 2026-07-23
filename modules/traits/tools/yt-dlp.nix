@@ -22,6 +22,7 @@
           yt-dlp = {
             enable = true;
             settings = {
+              embed-metadata = true;
               embed-thumbnail = true;
               embed-subs = true;
               sub-langs = "all";
