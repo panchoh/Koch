@@ -19,7 +19,21 @@
         };
 
         config = lib.mkIf cfg.enable {
-          home.packages = [ pkgs.playerctl ];
+          home.packages = [
+            pkgs.playerctl
+
+            # for Emacs’ org-pomodoro
+            (pkgs.writeShellApplication {
+              name = "mpv-via-hdmi";
+              runtimeInputs = [
+                config.programs.mpv.package
+              ];
+              text = ''
+                #echo "$@" >> /tmp/mpv-via-hdmi.log
+                exec mpv --audio-device=alsa/hdmi:CARD=PCH,DEV=0 "$@"
+              '';
+            })
+          ];
 
           services.playerctld.enable = true;
 
