@@ -21,6 +21,7 @@
           programs.git = {
             enable = true;
             config.init.defaultBranch = "master";
+            package = pkgs.gitMinimal;
           };
         };
       };
