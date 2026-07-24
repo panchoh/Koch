@@ -103,7 +103,8 @@
 
             fish.shellAbbrs = {
               g = "git";
-              gb = "git branch";
+              gb = "git branch --verbose --verbose";
+              gba = "git branch --verbose --verbose --all";
               gf = "git fetch";
               gfa = "git fetch --no-all";
               gm = "git merge";
