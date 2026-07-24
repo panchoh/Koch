@@ -79,8 +79,14 @@
           {
             _args = [
               "XF86AudioPrev"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("playerctl position 5-")'')
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPrev"
               (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("playerctl previous")'')
-              { repeating = true; }
+              { long_press = true; }
             ];
           }
           {
@@ -91,9 +97,22 @@
           }
           {
             _args = [
+              "XF86AudioPlay"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("playerctl stop")'')
+              { long_press = true; }
+            ];
+          }
+          {
+            _args = [
               "XF86AudioNext"
               (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("playerctl next")'')
-              { repeating = true; }
+              { long_press = true; }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioNext"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("playerctl position 5+")'')
             ];
           }
         ];
