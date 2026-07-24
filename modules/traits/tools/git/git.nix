@@ -39,7 +39,7 @@
       {
         options.traits.hm.git = {
           enable = lib.mkEnableOption "Git" // {
-            default = true;
+            default = box.isStation or false;
           };
         };
 
