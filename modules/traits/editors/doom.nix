@@ -17,7 +17,7 @@
       {
         options.traits.os.doom-emacs = {
           enable = lib.mkEnableOption "Doom Emacs" // {
-            default = box.isStation;
+            default = box.isStation or false;
           };
         };
 
@@ -47,7 +47,7 @@
 
         options.traits.hm.doom-emacs = {
           enable = lib.mkEnableOption "Doom Emacs" // {
-            default = box.isStation;
+            default = box.isStation or false;
           };
         };
 
