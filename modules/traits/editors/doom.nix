@@ -219,7 +219,7 @@
             );
           };
 
-          # TODO: enable this, but also take care of `config.doom-emacs.provideEmacs`
+          # REVIEW: enable this, also take care of `config.programs.doom-emacs.provideEmacs`
           services.emacs = {
             enable = false;
             defaultEditor = false;
