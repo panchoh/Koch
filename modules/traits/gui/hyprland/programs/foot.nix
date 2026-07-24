@@ -41,7 +41,7 @@
           workspace_rule = [
             {
               workspace = "special:Foot";
-              on_created_empty = "footclient";
+              on_created_empty = "foot";
             }
           ];
           bind =
