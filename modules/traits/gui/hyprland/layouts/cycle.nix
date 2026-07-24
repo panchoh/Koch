@@ -23,7 +23,7 @@
                         workspace = hl.get_active_special_workspace()
                     end
 
-                    local next_layout = "dwindle"
+                    local next_layout = "monocle"
 
                     if not workspace then
                         return
