@@ -173,7 +173,7 @@
             pkgs.libxml2 # for xmllint
             pkgs.html-tidy
             pkgs.stylelint
-            # REVIEW: uncomment when https://github.com/NixOS/nixpkgs/pull/536260 lands
+            # REVIEW: uncomment when https://github.com/NixOS/nixpkgs/pull/530554 lands
             # pkgs.stylelint-lsp
             pkgs.jsbeautifier
 
