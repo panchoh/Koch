@@ -20,7 +20,6 @@
         config = lib.mkIf cfg.enable {
           programs.git = {
             enable = true;
-            config.init.defaultBranch = "master";
             package = pkgs.gitMinimal;
           };
         };
@@ -31,7 +30,6 @@
         config,
         lib,
         pkgs,
-        nixosConfig,
         box ? null,
         ...
       }:
@@ -76,7 +74,7 @@
                 };
                 gui.pruneDuringFetch = true;
                 github.user = box.githubUser or "aliceq";
-                init.defaultBranch = nixosConfig.programs.git.config.init.defaultBranch or "master";
+                init.defaultBranch = "master";
                 merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
                 pager.difftool = true;
                 pull.ff = "only";
