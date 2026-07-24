@@ -34,10 +34,11 @@
                   "SUPER + J" = "focus d";
                   "SUPER + L" = "focus r";
 
-                  "SUPER + space" = "colresize +conf";
-                  "SUPER + SHIFT + space" = "colresize -conf";
-                  "SUPER + ALT + space" = "colresize all 0.333";
-                  "SUPER + CONTROL + space" = "inhibit_scroll";
+                  "SUPER + space" = "fit_into_view";
+                  "SUPER + SHIFT + space" = "colresize +conf";
+                  "SUPER + ALT + space" = "colresize -conf";
+                  "SUPER + CONTROL + space" = "colresize all 0.333";
+                  "SUPER + CONTROL + ALT + space" = "inhibit_scroll";
 
                   "SUPER + SHIFT + Return" = "promote";
                   "SUPER + comma" = "move -col";
