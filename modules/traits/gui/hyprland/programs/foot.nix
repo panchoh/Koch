@@ -44,9 +44,18 @@
               on_created_empty = "foot";
             }
           ];
-          bind =
+          bind = [
             {
-              "SUPER + SHIFT + Return" = ''hl.dsp.exec_cmd("footclient")'';
+              _args = [
+                "SUPER + SUPER_L"
+                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("footclient")'')
+                { release = true; }
+              ];
+            }
+          ]
+          ++ (
+            {
+              # "SUPER + SHIFT + Return" = ''hl.dsp.exec_cmd("footclient")'';
               "SUPER + grave" = ''hl.dsp.workspace.toggle_special("Foot")'';
               "SUPER + SHIFT + grave" = ''hl.dsp.window.move({ workspace = "special:Foot" })'';
               "SUPER + CONTROL + grave" = ''hl.dsp.window.move({ workspace = "special:Foot", follow = false })'';
@@ -58,7 +67,8 @@
                   (lib.generators.mkLuaInline dispatcher)
                 ];
               }
-            );
+            )
+          );
         };
       };
     };
