@@ -31,11 +31,17 @@
             }
           ];
           bind = [
+            # {
+            #   _args = [
+            #     "SUPER + SUPER_L"
+            #     (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("pkill fuzzel || fuzzel")'')
+            #     { release = true; }
+            #   ];
+            # }
             {
               _args = [
-                "SUPER + SUPER_L"
-                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("pkill fuzzel || fuzzel")'')
-                { release = true; }
+                "SUPER + P"
+                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("fuzzel")'')
               ];
             }
           ];
