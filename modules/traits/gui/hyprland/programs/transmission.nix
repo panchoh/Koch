@@ -48,7 +48,7 @@
               # Select to special:Transmission workspace
               "SUPER + Equal" = ''hl.dsp.workspace.toggle_special("Transmission")'';
 
-              # Move to special:Telegram workspace
+              # Move to special:Transmission workspace
               "SUPER + SHIFT + Equal" = ''hl.dsp.window.move({ workspace = "special:Transmission" })'';
             }
             |> lib.mapAttrsToList (
