@@ -65,6 +65,13 @@
                     _args = [
                       "SUPER + SHIFT + ${key}"
                       # Move active window to a workspace with SUPER + SHIFT + [0-9]
+                      (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = ${wsID} })")
+                    ];
+                  }
+                  {
+                    _args = [
+                      "SUPER + CONTROL + ${key}"
+                      # Evict active window to a workspace with SUPER + CONTROL + [0-9]
                       (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = ${wsID}, follow = false })")
                     ];
                   }

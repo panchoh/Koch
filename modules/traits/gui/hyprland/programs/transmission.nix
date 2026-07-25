@@ -50,6 +50,10 @@
 
               # Move to special:Transmission workspace
               "SUPER + SHIFT + Equal" = ''hl.dsp.window.move({ workspace = "special:Transmission" })'';
+
+              # Evict to special:Transmission workspace
+              "SUPER + CONTROL + Equal" =
+                ''hl.dsp.window.move({ workspace = "special:Transmission", follow = false })'';
             }
             |> lib.mapAttrsToList (
               keys: dispatcher: {

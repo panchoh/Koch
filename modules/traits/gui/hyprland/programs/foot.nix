@@ -48,7 +48,8 @@
             {
               "SUPER + Return" = ''hl.dsp.exec_cmd("footclient")'';
               "SUPER + grave" = ''hl.dsp.workspace.toggle_special("Foot")'';
-              "SUPER + SHIFT + grave" = ''hl.dsp.window.move({ workspace = "special:Foot", follow = false })'';
+              "SUPER + SHIFT + grave" = ''hl.dsp.window.move({ workspace = "special:Foot" })'';
+              "SUPER + CONTROL + grave" = ''hl.dsp.window.move({ workspace = "special:Foot", follow = false })'';
             }
             |> lib.mapAttrsToList (
               keys: dispatcher: {

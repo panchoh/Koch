@@ -41,6 +41,10 @@
 
               # Move to special:Telegram workspace
               "SUPER + SHIFT + Minus" = ''hl.dsp.window.move({ workspace = "special:Telegram" })'';
+
+              # Evict to special:Telegram workspace
+              "SUPER + CONTROL + Minus" =
+                ''hl.dsp.window.move({ workspace = "special:Telegram", follow = false })'';
             }
             |> lib.mapAttrsToList (
               keys: dispatcher: {
