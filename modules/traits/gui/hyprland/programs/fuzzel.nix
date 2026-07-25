@@ -30,14 +30,12 @@
               dim_around = true;
             }
           ];
-          # Alternatively:
-          # Start fuzzel opens fuzzel on first press, closes it on second
-          # bindr = SUPER, SUPER_L, exec, pkill fuzzel || fuzzel
           bind = [
             {
               _args = [
-                "SUPER + P"
-                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("fuzzel")'')
+                "SUPER + SUPER_L"
+                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("pkill fuzzel || fuzzel")'')
+                { release = true; }
               ];
             }
           ];
