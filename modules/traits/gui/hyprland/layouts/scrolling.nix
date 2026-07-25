@@ -34,13 +34,14 @@
                   "SUPER + J" = "focus d";
                   "SUPER + L" = "focus r";
 
-                  "SUPER + space" = "fit_into_view";
-                  "SUPER + SHIFT + space" = "colresize +conf";
+                  "SUPER + space" = "fit expand";
+                  "SUPER + SHIFT + space" = "fit_into_view";
                   "SUPER + ALT + space" = "colresize -conf";
+                  "SUPER + SHIFT + ALT + space" = "colresize +conf";
                   "SUPER + CONTROL + space" = "colresize all 0.333";
                   "SUPER + CONTROL + ALT + space" = "inhibit_scroll";
 
-                  "SUPER + SHIFT + Return" = "promote";
+                  "SUPER + Return" = "promote";
                   "SUPER + comma" = "move -col";
                   "SUPER + period" = "move +col";
                   "SUPER + SHIFT + comma" = "swapcol l";
