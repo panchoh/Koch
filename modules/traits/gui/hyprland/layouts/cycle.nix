@@ -14,7 +14,7 @@
         wayland.windowManager.hyprland.settings.bind = [
           {
             _args = [
-              "SUPER + CONTROL + SHIFT + ALT + space"
+              "SUPER + ALT + Return"
               (lib.generators.mkLuaInline ''
                 function ()
                     local layouts     = { "scrolling", "monocle" }
