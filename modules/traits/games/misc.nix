@@ -41,22 +41,6 @@
 
           pkgs.stockfish
           pkgs.gnome-chess
-
-          pkgs.nbsdgames
-          # bsdgames:
-          # - provides `wtf`, which conflicts with `fish` shell
-          # FIXME: PR with the current BSD Games, which fixes this and more
-          (pkgs.stdenv.mkDerivation {
-            pname = "bsdgames-custom";
-            version = pkgs.bsdgames.version;
-            src = pkgs.bsdgames;
-            installPhase = ''
-              mkdir -p $out
-              cp -a ${pkgs.bsdgames}/. $out/
-              chmod +w $out/bin
-              mv -f $out/bin/fish $out/bin/gofish
-            '';
-          })
         ];
       };
     };

@@ -51,12 +51,6 @@
           programs = {
             fish = {
               enable = true;
-              interactiveShellInit = ''
-                if not test ~/.silent
-                    echo
-                    fortune -a
-                end
-              '';
               preferAbbrs = true;
               shellAbbrs = {
                 "..." = "../..";
