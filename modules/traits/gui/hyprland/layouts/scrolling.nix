@@ -38,8 +38,8 @@
                   "SUPER + SHIFT + space" = "colresize +conf";
                   "SUPER + Return" = "promote";
                   "SUPER + SHIFT + Return" = "colresize -conf";
+                  "SUPER + CONTROL + Return" = "colresize all 0.333";
                   "SUPER + ALT + space" = "fit_into_view";
-                  "SUPER + CONTROL + space" = "colresize all 0.333";
                   "SUPER + CONTROL + ALT + space" = "inhibit_scroll";
 
                   "SUPER + comma" = "move -col";
