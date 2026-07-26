@@ -46,7 +46,7 @@
               )
             )
             ++ (
-              (lib.range 1 8)
+              (lib.range 1 10)
               |> lib.concatMap (
                 ws:
                 let
