@@ -21,8 +21,11 @@
           bind =
             (
               {
-                # Switch to previous workspace
+                # Switch to previous workspace, same monitor
                 "SUPER + A" = "previous_per_monitor";
+
+                # Switch to previous workspace
+                "SUPER + SHIFT + A" = "previous";
 
                 # Cycle left through active workspaces
                 "SUPER + SHIFT + bracketleft" = "e-1";
