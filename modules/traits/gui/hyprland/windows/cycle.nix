@@ -43,6 +43,7 @@
                 scrolling = function()
                     hl.dispatch(hl.dsp.window.cycle_next())
                     hl.dispatch(hl.dsp.window.bring_to_top())
+                    hl.dispatch(hl.dsp.layout("fit_into_view"))
                 end,
                 monocle = hl.dsp.layout("cyclenext")
             }))
@@ -51,6 +52,7 @@
                 scrolling = function()
                     hl.dispatch(hl.dsp.window.cycle_next())
                     hl.dispatch(hl.dsp.window.bring_to_top())
+                    hl.dispatch(hl.dsp.layout("fit_into_view"))
                 end,
                 monocle = hl.dsp.layout("cyclenext")
             }))
