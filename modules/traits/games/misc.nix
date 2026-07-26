@@ -12,7 +12,7 @@
     in
     {
       options.traits.hm.games.misc = {
-        enable = lib.mkEnableOption "games" // {
+        enable = lib.mkEnableOption "misc games" // {
           default = box.isStation or false;
         };
       };
