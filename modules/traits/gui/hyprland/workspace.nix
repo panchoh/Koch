@@ -25,10 +25,10 @@
                 "SUPER + A" = "previous_per_monitor";
 
                 # Cycle left through active workspaces
-                "SUPER + ALT + bracketleft" = "e-1";
+                "SUPER + SHIFT + bracketleft" = "e-1";
 
                 # Cycle right through active workspaces
-                "SUPER + ALT + bracketright" = "e+1";
+                "SUPER + SHIFT + bracketright" = "e+1";
 
                 # Cycle left through active workspaces
                 "SUPER + Left" = "e-1";
