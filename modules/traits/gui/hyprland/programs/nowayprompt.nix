@@ -23,7 +23,7 @@
         services.gpg-agent.pinentry.package = config.programs.wayprompt.package;
         wayland.windowManager.hyprland.settings.layer_rule = [
           {
-            match.namespace = "^wayprompt$";
+            match.namespace = "^nowayprompt$";
             xray = true;
             dim_around = true;
           }
