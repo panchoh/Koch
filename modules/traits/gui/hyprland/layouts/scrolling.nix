@@ -39,7 +39,7 @@
                   "SUPER + Return" = "promote";
                   "SUPER + SHIFT + Return" = "colresize -conf";
                   "SUPER + CONTROL + Return" = "colresize all 0.333";
-                  "SUPER + CONTROL + ALT + space" = "inhibit_scroll";
+                  "SUPER + ALT + space" = "inhibit_scroll";
 
                   "SUPER + comma" = "move -col";
                   "SUPER + period" = "move +col";
