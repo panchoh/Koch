@@ -7,10 +7,10 @@
       ...
     }:
     let
-      cfg = config.traits.os.openarena;
+      cfg = config.traits.os.games.openarena;
     in
     {
-      options.traits.os.openarena = {
+      options.traits.os.games.openarena = {
         enable = lib.mkEnableOption "OpenArena" // {
           default = box.isStation or false;
         };
@@ -35,10 +35,10 @@
       ...
     }:
     let
-      cfg = config.traits.hm.openarena;
+      cfg = config.traits.hm.games.openarena;
     in
     {
-      options.traits.hm.openarena = {
+      options.traits.hm.games.openarena = {
         enable = lib.mkEnableOption "OpenArena" // {
           default = box.isStation or false;
         };
