@@ -15,6 +15,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
+    flake-compat.url = "github:NixOS/flake-compat";
     flake-parts.url = "flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     nixos-hardware.url = "nixos-hardware";
@@ -40,8 +41,14 @@
     nix-doom-emacs-unstraightened.inputs.systems.follows = "systems";
     nix-doom-emacs-unstraightened.inputs.emacs-overlay.follows = "emacs-overlay";
     nix-doom-emacs-unstraightened.inputs.doomdir.url = "github:panchoh/doom";
+    nowayprompt.url = "github:nilp0inter/nowayprompt";
+    nowayprompt.inputs.flake-parts.follows = "flake-parts";
+    nowayprompt.inputs.git-hooks-nix.inputs.flake-compat.follows = "flake-compat";
+    nowayprompt.inputs.nixpkgs.follows = "nixpkgs";
+    nowayprompt.inputs.nixpkgs-26_05.follows = "";
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
+    nvf.inputs.flake-compat.follows = "flake-compat";
     vmtools.url = "github:4km3/vmtools";
     vmtools.flake = false;
     kubelab.url = "github:4km3/kubelab";
