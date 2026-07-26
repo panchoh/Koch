@@ -25,7 +25,13 @@
           # Otherwise mouse wheel will wreak havoc
           foot.settings.mouse.alternate-scroll-mode = false;
 
-          fish.shellAbbrs.tf = "tig FETCH_HEAD";
+          fish.shellAbbrs = {
+            t = "tig";
+            tf = "tig FETCH_HEAD"; # for ad-hoc fetches, say git fetch upstream pull/<pr_id>/head
+
+            # https://git-scm.com/docs/gitrevisions#Documentation/gitrevisions.txt-branchnameupstreamegmasterupstreamu
+            tu = "tig @{upstream}"; # or tig @{u}
+          };
         };
       };
     };
