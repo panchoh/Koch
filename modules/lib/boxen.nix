@@ -119,6 +119,7 @@
       #   macvlanAddr = "dc:a6:32:b1:ae:1d";
       #   extraModules = [ inputs.nixos-hardware.nixosModules.raspberry-pi-4 ];
       # }
+
     ]
     |> map (overrides: defaults // overrides);
 }
