@@ -510,11 +510,11 @@
         "nixpkgs-26_05": []
       },
       "locked": {
-        "lastModified": 1785080601,
-        "narHash": "sha256-pAqm4sTKkvABFMbyrs3/z2CLnG1Ffuw3OL+nBc3Htsg=",
+        "lastModified": 1785145049,
+        "narHash": "sha256-XeNP1xnAhchbQDFZrOY+z/Q5fNWJ3iMhzzChG906L7U=",
         "owner": "nilp0inter",
         "repo": "nowayprompt",
-        "rev": "8da3cc00e5fc4d9bd14c5873773e8d05d91e752e",
+        "rev": "8a1e6864224cb1185623d84712ba910a49939c68",
         "type": "github"
       },
       "original": {
