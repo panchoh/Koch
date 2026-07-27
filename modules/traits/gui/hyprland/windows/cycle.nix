@@ -32,10 +32,20 @@
             end
 
             hl.bind("SUPER + SHIFT + Tab", layout_bind({
+                scrolling = function()
+                    hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
+                    hl.dispatch(hl.dsp.window.bring_to_top())
+                    hl.dispatch(hl.dsp.layout("fit_into_view"))
+                end,
                 monocle = hl.dsp.layout("cycleprev")
             }))
 
             hl.bind("SUPER + bracketleft", layout_bind({
+                scrolling = function()
+                    hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
+                    hl.dispatch(hl.dsp.window.bring_to_top())
+                    hl.dispatch(hl.dsp.layout("fit_into_view"))
+                end,
                 monocle = hl.dsp.layout("cycleprev")
             }))
 
