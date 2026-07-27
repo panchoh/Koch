@@ -31,41 +31,52 @@
                 end
             end
 
-            hl.bind("SUPER + SHIFT + Tab", layout_bind({
-                scrolling = function()
-                    hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
-                    hl.dispatch(hl.dsp.window.bring_to_top())
-                    hl.dispatch(hl.dsp.layout("fit_into_view"))
-                end,
-                monocle = hl.dsp.layout("cycleprev")
-            }))
+            -- Tracks Hyprland’s internal cycle direction.
+            -- Must be updated whenever we request a direction flip.
+            local cycling_forward = true
 
-            hl.bind("SUPER + bracketleft", layout_bind({
-                scrolling = function()
-                    hl.dispatch(hl.dsp.window.cycle_next({ next = false }))
-                    hl.dispatch(hl.dsp.window.bring_to_top())
-                    hl.dispatch(hl.dsp.layout("fit_into_view"))
-                end,
-                monocle = hl.dsp.layout("cycleprev")
-            }))
+            local function cycle(opts)
+                opts = opts or {}
 
-            hl.bind("SUPER + Tab", layout_bind({
-                scrolling = function()
-                    hl.dispatch(hl.dsp.window.cycle_next())
-                    hl.dispatch(hl.dsp.window.bring_to_top())
-                    hl.dispatch(hl.dsp.layout("fit_into_view"))
-                end,
-                monocle = hl.dsp.layout("cyclenext")
-            }))
+                local backward = opts.backward == true
+                local forward = not backward
 
-            hl.bind("SUPER + bracketright", layout_bind({
-                scrolling = function()
-                    hl.dispatch(hl.dsp.window.cycle_next())
-                    hl.dispatch(hl.dsp.window.bring_to_top())
-                    hl.dispatch(hl.dsp.layout("fit_into_view"))
-                end,
-                monocle = hl.dsp.layout("cyclenext")
-            }))
+                local needs_flipping = forward ~= cycling_forward
+
+                if needs_flipping then
+                    cycling_forward = forward
+                end
+
+                hl.dispatch(hl.dsp.window.cycle_next({ next = not needs_flipping }))
+                hl.dispatch(hl.dsp.window.bring_to_top())
+                hl.dispatch(hl.dsp.layout("fit_into_view"))
+            end
+
+            local function cycle_backward()
+                cycle({ backward = true })
+            end
+
+            local function cycle_forward()
+                cycle()
+            end
+
+            -- Shared per-direction action tables, so the two binds for each
+            -- direction (Tab-family + bracket-family) can’t drift out of sync.
+            local forward_actions = {
+                scrolling = cycle_forward,
+                monocle = hl.dsp.layout("cyclenext"),
+            }
+
+            local backward_actions = {
+                scrolling = cycle_backward,
+                monocle = hl.dsp.layout("cycleprev"),
+            }
+
+            hl.bind("SUPER + SHIFT + Tab", layout_bind(backward_actions))
+            hl.bind("SUPER + bracketleft", layout_bind(backward_actions))
+
+            hl.bind("SUPER + Tab", layout_bind(forward_actions))
+            hl.bind("SUPER + bracketright", layout_bind(forward_actions))
           '';
         };
       };
