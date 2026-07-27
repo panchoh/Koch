@@ -23,28 +23,39 @@
                         return
                     end
 
-                    local layout = workspace.tiled_layout
+                    local action = bind_table[workspace.tiled_layout]
 
-                    if bind_table[layout] then
-                        hl.dispatch(bind_table[layout])
+                    if type(action) == "function" then
+                        action(workspace)
+                    elseif action then
+                        hl.dispatch(action)
                     end
                 end
             end
 
-            -- Tracks Hyprland’s internal cycle direction.
-            -- Must be updated whenever we request a direction flip.
-            local cycling_forward = true
+            -- Tracks Hyprland’s internal cycle direction, per workspace
+            -- (regular and special workspaces use disjoint id ranges, confirmed
+            -- via `hyprctl repl`, so a flat table keyed on id is safe).
+            -- Must be updated whenever we request a direction flip on that workspace.
+            local cycling_forward_by_workspace = {}
 
-            local function cycle(opts)
+            local function cycle(workspace, opts)
                 opts = opts or {}
 
                 local backward = opts.backward == true
                 local forward = not backward
 
+                local ws_id = workspace.id
+                local cycling_forward = cycling_forward_by_workspace[ws_id]
+
+                if cycling_forward == nil then
+                    cycling_forward = true
+                end
+
                 local needs_flipping = forward ~= cycling_forward
 
                 if needs_flipping then
-                    cycling_forward = forward
+                    cycling_forward_by_workspace[ws_id] = forward
                 end
 
                 hl.dispatch(hl.dsp.window.cycle_next({ next = not needs_flipping }))
@@ -52,12 +63,12 @@
                 hl.dispatch(hl.dsp.layout("fit_into_view"))
             end
 
-            local function cycle_backward()
-                cycle({ backward = true })
+            local function cycle_backward(workspace)
+                cycle(workspace, { backward = true })
             end
 
-            local function cycle_forward()
-                cycle()
+            local function cycle_forward(workspace)
+                cycle(workspace)
             end
 
             -- Shared per-direction action tables, so the two binds for each
