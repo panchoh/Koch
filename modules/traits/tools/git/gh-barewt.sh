@@ -101,6 +101,9 @@ log 'Setting tracking refs for our fork'
 # They are not set when doing a bare clone
 git config --local remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
 
+log 'Setting origin as the default remote to push to'
+git config --local remote.pushDefault origin
+
 log 'Preventing pushing to upstream'
 # https://functor.tokyo/blog/2021-12-15-git-no_push
 git remote set-url --push upstream no_push
@@ -124,10 +127,6 @@ git branch --set-upstream-to=upstream/"$default_branch" "$default_branch"
 
 log "Creating a worktree tracking the default branch: ‘$default_branch’"
 git worktree add "$default_branch" "$default_branch"
-
-log 'Setting push remote for default branch to our fork'
-# Push to our fork, but fetch from upstream
-git config --local branch."$default_branch".pushRemote origin
 
 log 'Unsetting remote.origin.pruneTags'
 # Otherwise we’ll prune upstream’s
