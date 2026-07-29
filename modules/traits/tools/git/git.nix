@@ -76,6 +76,7 @@
                 gui.pruneDuringFetch = true;
                 github.user = box.githubUser or "aliceq";
                 init.defaultBranch = "master";
+                log.follow = true;
                 merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
                 pager.difftool = true;
                 pull.ff = "only";
