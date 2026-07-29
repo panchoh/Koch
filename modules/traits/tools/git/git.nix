@@ -109,6 +109,8 @@
               gba = "git branch --verbose --verbose --all";
               gf = "git fetch";
               gfa = "git fetch --no-all";
+              gl = "git log";
+              gls = "git log --show-signature";
               gm = "git merge";
               gP = "git pull";
               gp = "git push";
