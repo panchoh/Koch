@@ -57,6 +57,7 @@
             pkgs.lazygit
             pkgs.vbindiff
             pkgs.diffnav
+            pkgs.git-filter-repo
           ];
 
           programs = {
