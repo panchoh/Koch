@@ -68,8 +68,8 @@
         isStation = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
-        userDesc = "Alberto Peón";
-        userEmail = "alberto.peon@FIXME.com";
+        userDesc = "Alberto Peón Horrillo";
+        userEmail = "alberto@peon.contact";
         githubUser = "Alberto-Peon";
         extraModules = [ inputs.nixos-hardware.nixosModules.apple-macbook-air-5 ];
         extraHomeModules = [ { traits.hm.gopass.enable = false; } ];
