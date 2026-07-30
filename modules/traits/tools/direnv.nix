@@ -30,7 +30,7 @@
             whitelist = {
               # TODO: extract path/username; look for disko-and-funk
               exact = [
-                "~/sandbox/panchoh/nixos"
+                "~/sandbox/panchoh/Koch"
               ];
             };
           };
