@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.gopass;
       inherit (box) githubUser;
@@ -26,6 +27,7 @@
               verboseEcho Configuring gopass editor
               PATH="${config.home.path}/bin:$PATH" run gopass config edit.editor ${lib.getExe pkgs.openvi}
             '';
+
             cloneGopassStore = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
               mkdir --parents "${passwordStoreDir}"
               rmdir --ignore-fail-on-non-empty "${passwordStoreDir}"
@@ -44,6 +46,7 @@
         programs.password-store = {
           enable = true;
           package = pkgs.gopass;
+
           settings = {
             PASSWORD_STORE_DIR = "${passwordStoreDir}";
           };

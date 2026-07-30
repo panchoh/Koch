@@ -11,6 +11,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.doom-emacs;
       in
@@ -22,10 +23,10 @@
         };
 
         config = lib.mkIf cfg.enable {
-          nixpkgs.overlays = [
-            inputs.emacs-overlay.overlays.default
-          ];
-          nixpkgs.config.joypixels.acceptLicense = true;
+          nixpkgs = {
+            config.joypixels.acceptLicense = true;
+            overlays = [ inputs.emacs-overlay.overlays.default ];
+          };
         };
       };
 
@@ -37,6 +38,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.doom-emacs;
       in
@@ -209,6 +211,7 @@
 
           home.sessionVariables = {
             ALTERNATE_EDITOR = lib.getExe config.programs.neovide.package;
+
             EDITOR = lib.getBin (
               pkgs.writeShellScript "editor" ''
                 exec ${lib.getExe' config.programs.doom-emacs.finalEmacsPackage "emacsclient"} \
@@ -224,6 +227,7 @@
             defaultEditor = false;
             socketActivation.enable = false;
             # startWithUserSession = "graphical";
+
             client = {
               enable = true;
               arguments = [

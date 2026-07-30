@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.xdg;
     in
@@ -34,6 +35,7 @@
           enable = true;
           mimeApps.enable = true;
           localBinInPath = true;
+
           userDirs = {
             enable = true;
             createDirectories = true;

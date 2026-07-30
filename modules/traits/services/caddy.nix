@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.caddy;
     in
@@ -30,6 +31,7 @@
           enable = true;
           email = box.userEmail;
           logFormat = lib.mkForce "level INFO";
+
           virtualHosts."${box.virtualHost}".extraConfig = ''
             log
             root * /srv/http

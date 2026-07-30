@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.less;
       in
@@ -29,6 +30,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.less;
       in
@@ -42,6 +44,7 @@
         config = lib.mkIf cfg.enable {
           programs.less = {
             enable = true;
+
             options = lib.mkMerge [
               {
                 clear-screen = true;

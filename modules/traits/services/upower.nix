@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.upower;
     in

@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.go;
     in
@@ -20,6 +21,7 @@
       config = lib.mkIf cfg.enable {
         programs.go = {
           enable = true;
+
           env = {
             GOPATH = "${config.xdg.dataHome}/go";
             GOBIN = "${config.xdg.binHome}";

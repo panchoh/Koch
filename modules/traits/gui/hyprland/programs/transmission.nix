@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.os.hyprland;
     in
@@ -21,6 +22,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -29,7 +31,9 @@
         home.packages = [
           pkgs.transmission_4-gtk
         ];
+
         xdg.mimeApps.defaultApplications."x-scheme-handler/magnet" = "transmission-gtk.desktop";
+
         wayland.windowManager.hyprland.settings = {
           workspace_rule = [
             {
@@ -37,12 +41,14 @@
               on_created_empty = "transmission-gtk";
             }
           ];
+
           window_rule = [
             {
               match.class = "^com\\.transmissionbt\\.transmission_\\d+_\\d+$";
               workspace = "special:Transmission silent";
             }
           ];
+
           bind =
             {
               # Select to special:Transmission workspace

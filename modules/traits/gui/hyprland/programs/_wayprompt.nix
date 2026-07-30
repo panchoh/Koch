@@ -6,6 +6,7 @@
         lib,
         ...
       }:
+
       let
         cfg = config.traits.os.hyprland;
       in
@@ -32,6 +33,7 @@
         lib,
         ...
       }:
+
       let
         cfg = config.traits.hm.hyprland;
       in
@@ -41,7 +43,9 @@
             enable = true;
             settings.general.pin-square-amount = 32;
           };
+
           services.gpg-agent.pinentry.package = config.programs.wayprompt.package;
+
           wayland.windowManager.hyprland.settings.layer_rule = [
             {
               match.namespace = "^wayprompt$";

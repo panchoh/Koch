@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.hyprland;
       in
@@ -30,6 +31,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.hyprland;
       in
@@ -39,11 +41,13 @@
             default = box.isStation or false;
           };
         };
+
         config = lib.mkIf cfg.enable {
           home = {
             packages = [
               pkgs.d-spy
             ];
+
             # https://wiki.hypr.land/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
             file."${config.xdg.configHome}/hypr/xdph.conf".text = ''
               screencopy {
@@ -51,6 +55,7 @@
               }
             '';
           };
+
           wayland.windowManager.hyprland = {
             # https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
             enable = true;

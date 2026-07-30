@@ -20,6 +20,7 @@
       config = lib.mkIf cfg.enable {
         programs.bat = {
           enable = true;
+
           config = {
             italic-text = "always";
             # https://github.com/sharkdp/bat/issues/376
@@ -28,6 +29,7 @@
             paging = "always";
             style = "full";
           };
+
           extraPackages = with pkgs.bat-extras; [
             batdiff
             batman

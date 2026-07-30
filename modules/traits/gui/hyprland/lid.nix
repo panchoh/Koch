@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in

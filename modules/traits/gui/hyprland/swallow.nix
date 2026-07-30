@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -19,6 +20,7 @@
             swallow_regex = "^foot(client)?$";
             swallow_exception_regex = "^.*(xkbcli|wev).*$";
           };
+
           bind = [
             {
               _args = [

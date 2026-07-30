@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.starship;
     in
@@ -20,6 +21,7 @@
         programs.starship = {
           enable = true;
           presets = [ "nerd-font-symbols" ];
+
           settings = {
             hostname.ssh_only = false;
             fossil_branch.symbol = " ";

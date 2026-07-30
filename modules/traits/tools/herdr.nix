@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.herdr;
     in
@@ -18,6 +19,7 @@
       config = lib.mkIf cfg.enable {
         programs.herdr = {
           enable = true;
+
           settings = {
             onboarding = false;
             version_check = false;

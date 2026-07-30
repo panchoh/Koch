@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.openvi;
     in
@@ -19,6 +20,7 @@
       config = lib.mkIf cfg.enable {
         home = {
           packages = [ pkgs.openvi ];
+
           activation = {
             addOviDotExrc = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
               verboseEcho Setting up .exrc

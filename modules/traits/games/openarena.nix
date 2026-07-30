@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.games.openarena;
     in
@@ -34,6 +35,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.games.openarena;
     in

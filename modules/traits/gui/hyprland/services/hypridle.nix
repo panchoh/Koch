@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -16,13 +17,16 @@
             mouse_move_enables_dpms = true;
           };
         };
+
         # https://wiki.hypr.land/Hypr-Ecosystem/hypridle/
         services.hypridle = {
           enable = true;
+
           settings = {
             general.after_sleep_cmd = ''
               hyprctl dispatch 'hl.dsp.dpms({ action = "enable" })'
             '';
+
             listener = [
               {
                 timeout = 300;

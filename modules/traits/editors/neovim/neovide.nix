@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.neovim;
     in
@@ -13,6 +14,7 @@
         programs = {
           neovide = {
             enable = true;
+
             settings = {
               fork = false;
               frame = "full";

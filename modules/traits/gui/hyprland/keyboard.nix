@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -20,6 +21,7 @@
           pkgs.wlrctl # for wlrctl keyboard <action>
           pkgs.wtype
         ];
+
         wayland.windowManager.hyprland.settings = {
           device =
             let
@@ -44,14 +46,17 @@
                 name = "apple-inc.-apple-internal-keyboard-/-trackpad-1";
                 kb_model = "applealu_ansi";
               }
+
               {
                 name = "at-translated-set-2-keyboard-1";
                 kb_model = "thinkpad";
               }
+
               {
                 name = "PFU_Limited_HHKB-Classic";
                 kb_model = "hhk";
               }
+
               { name = "keychron-keychron-q8"; }
               { name = "keychron-keychron-q10"; }
               { name = "logitech-k400-plus-2"; }

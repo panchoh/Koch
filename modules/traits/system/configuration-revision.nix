@@ -2,6 +2,7 @@
   self,
   ...
 }:
+
 {
   flake.nixosModules.default = {
     # nixos-version --configuration-revision

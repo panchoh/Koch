@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.os.auto-upgrade;
     in
@@ -21,6 +22,7 @@
           enable = true;
           allowReboot = true;
           flake = "github:panchoh/nixos";
+
           flags = [
             "--update-input"
             "nixpkgs"

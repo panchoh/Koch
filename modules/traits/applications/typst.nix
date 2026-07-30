@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.typst;
     in

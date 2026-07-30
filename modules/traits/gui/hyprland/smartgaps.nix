@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -18,31 +19,37 @@
               gaps_out = 100;
               gaps_in = 50;
             }
+
             {
               workspace = "w[tv1] s[false]";
               gaps_out = 0;
               gaps_in = 0;
             }
+
             {
               workspace = "f[1] s[false]";
               gaps_out = 0;
               gaps_in = 0;
             }
           ];
+
           window_rule = [
             {
               match = {
                 float = false;
                 workspace = "w[tv1] s[false]";
               };
+
               border_size = 0;
               rounding = 0;
             }
+
             {
               match = {
                 float = false;
                 workspace = "f[1] s[false]";
               };
+
               border_size = 0;
               rounding = 0;
             }

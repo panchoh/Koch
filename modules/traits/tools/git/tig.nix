@@ -6,11 +6,11 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.git;
     in
     {
-
       config = lib.mkIf cfg.enable {
         home.packages = [
           pkgs.tig
@@ -21,6 +21,7 @@
           color cursor      black green bold
           color cursor-blur green black dim
         '';
+
         programs = {
           # Otherwise mouse wheel will wreak havoc
           foot.settings.mouse.alternate-scroll-mode = false;

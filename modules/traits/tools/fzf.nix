@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.fzf;
     in
@@ -22,14 +23,18 @@
           enableBashIntegration = !config.programs.television.enable;
           enableFishIntegration = !config.programs.television.enable;
           defaultCommand = "fd --type f";
+
           defaultOptions = [
             "--height 40%"
             "--border"
           ];
+
           fileWidget.command = "fd --type f";
+
           fileWidget.options = [
             "--preview 'head {}'"
           ];
+
           tmux = {
             enableShellIntegration = true;
             shellIntegrationOptions = [ "-d 40%" ];

@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -20,8 +21,10 @@
               style = "popin 80%";
             }
           ];
+
           config = {
             animations.enabled = true;
+
             general = {
               border_size = 2;
               # https://github.com/dracula/draculatheme.com/blob/main/content/spec.mdx
@@ -31,12 +34,14 @@
                 lib.generators.mkLuaInline ''{ colors = { "rgba(ff79c6ee)", "rgba(815cd6ee)" }, angle = 45 }''
               );
             };
+
             decoration = {
               rounding = 5;
               dim_around = 0.66;
               dim_inactive = true;
               dim_strength = 0.15;
             };
+
             misc = {
               # https://wiki.hypr.land/Configuring/Basics/Variables/#misc
               disable_hyprland_logo = true;
@@ -44,6 +49,7 @@
               force_default_wallpaper = 2;
             };
           };
+
           window_rule = [
             {
               # Ignore maximize requests from all apps. You'll probably like this.
@@ -52,9 +58,11 @@
 
               suppress_event = "maximize";
             }
+
             {
               # Fix some dragging issues with XWayland
               name = "fix-xwayland-drags";
+
               match = {
                 class = "^$";
                 title = "^$";
@@ -67,6 +75,7 @@
               no_focus = true;
             }
           ];
+
           bind = [
             {
               _args = [

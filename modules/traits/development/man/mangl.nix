@@ -8,6 +8,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.man;
     in
@@ -21,7 +22,6 @@
       config = lib.mkIf cfg.enable {
 
         home.packages = [
-
           # https://github.com/zigalenarcic/mangl
           pkgs.mangl
 

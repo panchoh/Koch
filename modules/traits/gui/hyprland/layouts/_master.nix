@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -12,6 +13,7 @@
       config = lib.mkIf cfg.enable {
         wayland.windowManager.hyprland.settings = {
           general.layout = "master";
+
           master = {
             mfact = 0.66;
             new_status = "inherit";
@@ -22,6 +24,7 @@
             orientation = "right";
             slave_count_for_center_master = 0;
           };
+
           bind = [
             "SUPER,       Return,       layoutmsg, swapwithmaster master"
             "SUPER,       M,            layoutmsg, focusmaster auto"

@@ -7,6 +7,7 @@
         pkgs,
         ...
       }:
+
       let
         cfg = config.traits.os.git;
       in
@@ -33,6 +34,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.git;
       in
@@ -64,15 +66,18 @@
             git = {
               enable = true;
               package = pkgs.gitFull;
+
               settings = {
                 branch.autoSetupMerge = "inherit";
                 core.pager = "less --+clear-screen --quit-if-one-screen";
                 difftool.prompt = false;
+
                 fetch = {
                   all = true;
                   prune = true;
                   pruneTags = true;
                 };
+
                 gui.pruneDuringFetch = true;
                 github.user = box.githubUser or "aliceq";
                 init.defaultBranch = "master";
@@ -80,17 +85,21 @@
                 merge.conflictStyle = lib.mkDefault "zdiff3"; # mergiraf forcibly sets its to "diff3"
                 pager.difftool = true;
                 pull.ff = "only";
+
                 push = {
                   autoSetupRemote = true;
                   default = "matching";
                   followTags = true;
                 };
+
                 remote.pushDefault = "origin";
+
                 user = {
                   name = box.userDesc or "Alice Q. User";
                   email = box.userEmail or "alice@example.org";
                 };
               };
+
               signing =
                 lib.optionalAttrs (box ? gpgSigningKey) {
                   key = box.gpgSigningKey;

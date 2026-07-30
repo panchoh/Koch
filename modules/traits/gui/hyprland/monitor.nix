@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -16,6 +17,7 @@
           pkgs.vrrtest
           pkgs.wlr-randr
         ];
+
         wayland.windowManager.hyprland.settings = {
           # https://wiki.hypr.land/Configuring/Basics/Monitors/
           monitor = [
@@ -25,6 +27,7 @@
               position = "auto";
               scale = 1;
             }
+
             {
               output = "desc:Dell Inc. DELL U4025QW B1MKH34";
               mode = "highrr";
@@ -35,6 +38,7 @@
               # REVIEW: not enabling VRR since apparently it’s only supported via HDMI
               # vrr = 3;
             }
+
             {
               output = "desc:Dell Inc. DELL U3818DW 5KC0386E05KL";
               mode = "preferred";
@@ -43,6 +47,7 @@
               bitdepth = 10;
               cm = "auto";
             }
+
             {
               output = "desc:XXX Beyond TV 0x00010000";
               mode = "preferred";

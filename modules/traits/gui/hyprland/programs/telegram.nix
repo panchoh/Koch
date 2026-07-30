@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -14,6 +15,7 @@
         home.packages = [
           pkgs.telegram-desktop
         ];
+
         xdg.mimeApps.defaultApplications =
           [
             "x-scheme-handler/tg"
@@ -28,12 +30,14 @@
               on_created_empty = "Telegram";
             }
           ];
+
           window_rule = [
             {
               match.class = "^org\\.telegram\\.desktop$";
               workspace = "special:Telegram silent";
             }
           ];
+
           bind =
             {
               # Select to special:Telegram workspace

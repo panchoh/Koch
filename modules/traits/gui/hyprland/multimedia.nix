@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -20,6 +21,7 @@
               { locked = true; }
             ];
           }
+
           {
             _args = [
               "CONTROL + XF86AudioLowerVolume"
@@ -27,6 +29,7 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "CONTROL + XF86AudioRaiseVolume"
@@ -34,6 +37,7 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "XF86AudioLowerVolume"
@@ -41,6 +45,7 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "XF86AudioRaiseVolume"
@@ -48,6 +53,7 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "SHIFT + XF86AudioLowerVolume"
@@ -55,6 +61,7 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "SHIFT + XF86AudioRaiseVolume"
@@ -62,6 +69,7 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "ALT + XF86AudioLowerVolume"
@@ -69,6 +77,7 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "ALT + XF86AudioRaiseVolume"
@@ -76,12 +85,14 @@
               { repeating = true; }
             ];
           }
+
           {
             _args = [
               "XF86AudioPrev"
               (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("playerctl position 5-")'')
             ];
           }
+
           {
             _args = [
               "XF86AudioPrev"
@@ -89,12 +100,14 @@
               { long_press = true; }
             ];
           }
+
           {
             _args = [
               "XF86AudioPlay"
               (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("playerctl play-pause")'')
             ];
           }
+
           {
             _args = [
               "XF86AudioPlay"
@@ -102,6 +115,7 @@
               { long_press = true; }
             ];
           }
+
           {
             _args = [
               "XF86AudioNext"
@@ -109,6 +123,7 @@
               { long_press = true; }
             ];
           }
+
           {
             _args = [
               "XF86AudioNext"

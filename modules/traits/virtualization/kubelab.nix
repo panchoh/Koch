@@ -2,6 +2,7 @@
   inputs,
   ...
 }:
+
 {
   flake.homeModules.default =
     {
@@ -10,6 +11,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.kubelab;
     in

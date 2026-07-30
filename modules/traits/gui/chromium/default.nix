@@ -8,6 +8,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.chromium;
       in
@@ -30,6 +31,7 @@
             enable = true;
             defaultSearchProviderEnabled = true;
             defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
+
             extraOpts = {
               "AlwaysOpenPdfExternally" = true; # Force Chromium to download PDFs instead of opening them
               "AutofillAddressEnabled" = false;
@@ -75,6 +77,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.chromium;
       in
@@ -92,6 +95,7 @@
           programs.chromium = {
             enable = true;
             package = pkgs.ungoogled-chromium;
+
             commandLineArgs = [
               "--incognito"
               "--ozone-platform=wayland"

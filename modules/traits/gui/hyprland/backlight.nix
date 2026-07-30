@@ -6,6 +6,7 @@
         lib,
         ...
       }:
+
       let
         cfg = config.traits.os.hyprland;
       in
@@ -22,12 +23,14 @@
         pkgs,
         ...
       }:
+
       let
         cfg = config.traits.hm.hyprland;
       in
       {
         config = lib.mkIf cfg.enable {
           home.packages = [ pkgs.brightnessctl ];
+
           wayland.windowManager.hyprland.settings = {
             bind = (
               {

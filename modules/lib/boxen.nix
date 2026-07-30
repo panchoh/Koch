@@ -2,6 +2,7 @@
   inputs,
   ...
 }:
+
 {
   flake.lib.boxen =
     let

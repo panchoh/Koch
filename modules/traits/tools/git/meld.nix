@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.git;
     in

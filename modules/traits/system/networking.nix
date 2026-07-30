@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.networking;
     in
@@ -30,6 +31,7 @@
 
         networking = {
           hostName = box.hostName or "nixos";
+
           hosts = lib.optionalAttrs box.isRestricted or false {
             "0.0.0.0" = [
               "youtu.be"
@@ -40,6 +42,7 @@
               "www.youtubekids.com"
             ];
           };
+
           useDHCP = false;
           enableIPv6 = false;
           wireless.iwd.enable = box.isLaptop or false;
@@ -48,10 +51,13 @@
         services = {
           # TODO: configure to protect caddy
           # reaction.enable = true;
+
           # TODO: add jails
           # fail2ban.enable = true;
+
           resolved = {
             enable = true;
+
             settings.Resolve = {
               DNSSEC = "true";
               LLMNR = "false";
@@ -62,6 +68,7 @@
         systemd.network = {
           enable = true;
           wait-online.anyInterface = box.isLaptop or false;
+
           netdevs = {
             "10-mv0" = {
               netdevConfig = {
@@ -69,14 +76,17 @@
                 Kind = "macvlan";
                 MACAddress = box.macvlanAddr or "de:ad:be:ef:42:01";
               };
+
               macvlanConfig = {
                 Mode = "bridge";
               };
             };
           };
+
           networks = {
             "10-wl" = {
               matchConfig.Name = "wl*";
+
               networkConfig = {
                 DHCP = "ipv4";
                 LinkLocalAddressing = "no";
@@ -84,28 +94,35 @@
                 IgnoreCarrierLoss = "3s";
                 # DefaultRouteOnDevice = true;
               };
+
               linkConfig.RequiredForOnline = "no";
+
               dhcpV4Config = {
                 UseDomains = true;
                 RouteMetric = 600;
               };
             };
+
             "20-en" = {
               matchConfig.Name = "en*";
               macvlan = [ "mv0" ];
+
               networkConfig = {
                 LinkLocalAddressing = "no";
               };
+
               linkConfig.RequiredForOnline = "no";
             };
             "30-mv0" = {
               matchConfig.Name = "mv0";
+
               networkConfig = {
                 DHCP = "ipv4";
                 IPv4Forwarding = true;
                 LinkLocalAddressing = "no";
                 DNSSECNegativeTrustAnchors = "lemd wifi";
               };
+
               dhcpV4Config = {
                 UseDomains = true;
                 RouteMetric = 100;

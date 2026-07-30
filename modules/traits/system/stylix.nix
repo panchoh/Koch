@@ -2,6 +2,7 @@
   inputs,
   ...
 }:
+
 {
   flake.nixosModules.default =
     {
@@ -11,6 +12,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.stylix;
     in
@@ -28,6 +30,7 @@
       config = lib.mkIf cfg.enable {
         fonts = {
           enableDefaultPackages = true;
+
           packages = [
             pkgs.corefonts
             (pkgs.iosevka-bin.override { variant = "Slab"; })

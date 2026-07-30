@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.k8s;
       in
@@ -27,6 +28,7 @@
 
           services.kubernetes = {
             masterAddress = "localhost";
+
             roles = [
               "master"
               "node"
@@ -43,6 +45,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.k8s;
       in
@@ -59,6 +62,7 @@
             pkgs.cri-tools
             pkgs.kubectl
           ];
+
           programs.kubecolor = {
             enable = true;
             enableAlias = true;

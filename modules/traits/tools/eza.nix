@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.eza;
     in
@@ -24,6 +25,7 @@
           enableIonIntegration = false;
           git = true;
           icons = "auto";
+
           extraOptions = [
             "--binary"
             # "--context"

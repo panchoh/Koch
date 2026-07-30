@@ -6,6 +6,7 @@
         lib,
         ...
       }:
+
       let
         cfg = config.traits.os.ssh;
       in
@@ -30,12 +31,14 @@
           services.openssh = {
             enable = true;
             startWhenNeeded = true;
+
             hostKeys = [
               {
                 path = "/etc/ssh/ssh_host_ed25519_key";
                 type = "ed25519";
               }
             ];
+
             settings = {
               PasswordAuthentication = false;
               KbdInteractiveAuthentication = false;
@@ -51,6 +54,7 @@
         pkgs,
         ...
       }:
+
       let
         cfg = config.traits.hm.ssh;
       in
@@ -66,6 +70,7 @@
             enable = true;
             enableDefaultConfig = false;
             package = pkgs.openssh;
+
             settings = {
               "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
                 User = "sysadmin";
@@ -74,6 +79,7 @@
                 UserKnownHostsFile = "/dev/null";
                 StrictHostKeyChecking = "no";
               };
+
               "*.vm" = lib.hm.dag.entryAnywhere {
                 GlobalKnownHostsFile = "/dev/null";
                 UserKnownHostsFile = "/dev/null";
@@ -81,6 +87,7 @@
                 IdentityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
                 ProxyCommand = "nc ( string replace .vm '' %h ) %p";
               };
+
               "*" = {
                 AddKeysToAgent = "yes";
                 ServerAliveInterval = 60;
@@ -89,6 +96,7 @@
                 ControlPersist = "yes";
                 SendEnv = [ "LC_*" ];
                 IdentitiesOnly = true;
+
                 IdentityFile = [
                   # "~/.ssh/keys.d/id_ed25519-%r@%h"
                   "~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h"
@@ -97,6 +105,7 @@
                   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h"
                   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h"
                 ];
+
                 ExitOnForwardFailure = "yes";
                 HostKeyAlgorithms = "ssh-ed25519";
                 VisualHostKey = "yes";

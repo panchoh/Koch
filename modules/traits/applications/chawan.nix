@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.chawan;
     in
@@ -25,6 +26,7 @@
               images = true;
               autofocus = true;
             };
+
             pager."C-k" = "() => pager.load('https://duckduckgo.com/?=')";
           };
         };

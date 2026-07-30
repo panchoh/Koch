@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.boot;
     in
@@ -24,6 +25,7 @@
           loader = {
             efi.canTouchEfiVariables = true;
             timeout = 0;
+
             systemd-boot = {
               enable = true;
               consoleMode = "keep";

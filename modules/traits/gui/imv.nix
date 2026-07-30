@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.imv;
       in
@@ -20,6 +21,7 @@
         config = lib.mkIf cfg.enable {
           programs.imv = {
             enable = true;
+
             settings = {
               binds."<Shift+Delete>" = ''
                 exec rm "$imv_current_file"; close

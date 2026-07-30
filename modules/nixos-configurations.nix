@@ -3,6 +3,7 @@
   self,
   ...
 }:
+
 {
   flake.nixosConfigurations =
     let

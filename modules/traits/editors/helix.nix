@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.helix;
     in
@@ -20,6 +21,7 @@
       config = lib.mkIf cfg.enable {
         programs.helix = {
           enable = true;
+
           settings = {
             editor.cursor-shape = {
               normal = "block";
@@ -27,18 +29,21 @@
               select = "underline";
             };
           };
+
           languages.language = [
             {
               name = "nix";
               auto-format = true;
               formatter.command = lib.getExe pkgs.nixfmt;
             }
+
             {
               name = "go";
               auto-format = true;
               formatter.command = lib.getExe pkgs.gofumpt;
             }
           ];
+
           settings = {
             editor = {
               line-number = "relative";

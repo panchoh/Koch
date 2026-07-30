@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.interception-tools;
     in
@@ -55,9 +56,11 @@
 
         services.interception-tools = {
           enable = true;
+
           plugins = [
             pkgs.interception-tools-plugins.dual-function-keys
           ];
+
           udevmonConfig = ''
             - JOB: >-
                 ${lib.getExe' pkgs.interception-tools "intercept"} -g $DEVNODE

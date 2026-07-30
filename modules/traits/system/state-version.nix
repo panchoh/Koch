@@ -5,6 +5,7 @@
         box ? null,
         ...
       }:
+
       {
         system.stateVersion = box.stateVersion;
       };
@@ -14,6 +15,7 @@
         box ? null,
         ...
       }:
+
       {
         home.stateVersion = box.stateVersion;
       };

@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.media-drive;
     in
@@ -20,6 +21,7 @@
         fileSystems."/srv/media" = {
           device = "/dev/disk/by-label/media";
           fsType = "btrfs";
+
           options = [
             "nofail"
             "noexec"

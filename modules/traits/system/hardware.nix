@@ -8,6 +8,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.hardware;
     in
@@ -34,8 +35,10 @@
               "nvme"
               "sd_mod"
             ];
+
             kernelModules = [ ];
           };
+
           kernelModules = [ "kvm-intel" ];
           extraModulePackages = [ ];
         };
@@ -44,7 +47,6 @@
 
         hardware = {
           cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
           intel-gpu-tools.enable = true;
 
           graphics = {

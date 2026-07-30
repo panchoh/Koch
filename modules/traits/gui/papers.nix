@@ -8,6 +8,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.papers;
       in
@@ -19,10 +20,11 @@
         };
 
         config = lib.mkIf cfg.enable {
+          home.packages = [
+            pkgs.papers
+          ];
 
           xdg.mimeApps.defaultApplications."application/pdf" = "org.gnome.Papers.desktop";
-
-          home.packages = [ pkgs.papers ];
         };
       };
   };

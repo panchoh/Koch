@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.man;
       in
@@ -21,6 +22,7 @@
           documentation = {
             dev.enable = true;
             info.enable = true;
+
             man = {
               enable = true;
               man-db.enable = false;
@@ -40,6 +42,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.man;
       in
@@ -59,6 +62,7 @@
             sessionVariables = lib.mkIf nixosConfig.documentation.man.man-db.enable {
               MANROFFOPT = "-P-i";
             };
+
             packages = [
               pkgs.man-pages
               pkgs.man-pages-posix
@@ -66,7 +70,6 @@
             ++ lib.optionals nixosConfig.documentation.man.man-db.enable [
               pkgs.groff
             ];
-
           };
 
           programs.man = {

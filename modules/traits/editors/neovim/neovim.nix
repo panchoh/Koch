@@ -2,6 +2,7 @@
   inputs,
   ...
 }:
+
 {
   flake = {
     nixosModules.default =
@@ -12,6 +13,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.neovim;
       in
@@ -25,6 +27,7 @@
         config = lib.mkIf cfg.enable {
           programs = {
             nano.enable = false;
+
             neovim = {
               enable = true;
               viAlias = true;
@@ -53,6 +56,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.neovim;
       in
@@ -105,6 +109,7 @@
 
                   filetree.neo-tree = {
                     enable = true;
+
                     setupOpts = {
                       enable_cursor_hijack = true;
                       follow_current_file.enabled = true;
@@ -125,48 +130,56 @@
                       key = "<Space>";
                       mode = "n";
                     }
+
                     {
                       action = "<Cmd>nohlsearch<Enter>";
                       desc = "Clear search results";
                       key = "<Esc>";
                       mode = "n";
                     }
+
                     {
                       action = "<Cmd>Pick help<Enter>";
                       desc = "Search help";
                       key = "<Leader>hh";
                       mode = "n";
                     }
+
                     {
                       action = "<Cmd>Pick files<Enter>";
                       desc = "Search files";
                       key = "<Leader><Leader>";
                       mode = "n";
                     }
+
                     {
                       action = "<Cmd>Pick grep_live<Enter>";
                       desc = "Search file contents";
                       key = "<Leader>/";
                       mode = "n";
                     }
+
                     {
                       action = "<Cmd>Pick buffers<Enter>";
                       desc = "Select buffers";
                       key = "<Leader>bb";
                       mode = "n";
                     }
+
                     {
                       action = "<Cmd>Pick resume<Enter>";
                       desc = "Resume last picker";
                       key = "<Leader>'";
                       mode = "n";
                     }
+
                     {
                       action = "<Cmd>Neotree<Enter>";
                       desc = "Neo-tree";
                       key = "<Leader>op";
                       mode = "n";
                     }
+
                     {
                       action = "vim.lsp.buf.rename";
                       desc = "LSP rename";
@@ -181,11 +194,13 @@
                     enableTreesitter = true;
                     bash.enable = true;
                     clang.enable = true;
+
                     go = {
                       enable = true;
                       dap.enable = true;
                       format.type = [ "gofumpt" ];
                     };
+
                     lua.enable = true;
                     nix.enable = true;
                     typst.enable = true;

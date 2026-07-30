@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.sound;
       in
@@ -31,6 +32,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.sound;
       in

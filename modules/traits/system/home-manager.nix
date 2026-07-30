@@ -3,6 +3,7 @@
   inputs,
   ...
 }:
+
 {
   imports = [
     inputs.home-manager.flakeModules.home-manager
@@ -15,6 +16,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.home-manager;
     in
@@ -44,6 +46,7 @@
           verbose = true;
           useGlobalPkgs = true;
           useUserPackages = true;
+
           users.${box.userName or "alice"}.imports = [
             self.homeModules.default
           ]

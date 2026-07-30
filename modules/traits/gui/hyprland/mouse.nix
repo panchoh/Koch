@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -16,6 +17,7 @@
           pkgs.wev # for wev -f wl_pointer
           pkgs.wlrctl # for wlrctl pointer click left
         ];
+
         wayland.windowManager.hyprland.settings = {
           config = {
             cursor = {
@@ -25,10 +27,12 @@
               warp_on_change_workspace = 1;
               warp_on_toggle_special = 1;
             };
+
             general = {
               resize_on_border = true;
               hover_icon_on_border = true;
             };
+
             input = {
               follow_mouse = 1;
               sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
@@ -37,11 +41,13 @@
                 disable_while_typing = true;
               };
             };
+
             binds = {
               drag_threshold = 10; # Fire a drag event only after dragging for more than 10 px
               workspace_center_on = 1; # Center cursor on last active window for the workspace
             };
           };
+
           bind = [
             {
               _args = [
@@ -50,6 +56,7 @@
                 (lib.generators.mkLuaInline ''hl.dsp.send_shortcut({ mods = "", key = "mouse:274", window = "activewindow" })'')
               ];
             }
+
             {
               _args = [
                 "SUPER + mouse:272"
@@ -61,6 +68,7 @@
                 }
               ];
             }
+
             {
               _args = [
                 "SUPER + mouse:272"
@@ -69,6 +77,7 @@
                 { mouse = true; }
               ];
             }
+
             {
               _args = [
                 "SUPER + mouse:273"

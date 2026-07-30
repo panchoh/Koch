@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.yt-dlp;
     in
@@ -21,6 +22,7 @@
           aria2.enable = true;
           yt-dlp = {
             enable = true;
+
             settings = {
               embed-metadata = true;
               embed-thumbnail = true;

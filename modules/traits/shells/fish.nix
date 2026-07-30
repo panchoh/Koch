@@ -8,6 +8,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.fish;
       in
@@ -20,6 +21,7 @@
 
         config = lib.mkIf cfg.enable {
           users.defaultUserShell = pkgs.fish;
+
           programs.fish = {
             enable = true;
             useBabelfish = true; # https://github.com/bouk/babelfish
@@ -37,6 +39,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.fish;
       in
@@ -52,13 +55,16 @@
             fish = {
               enable = true;
               preferAbbrs = true;
+
               shellAbbrs = {
                 "..." = "../..";
               };
+
               shellAliases = {
                 e = "$EDITOR --no-wait";
               };
             };
+
             starship = {
               enableInteractive = true;
               enableTransience = true;

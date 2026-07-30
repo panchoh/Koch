@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.qmk;
       in
@@ -30,6 +31,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.qmk;
       in

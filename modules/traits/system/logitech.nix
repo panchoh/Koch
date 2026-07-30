@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.logitech;
     in
@@ -18,11 +19,9 @@
       };
 
       config = lib.mkIf cfg.enable {
-        hardware = {
-          logitech.wireless = {
-            enable = true;
-            enableGraphical = true;
-          };
+        hardware.logitech.wireless = {
+          enable = true;
+          enableGraphical = true;
         };
       };
     };

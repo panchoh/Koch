@@ -8,6 +8,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.yubikey;
       in
@@ -32,6 +33,7 @@
                 enable = true;
                 settings.cue = true;
               };
+
               services = {
                 login.u2fAuth = true;
                 run0.u2fAuth = true;
@@ -49,6 +51,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.yubikey;
       in

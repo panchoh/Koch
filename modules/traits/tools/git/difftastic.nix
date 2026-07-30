@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.git;
     in
@@ -13,10 +14,12 @@
         programs = {
           difftastic = {
             enable = true;
+
             git = {
               enable = true;
               mode = "both";
             };
+
             options = {
               color = "always";
               display = "side-by-side-show-both";

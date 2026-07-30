@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.os.hyprland;
     in
@@ -22,12 +23,14 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
         services.gpg-agent.pinentry.package = lib.mkDefault pkgs.pinentry-gnome3;
+
         wayland.windowManager.hyprland.settings.window_rule = [
           {
             match.class = "^gcr-prompter$";

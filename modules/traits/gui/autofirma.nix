@@ -2,6 +2,7 @@
   inputs,
   ...
 }:
+
 {
   flake = {
     homeModules.default =
@@ -11,6 +12,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.autofirma;
       in
@@ -29,6 +31,7 @@
           programs = {
             autofirma = {
               enable = true;
+
               config = {
                 omitAskOnClose = true;
                 hideDnieStartScreen = true;
@@ -48,6 +51,7 @@
                 # defaultKeystore = "NSS";
                 # defaultKeystore = "JKS";
               };
+
               firefoxIntegration.profiles.default.enable = config.traits.hm.firefox.enable;
             };
 

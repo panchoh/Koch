@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.zed;
     in
@@ -19,9 +20,11 @@
       config = lib.mkIf cfg.enable {
         programs.zed-editor = {
           enable = true;
+
           extensions = [
             "nix"
           ];
+
           # mutableUserDebug = false;
           mutableUserKeymaps = false;
           mutableUserSettings = false;
@@ -92,14 +95,17 @@
             always_treat_brackets_as_autoclosed = true;
             # base_keymap = "Emacs";
             disable_ai = true;
+
             features = {
               copilot = false;
             };
+
             telemetry = {
               anthropic_retention = false;
               diagnostics = false;
               metrics = false;
             };
+
             vim_mode = true;
             ui_font_size = lib.mkForce 16;
             buffer_font_size = lib.mkForce 16;

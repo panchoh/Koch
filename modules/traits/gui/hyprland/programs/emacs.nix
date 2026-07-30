@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -22,6 +23,7 @@
               on_created_empty = "doom-emacs";
             }
           ];
+
           window_rule = [
             {
               # https://github.com/hyprwm/Hyprland/issues/3073
@@ -30,6 +32,7 @@
               focus_on_activate = true;
             }
           ];
+
           bind =
             {
               "SUPER + D" = "doom-emacs";

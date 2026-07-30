@@ -6,6 +6,7 @@
       nixosConfig,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
       size = toString (nixosConfig.stylix.fonts.sizes.desktop + 2);
@@ -14,6 +15,7 @@
       config = lib.mkIf cfg.enable {
         programs.fuzzel = {
           enable = true;
+
           settings = {
             main = {
               font = lib.mkForce "Iosevka Extended:size=${size}";
@@ -22,6 +24,7 @@
             };
           };
         };
+
         wayland.windowManager.hyprland.settings = {
           layer_rule = [
             {
@@ -30,6 +33,7 @@
               dim_around = true;
             }
           ];
+
           bind = [
             # {
             #   _args = [

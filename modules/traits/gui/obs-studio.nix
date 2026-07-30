@@ -8,6 +8,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.obs-studio;
       in

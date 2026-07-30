@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.epb;
       policy = if box.isLaptop or false then "--turbo-enable 0 power" else "performance";
@@ -27,6 +28,7 @@
           enable = true;
           description = "Run x86_energy_perf_policy at boot";
           wantedBy = [ "multi-user.target" ];
+
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;

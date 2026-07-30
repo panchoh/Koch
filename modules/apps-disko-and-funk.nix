@@ -4,6 +4,7 @@
   inputs,
   ...
 }:
+
 {
   flake.apps =
     let
@@ -21,17 +22,20 @@
         {
           type = "app";
           meta.description = "Fresh install of NixOS.";
+
           program = toString (
             lib.getExe (
               pkgs.writeShellApplication {
                 name = "setup";
                 meta.mainProgram = "setup";
+
                 runtimeInputs = [
                   pkgs.efibootmgr
                   pkgs.coreutils # for tee, chown, ln, mkdir and printf
                   pkgs.util-linux # for blkdiscard
                   pkgs.git
                 ];
+
                 # bashOptions = ["errexit" "nounset" "pipefail" "xtrace"];
                 # bashOptions = ["errexit" "nounset" "pipefail" "verbose"];
                 text = ''

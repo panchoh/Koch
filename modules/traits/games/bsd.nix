@@ -7,20 +7,18 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.games.bsd;
     in
     {
       options.traits.hm.games.bsd = {
-
         enable = lib.mkEnableOption "BSD Games" // {
           default = box.isStation or false;
         };
-
       };
 
       config = lib.mkIf cfg.enable {
-
         programs.fish.interactiveShellInit = ''
           if not test -f ~/.silent
               echo
@@ -46,9 +44,6 @@
             '';
           })
         ];
-
       };
-
     };
-
 }

@@ -2,6 +2,7 @@
   inputs,
   ...
 }:
+
 {
   flake.nixosModules.default =
     {
@@ -9,6 +10,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.os.nix;
     in
@@ -34,6 +36,7 @@
             use-xdg-base-directories = true;
             keep-outputs = true;
             show-trace = true;
+
             experimental-features = [
               "nix-command"
               "flakes"

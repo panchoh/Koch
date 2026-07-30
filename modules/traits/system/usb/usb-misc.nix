@@ -6,6 +6,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.os.usb-misc;
     in
@@ -21,6 +22,7 @@
           (pkgs.writeTextFile rec {
             name = "98-usb-misc.rules";
             destination = "/etc/udev/rules.d/${name}";
+
             text = ''
               # Sandisk Extreme Pro
               ACTION=="add|change",                \

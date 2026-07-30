@@ -3,12 +3,14 @@
   inputs,
   ...
 }:
+
 {
   flake.nixosModules.default =
     {
       box ? null,
       ...
     }:
+
     {
       imports = [
         inputs.disko.nixosModules.disko

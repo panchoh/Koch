@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.texlive;
     in
@@ -32,6 +33,7 @@
         # REVIEW: Disabling until this can be reworked on Home Manager
         programs.texlive = {
           enable = false;
+
           extraPackages = tpkgs: {
             inherit (tpkgs) scheme-full;
           };

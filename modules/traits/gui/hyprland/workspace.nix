@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -14,7 +15,6 @@
           # https://wiki.hypr.land/Configuring/Basics/Variables/#binds
           # https://github.com/hyprwm/Hyprland/pull/352/files
           config = {
-
             # https://wiki.hypr.land/Configuring/Basics/Variables/#animations
             animations.workspace_wraparound = true;
 
@@ -23,8 +23,8 @@
               hide_special_on_workspace_change = true;
               workspace_back_and_forth = false;
             };
-
           };
+
           bind =
             (
               {

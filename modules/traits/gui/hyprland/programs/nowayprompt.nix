@@ -2,6 +2,7 @@
   inputs,
   ...
 }:
+
 {
   flake.homeModules.default =
     {
@@ -10,6 +11,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -20,7 +22,9 @@
           package = inputs.nowayprompt.packages.${pkgs.stdenv.hostPlatform.system}.nowayprompt;
           settings.general.pin-square-amount = 32;
         };
+
         services.gpg-agent.pinentry.package = config.programs.wayprompt.package;
+
         wayland.windowManager.hyprland.settings.layer_rule = [
           {
             match.namespace = "^nowayprompt$";

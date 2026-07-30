@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -15,19 +16,23 @@
           # For notify-send, used by programs.foot.settings.desktop-notifications.command’s default value
           pkgs.libnotify
         ];
+
         programs.foot = {
           enable = true;
           server.enable = true;
+
           settings = {
             bell = {
               urgent = true;
               notify = true;
               visual = true;
             };
+
             main.pad = "0x0";
             mouse.hide-when-typing = true;
           };
         };
+
         wayland.windowManager.hyprland.settings = {
           animation = [
             {
@@ -38,12 +43,14 @@
               style = "slidefadevert 20%";
             }
           ];
+
           workspace_rule = [
             {
               workspace = "special:Foot";
               on_created_empty = "foot";
             }
           ];
+
           bind = [
             {
               _args = [

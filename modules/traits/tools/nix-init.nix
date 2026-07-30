@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.nix-init;
     in
@@ -19,11 +20,10 @@
       config = lib.mkIf cfg.enable {
         programs.nix-init = {
           enable = true;
+
           settings = {
             commit = true;
-            maintainers = [
-              box.githubUser
-            ];
+            maintainers = [ box.githubUser ];
           };
         };
       };

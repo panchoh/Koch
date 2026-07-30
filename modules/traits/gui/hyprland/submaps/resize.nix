@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -20,6 +21,7 @@
               ];
             }
           ];
+
           submaps.resize.settings.bind =
             (
               {
@@ -27,62 +29,77 @@
                   x = 1;
                   y = 0;
                 };
+
                 "CONTROL+ H" = {
                   x = -1;
                   y = 0;
                 };
+
                 "CONTROL+ K" = {
                   x = 0;
                   y = -1;
                 };
+
                 "CONTROL+ J" = {
                   x = 0;
                   y = 1;
                 };
+
                 "L" = {
                   x = 32;
                   y = 0;
                 };
+
                 "H" = {
                   x = -32;
                   y = 0;
                 };
+
                 "K" = {
                   x = 0;
                   y = -32;
                 };
+
                 "J" = {
                   x = 0;
                   y = 32;
                 };
+
                 "SHIFT + L" = {
                   x = 128;
                   y = 0;
                 };
+
                 "SHIFT + H" = {
                   x = -128;
                   y = 0;
                 };
+
                 "SHIFT + K" = {
                   x = 0;
                   y = -128;
                 };
+
                 "SHIFT + J" = {
                   x = 0;
                   y = 128;
                 };
+
                 "ALT + L" = {
                   x = 512;
                   y = 0;
                 };
+
                 "ALT + H" = {
                   x = -512;
                   y = 0;
                 };
+
                 "ALT + K" = {
                   x = 0;
                   y = -512;
                 };
+
                 "ALT + J" = {
                   x = 0;
                   y = 512;

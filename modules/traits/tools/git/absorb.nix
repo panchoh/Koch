@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.git;
     in
@@ -14,6 +15,7 @@
         home.packages = [
           pkgs.git-absorb
         ];
+
         programs.git.settings.absorb = {
           maxStack = 50;
           oneFixupPerCommit = true;

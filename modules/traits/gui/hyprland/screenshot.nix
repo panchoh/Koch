@@ -6,6 +6,7 @@
       pkgs,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -23,19 +24,24 @@
           # REVIEW
           # pkgs.wl-clipboard-rs
         ];
+
         programs.satty = {
           enable = true;
+
           settings.general = {
             floating-hack = true;
             default-hide-toolbars = true;
             focus-toggles-toolbars = true;
+
             actions-on-enter = [
               "save-to-file"
               "exit"
             ];
+
             output-filename = "${config.xdg.userDirs.extraConfig.SCREENSHOTS}/test-%Y-%m-%d_%H:%M:%S.png";
           };
         };
+
         wayland.windowManager.hyprland.settings.bind =
           {
             "Print" = "active";

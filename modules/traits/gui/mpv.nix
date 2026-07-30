@@ -8,6 +8,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.mpv;
       in
@@ -25,9 +26,11 @@
             # for Emacs’ org-pomodoro
             (pkgs.writeShellApplication {
               name = "mpv-via-hdmi";
+
               runtimeInputs = [
                 config.programs.mpv.package
               ];
+
               text = ''
                 #echo "$@" >> /tmp/mpv-via-hdmi.log
                 exec mpv --audio-device=alsa/hdmi:CARD=PCH,DEV=0 "$@"
@@ -56,14 +59,17 @@
             mpv = {
               enable = true;
               scripts = [ pkgs.mpvScripts.mpris ];
+
               bindings = {
                 ENTER = "playlist-next force";
                 WHEEL_UP = "seek 10";
                 WHEEL_DOWN = "seek -10";
                 "Alt+0" = "set window-scale 0.5";
               };
+
               # https://github.com/mpv-player/mpv/issues/12082#issuecomment-1666545541
               defaultProfiles = [ (if !box.hasBeefyGPU or false then "fast" else "gpu-hq") ];
+
               config = {
                 fullscreen = true;
                 sub-auto = "fuzzy";
@@ -90,31 +96,38 @@
                 # requires vo = "gpu-next"
                 # target-colorspace-hint-mode = "source"; # after mpv 0.40.0
               };
+
               profiles = {
                 alsa-mm1 = {
                   profile-desc = "Sound via alsa interface: MM-1";
                   audio-device = "alsa/iec958:CARD=MM1,DEV=0";
                 };
+
                 alsa-x = {
                   profile-desc = "Sound via alsa interface: X";
                   audio-device = "alsa/iec958:CARD=X,DEV=0";
                 };
+
                 alsa-hdmi = {
                   profile-desc = "Sound via alsa interface: HDMI";
                   audio-device = "alsa/hdmi:CARD=PCH,DEV=0";
                 };
+
                 "extension.mkv" = {
                   keep-open = true;
                   volume-max = "150";
                 };
+
                 "extension.mp4" = {
                   keep-open = true;
                   volume-max = "150";
                 };
+
                 "extension.gif" = {
                   osc = "no";
                   loop-file = true;
                 };
+
                 "protocol.dvd" = {
                   profile-desc = "profile for dvd:// streams";
                   alang = "en";

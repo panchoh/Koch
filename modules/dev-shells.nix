@@ -4,6 +4,7 @@
       pkgs,
       ...
     }:
+
     {
       devShells.default = pkgs.mkShellNoCC {
         name = "Koch";

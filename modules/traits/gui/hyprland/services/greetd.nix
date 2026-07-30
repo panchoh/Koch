@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.hyprland;
     in
@@ -13,9 +14,11 @@
       config = lib.mkIf cfg.enable {
         systemd.services.greetd.unitConfig.Conflicts = [ "kmsconvt@tty1.service" ];
         systemd.services."kmsconvt@tty1".enable = false;
+
         services.greetd = {
           enable = true;
           restart = true;
+
           settings.default_session = {
             command = "${lib.getExe' config.programs.hyprland.package "start-hyprland"} &>~/.Wsession.errors";
             user = box.userName or "alice";

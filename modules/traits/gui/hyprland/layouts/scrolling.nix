@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -16,6 +17,7 @@
             config = {
               # https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/
               general.layout = "scrolling";
+
               scrolling = {
                 focus_fit_method = 1;
                 follow_focus = false;

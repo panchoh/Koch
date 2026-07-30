@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.google-chrome;
       in
@@ -28,6 +29,7 @@
             # negligible amount of space, so it's reasonable to have this always on.
             # https://chromeenterprise.google/policies/
             enable = true;
+
             extraOpts = {
               "AlwaysOpenPdfExternally" = true; # Force Google Chrome to download PDFs instead of opening them
               "AutofillAddressEnabled" = false;
@@ -63,6 +65,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.hm.google-chrome;
       in

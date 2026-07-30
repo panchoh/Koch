@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -12,6 +13,7 @@
       config = lib.mkIf cfg.enable {
         services.mako = {
           enable = true;
+
           settings = {
             border-radius = 5;
             "mode=do-not-disturb" = {
@@ -21,6 +23,7 @@
             };
           };
         };
+
         # Test notifications with:
         # notify-send -u critical -a Grendizer -- 'UFO in sight!' 'Control Tower at the Research Institute has detected unusual activity in the vecinity of Tokyo'
         wayland.windowManager.hyprland.settings = {
@@ -31,6 +34,7 @@
               dim_around = false;
             }
           ];
+
           bind =
             {
               # Switch to urgent or previous workspace

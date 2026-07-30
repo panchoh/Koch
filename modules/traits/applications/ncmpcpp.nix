@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.ncmpcpp;
     in
@@ -19,19 +20,23 @@
       config = lib.mkIf cfg.enable {
         programs.ncmpcpp = {
           enable = true;
+
           bindings = [
             {
               key = "h";
               command = "jump_to_parent_directory";
             }
+
             {
               key = "j";
               command = "scroll_down";
             }
+
             {
               key = "k";
               command = "scroll_up";
             }
+
             {
               key = "l";
               command = "enter_directory";

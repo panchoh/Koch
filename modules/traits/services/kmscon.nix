@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.os.kmscon;
     in
@@ -19,8 +20,10 @@
       config = lib.mkIf cfg.enable {
         services = {
           getty.autologinUser = box.userName or "alice";
+
           kmscon = {
             enable = true;
+
             config = {
               hwaccel = true;
               dpms-timeout = 300;

@@ -7,6 +7,7 @@
         box ? null,
         ...
       }:
+
       let
         cfg = config.traits.os.mpd;
       in
@@ -21,8 +22,10 @@
           services.mpd = {
             enable = true;
             startWhenNeeded = true;
+
             settings = {
               music_directory = "/srv/media/audio";
+
               audio_output = [
                 {
                   type = "alsa";
@@ -60,10 +63,12 @@
         config = lib.mkIf cfg.enable {
           services = {
             mpd-mpris.enable = true;
+
             mpd = {
               enable = true;
               musicDirectory = if (!box.hasMedia or false) then config.xdg.userDirs.music else "/srv/media/audio";
               network.startWhenNeeded = true;
+
               extraConfig = ''
                 audio_output {
                         type            "pipewire"

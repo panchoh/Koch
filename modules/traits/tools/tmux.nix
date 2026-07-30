@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.tmux;
     in
@@ -24,6 +25,7 @@
           terminal = "tmux-256color";
           sensibleOnTop = false;
           escapeTime = 0;
+
           extraConfig = ''
             set -g focus-events on
             set -g status-interval 5

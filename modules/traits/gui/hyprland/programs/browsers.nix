@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -20,6 +21,7 @@
               stay_focused = true;
             }
           ];
+
           bind =
             {
               "SUPER + slash" = "chromium";

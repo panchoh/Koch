@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -25,6 +26,7 @@
                 '')
               ];
             };
+
             bind =
               {
                 # TODO: replace bare exit() call with hyprshutdown

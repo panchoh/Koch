@@ -7,6 +7,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.mdb;
     in
@@ -26,9 +27,11 @@
           packages = [
             (pkgs.writeShellApplication {
               name = "m";
+
               runtimeInputs = [
                 pkgs.ripgrep
               ];
+
               text = ''
                 cd "$MDB_DIR"
                 rg -S "$1" .
@@ -37,11 +40,13 @@
 
             (pkgs.writeShellApplication {
               name = "mindex";
+
               runtimeInputs = [
                 pkgs.coreutils
                 pkgs.findutils
                 pkgs.util-linux
               ];
+
               text = ''
                 for dir in /media/*
                 do
@@ -55,10 +60,12 @@
 
             (pkgs.writeShellApplication {
               name = "normalize";
+
               runtimeInputs = [
                 pkgs.coreutils
                 pkgs.findutils
               ];
+
               text = ''
                 chown --recursive ${config.home.username}:users .
                 find . -type d -exec chmod 2755 {} +

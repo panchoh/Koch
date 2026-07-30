@@ -6,6 +6,7 @@
       box ? null,
       ...
     }:
+
     let
       cfg = config.traits.hm.atuin;
     in
@@ -20,6 +21,7 @@
         programs.atuin = {
           enable = true;
           flags = [ "--disable-up-arrow" ];
+
           settings = {
             auto_sync = false;
             common_prefix = [ "run0" ];

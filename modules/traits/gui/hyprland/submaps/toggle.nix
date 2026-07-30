@@ -5,6 +5,7 @@
       lib,
       ...
     }:
+
     let
       cfg = config.traits.hm.hyprland;
     in
@@ -16,6 +17,7 @@
         in
         lib.mkIf cfg.enable {
           wayland.windowManager.hyprland = {
+
             settings.bind = [
               {
                 _args = [
@@ -24,6 +26,7 @@
                 ];
               }
             ];
+
             submaps.clean.settings.bind = [
               {
                 _args = [
