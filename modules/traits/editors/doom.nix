@@ -25,7 +25,9 @@
         config = lib.mkIf cfg.enable {
           nixpkgs = {
             config.joypixels.acceptLicense = true;
-            overlays = [ inputs.emacs-overlay.overlays.default ];
+
+            # REVIEW: revert commit "chore(flake): drop emacs-overlay" to reenable
+            # overlays = [ inputs.emacs-overlay.overlays.default ];
           };
         };
       };

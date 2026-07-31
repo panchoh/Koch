@@ -33,13 +33,9 @@
     autofirma-nix.inputs.flake-parts.follows = "flake-parts";
     autofirma-nix.inputs.home-manager.follows = "home-manager";
     autofirma-nix.inputs.nix-unit.inputs.nixpkgs.follows = "nixpkgs";
-    emacs-overlay.url = "emacs-overlay";
-    emacs-overlay.inputs.nixpkgs.follows = "";
-    emacs-overlay.inputs.nixpkgs-stable.follows = "";
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
     nix-doom-emacs-unstraightened.inputs.systems.follows = "systems";
-    nix-doom-emacs-unstraightened.inputs.emacs-overlay.follows = "emacs-overlay";
     nix-doom-emacs-unstraightened.inputs.doomdir.url = "github:panchoh/doom";
     nowayprompt.url = "github:nilp0inter/nowayprompt";
     nowayprompt.inputs.flake-parts.follows = "flake-parts";
