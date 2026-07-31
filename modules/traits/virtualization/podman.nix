@@ -28,6 +28,9 @@
           pkgs.podman-desktop
         ];
 
+        # https://wiki.nixos.org/wiki/Podman
+        users.users.${box.userName or "alice"}.extraGroups = [ "podman" ];
+
         virtualisation = {
           podman = {
             enable = true;
