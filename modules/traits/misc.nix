@@ -54,6 +54,7 @@
           pkgs.yq-go
           pkgs.hwloc
           pkgs.b3sum
+          pkgs.lzop
           pkgs.unzip
           pkgs.zip
         ]
