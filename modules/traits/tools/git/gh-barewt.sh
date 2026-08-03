@@ -2,7 +2,7 @@
 # https://stackoverflow.com/questions/54367011/git-bare-repositories-worktrees-and-tracking-branches
 # https://medium.com/@miladpw/git-worktrees-with-bare-repos-a-clean-setup-for-modern-development-c5b251ee7b73
 
-prog="${0##*/}"
+prog=${0##*/}
 ext=${prog#gh-}
 
 _msg() {
