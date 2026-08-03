@@ -23,6 +23,8 @@
           settings = {
             onboarding = false;
 
+            remote.manage_ssh_config = false;
+
             # REVIEW: if herdr becomes supported by stylix
             theme.name = "dracula";
 
