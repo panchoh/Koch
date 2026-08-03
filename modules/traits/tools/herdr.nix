@@ -22,10 +22,14 @@
 
           settings = {
             onboarding = false;
-            version_check = false;
-            manifest_check = false;
+
             # REVIEW: if herdr becomes supported by stylix
             theme.name = "dracula";
+
+            update = {
+              version_check = false;
+              manifest_check = false;
+            };
           };
         };
       };
