@@ -46,6 +46,7 @@
           home.packages = [
             pkgs.qmk
             pkgs.qmk_hid
+            pkgs.dos2unix # used by qmk setup
             pkgs.keymapviz
             pkgs.clang-tools
             pkgs.dfu-programmer
