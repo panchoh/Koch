@@ -124,6 +124,8 @@
               gP = "git pull";
               gp = "git push";
               gpf = "git push --force-with-lease";
+              gr = "git remote --verbose show";
+              grn = "git remote --verbose show -n";
             };
           };
         };
