@@ -190,6 +190,7 @@
                   ];
 
                   languages = {
+                    awk.enable = true;
                     enableFormat = true;
                     enableTreesitter = true;
                     bash.enable = true;
