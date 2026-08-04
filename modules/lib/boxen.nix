@@ -17,6 +17,7 @@
         isRestricted = false;
         hasBeefyGPU = false;
         hasWideDisplay = false;
+        hasCamera = false;
         diskDevice = "/dev/nvme0n1";
         hasMedia = false;
         userName = "pancho";
@@ -59,6 +60,7 @@
         isLaptop = true;
         isStation = true;
         hasWideDisplay = true;
+        hasCamera = true;
         extraModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
       }
 
