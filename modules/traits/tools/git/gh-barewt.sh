@@ -34,11 +34,11 @@ show_help() {
 
 		Git bare + worktrees setup:
 
-		<PROJECTS>/<org>/<repo>/.git             <- bare, cloned from origin, additional remote: upstream
-		                       /master           <- default branch, track upstream, push to origin
-		                       /{foo,bar,…}  \\
-		                       /feat/{a,b,…}  | <- one worktree per branch at origin
-		                       /fix/{a,b,…}  /
+		<PROJECTS>/<org>/<repo>/.git              <- bare, cloned from origin, additional remote: upstream
+		                       /master            <- default branch, track upstream, push to origin
+		                       /{foo,bar,…}   ⎫
+		                       /feat/{a,b,…}  ⎬  <- one worktree per branch at origin
+		                       /fix/{a,b,…}   ⎭
 
 		Flags:
 		   -h, --help        Show this help message
