@@ -15,9 +15,11 @@
         isLaptop = false;
         isStation = false;
         isRestricted = false;
+        hasCamera = false;
         hasBeefyGPU = false;
         hasWideDisplay = false;
-        hasCamera = false;
+        hasExternalMonitor = false;
+        externalMonitorID = "DP-2";
         diskDevice = "/dev/nvme0n1";
         hasMedia = false;
         userName = "pancho";
@@ -59,8 +61,9 @@
         macvlanAddr = "00:2b:67:11:27:06";
         isLaptop = true;
         isStation = true;
-        hasWideDisplay = true;
         hasCamera = true;
+        hasWideDisplay = true;
+        hasExternalMonitor = true;
         extraModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
       }
 

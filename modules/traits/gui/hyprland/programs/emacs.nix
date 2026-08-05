@@ -3,6 +3,7 @@
     {
       config,
       lib,
+      box ? null,
       ...
     }:
 
@@ -17,7 +18,7 @@
           workspace_rule = [
             {
               workspace = 1;
-              monitor = "DP-1";
+              monitor = if box.hasExternalMonitor then box.externalMonitorID else "DP-1";
               default = true;
               default_name = "Doom";
               on_created_empty = ''
