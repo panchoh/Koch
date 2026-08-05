@@ -20,7 +20,9 @@
               monitor = "DP-1";
               default = true;
               default_name = "Doom";
-              on_created_empty = "doom-emacs";
+              on_created_empty = ''
+                hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs
+              '';
             }
           ];
 
