@@ -18,12 +18,14 @@
           workspace_rule = [
             {
               workspace = 1;
-              monitor = if box.hasExternalMonitor then box.externalMonitorID else "DP-1";
+              monitor = if box.hasExternalMonitor or false then box.externalMonitorID or "DP-2" else "DP-1";
               default = true;
               default_name = "Doom";
-              on_created_empty = ''
-                hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs
-              '';
+              on_created_empty =
+                if (box.isLaptop or false) && (box.hasExternalMonitor or false) then
+                  ''hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs''
+                else
+                  "doom-emacs";
             }
           ];
 
