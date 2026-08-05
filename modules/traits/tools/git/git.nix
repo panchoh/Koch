@@ -68,7 +68,12 @@
               package = pkgs.gitFull;
 
               settings = {
-                branch.autoSetupMerge = "inherit";
+
+                branch = {
+                  autoSetupMerge = "inherit";
+                  autoSetupRebase = "remote";
+                };
+
                 core.pager = "less --+clear-screen --quit-if-one-screen";
                 difftool.prompt = false;
 
