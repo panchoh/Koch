@@ -119,6 +119,7 @@
               gf = "git fetch";
               gfa = "git fetch --no-all";
               gl = "git log";
+              glo = "git log --oneline";
               gls = "git log --show-signature";
               gm = "git merge";
               gP = "git pull";
