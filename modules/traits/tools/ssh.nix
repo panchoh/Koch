@@ -66,49 +66,56 @@
         };
 
         config = lib.mkIf cfg.enable {
-          programs.ssh = {
-            enable = true;
-            enableDefaultConfig = false;
-            package = pkgs.openssh;
+          programs = {
 
-            settings = {
-              "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
-                User = "sysadmin";
-                IdentityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
-                GlobalKnownHostsFile = "/dev/null";
-                UserKnownHostsFile = "/dev/null";
-                StrictHostKeyChecking = "no";
-              };
+            fish.shellAbbrs = {
+              s = "ssh";
+            };
 
-              "*.vm" = lib.hm.dag.entryAnywhere {
-                GlobalKnownHostsFile = "/dev/null";
-                UserKnownHostsFile = "/dev/null";
-                StrictHostKeyChecking = "no";
-                IdentityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
-                ProxyCommand = "nc ( string replace .vm '' %h ) %p";
-              };
+            ssh = {
+              enable = true;
+              enableDefaultConfig = false;
+              package = pkgs.openssh;
 
-              "*" = {
-                AddKeysToAgent = "yes";
-                ServerAliveInterval = 60;
-                ControlMaster = "auto";
-                ControlPath = "~/.ssh/master-%C";
-                ControlPersist = "yes";
-                SendEnv = [ "LC_*" ];
-                IdentitiesOnly = true;
+              settings = {
+                "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
+                  User = "sysadmin";
+                  IdentityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
+                  GlobalKnownHostsFile = "/dev/null";
+                  UserKnownHostsFile = "/dev/null";
+                  StrictHostKeyChecking = "no";
+                };
 
-                IdentityFile = [
-                  # "~/.ssh/keys.d/id_ed25519-%r@%h"
-                  "~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h"
-                  "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h"
-                  "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#2-%r@%h"
-                  "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h"
-                  "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h"
-                ];
+                "*.vm" = lib.hm.dag.entryAnywhere {
+                  GlobalKnownHostsFile = "/dev/null";
+                  UserKnownHostsFile = "/dev/null";
+                  StrictHostKeyChecking = "no";
+                  IdentityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
+                  ProxyCommand = "nc ( string replace .vm '' %h ) %p";
+                };
 
-                ExitOnForwardFailure = "yes";
-                HostKeyAlgorithms = "ssh-ed25519";
-                VisualHostKey = "yes";
+                "*" = {
+                  AddKeysToAgent = "yes";
+                  ServerAliveInterval = 60;
+                  ControlMaster = "auto";
+                  ControlPath = "~/.ssh/master-%C";
+                  ControlPersist = "yes";
+                  SendEnv = [ "LC_*" ];
+                  IdentitiesOnly = true;
+
+                  IdentityFile = [
+                    # "~/.ssh/keys.d/id_ed25519-%r@%h"
+                    "~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h"
+                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h"
+                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#2-%r@%h"
+                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h"
+                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h"
+                  ];
+
+                  ExitOnForwardFailure = "yes";
+                  HostKeyAlgorithms = "ssh-ed25519";
+                  VisualHostKey = "yes";
+                };
               };
             };
           };
