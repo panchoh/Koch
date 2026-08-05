@@ -30,9 +30,10 @@
         # pkgs.texlive.scheme-*
         # pkgs.texlive.schemes.*
         #
-        # REVIEW: Disabling until this can be reworked on Home Manager
+        # collection-fontsrecommended, algorithms
+        # https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/typesetting/tex/texlive/tlpdb.nix
         programs.texlive = {
-          enable = false;
+          enable = box.isStation or false;
 
           extraPackages = tpkgs: {
             inherit (tpkgs) scheme-full;
