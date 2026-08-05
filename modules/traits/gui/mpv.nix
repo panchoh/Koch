@@ -68,7 +68,7 @@
               };
 
               # https://github.com/mpv-player/mpv/issues/12082#issuecomment-1666545541
-              defaultProfiles = [ (if !box.hasBeefyGPU or false then "fast" else "gpu-hq") ];
+              defaultProfiles = [ (if !(box.hasBeefyGPU or true) then "fast" else "gpu-hq") ];
 
               config = {
                 fullscreen = true;

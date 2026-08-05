@@ -14,7 +14,7 @@
       {
         options.traits.os.mpd = {
           enable = lib.mkEnableOption "MPD" // {
-            default = (!box.isStation or false) && (box.hasMedia or false);
+            default = !(box.isStation or true) && (box.hasMedia or false);
           };
         };
 
@@ -66,7 +66,7 @@
 
             mpd = {
               enable = true;
-              musicDirectory = if (!box.hasMedia or false) then config.xdg.userDirs.music else "/srv/media/audio";
+              musicDirectory = if !(box.hasMedia or true) then config.xdg.userDirs.music else "/srv/media/audio";
               network.startWhenNeeded = true;
 
               extraConfig = ''

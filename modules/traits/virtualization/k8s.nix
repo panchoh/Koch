@@ -14,7 +14,7 @@
       {
         options.traits.os.k8s = {
           enable = lib.mkEnableOption "Kubernetes" // {
-            default = !box.isStation or false;
+            default = !(box.isStation or true);
           };
         };
 
@@ -52,7 +52,7 @@
       {
         options.traits.hm.k8s = {
           enable = lib.mkEnableOption "Kubernetes" // {
-            default = !box.isStation or false;
+            default = !(box.isStation or true);
           };
         };
 
