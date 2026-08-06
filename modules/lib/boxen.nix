@@ -15,6 +15,7 @@
         isLaptop = false;
         isStation = false;
         isRestricted = false;
+        hasBluetooth = false;
         hasCamera = false;
         hasBeefyGPU = false;
         hasWideDisplay = false;
@@ -61,6 +62,7 @@
         macvlanAddr = "00:2b:67:11:27:06";
         isLaptop = true;
         isStation = true;
+        hasBluetooth = true;
         hasCamera = true;
         hasWideDisplay = true;
         hasExternalMonitor = true;
@@ -72,6 +74,7 @@
         macvlanAddr = "68:5b:35:a7:2f:4c";
         isLaptop = true;
         isStation = true;
+        hasBluetooth = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
         userDesc = "Alberto Peón Horrillo";
