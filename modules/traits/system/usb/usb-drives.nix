@@ -13,7 +13,7 @@
     in
     {
       options.traits.os.usb-drives = {
-        enable = lib.mkEnableOption "usb drives" // {
+        enable = lib.mkEnableOption "USB drives" // {
           default = true;
         };
       };
