@@ -24,6 +24,13 @@
 
           {
             _args = [
+              "ALT + XF86AudioMute"
+              (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")'')
+            ];
+          }
+
+          {
+            _args = [
               "XF86AudioMute"
               (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")'')
               { locked = true; }
