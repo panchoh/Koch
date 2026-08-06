@@ -13,7 +13,7 @@
       config =
         let
           # https://wiki.hypr.land/Configuring/Basics/Binds/#disabling-keybinds-with-one-master-keybind
-          keys = "SUPER + CONTROL + ALT + Escape";
+          keys = "SUPER + CONTROL + ALT + SHIFT + Escape";
         in
         lib.mkIf cfg.enable {
           wayland.windowManager.hyprland = {
