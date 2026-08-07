@@ -16,6 +16,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
     flake-compat.url = "github:NixOS/flake-compat";
+    flake-compat.flake = false;
     flake-parts.url = "flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
     nixos-hardware.url = "nixos-hardware";
@@ -28,6 +29,10 @@
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.systems.follows = "systems";
     stylix.inputs.flake-parts.follows = "flake-parts";
+    deploy-rs.url = "github:serokell/deploy-rs";
+    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+    deploy-rs.inputs.flake-compat.follows = "flake-compat";
+    deploy-rs.inputs.utils.inputs.systems.follows = "systems";
     autofirma-nix.url = "github:nix-community/autofirma-nix/develop";
     autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
     autofirma-nix.inputs.flake-parts.follows = "flake-parts";
