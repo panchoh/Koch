@@ -103,14 +103,15 @@
                   SendEnv = [ "LC_*" ];
                   IdentitiesOnly = true;
 
-                  IdentityFile = [
-                    # "~/.ssh/keys.d/id_ed25519-%r@%h"
-                    "~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h"
-                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h"
-                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#2-%r@%h"
-                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h"
-                    "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h"
-                  ];
+                  # NOTE: going with the default for now (~/.ssh/id_ed25519)
+                  # IdentityFile = [
+                  #   # "~/.ssh/keys.d/id_ed25519-%r@%h"
+                  #   "~/.ssh/keys.d/id_ed25519_openpgp_YubiKey_5C_Nano-%r@%h"
+                  #   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#1-%r@%h"
+                  #   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_5C_NFC_#2-%r@%h"
+                  #   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#1-%r@%h"
+                  #   "~/.ssh/keys.d/id_ed25519_sk_rk_YubiKey_C_Bio_#2-%r@%h"
+                  # ];
 
                   ExitOnForwardFailure = "yes";
                   HostKeyAlgorithms = "ssh-ed25519";
