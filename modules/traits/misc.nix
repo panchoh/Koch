@@ -42,6 +42,7 @@
           pkgs.nmap
           pkgs.speedtest-go
           pkgs.ipcalc
+          pkgs.certbot
 
           pkgs.curl
           pkgs.wget2
