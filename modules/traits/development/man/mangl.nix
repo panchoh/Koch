@@ -65,9 +65,9 @@
               font_size = 16;
             };
 
-            configText =
-              lib.concatStringsSep "\n" (lib.mapAttrsToList (name: value: "${name}: ${toString value}") config)
-              + "\n";
+            configText = lib.concatLines (
+              lib.mapAttrsToList (name: value: "${name}: ${toString value}") config
+            );
           in
           pkgs.writeText ".manglrc" configText;
       };
