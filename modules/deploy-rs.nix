@@ -26,6 +26,26 @@
     system: deployLib: deployLib.deployChecks self.deploy
   ) inputs.deploy-rs.lib;
 
+  flake.nixosModules.default =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+
+    let
+      cfg = config.traits.os.hyprland;
+    in
+    {
+      config = lib.mkIf cfg.enable {
+        nixpkgs.overlays = [
+          inputs.deploy-rs.overlays.default
+          (final: prev: { deploy-rs = prev.deploy-rs.deploy-rs; })
+        ];
+      };
+    };
+
   flake.homeModules.default =
     {
       config,
