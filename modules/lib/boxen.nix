@@ -10,6 +10,7 @@
         stateVersion = "26.11";
         system = "x86_64-linux";
         hostName = "nixos";
+        deployGroups = [ ];
         macvlanAddr = "de:ad:be:ef:00:00";
         timeZone = "Europe/Madrid";
         isLaptop = false;
@@ -42,6 +43,7 @@
     [
       {
         hostName = "nixos";
+        deployGroups = [ "vm" ];
         diskDevice = "/dev/vda";
       }
 
@@ -86,6 +88,7 @@
 
       {
         hostName = "potassium";
+        deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:02:8d:23";
         hasMedia = true;
         extraModules = [
@@ -96,6 +99,7 @@
 
       {
         hostName = "calcium";
+        deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:06:76:c0";
         hasMedia = true;
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
@@ -110,12 +114,14 @@
 
       {
         hostName = "titanium";
+        deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:a7:ad:ec";
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
       }
 
       {
         hostName = "vanadium";
+        deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:a7:a8:a9";
         diskDevice = "/dev/sda";
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];

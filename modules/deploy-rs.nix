@@ -14,6 +14,7 @@
           sshUser = "root";
           user = "root";
           fastConnection = true;
+          groups = box.deployGroups;
           path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${box.hostName};
         };
       };
