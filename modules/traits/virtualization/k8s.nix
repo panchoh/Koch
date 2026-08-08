@@ -52,20 +52,26 @@
       {
         options.traits.hm.k8s = {
           enable = lib.mkEnableOption "Kubernetes" // {
-            default = !(box.isStation or true);
+            default = true;
           };
         };
 
         config = lib.mkIf cfg.enable {
           home.packages = [
-            pkgs.talosctl
             pkgs.cri-tools
-            pkgs.kubectl
+            pkgs.kubectl # TODO: deploy only on master node(s)
+          ]
+          ++ lib.optionals box.isStation or false [
+            # https://docs.siderolabs.com/talos/latest/overview/what-is-talos
+            pkgs.talosctl
+            pkgs.talos-pilot
+            pkgs.talm
+            pkgs.talhelper
           ];
 
           programs.kubecolor = {
-            enable = true;
-            enableAlias = true;
+            enable = box.isStation or false;
+            enableAlias = box.isStation or false;
           };
         };
       };
