@@ -36,7 +36,7 @@
           "id_ed25519.pub" =
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho";
           "id_ed25519-pancho@ipad.pub" =
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad";
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE82Jevn/TyeGN1lQbDfUsY6oaE/6/AC9OrTBL/5IErW pancho@ipad";
         };
         extraModules = [ ];
         extraHomeModules = [ ];
