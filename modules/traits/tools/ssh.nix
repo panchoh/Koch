@@ -52,6 +52,7 @@
         config,
         lib,
         pkgs,
+        box ? null,
         ...
       }:
 
@@ -66,6 +67,10 @@
         };
 
         config = lib.mkIf cfg.enable {
+
+          home.file =
+            box.pubKeys |> lib.mapAttrs' (file: key: lib.nameValuePair ".ssh/${file}" { text = "${key}\n"; });
+
           programs = {
 
             fish.shellAbbrs = {

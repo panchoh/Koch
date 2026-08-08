@@ -35,7 +35,7 @@
             description = box.userDesc or "Alice Q. User";
             extraGroups = [ "wheel" ];
             initialPassword = "password";
-            openssh.authorizedKeys.keys = box.userKeys;
+            openssh.authorizedKeys.keys = builtins.attrValues box.pubKeys;
           };
         };
       };

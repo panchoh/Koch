@@ -32,10 +32,12 @@
         gpgSigningKey = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
         virtualHost = "canalplus.pancho.name";
         virtualHostRoot = "FF2E6E41-1FE8-4515-82D1-56D5C49EB2B5";
-        userKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad"
-        ];
+        pubKeys = {
+          "id_ed25519.pub" =
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhtv6KrJc04bydU2mj6j/V6g/g+RiY1+gTg9h4z3STm pancho";
+          "id_ed25519-pancho@ipad.pub" =
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOK1QiBQzjzVDZoyWwewN8U0B6QRn09dasbcyTI48dWL pancho@ipad";
+        };
         extraModules = [ ];
         extraHomeModules = [ ];
       };
