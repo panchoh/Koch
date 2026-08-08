@@ -36,14 +36,14 @@
           pkgs.nvme-cli
           pkgs.sg3_utils
           pkgs.lm_sensors
-
+        ]
+        ++ lib.optionals (box.isStation or false) [
           pkgs.ldns
           pkgs.doggo
           pkgs.nmap
           pkgs.speedtest-go
           pkgs.ipcalc
           pkgs.certbot
-
           pkgs.curl
           pkgs.wget2
           pkgs.xh
@@ -58,8 +58,7 @@
           pkgs.lzop
           pkgs.unzip
           pkgs.zip
-        ]
-        ++ lib.optionals (box.isStation or false) [
+
           pkgs.binutils
           pkgs.dua
           pkgs.duf
