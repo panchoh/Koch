@@ -81,6 +81,9 @@
 
           pkgs.inotify-info
 
+          pkgs.hwinfo
+          pkgs.nixos-facter
+
           pkgs.bc
           pkgs.cdrkit
 
@@ -125,16 +128,15 @@
 
           pkgs.bgnet
 
+          # Audio
           pkgs.flac
-
           pkgs.cliamp
-
-          pkgs.mission-center
-          pkgs.v4l-utils
-
           pkgs.audible-cli
           pkgs.aaxtomp3
           pkgs.libation
+
+          pkgs.mission-center
+          pkgs.v4l-utils
 
           pkgs.ffmpeg
           pkgs.vlc
@@ -157,6 +159,7 @@
 
           pkgs.zizmor
 
+          # Astronomy
           pkgs.stellarium
           pkgs.celestia
         ];
