@@ -83,6 +83,14 @@
               package = pkgs.openssh;
 
               settings = {
+                "helium he" = {
+                  Hostname = "helium";
+                  LocalForward = [ "8443 127.0.0.1:443" ];
+                  ProxyJump = "_gateway";
+                  SessionType = "none";
+                  User = "ubnt";
+                };
+
                 "ubuntu* k8s-*" = lib.hm.dag.entryBefore [ "*.vm" ] {
                   User = "sysadmin";
                   IdentityFile = "~/.ssh/keys.d/id_ed25519-sysadmin@ubuntu";
