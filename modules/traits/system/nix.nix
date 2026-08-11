@@ -41,6 +41,9 @@
             # Not ideal from the security standpoint, though.
             # require-sigs = false;
 
+            allowed-users = [ ];
+            trusted-users = [ "@wheel" ];
+
             experimental-features = [
               "nix-command"
               "flakes"
