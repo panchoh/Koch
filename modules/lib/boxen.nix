@@ -79,6 +79,7 @@
         isLaptop = true;
         isStation = true;
         hasBluetooth = true;
+        hasCamera = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
         userDesc = "Alberto Peón Horrillo";
