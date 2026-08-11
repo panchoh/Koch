@@ -33,7 +33,7 @@
           users.${box.userName or "alice"} = {
             isNormalUser = true;
             description = box.userDesc or "Alice Q. User";
-            extraGroups = [ "wheel" ];
+            extraGroups = [ "wheel" ]; # For polkit
             initialPassword = "password";
             openssh.authorizedKeys.keys = builtins.attrValues box.pubKeys;
           };
