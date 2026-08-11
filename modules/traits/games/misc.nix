@@ -41,9 +41,6 @@
           pkgs.ponysay
 
           pkgs.ratty
-
-          pkgs.stockfish
-          pkgs.gnome-chess
         ];
       };
     };
