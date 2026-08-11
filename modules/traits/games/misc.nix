@@ -31,12 +31,14 @@
           pkgs.notcurses
           pkgs.torus-trooper
 
+          pkgs.lolcat
           pkgs.figlet
           pkgs.toilet
           pkgs.banner
 
           pkgs.neo-cowsay
           pkgs.charasay
+          pkgs.ponysay
 
           pkgs.ratty
 
