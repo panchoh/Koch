@@ -23,6 +23,9 @@
         };
 
         config = lib.mkIf cfg.enable {
+
+          nixpkgs.config.allowUnfreePackages = [ "google-chrome" ];
+
           programs.google-chrome = {
             # Seen on stylix and nixpkgs:
             # This enables policies without installing the browser. Policies take up a

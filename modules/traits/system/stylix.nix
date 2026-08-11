@@ -28,6 +28,9 @@
       };
 
       config = lib.mkIf cfg.enable {
+
+        nixpkgs.config.allowUnfreePackages = [ "corefonts" ];
+
         fonts = {
           enableDefaultPackages = true;
 

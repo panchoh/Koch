@@ -17,6 +17,9 @@
       };
 
       config = lib.mkIf cfg.enable {
+
+        nixpkgs.config.allowUnfreePackages = [ "minecraft-server" ];
+
         services.minecraft-server = {
           enable = true;
           eula = true;

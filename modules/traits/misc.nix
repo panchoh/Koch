@@ -1,168 +1,200 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        config,
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.misc;
-    in
-    {
-      options.traits.hm.misc = {
-        enable = lib.mkEnableOption "misc" // {
-          default = true;
+      let
+        cfg = config.traits.os.misc;
+      in
+      {
+        options.traits.os.misc = {
+          enable = lib.mkEnableOption "misc" // {
+            default = box.isStation or false;
+          };
+        };
+
+        config = lib.mkIf cfg.enable {
+          nixpkgs.config.allowUnfreePackages = [
+            "celestia"
+            "celestia-content"
+            "discord"
+            "bgnet"
+            "zoom"
+          ];
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        home.packages = [
-          pkgs.dmidecode
-          pkgs.efibootmgr
-          pkgs.gptfdisk
-          pkgs.parted
-          pkgs.psmisc
-          pkgs.sysstat
-          pkgs.sysfsutils
-          pkgs.pciutils
-          pkgs.usbutils
-          pkgs.usbtop
-          pkgs.iotop-c
-          pkgs.smartmontools
-          pkgs.hdparm
-          pkgs.nvme-cli
-          pkgs.sg3_utils
-          pkgs.lm_sensors
-        ]
-        ++ lib.optionals (box.isStation or false) [
-          pkgs.ldns
-          pkgs.doggo
-          pkgs.nmap
-          pkgs.speedtest-go
-          pkgs.ipcalc
-          pkgs.certbot
-          pkgs.curl
-          pkgs.wget2
-          pkgs.xh
-          pkgs.restish
-          pkgs.slumber
+    homeModules.default =
+      {
+        config,
+        lib,
+        pkgs,
+        box ? null,
+        ...
+      }:
 
-          pkgs.moreutils
-          pkgs.fx
-          pkgs.yq-go
-          pkgs.hwloc
-          pkgs.b3sum
-          pkgs.lzop
-          pkgs.unzip
-          pkgs.zip
+      let
+        cfg = config.traits.hm.misc;
+      in
+      {
+        options.traits.hm.misc = {
+          enable = lib.mkEnableOption "misc" // {
+            default = true;
+          };
+        };
 
-          pkgs.binutils
-          pkgs.dua
-          pkgs.duf
-          pkgs.dust
-          pkgs.dysk
-          pkgs.file
-          pkgs.gdu
+        config = lib.mkIf cfg.enable {
+          home.packages = [
+            pkgs.dmidecode
+            pkgs.efibootmgr
+            pkgs.gptfdisk
+            pkgs.parted
+            pkgs.psmisc
+            pkgs.sysstat
+            pkgs.sysfsutils
+            pkgs.pciutils
+            pkgs.usbutils
+            pkgs.usbtop
+            pkgs.iotop-c
+            pkgs.smartmontools
+            pkgs.hdparm
+            pkgs.nvme-cli
+            pkgs.sg3_utils
+            pkgs.lm_sensors
+          ]
+          ++ lib.optionals (box.isStation or false) [
+            pkgs.ldns
+            pkgs.doggo
+            pkgs.nmap
+            pkgs.speedtest-go
+            pkgs.ipcalc
+            pkgs.certbot
+            pkgs.curl
+            pkgs.wget2
+            pkgs.xh
+            pkgs.restish
+            pkgs.slumber
 
-          pkgs.rdfind
-          pkgs.fdupes
-          pkgs.rmlint
-          pkgs.raider
-          pkgs.czkawka
-          pkgs.fclones
-          pkgs.fclones-gui
+            pkgs.moreutils
+            pkgs.fx
+            pkgs.yq-go
+            pkgs.hwloc
+            pkgs.b3sum
+            pkgs.lzop
+            pkgs.unzip
+            pkgs.zip
 
-          pkgs.gnutls
-          pkgs.zstd
-          pkgs.udftools
+            pkgs.binutils
+            pkgs.dua
+            pkgs.duf
+            pkgs.dust
+            pkgs.dysk
+            pkgs.file
+            pkgs.gdu
 
-          pkgs.inotify-info
+            pkgs.rdfind
+            pkgs.fdupes
+            pkgs.rmlint
+            pkgs.raider
+            pkgs.czkawka
+            pkgs.fclones
+            pkgs.fclones-gui
 
-          pkgs.hwinfo
-          pkgs.nixos-facter
+            pkgs.gnutls
+            pkgs.zstd
+            pkgs.udftools
 
-          pkgs.bc
-          pkgs.cdrkit
+            pkgs.inotify-info
 
-          pkgs.intel-gpu-tools
+            pkgs.hwinfo
+            pkgs.nixos-facter
 
-          pkgs.glow
+            pkgs.bc
+            pkgs.cdrkit
 
-          pkgs.entr
+            pkgs.intel-gpu-tools
 
-          pkgs.pv
+            pkgs.glow
 
-          pkgs.nixos-anywhere
+            pkgs.entr
 
-          # Show details about outdated packages in your NixOS system
-          # https://github.com/trofi/nix-olde
-          pkgs.nix-olde
+            pkgs.pv
 
-          pkgs.ddrescue
-          pkgs.ddrescueview
+            pkgs.nixos-anywhere
 
-          pkgs.hwatch
+            # Show details about outdated packages in your NixOS system
+            # https://github.com/trofi/nix-olde
+            pkgs.nix-olde
 
-          pkgs.recode
+            pkgs.ddrescue
+            pkgs.ddrescueview
 
-          pkgs.whois
+            pkgs.hwatch
 
-          pkgs.pdf4qt
-          pkgs.pdfchain
-          pkgs.pdfcpu
-          pkgs.pdfgrep
-          pkgs.pdftk
+            pkgs.recode
 
-          pkgs.asciinema
-          pkgs.asciinema-agg
-          pkgs.asciinema-scenario
+            pkgs.whois
 
-          pkgs.viddy
+            pkgs.pdf4qt
+            pkgs.pdfchain
+            pkgs.pdfcpu
+            pkgs.pdfgrep
+            pkgs.pdftk
 
-          # GitHub Actions SHA pinners
-          pkgs.pinact
-          pkgs.ratchet
+            pkgs.asciinema
+            pkgs.asciinema-agg
+            pkgs.asciinema-scenario
 
-          pkgs.bgnet
+            pkgs.viddy
 
-          # Audio
-          pkgs.flac
-          pkgs.cliamp
-          pkgs.audible-cli
-          pkgs.aaxtomp3
-          pkgs.libation
+            # GitHub Actions SHA pinners
+            pkgs.pinact
+            pkgs.ratchet
 
-          pkgs.mission-center
-          pkgs.v4l-utils
+            # https://beej.us/guide/bgnet/
+            pkgs.bgnet
 
-          pkgs.ffmpeg
-          pkgs.vlc
-          pkgs.mkvtoolnix
-          pkgs.gimp3
-          pkgs.inkscape
-          pkgs.youtube-tui
-          pkgs.zoom-us
+            # Audio
+            pkgs.flac
+            pkgs.cliamp
+            pkgs.audible-cli
+            pkgs.aaxtomp3
+            pkgs.libation
 
-          pkgs.discord
-          pkgs.dissent
-          # TODO: finish setting up nheko and/or fractalfor Matrix comms
-          # pkgs.nheko
-          # pkgs.fractal
-          # REVIEW: uncomment when fixed upstream
-          # https://github.com/NixOS/nixpkgs/issues/537728
-          # pkgs.session-desktop
+            pkgs.mission-center
+            pkgs.v4l-utils
 
-          pkgs.wormhole-william
+            pkgs.ffmpeg
+            pkgs.vlc
+            pkgs.mkvtoolnix
+            pkgs.gimp3
+            pkgs.inkscape
+            pkgs.youtube-tui
+            pkgs.zoom-us
 
-          pkgs.zizmor
+            pkgs.discord
+            pkgs.dissent
+            # TODO: finish setting up nheko and/or fractalfor Matrix comms
+            # pkgs.nheko
+            # pkgs.fractal
+            # REVIEW: uncomment when fixed upstream
+            # https://github.com/NixOS/nixpkgs/issues/537728
+            # pkgs.session-desktop
 
-          # Astronomy
-          pkgs.stellarium
-          pkgs.celestia
-        ];
+            pkgs.wormhole-william
+
+            pkgs.zizmor
+
+            # Astronomy
+            pkgs.stellarium
+            pkgs.celestia
+          ];
+        };
       };
-    };
+  };
 }

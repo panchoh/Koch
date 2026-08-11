@@ -24,7 +24,17 @@
 
         config = lib.mkIf cfg.enable {
           nixpkgs = {
-            config.joypixels.acceptLicense = true;
+            config = {
+
+              allowUnfreePackages = [
+                "aspell-dict-en-science"
+                "symbola"
+                "terraform"
+                "joypixels"
+              ];
+
+              joypixels.acceptLicense = true;
+            };
 
             # REVIEW: revert commit "chore(flake): drop emacs-overlay" to reenable
             # overlays = [ inputs.emacs-overlay.overlays.default ];

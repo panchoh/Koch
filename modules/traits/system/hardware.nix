@@ -43,7 +43,11 @@
           extraModulePackages = [ ];
         };
 
-        nixpkgs.hostPlatform = lib.mkDefault box.system or "x86_64-linux";
+        nixpkgs = {
+          hostPlatform = lib.mkDefault box.system or "x86_64-linux";
+
+          config.allowUnfreePackages = [ "intel-ocl" ];
+        };
 
         hardware = {
           cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

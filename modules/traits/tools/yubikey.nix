@@ -22,6 +22,8 @@
         config = lib.mkIf cfg.enable {
           hardware.gpgSmartcards.enable = true;
 
+          nixpkgs.config.allowUnfreePackages = [ "scmccid" ];
+
           services = {
             pcscd.enable = true;
             udev.packages = [ pkgs.yubikey-personalization ];
