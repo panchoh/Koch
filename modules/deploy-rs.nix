@@ -26,25 +26,31 @@
       |> builtins.listToAttrs;
 
     checks = builtins.mapAttrs (
-      system: deployLib: deployLib.deployChecks self.deploy
+      _system: deployLib: deployLib.deployChecks self.deploy
     ) inputs.deploy-rs.lib;
 
     nixosModules.default =
       {
         config,
         lib,
-        pkgs,
+        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.os.hyprland;
+        cfg = config.traits.os.deploy-rs;
       in
       {
+        options.traits.os.deploy-rs = {
+          enable = lib.mkEnableOption "deploy-rs" // {
+            default = box.isStation or false;
+          };
+        };
+
         config = lib.mkIf cfg.enable {
           nixpkgs.overlays = [
             inputs.deploy-rs.overlays.default
-            (final: prev: { deploy-rs = prev.deploy-rs.deploy-rs; })
+            (_final: prev: { deploy-rs = prev.deploy-rs.deploy-rs; })
           ];
         };
       };
