@@ -216,6 +216,7 @@
             pkgs.nixfmt-tree
             pkgs.deadnix
             pkgs.nix-tree
+            pkgs.nix-update
 
             pkgs.nixpkgs-review
             pkgs.nix-output-monitor
