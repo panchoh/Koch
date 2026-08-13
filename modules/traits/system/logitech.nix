@@ -19,10 +19,8 @@
       };
 
       config = lib.mkIf cfg.enable {
-        hardware.logitech.wireless = {
-          enable = true;
-          enableGraphical = true;
-        };
+        programs.solaar.enable = true;
+        hardware.logitech.wireless.enable = true;
       };
     };
 }
