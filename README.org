@@ -3,33 +3,66 @@
 [[https://commons.wikimedia.org/wiki/File:Koch_curve.svg][file:images/Koch_curve.svg]]
 
 * Bootstrapping
-1. Put a [[https://nixos.org/download.html#nixos-iso][bootable NixOS iso image]] on a usb thumbdrive, and boot it
+** Boot
+0. Put a [[https://nixos.org/download.html#nixos-iso][bootable NixOS iso image]] on a USB flash drive, and boot from it
 
-2. Prime the box
+** Pick one of these two:
+*** Single host
+1. Prime the box
  #+begin_src shell
-sudo nix --experimental-features 'nix-command flakes' run github:panchoh/Koch#oxygen
+sudo nix --experimental-features 'nix-command flakes' run github:panchoh/Koch#silicon
 #+end_src
 
-3. Manage your ssh key and then let Home Manager finish the setup
+*** NixOS Anywhere
+1. Set a password for the ‘nixos’ user
+ #+begin_src shell
+passwd # set it to ‘nixos’
+#+end_src
+
+2. From a NixOS host
+ #+begin_src shell
+nixos-anywhere --flake github:panchoh/Koch#silicon nixos@silicon # set PIN to ‘nixos’
+#+end_src
+
+3. Dispose of the ephemeral NixOS Anywhere ssh key
+ #+begin_src shell
+gpg-connect-agent 'keyinfo --list' /bye # get the keygrip of the offending one
+gpg-connect-agent 'DELETE_KEY <KEYGRIP>' /bye # さようなら
+#+end_src
+
+** Final steps
+
+2. Manage your ssh key and then let Home Manager finish the setup
  #+begin_src shell
 run0 systemctl restart home-manager-pancho.service
 #+end_src
 
-4. Optimise the storage just this once
+3. Optimise the storage just this once
  #+begin_src shell
 nix store optimise --verbose
 #+end_src
 
-5. You are all set.  Happy hacking!
-
+4. You are all set.  Happy hacking!
 
 * Updating
-** Local
+** Self
 #+begin_src shell
 nixos-rebuild switch --elevate=run0 --diff --verbose --print-build-logs # or -SLv --diff
 #+end_src
 
 ** Remote
+*** Using ~nixos-rebuild~
 #+begin_src shell
-nixos-rebuild switch --no-reexec --elevate=run0 --ask-elevate-password --target-host scandium -diff --verbose --print-build-logs # or -SLv --diff
+nixos-rebuild switch --no-reexec --elevate=run0 --ask-elevate-password --target-host scandium --diff --verbose --print-build-logs # or -SLv --diff
+#+end_src
+
+*** Using ~deploy-rs~
+**** Single host
+#+begin_src shell
+z Koch; deploy .#silicon
+#+end_src
+
+**** A group of boxen
+#+begin_src shell
+z Koch; deploy --groups k8s
 #+end_src
