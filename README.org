@@ -21,3 +21,15 @@ nix store optimise --verbose
 #+end_src
 
 5. You are all set.  Happy hacking!
+
+
+* Updating
+** Local
+#+begin_src shell
+nixos-rebuild switch --elevate=run0 --diff --verbose --print-build-logs # or -SLv --diff
+#+end_src
+
+** Remote
+#+begin_src shell
+nixos-rebuild switch --no-reexec --elevate=run0 --ask-elevate-password --target-host scandium -diff --verbose --print-build-logs # or -SLv --diff
+#+end_src
