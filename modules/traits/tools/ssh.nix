@@ -111,7 +111,7 @@
                   AddKeysToAgent = "yes";
                   ServerAliveInterval = 60;
                   ControlMaster = "auto";
-                  ControlPath = "~/.ssh/master-%C";
+                  ControlPath = "~/.ssh/master-%C-%r@%h-via-%j";
                   ControlPersist = "yes";
                   SendEnv = [ "LC_*" ];
                   IdentitiesOnly = true;
