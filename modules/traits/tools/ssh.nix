@@ -103,7 +103,7 @@
                   GlobalKnownHostsFile = "/dev/null";
                   UserKnownHostsFile = "/dev/null";
                   StrictHostKeyChecking = "no";
-                  IdentityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
+                  # IdentityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
                   ProxyCommand = "nc ( string replace .vm '' %h ) %p";
                 };
 
