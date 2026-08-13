@@ -23,6 +23,7 @@
             "celestia"
             "celestia-content"
             "discord"
+            "discord-unwrapped"
             "bgnet"
             "zoom"
           ];
