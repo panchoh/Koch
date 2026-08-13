@@ -28,9 +28,6 @@
             pkgs.cloud-utils
           ];
 
-          # REVIEW: Remove when https://nixpkgs-tracker.ocfox.me/?pr=451252 gets through
-          systemd.services.libvirtd-config.enableStrictShellChecks = false;
-
           virtualisation = {
             spiceUSBRedirection.enable = true;
 
