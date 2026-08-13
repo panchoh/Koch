@@ -60,6 +60,8 @@
         };
 
         config = lib.mkIf cfg.enable {
+          home.sessionVariables.LIBVIRT_DEFAULT_URI = "qemu:///system";
+
           home.packages = [
             pkgs.virt-manager
             pkgs.virt-viewer
