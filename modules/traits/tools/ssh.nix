@@ -103,6 +103,7 @@
                   GlobalKnownHostsFile = "/dev/null";
                   UserKnownHostsFile = "/dev/null";
                   StrictHostKeyChecking = "no";
+                  # NOTE: going with the default for now (~/.ssh/id_ed25519)
                   # IdentityFile = "~/.ssh/keys.d/id_ed25519-wildcard.vm";
                   ProxyCommand = "nc ( string replace .vm '' %h ) %p";
                 };
