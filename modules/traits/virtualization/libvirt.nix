@@ -33,6 +33,7 @@
 
             libvirtd = {
               enable = true;
+              nss.enableGuest = true;
               qemu.runAsRoot = false;
             };
           };
