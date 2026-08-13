@@ -179,11 +179,11 @@
     "doomdir": {
       "flake": false,
       "locked": {
-        "lastModified": 1786383047,
-        "narHash": "sha256-X8tuo7i0txi71FSW+y3HfDoDoFpOKOaHtee4XktmTl8=",
+        "lastModified": 1786591693,
+        "narHash": "sha256-lz6b4MLpK+I/4lYdqk5POGTqh/DI8tMK8YU8+WP1D4o=",
         "owner": "panchoh",
         "repo": "doom",
-        "rev": "865201e6d3f153e327c59b0d7aa561a03d73a0e3",
+        "rev": "71e00076028e37734e9eb4ce35fe3e4be783b94c",
         "type": "github"
       },
       "original": {
