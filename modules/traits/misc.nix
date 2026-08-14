@@ -133,7 +133,9 @@
             pkgs.nix-olde
 
             pkgs.ddrescue
-            pkgs.ddrescueview
+            # REVIEW: In the chop list because it still depends on GTK 2
+            # https://github.com/NixOS/nixpkgs/issues/410814
+            # pkgs.ddrescueview
 
             pkgs.hwatch
 
@@ -193,7 +195,8 @@
 
             # Astronomy
             pkgs.stellarium
-            pkgs.celestia
+            # REVIEW: build broken
+            # pkgs.celestia
           ];
         };
       };

@@ -76,10 +76,11 @@
               package = pkgs.iosevka-bin;
             };
 
-            emoji = {
-              name = "OpenMoji Color";
-              package = pkgs.openmoji-color;
-            };
+            # REVIEW: build failure
+            # emoji = {
+            #   name = "OpenMoji Color";
+            #   package = pkgs.openmoji-color;
+            # };
 
             sizes = lib.mapAttrs (_name: value: if box.isLaptop or false then value - 2 else value) {
               desktop = 14;
