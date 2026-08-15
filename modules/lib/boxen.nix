@@ -8,7 +8,7 @@
     let
       defaults = {
         stateVersion = "26.11";
-        system = "x86_64-linux";
+        facter = ./facter-defaults.json;
         hostName = "nixos";
         deployGroups = [ ];
         macvlanAddr = "de:ad:be:ef:00:00";
@@ -52,6 +52,7 @@
       {
         hostName = "oxygen";
         macvlanAddr = "48:21:0b:3c:16:a9";
+        facter = ./facter-oxygen.json;
         isStation = true;
         hasBeefyGPU = true;
         hasWideDisplay = true;
@@ -64,6 +65,7 @@
       {
         hostName = "magnesium";
         macvlanAddr = "00:2b:67:11:27:06";
+        facter = ./facter-magnesium.json;
         isLaptop = true;
         isStation = true;
         hasBluetooth = true;
@@ -76,6 +78,7 @@
       {
         hostName = "aluminium";
         macvlanAddr = "68:5b:35:a7:2f:4c";
+        facter = ./facter-aluminium.json;
         isLaptop = true;
         isStation = true;
         hasBluetooth = true;
@@ -93,6 +96,7 @@
         hostName = "potassium";
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:02:8d:23";
+        facter = ./facter-potassium.json;
         hasMedia = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
@@ -104,6 +108,7 @@
         hostName = "calcium";
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:06:76:c0";
+        facter = ./facter-calcium.json;
         hasMedia = true;
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
       }
@@ -111,6 +116,7 @@
       {
         hostName = "scandium";
         macvlanAddr = "1c:69:7a:a7:e4:e5";
+        facter = ./facter-scandium.json;
         isStation = true;
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
       }
@@ -119,6 +125,7 @@
         hostName = "titanium";
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:a7:ad:ec";
+        facter = ./facter-titanium.json;
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
       }
 
@@ -126,6 +133,7 @@
         hostName = "vanadium";
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:a7:a8:a9";
+        facter = ./facter-vanadium.json;
         diskDevice = "/dev/sda";
         extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
       }

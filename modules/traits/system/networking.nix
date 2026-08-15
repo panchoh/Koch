@@ -29,6 +29,8 @@
           mtr.package = pkgs.mtr-gui;
         };
 
+        hardware.facter.detected.dhcp.enable = false;
+
         networking = {
           hostName = box.hostName or "nixos";
 
