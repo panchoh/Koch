@@ -16,7 +16,6 @@
         isLaptop = false;
         isStation = false;
         isRestricted = false;
-        hasBluetooth = false;
         hasCamera = false;
         hasBeefyGPU = false;
         hasWideDisplay = false;
@@ -68,7 +67,6 @@
         facter = ./facter-magnesium.json;
         isLaptop = true;
         isStation = true;
-        hasBluetooth = true;
         hasCamera = true;
         hasWideDisplay = true;
         hasExternalMonitor = true;
@@ -81,14 +79,18 @@
         facter = ./facter-aluminium.json;
         isLaptop = true;
         isStation = true;
-        hasBluetooth = true;
         hasCamera = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
         userDesc = "Alberto Peón Horrillo";
         userEmail = "alberto@peon.contact";
         githubUser = "Alberto-Peon";
-        extraModules = [ inputs.nixos-hardware.nixosModules.apple-macbook-air-5 ];
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.apple-macbook-air-5
+
+          # BUG: facter does not detect the Bluetooth® controller on aluminium
+          { config.hardware.facter.detected.bluetooth.enable = true; }
+        ];
         extraHomeModules = [ { traits.hm.gopass.enable = false; } ];
       }
 

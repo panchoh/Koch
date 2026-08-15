@@ -3,30 +3,20 @@
     {
       config,
       lib,
-      box ? null,
       ...
     }:
 
     let
-      cfg = config.traits.os.bluetooth;
+      cfg = config.hardware.facter.detected.bluetooth;
     in
     {
-      options.traits.os.bluetooth = {
-        enable = lib.mkEnableOption "Bluetooth®" // {
-          default = box.hasBluetooth or false;
-        };
-      };
-
       config = lib.mkIf cfg.enable {
 
         # https://wiki.nixos.org/wiki/Bluetooth
-        hardware.bluetooth = {
-          enable = true;
-          powerOnBoot = false;
+        hardware.bluetooth.powerOnBoot = false;
 
-          # TODO: explore https://github.com/bluez/bluez/blob/master/src/main.conf
-          # settings = {};
-        };
+        # TODO: explore https://github.com/bluez/bluez/blob/master/src/main.conf
+        # hardware.bluetooth.settings = { };
 
         services.blueman.enable = true;
       };
