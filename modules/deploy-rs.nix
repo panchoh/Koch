@@ -8,12 +8,15 @@
 {
   flake = {
 
+    # REVIEW:
+    # deploy.sudo = "run0 --user";
+    deploy.interactiveSudo = true;
     deploy.nodes =
       let
         mkDeployNode = box: {
           hostname = box.hostName;
           profiles.system = {
-            sshUser = "root";
+            sshUser = box.userName;
             user = "root";
             fastConnection = true;
             groups = box.deployGroups;
