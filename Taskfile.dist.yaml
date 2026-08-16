@@ -36,12 +36,12 @@ tasks:
   nixos-rebuild-build:
     desc: Build the new NixOS configuration
     cmds:
-      - nixos-rebuild build --verbose --print-build-logs
+      - nixos-rebuild build --diff --verbose --print-build-logs
 
   nixos-rebuild-buildvm:
     desc: Build the new NixOS configuration and run it on a VM
     cmds:
-      - nixos-rebuild build-vm --verbose --print-build-logs
+      - nixos-rebuild build-vm --diff --verbose --print-build-logs
       - result/bin/run-*-vm
 
   revs:
