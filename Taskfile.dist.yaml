@@ -44,6 +44,11 @@ tasks:
       - nixos-rebuild build-vm --diff --verbose --print-build-logs
       - result/bin/run-*-vm
 
+  nixos-rebuild-repl:
+    desc: Build the new NixOS configuration and run it on a VM
+    cmds:
+      - nixos-rebuild repl --diff --verbose --print-build-logs
+
   revs:
     desc: Display the actual revisions the current flake, NixOS and nixpkgs are at
     cmds:
