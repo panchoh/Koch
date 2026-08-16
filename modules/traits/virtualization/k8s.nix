@@ -18,6 +18,8 @@
           };
         };
 
+        # https://nixos.org/manual/nixos/unstable/#sec-kubernetes
+
         config = lib.mkIf cfg.enable {
           # REVIEW: Remove when https://nixpkgs-tracker.ocfox.me/?pr=TBD gets through
           systemd.services.kube-certmgr-bootstrap.enableStrictShellChecks = false;
