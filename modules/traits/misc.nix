@@ -132,6 +132,7 @@
             # https://github.com/NixOS/nixpkgs/issues/410814
             # pkgs.ddrescueview
 
+            # https://github.com/blacknon/hwatch
             pkgs.hwatch
 
             pkgs.recode
