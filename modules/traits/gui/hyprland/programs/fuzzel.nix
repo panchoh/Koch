@@ -2,18 +2,20 @@
   flake.homeModules.default =
     {
       config,
-      lib,
       nixosConfig,
+      lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
       size = toString (nixosConfig.stylix.fonts.sizes.desktop + 2);
     in
     {
       config = lib.mkIf cfg.enable {
+
         programs.fuzzel = {
+
           enable = true;
 
           settings = {
@@ -26,6 +28,7 @@
         };
 
         wayland.windowManager.hyprland.settings = {
+
           layer_rule = [
             {
               match.namespace = "^launcher$";

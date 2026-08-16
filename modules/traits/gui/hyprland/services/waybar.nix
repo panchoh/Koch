@@ -1,13 +1,13 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
@@ -37,7 +37,7 @@
               modules-right = [
                 "temperature"
               ]
-              ++ lib.optionals config.traits.hm.mpd.enable [
+              ++ lib.optionals nixosConfig.traits.mpd.enable [
                 "mpd"
               ];
 

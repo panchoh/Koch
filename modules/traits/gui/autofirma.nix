@@ -5,27 +5,35 @@
 
 {
   flake = {
-    homeModules.default =
+    nixosModules.default =
       {
-        config,
         lib,
         box ? null,
         ...
       }:
 
+      {
+        options.traits.autofirma = {
+          enable = lib.mkEnableOption "AutoFirma" // {
+            default = box.isStation or false;
+          };
+        };
+      };
+
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
+
       let
-        cfg = config.traits.hm.autofirma;
+        cfg = nixosConfig.traits.autofirma;
       in
       {
         imports = [
           inputs.autofirma-nix.homeManagerModules.default
         ];
-
-        options.traits.hm.autofirma = {
-          enable = lib.mkEnableOption "AutoFirma" // {
-            default = box.isStation or false;
-          };
-        };
 
         config = lib.mkIf cfg.enable {
           programs = {
@@ -52,12 +60,12 @@
                 # defaultKeystore = "JKS";
               };
 
-              firefoxIntegration.profiles.default.enable = config.traits.hm.firefox.enable;
+              firefoxIntegration.profiles.default.enable = nixosConfig.traits.firefox.enable;
             };
 
             configuradorfnmt = {
               enable = true;
-              firefoxIntegration.profiles.default.enable = config.traits.hm.firefox.enable;
+              firefoxIntegration.profiles.default.enable = nixosConfig.traits.firefox.enable;
             };
           };
         };

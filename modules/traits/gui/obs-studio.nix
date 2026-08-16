@@ -1,24 +1,32 @@
 {
   flake = {
-    homeModules.default =
+    nixosModules.default =
       {
-        config,
         lib,
-        pkgs,
         box ? null,
         ...
       }:
 
-      let
-        cfg = config.traits.hm.obs-studio;
-      in
       {
-        options.traits.hm.obs-studio = {
+        options.traits.obs-studio = {
           enable = lib.mkEnableOption "OBS Studio" // {
             default = box.isStation or false;
           };
         };
+      };
 
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.obs-studio;
+      in
+      {
         config = lib.mkIf cfg.enable {
           programs.obs-studio = {
             enable = true;

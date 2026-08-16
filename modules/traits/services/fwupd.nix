@@ -7,10 +7,10 @@
     }:
 
     let
-      cfg = config.traits.os.fwupd;
+      cfg = config.traits.fwupd;
     in
     {
-      options.traits.os.fwupd = {
+      options.traits.fwupd = {
         enable = lib.mkEnableOption "fwupd" // {
           default = true;
         };

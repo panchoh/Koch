@@ -1,17 +1,19 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         wayland.windowManager.hyprland.settings = {
+
           animation = [
             {
               leaf = "windows";
@@ -23,12 +25,15 @@
           ];
 
           config = {
+
             animations.enabled = true;
 
             general = {
               border_size = 2;
+
               # https://github.com/dracula/draculatheme.com/blob/main/content/spec.mdx
               "col.active_border" = lib.mkForce (
+
                 # Color Palette > Pink
                 # UI Color Palette > Functional Colors > Functional Purple : Focus indicators
                 lib.generators.mkLuaInline ''{ colors = { "rgba(ff79c6ee)", "rgba(815cd6ee)" }, angle = 45 }''
@@ -42,8 +47,8 @@
               dim_strength = 0.15;
             };
 
+            # https://wiki.hypr.land/Configuring/Basics/Variables/#misc
             misc = {
-              # https://wiki.hypr.land/Configuring/Basics/Variables/#misc
               disable_hyprland_logo = true;
               disable_splash_rendering = true;
               force_default_wallpaper = 2;

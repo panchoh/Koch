@@ -1,27 +1,38 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.yazi;
-    in
-    {
-      options.traits.hm.yazi = {
-        enable = lib.mkEnableOption "yazi" // {
-          default = box.isStation or false;
+      {
+        options.traits.yazi = {
+          enable = lib.mkEnableOption "yazi" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        programs.yazi = {
-          enable = true;
-          enableFishIntegration = true;
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.yazi;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          programs.yazi = {
+            enable = true;
+            enableFishIntegration = true;
+          };
         };
       };
-    };
+  };
 }

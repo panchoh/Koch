@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.vscode;
+        cfg = config.traits.vscode;
       in
       {
-        options.traits.os.vscode = {
+        options.traits.vscode = {
           enable = lib.mkEnableOption "Visual Studio Code" // {
             default = box.isStation or false;
           };
@@ -25,23 +25,17 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.vscode;
+        cfg = nixosConfig.traits.vscode;
       in
       {
-        options.traits.hm.vscode = {
-          enable = lib.mkEnableOption "Visual Studio Code" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           programs.vscode.enable = true;
         };
       };

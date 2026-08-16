@@ -10,10 +10,10 @@
       }:
 
       let
-        cfg = config.traits.os.fish;
+        cfg = config.traits.fish;
       in
       {
-        options.traits.os.fish = {
+        options.traits.fish = {
           enable = lib.mkEnableOption "fish" // {
             default = box.isStation or false;
           };
@@ -34,25 +34,21 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.fish;
+        cfg = nixosConfig.traits.fish;
       in
       {
-        options.traits.hm.fish = {
-          enable = lib.mkEnableOption "fish" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           programs = {
+
             fish = {
+
               enable = true;
               preferAbbrs = true;
 

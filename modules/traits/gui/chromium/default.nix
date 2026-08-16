@@ -10,25 +10,28 @@
       }:
 
       let
-        cfg = config.traits.os.chromium;
+        cfg = config.traits.chromium;
       in
       {
         disabledModules = [ (modulesPath + "/programs/chromium.nix") ];
         imports = [ ./_chromium.nix ];
 
-        options.traits.os.chromium = {
-          enable = lib.mkEnableOption "chromium" // {
+        options.traits.chromium = {
+          enable = lib.mkEnableOption "Chromium" // {
             default = box.isStation or false;
           };
         };
 
         config = lib.mkIf cfg.enable {
+
           programs.chromium = {
+
             # Seen on stylix and nixpkgs:
             # This enables policies without installing the browser. Policies take up a
             # negligible amount of space, so it's reasonable to have this always on.
             # https://chromeenterprise.google/policies/
             enable = true;
+
             defaultSearchProviderEnabled = true;
             defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
 
@@ -71,28 +74,22 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.chromium;
+        cfg = nixosConfig.traits.chromium;
       in
       {
-        options.traits.hm.chromium = {
-          enable = lib.mkEnableOption "Chromium" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           xdg.mimeApps.associations.removed."application/pdf" = "chromium-browser.desktop";
 
           programs.chromium = {
+
             enable = true;
             package = pkgs.ungoogled-chromium;
 

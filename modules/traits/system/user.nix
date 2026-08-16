@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.user;
+      cfg = config.traits.user;
     in
     {
-      options.traits.os.user = {
+      options.traits.user = {
         enable = lib.mkEnableOption "user" // {
           default = true;
         };
@@ -26,6 +26,7 @@
         ];
 
         users = {
+
           # Define a user account. Don't forget to set a password with ‘passwd’.
           # TODO sops/agenix would allow this:
           # mutableUsers = false;

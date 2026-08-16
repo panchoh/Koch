@@ -1,28 +1,38 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.quickemu;
-    in
-    {
-      options.traits.hm.quickemu = {
-        enable = lib.mkEnableOption "Quickemu" // {
-          default = box.isStation or false;
+      {
+        options.traits.quickemu = {
+          enable = lib.mkEnableOption "Quickemu" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        home.packages = [
-          pkgs.quickemu
-          pkgs.quickgui
-        ];
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.quickemu;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+          home.packages = [
+            pkgs.quickemu
+            pkgs.quickgui
+          ];
+        };
       };
-    };
+  };
 }

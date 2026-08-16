@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.man;
+        cfg = config.traits.man;
       in
       {
-        options.traits.os.man = {
+        options.traits.man = {
           enable = lib.mkEnableOption "Manual pages" // {
             default = box.isStation or false;
           };
@@ -35,30 +35,24 @@
 
     homeModules.default =
       {
-        config,
         lib,
         pkgs,
         nixosConfig,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.man;
+        cfg = nixosConfig.traits.man;
       in
       {
-        options.traits.hm.man = {
-          enable = lib.mkEnableOption "Manual pages" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           manual.html.enable = true;
           manual.json.enable = true;
           manual.manpages.enable = true;
 
           home = {
+
             sessionVariables = lib.mkIf nixosConfig.documentation.man.man-db.enable {
               MANROFFOPT = "-P-i";
             };
@@ -73,6 +67,7 @@
           };
 
           programs.man = {
+
             enable = nixosConfig.documentation.man.enable;
             man-db.enable = nixosConfig.documentation.man.man-db.enable;
             mandoc.enable = nixosConfig.documentation.man.mandoc.enable;

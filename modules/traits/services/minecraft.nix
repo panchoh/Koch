@@ -7,10 +7,10 @@
     }:
 
     let
-      cfg = config.traits.os.minecraft;
+      cfg = config.traits.minecraft;
     in
     {
-      options.traits.os.minecraft = {
+      options.traits.minecraft = {
         enable = lib.mkEnableOption "Minecraft Server" // {
           default = false;
         };

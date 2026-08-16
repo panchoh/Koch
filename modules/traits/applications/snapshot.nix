@@ -1,33 +1,44 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.snapshot;
-    in
-    {
-      options.traits.hm.snapshot = {
-        enable = lib.mkEnableOption "Snapshot" // {
-          default = box.hasCamera or false;
+      {
+        options.traits.snapshot = {
+          enable = lib.mkEnableOption "Snapshot" // {
+            default = box.hasCamera or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
+    homeModules.default =
+      {
+        config,
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
 
-        home.packages = [
-          pkgs.snapshot
-        ];
+      let
+        cfg = nixosConfig.traits.snapshot;
+      in
+      {
+        config = lib.mkIf cfg.enable {
 
-        xdg.userDirs = {
-          pictures = lib.mkForce "${config.home.homeDirectory}/Pictures";
-          videos = lib.mkForce "${config.home.homeDirectory}/Videos";
+          home.packages = [
+            pkgs.snapshot
+          ];
+
+          xdg.userDirs = {
+            pictures = lib.mkForce "${config.home.homeDirectory}/Pictures";
+            videos = lib.mkForce "${config.home.homeDirectory}/Videos";
+          };
         };
       };
-    };
+  };
 }

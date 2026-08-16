@@ -1,48 +1,58 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.ncmpcpp;
-    in
-    {
-      options.traits.hm.ncmpcpp = {
-        enable = lib.mkEnableOption "NCurses Music Player Client (Plus Plus)" // {
-          default = box.isStation or false;
+      {
+        options.traits.ncmpcpp = {
+          enable = lib.mkEnableOption "NCurses Music Player Client (Plus Plus)" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        programs.ncmpcpp = {
-          enable = true;
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
 
-          bindings = [
-            {
-              key = "h";
-              command = "jump_to_parent_directory";
-            }
+      let
+        cfg = nixosConfig.traits.ncmpcpp;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+          programs.ncmpcpp = {
+            enable = true;
 
-            {
-              key = "j";
-              command = "scroll_down";
-            }
+            bindings = [
+              {
+                key = "h";
+                command = "jump_to_parent_directory";
+              }
 
-            {
-              key = "k";
-              command = "scroll_up";
-            }
+              {
+                key = "j";
+                command = "scroll_down";
+              }
 
-            {
-              key = "l";
-              command = "enter_directory";
-            }
-          ];
+              {
+                key = "k";
+                command = "scroll_up";
+              }
+
+              {
+                key = "l";
+                command = "enter_directory";
+              }
+            ];
+          };
         };
       };
-    };
+  };
 }

@@ -1,27 +1,38 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.powertop;
-    in
-    {
-      options.traits.hm.powertop = {
-        enable = lib.mkEnableOption "PowerTOP" // {
-          default = box.isLaptop or false;
+      {
+        options.traits.powertop = {
+          enable = lib.mkEnableOption "PowerTOP" // {
+            default = box.isLaptop or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        home.packages = [
-          pkgs.powertop
-        ];
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.powertop;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          home.packages = [
+            pkgs.powertop
+          ];
+        };
       };
-    };
+  };
 }

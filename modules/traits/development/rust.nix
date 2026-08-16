@@ -1,30 +1,40 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.rust;
-    in
-    {
-      options.traits.hm.rust = {
-        enable = lib.mkEnableOption "Rust" // {
-          default = box.isStation or false;
+      {
+        options.traits.rust = {
+          enable = lib.mkEnableOption "Rust" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
 
-        home.packages = [
-          pkgs.cargo
-          pkgs.rustc
-          pkgs.rust-analyzer
-        ];
+      let
+        cfg = nixosConfig.traits.rust;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          home.packages = [
+            pkgs.cargo
+            pkgs.rustc
+            pkgs.rust-analyzer
+          ];
+        };
       };
-    };
+  };
 }

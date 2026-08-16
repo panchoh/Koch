@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.facter;
+      cfg = config.traits.facter;
     in
     {
-      options.traits.os.facter = {
+      options.traits.facter = {
         enable = lib.mkEnableOption "NixOS Facter" // {
           default = true;
         };
@@ -32,22 +32,16 @@
 
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.facter;
+      cfg = nixosConfig.traits.facter;
     in
     {
-      options.traits.hm.facter = {
-        enable = lib.mkEnableOption "NixOS Facter" // {
-          default = true;
-        };
-      };
-
       config = lib.mkIf cfg.enable {
 
         home.packages = [

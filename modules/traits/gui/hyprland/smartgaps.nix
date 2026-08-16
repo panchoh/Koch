@@ -1,17 +1,19 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         wayland.windowManager.hyprland.settings = {
+
           # https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/#smart-gaps-ignoring-special-workspaces
           workspace_rule = [
             {

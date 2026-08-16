@@ -4,57 +4,69 @@
 }:
 
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.vmtools;
-    in
-    {
-      options.traits.hm.vmtools = {
-        enable = lib.mkEnableOption "vmtools" // {
-          default = true;
+      {
+        options.traits.vmtools = {
+          enable = lib.mkEnableOption "vmtools" // {
+            default = true;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        home.packages = [
-          (pkgs.stdenvNoCC.mkDerivation rec {
-            pname = "vmtools";
-            version = inputs.vmtools.rev; # Use the commit ID as the version
-            src = inputs.vmtools;
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
 
-            buildInputs = [
-              pkgs.virt-manager
-              pkgs.libguestfs
-              pkgs.guestfs-tools
-            ];
+      let
+        cfg = nixosConfig.traits.vmtools;
+      in
+      {
+        config = lib.mkIf cfg.enable {
 
-            nativeBuildInputs = [ pkgs.makeWrapper ];
+          home.packages = [
 
-            dontUnpack = true;
-            dontPatch = true;
-            dontConfigure = true;
-            dontBuild = true;
+            (pkgs.stdenvNoCC.mkDerivation rec {
+              pname = "vmtools";
+              version = inputs.vmtools.rev; # Use the commit ID as the version
+              src = inputs.vmtools;
 
-            installPhase = ''
-              mkdir -p $out/bin
-              cp -r $src/bin/vm* $out/bin
-            '';
+              buildInputs = [
+                pkgs.virt-manager
+                pkgs.libguestfs
+                pkgs.guestfs-tools
+              ];
 
-            fixupPhase = ''
-              for script in $out/bin/vm*; do
-                substituteInPlace $script --replace-quiet sudo run0
-                wrapProgram $script --prefix PATH : ${lib.makeBinPath buildInputs}
-              done
-            '';
-          })
-        ];
+              nativeBuildInputs = [ pkgs.makeWrapper ];
+
+              dontUnpack = true;
+              dontPatch = true;
+              dontConfigure = true;
+              dontBuild = true;
+
+              installPhase = ''
+                mkdir -p $out/bin
+                cp -r $src/bin/vm* $out/bin
+              '';
+
+              fixupPhase = ''
+                for script in $out/bin/vm*; do
+                  substituteInPlace $script --replace-quiet sudo run0
+                  wrapProgram $script --prefix PATH : ${lib.makeBinPath buildInputs}
+                done
+              '';
+            })
+          ];
+        };
       };
-    };
+  };
 }

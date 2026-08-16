@@ -13,10 +13,10 @@
       }:
 
       let
-        cfg = config.traits.os.doom-emacs;
+        cfg = config.traits.doom-emacs;
       in
       {
-        options.traits.os.doom-emacs = {
+        options.traits.doom-emacs = {
           enable = lib.mkEnableOption "Doom Emacs" // {
             default = box.isStation or false;
           };
@@ -24,6 +24,7 @@
 
         config = lib.mkIf cfg.enable {
           nixpkgs = {
+
             config = {
 
               allowUnfreePackages = [
@@ -45,29 +46,26 @@
     homeModules.default =
       {
         config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.doom-emacs;
+        cfg = nixosConfig.traits.doom-emacs;
       in
       {
         imports = [
           inputs.nix-doom-emacs-unstraightened.homeModule
         ];
 
-        options.traits.hm.doom-emacs = {
-          enable = lib.mkEnableOption "Doom Emacs" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           programs = {
+
             doom-emacs = {
+
               enable = true;
 
               # Pick one:
@@ -98,13 +96,16 @@
             };
 
             amber = {
+
               enable = true;
+
               ambsSettings = {
                 column = true;
                 binary = true;
                 skipped = true;
                 recursive = true;
               };
+
               ambrSettings = {
                 regex = true;
                 row = true;
@@ -118,6 +119,7 @@
           }; # for M-x markdown-preview
 
           home.packages = [
+
             (pkgs.aspellWithDicts (dicts: [
               dicts.en
               dicts.en-computers
@@ -226,6 +228,7 @@
           ];
 
           home.sessionVariables = {
+
             ALTERNATE_EDITOR = lib.getExe config.programs.neovide.package;
 
             EDITOR = lib.getBin (
@@ -239,6 +242,7 @@
 
           # REVIEW: enable this, also take care of `config.programs.doom-emacs.provideEmacs`
           services.emacs = {
+
             enable = false;
             defaultEditor = false;
             socketActivation.enable = false;

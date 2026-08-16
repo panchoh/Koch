@@ -7,16 +7,18 @@
   flake.homeModules.default =
     {
       config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         programs.wayprompt = {
           enable = true;
           package = inputs.nowayprompt.packages.${pkgs.stdenv.hostPlatform.system}.nowayprompt;

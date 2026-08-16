@@ -1,17 +1,18 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.wayland-utils # for wayland-info
           pkgs.vrrtest
@@ -19,6 +20,7 @@
         ];
 
         wayland.windowManager.hyprland.settings = {
+
           # https://wiki.hypr.land/Configuring/Basics/Monitors/
           monitor = [
             {

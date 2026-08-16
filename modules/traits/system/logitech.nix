@@ -8,11 +8,11 @@
     }:
 
     let
-      cfg = config.traits.os.logitech;
+      cfg = config.traits.logitech;
     in
     {
 
-      options.traits.os.logitech = {
+      options.traits.logitech = {
         enable = lib.mkEnableOption "logitech" // {
           default = box.isStation or false;
         };

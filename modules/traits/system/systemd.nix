@@ -8,27 +8,29 @@
       }:
 
       let
-        cfg = config.traits.os.systemd;
+        cfg = config.traits.systemd;
       in
       {
-        options.traits.os.systemd = {
+        options.traits.systemd = {
           enable = lib.mkEnableOption "systemd" // {
             default = true;
           };
         };
 
         config = lib.mkIf cfg.enable {
-          systemd = {
-            enableStrictShellChecks = true;
-          };
+
+          systemd.enableStrictShellChecks = true;
 
           security = {
+
             # https://github.com/NixOS/nixpkgs/pull/468166/changes
             sudo.enable = false;
 
             run0 = {
+
               enable = true;
               sudo-shim.enable = true;
+
               persistentAuth = {
                 enable = true;
                 enableRemote = true;
@@ -44,23 +46,24 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
         ...
       }:
 
       let
-        cfg = config.traits.hm.systemd;
+        cfg = nixosConfig.traits.systemd;
       in
       {
-        options.traits.hm.systemd = {
+        options.traits.systemd = {
           enable = lib.mkEnableOption "systemd" // {
             default = true;
           };
         };
 
         config = lib.mkIf cfg.enable {
+
           home.packages = [
             pkgs.systemctl-tui
           ];

@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.physlock;
+      cfg = config.traits.physlock;
     in
     {
-      options.traits.os.physlock = {
+      options.traits.physlock = {
         enable = lib.mkEnableOption "physlock" // {
           default = box.isStation or false;
         };

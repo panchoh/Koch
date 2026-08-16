@@ -1,16 +1,17 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         services.hyprpolkitagent.enable = true;
 
         wayland.windowManager.hyprland.settings.window_rule = [

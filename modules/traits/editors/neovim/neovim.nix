@@ -15,17 +15,19 @@
       }:
 
       let
-        cfg = config.traits.os.neovim;
+        cfg = config.traits.neovim;
       in
       {
-        options.traits.os.neovim = {
+        options.traits.neovim = {
           enable = lib.mkEnableOption "Neovim" // {
             default = box.isStation or false;
           };
         };
 
         config = lib.mkIf cfg.enable {
+
           programs = {
+
             nano.enable = false;
 
             neovim = {
@@ -33,10 +35,13 @@
               viAlias = true;
               vimAlias = true;
               defaultEditor = true;
+
               configure = {
+
                 customRC = ''
                   set mouse=
                 '';
+
                 packages.myVimPackage = {
                   start = [ pkgs.vimPlugins.vim-nix ];
                 };
@@ -51,31 +56,26 @@
     homeModules.default =
       {
         config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.neovim;
+        cfg = nixosConfig.traits.neovim;
       in
       {
         imports = [
           inputs.nvf.homeManagerModules.default
         ];
 
-        options.traits.hm.neovim = {
-          enable = lib.mkEnableOption "Neovim" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           stylix.targets.nvf.enable = false;
 
           programs = {
+
             # home.shellAliases.vimdiff = "nvim -d";
             fish.shellAbbrs.vimdiff = "nvim -d";
 

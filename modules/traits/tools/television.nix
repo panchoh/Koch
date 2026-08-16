@@ -1,46 +1,61 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.television;
-    in
-    {
-      options.traits.hm.television = {
-        enable = lib.mkEnableOption "television" // {
-          default = box.isStation or false;
+      {
+        options.traits.television = {
+          enable = lib.mkEnableOption "television" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        programs = {
-          television = {
-            enable = true;
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
 
-            settings = {
-              default_channel = "nix-search-tv";
+      let
+        cfg = nixosConfig.traits.television;
+      in
+      {
+        config = lib.mkIf cfg.enable {
 
-              ui = {
-                status_bar = {
-                  separator_open = "";
-                  separator_close = "";
+          programs = {
+
+            television = {
+
+              enable = true;
+
+              settings = {
+
+                default_channel = "nix-search-tv";
+
+                ui = {
+
+                  status_bar = {
+                    separator_open = "";
+                    separator_close = "";
+                  };
+
+                  theme = "dracula";
                 };
-
-                theme = "dracula";
               };
             };
-          };
 
-          nix-search-tv = {
-            enable = true;
-            settings.experimental.render_docs_indexes.nvf = "https://notashelf.github.io/nvf/options.html";
+            nix-search-tv = {
+              enable = true;
+              settings.experimental.render_docs_indexes.nvf = "https://notashelf.github.io/nvf/options.html";
+            };
           };
         };
       };
-    };
+  };
 }

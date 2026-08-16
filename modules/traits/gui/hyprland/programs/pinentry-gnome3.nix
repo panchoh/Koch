@@ -8,7 +8,7 @@
     }:
 
     let
-      cfg = config.traits.os.hyprland;
+      cfg = config.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
@@ -18,17 +18,18 @@
 
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         services.gpg-agent.pinentry.package = lib.mkDefault pkgs.pinentry-gnome3;
 
         wayland.windowManager.hyprland.settings.window_rule = [

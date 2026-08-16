@@ -1,20 +1,23 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         wayland.windowManager.hyprland.settings = {
+
           # https://wiki.hypr.land/Configuring/Basics/Variables/#binds
           # https://github.com/hyprwm/Hyprland/pull/352/files
           config = {
+
             # https://wiki.hypr.land/Configuring/Basics/Variables/#animations
             animations.workspace_wraparound = true;
 

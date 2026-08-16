@@ -9,10 +9,10 @@
     }:
 
     let
-      cfg = config.traits.os.networking;
+      cfg = config.traits.networking;
     in
     {
-      options.traits.os.networking = {
+      options.traits.networking = {
         enable = lib.mkEnableOption "networking" // {
           default = true;
         };

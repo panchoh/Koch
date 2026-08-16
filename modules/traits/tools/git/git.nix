@@ -5,20 +5,23 @@
         config,
         lib,
         pkgs,
+        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.os.git;
+        cfg = config.traits.git;
       in
       {
-        options.traits.os.git = {
+        options.traits.git = {
           enable = lib.mkEnableOption "Git" // {
-            default = true;
+            default = box.isStation or false;
           };
         };
 
         config = lib.mkIf cfg.enable {
+
+          # REVIEW: do we need this?
           programs.git = {
             enable = true;
             package = pkgs.gitMinimal;
@@ -28,7 +31,7 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
         box ? null,
@@ -36,16 +39,11 @@
       }:
 
       let
-        cfg = config.traits.hm.git;
+        cfg = nixosConfig.traits.git;
       in
       {
-        options.traits.hm.git = {
-          enable = lib.mkEnableOption "Git" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           home.packages = [
             pkgs.bvi
             pkgs.diffoscope
@@ -63,7 +61,9 @@
           ];
 
           programs = {
+
             git = {
+
               enable = true;
               package = pkgs.gitFull;
 

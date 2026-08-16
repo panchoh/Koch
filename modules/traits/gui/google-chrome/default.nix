@@ -9,14 +9,14 @@
       }:
 
       let
-        cfg = config.traits.os.google-chrome;
+        cfg = config.traits.google-chrome;
       in
       {
         imports = [
           ./_google-chrome.nix
         ];
 
-        options.traits.os.google-chrome = {
+        options.traits.google-chrome = {
           enable = lib.mkEnableOption "Google Chrome" // {
             default = box.isStation or false;
           };
@@ -27,6 +27,7 @@
           nixpkgs.config.allowUnfreePackages = [ "google-chrome" ];
 
           programs.google-chrome = {
+
             # Seen on stylix and nixpkgs:
             # This enables policies without installing the browser. Policies take up a
             # negligible amount of space, so it's reasonable to have this always on.
@@ -63,31 +64,22 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.google-chrome;
+        cfg = nixosConfig.traits.google-chrome;
       in
       {
-        options.traits.hm.google-chrome = {
-          enable = lib.mkEnableOption "Google Chrome" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           xdg.mimeApps.associations.removed."application/pdf" = "google-chrome.desktop";
 
           programs.google-chrome = {
             enable = true;
-            commandLineArgs = [
-              "--ozone-platform=wayland"
-            ];
+            commandLineArgs = [ "--ozone-platform=wayland" ];
           };
         };
       };

@@ -18,20 +18,21 @@
     }:
 
     let
-      cfg = config.traits.os.home-manager;
+      cfg = config.traits.home-manager;
     in
     {
       imports = [
         inputs.home-manager.nixosModules.home-manager
       ];
 
-      options.traits.os.home-manager = {
+      options.traits.home-manager = {
         enable = lib.mkEnableOption "Home Manager" // {
           default = true;
         };
       };
 
       config = lib.mkIf cfg.enable {
+
         assertions = [
           {
             assertion = box.userName != "";
@@ -40,6 +41,7 @@
         ];
 
         home-manager = {
+
           extraSpecialArgs = { inherit box; };
           backupFileExtension = "backup";
           overwriteBackup = true;

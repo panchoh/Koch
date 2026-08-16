@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.upower;
+      cfg = config.traits.upower;
     in
     {
-      options.traits.os.upower = {
+      options.traits.upower = {
         enable = lib.mkEnableOption "UPower" // {
           default = box.isStation or false;
         };

@@ -1,13 +1,13 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config =
@@ -16,6 +16,7 @@
           keys = "SUPER + CONTROL + ALT + SHIFT + Escape";
         in
         lib.mkIf cfg.enable {
+
           wayland.windowManager.hyprland = {
 
             settings.bind = [

@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.games.misc;
+        cfg = config.traits.games.misc;
       in
       {
-        options.traits.os.games.misc = {
+        options.traits.games.misc = {
           enable = lib.mkEnableOption "misc games" // {
             default = box.isStation or false;
           };
@@ -25,23 +25,16 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.games.misc;
+        cfg = nixosConfig.traits.games.misc;
       in
       {
-        options.traits.hm.games.misc = {
-          enable = lib.mkEnableOption "misc games" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
           home.packages = [
             pkgs.abuse

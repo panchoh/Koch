@@ -8,7 +8,7 @@
       }:
 
       let
-        cfg = config.traits.os.hyprland;
+        cfg = config.traits.hyprland;
       in
       {
         config = lib.mkIf cfg.enable {
@@ -22,17 +22,18 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.hyprland;
+        cfg = nixosConfig.traits.hyprland;
       in
       {
         config = lib.mkIf cfg.enable {
+
           # Lid management
           # https://www.reddit.com/r/hyprland/comments/1tbugwn/disabling_monitor_using_keybinds_in_055/
           # https://wiki.hypr.land/Configuring/Basics/Binds/#switches

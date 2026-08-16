@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.games.openarena;
+      cfg = config.traits.games.openarena;
     in
     {
-      options.traits.os.games.openarena = {
+      options.traits.games.openarena = {
         enable = lib.mkEnableOption "OpenArena" // {
           default = box.isStation or false;
         };
@@ -29,23 +29,16 @@
 
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
-      box ? null,
       ...
     }:
 
     let
-      cfg = config.traits.hm.games.openarena;
+      cfg = nixosConfig.traits.games.openarena;
     in
     {
-      options.traits.hm.games.openarena = {
-        enable = lib.mkEnableOption "OpenArena" // {
-          default = box.isStation or false;
-        };
-      };
-
       config = lib.mkIf cfg.enable {
         home.packages = [
           pkgs.openarena

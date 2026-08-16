@@ -1,17 +1,18 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.git;
+      cfg = nixosConfig.traits.git;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.tig
         ];
@@ -23,10 +24,12 @@
         '';
 
         programs = {
+
           # Otherwise mouse wheel will wreak havoc
           foot.settings.mouse.alternate-scroll-mode = false;
 
           fish.shellAbbrs = {
+
             t = "tig";
             tf = "tig FETCH_HEAD"; # for ad-hoc fetches, say git fetch upstream pull/<pr_id>/head
 

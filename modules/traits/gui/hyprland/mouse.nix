@@ -1,17 +1,18 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.libinput # for libinput list-devices
           pkgs.wev # for wev -f wl_pointer
@@ -19,6 +20,7 @@
         ];
 
         wayland.windowManager.hyprland.settings = {
+
           config = {
             cursor = {
               inactive_timeout = 5;

@@ -9,16 +9,17 @@
     }:
 
     let
-      cfg = config.traits.os.interception-tools;
+      cfg = config.traits.interception-tools;
     in
     {
-      options.traits.os.interception-tools = {
+      options.traits.interception-tools = {
         enable = lib.mkEnableOption "Interception Tools" // {
           default = box.isStation or false;
         };
       };
 
       config = lib.mkIf cfg.enable {
+
         environment.etc."interception/dual-function-keys/thinkpad.yaml".source =
           pkgs.writeText "thinkpad.yaml" ''
             TIMING:
@@ -55,6 +56,7 @@
         '';
 
         services.interception-tools = {
+
           enable = true;
 
           plugins = [

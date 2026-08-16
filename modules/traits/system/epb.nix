@@ -9,11 +9,11 @@
     }:
 
     let
-      cfg = config.traits.os.epb;
+      cfg = config.traits.epb;
       policy = if box.isLaptop or false then "--turbo-enable 0 power" else "performance";
     in
     {
-      options.traits.os.epb = {
+      options.traits.epb = {
         enable = lib.mkEnableOption "Performance and Energy Bias Hint (EPB)" // {
           default = false;
         };

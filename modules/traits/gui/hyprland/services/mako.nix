@@ -1,17 +1,19 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         services.mako = {
+
           enable = true;
 
           settings = {
@@ -27,6 +29,7 @@
         # Test notifications with:
         # notify-send -u critical -a Grendizer -- 'UFO in sight!' 'Control Tower at the Research Institute has detected unusual activity in the vecinity of Tokyo'
         wayland.windowManager.hyprland.settings = {
+
           layer_rule = [
             {
               match.namespace = "^notifications$";

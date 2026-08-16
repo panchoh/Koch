@@ -10,12 +10,18 @@
       }:
 
       let
-        cfg = config.traits.os.libvirt;
+        cfg = config.traits.libvirt;
       in
       {
-        options.traits.os.libvirt = {
+        options.traits.libvirt = {
           enable = lib.mkEnableOption "libvirt" // {
             default = true;
+          };
+        };
+
+        options.traits.virt-manager = {
+          enable = lib.mkEnableOption "virt-manager" // {
+            default = box.isStation or false;
           };
         };
 
@@ -42,23 +48,16 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.virt-manager;
+        cfg = nixosConfig.traits.virt-manager;
       in
       {
-        options.traits.hm.virt-manager = {
-          enable = lib.mkEnableOption "virt-manager" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
           home.sessionVariables.LIBVIRT_DEFAULT_URI = "qemu:///system";
 

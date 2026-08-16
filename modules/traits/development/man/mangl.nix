@@ -1,75 +1,85 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.man;
-    in
-    {
-      options.traits.hm.mangl = {
-        enable = lib.mkEnableOption "mangl" // {
-          default = box.isStation or false;
+      {
+        options.traits.mangl = {
+          enable = lib.mkEnableOption "mangl" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
 
-        home.packages = [
-          # https://github.com/zigalenarcic/mangl
-          pkgs.mangl
+      let
+        cfg = nixosConfig.traits.mangl;
+      in
+      {
+        config = lib.mkIf cfg.enable {
 
-          # https://mandoc.bsd.lv/NEWS
-          # man -w behaves like manpath
-          (pkgs.writeShellApplication {
-            name = "manpath";
-            meta.mainProgram = "manpath";
-            runtimeInputs = [ pkgs.mandoc ];
-            text = "exec man -w";
-          })
-        ];
+          home.packages = [
+            # https://github.com/zigalenarcic/mangl
+            pkgs.mangl
 
-        home.file.".manglrc".source =
-          let
-            # https://github.com/zigalenarcic/mangl#manglrc
-            defaults = {
-              font = "Anonymous Pro";
-              font_size = 10;
-              gui_scale = 1;
-              line_spacing = 1;
-              line_length = 78;
-              initial_window_rows = 40;
-              color_background = "#151515";
-              color_foreground = "#fdfde8";
-              color_bold = "#a4d4f1";
-              color_italic = "#ffce79";
-              color_dim = "#7b7b7b";
-              color_scrollbar_background = "#262626";
-              color_scrollbar_thumb = "#454545";
-              color_scrollbar_thumb_hover = "#545454";
-              color_link = "#4515ff";
-              color_gui_1 = "#ebb470";
-              color_gui_2 = "#8fbfdc";
-              color_error = "#ff1515";
-              color_searches = "#1515ff";
-              color_search_selected = "#15ff15";
-            };
+            # https://mandoc.bsd.lv/NEWS
+            # man -w behaves like manpath
+            (pkgs.writeShellApplication {
+              name = "manpath";
+              meta.mainProgram = "manpath";
+              runtimeInputs = [ pkgs.mandoc ];
+              text = "exec man -w";
+            })
+          ];
 
-            config = defaults // {
-              font = "Iosevka";
-              font_size = 16;
-            };
+          home.file.".manglrc".source =
+            let
+              # https://github.com/zigalenarcic/mangl#manglrc
+              defaults = {
+                font = "Anonymous Pro";
+                font_size = 10;
+                gui_scale = 1;
+                line_spacing = 1;
+                line_length = 78;
+                initial_window_rows = 40;
+                color_background = "#151515";
+                color_foreground = "#fdfde8";
+                color_bold = "#a4d4f1";
+                color_italic = "#ffce79";
+                color_dim = "#7b7b7b";
+                color_scrollbar_background = "#262626";
+                color_scrollbar_thumb = "#454545";
+                color_scrollbar_thumb_hover = "#545454";
+                color_link = "#4515ff";
+                color_gui_1 = "#ebb470";
+                color_gui_2 = "#8fbfdc";
+                color_error = "#ff1515";
+                color_searches = "#1515ff";
+                color_search_selected = "#15ff15";
+              };
 
-            configText = lib.concatLines (
-              lib.mapAttrsToList (name: value: "${name}: ${toString value}") config
-            );
-          in
-          pkgs.writeText ".manglrc" configText;
+              config = defaults // {
+                font = "Iosevka";
+                font_size = 16;
+              };
+
+              configText = lib.concatLines (
+                lib.mapAttrsToList (name: value: "${name}: ${toString value}") config
+              );
+            in
+            pkgs.writeText ".manglrc" configText;
+        };
       };
-    };
+  };
 }

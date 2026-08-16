@@ -7,7 +7,7 @@
     }:
 
     let
-      cfg = config.traits.os.hyprland;
+      cfg = config.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
@@ -17,17 +17,18 @@
 
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.transmission_4-gtk
         ];
@@ -35,6 +36,7 @@
         xdg.mimeApps.defaultApplications."x-scheme-handler/magnet" = "transmission-gtk.desktop";
 
         wayland.windowManager.hyprland.settings = {
+
           workspace_rule = [
             {
               workspace = "special:Transmission";

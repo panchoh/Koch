@@ -9,24 +9,27 @@
     }:
 
     let
-      cfg = config.traits.os.usb-drives;
+      cfg = config.traits.usb-drives;
     in
     {
-      options.traits.os.usb-drives = {
+      options.traits.usb-drives = {
         enable = lib.mkEnableOption "USB drives" // {
           default = true;
         };
       };
 
       config = lib.mkIf cfg.enable {
+
         users.groups."storage".members = [
           box.userName or "alice"
         ];
 
         services.udev.packages = [
           (pkgs.writeTextFile rec {
+
             name = "99-usb-drives.rules";
             destination = "/etc/udev/rules.d/${name}";
+
             text = ''
               # Create /media/<label> dir upon connection of USB drives
               ACTION=="add",                       \

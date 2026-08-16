@@ -1,18 +1,21 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.neovim;
+      cfg = nixosConfig.traits.neovim;
     in
     {
       config = lib.mkIf cfg.enable {
+
         programs = {
+
           neovide = {
+
             enable = true;
 
             settings = {

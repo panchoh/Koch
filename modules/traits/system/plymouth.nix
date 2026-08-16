@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.plymouth;
+      cfg = config.traits.plymouth;
     in
     {
-      options.traits.os.plymouth = {
+      options.traits.plymouth = {
         enable = lib.mkEnableOption "Plymouth" // {
           default = box.isStation or false;
         };

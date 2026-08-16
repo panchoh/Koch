@@ -14,16 +14,16 @@
     }:
 
     let
-      cfg = config.traits.os.stylix;
+      cfg = config.traits.stylix;
     in
     {
       imports = [
         inputs.stylix.nixosModules.stylix
       ];
 
-      options.traits.os.stylix = {
+      options.traits.stylix = {
         enable = lib.mkEnableOption "Stylix" // {
-          default = true;
+          default = box.isStation or false;
         };
       };
 
@@ -32,6 +32,7 @@
         nixpkgs.config.allowUnfreePackages = [ "corefonts" ];
 
         fonts = {
+
           enableDefaultPackages = true;
 
           packages = [
@@ -41,6 +42,7 @@
         };
 
         stylix = {
+
           enable = true;
           polarity = "dark";
 
@@ -61,6 +63,7 @@
           };
 
           fonts = {
+
             serif = {
               name = "Iosevka Etoile";
               package = (pkgs.iosevka-bin.override { variant = "Etoile"; });

@@ -41,10 +41,10 @@
       }:
 
       let
-        cfg = config.traits.os.deploy-rs;
+        cfg = config.traits.deploy-rs;
       in
       {
-        options.traits.os.deploy-rs = {
+        options.traits.deploy-rs = {
           enable = lib.mkEnableOption "deploy-rs" // {
             default = box.isStation or false;
           };
@@ -60,23 +60,16 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.deploy-rs;
+        cfg = nixosConfig.traits.deploy-rs;
       in
       {
-        options.traits.hm.deploy-rs = {
-          enable = lib.mkEnableOption "deploy-rs" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           home.packages = [

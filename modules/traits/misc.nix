@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.misc;
+        cfg = config.traits.misc;
       in
       {
-        options.traits.os.misc = {
+        options.traits.misc = {
           enable = lib.mkEnableOption "misc" // {
             default = box.isStation or false;
           };
@@ -32,7 +32,7 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
         box ? null,
@@ -40,14 +40,9 @@
       }:
 
       let
-        cfg = config.traits.hm.misc;
+        cfg = nixosConfig.traits.misc;
       in
       {
-        options.traits.hm.misc = {
-          enable = lib.mkEnableOption "misc" // {
-            default = true;
-          };
-        };
 
         config = lib.mkIf cfg.enable {
           home.packages = [

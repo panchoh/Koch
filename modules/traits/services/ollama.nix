@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.ollama;
+      cfg = config.traits.ollama;
     in
     {
-      options.traits.os.ollama = {
+      options.traits.ollama = {
         enable = lib.mkEnableOption "Ollama" // {
           default = box.isStation or false;
         };

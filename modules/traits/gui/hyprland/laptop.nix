@@ -1,14 +1,14 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       box ? null,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {

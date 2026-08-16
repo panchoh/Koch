@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.sound;
+        cfg = config.traits.sound;
       in
       {
-        options.traits.os.sound = {
+        options.traits.sound = {
           enable = lib.mkEnableOption "sound" // {
             default = box.isStation or false;
           };
@@ -26,23 +26,16 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.sound;
+        cfg = nixosConfig.traits.sound;
       in
       {
-        options.traits.hm.sound = {
-          enable = lib.mkEnableOption "sound" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
           home.packages = [
             pkgs.audacity

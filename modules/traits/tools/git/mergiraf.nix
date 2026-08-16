@@ -1,16 +1,17 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.git;
+      cfg = nixosConfig.traits.git;
     in
     {
       config = lib.mkIf cfg.enable {
+
         programs.mergiraf = {
           enable = true;
           enableGitIntegration = true;

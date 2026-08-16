@@ -1,57 +1,70 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.xdg;
-    in
-    {
-      options.traits.hm.xdg = {
-        enable = lib.mkEnableOption "XDG" // {
-          default = box.isStation or false;
-        };
-      };
-
-      config = lib.mkIf cfg.enable {
-        home.preferXdgDirectories = true;
-
-        home.packages = [
-          pkgs.xdg-user-dirs
-        ];
-
-        # Identify mime type with `xdg-mime query filetype ./path/to/foobar.baz`
-        # .desktop files are located in /etc/profiles/per-user/${user}/share/applications/*.desktop
-        # xdg.mimeApps.defaultApplications = {
-        #   "application/foobar" = [ "org.some.App.desktop" ];
-        # };
-
-        xdg = {
-          enable = true;
-          mimeApps.enable = true;
-          localBinInPath = true;
-
-          userDirs = {
-            enable = true;
-            createDirectories = true;
-            desktop = null;
-            documents = null;
-            download = "${config.home.homeDirectory}/incoming";
-            # TODO: Handle Music/Libation (audiobooks)
-            # music = null;
-            pictures = null;
-            projects = "${config.home.homeDirectory}/sandbox";
-            publicShare = null;
-            templates = null;
-            videos = null;
-            extraConfig.SCREENSHOTS = "${config.home.homeDirectory}/screenshots";
+      {
+        options.traits.xdg = {
+          enable = lib.mkEnableOption "XDG" // {
+            default = box.isStation or false;
           };
         };
       };
-    };
+
+    homeModules.default =
+      {
+        config,
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.xdg;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          home.preferXdgDirectories = true;
+
+          home.packages = [
+            pkgs.xdg-user-dirs
+          ];
+
+          # Identify mime type with `xdg-mime query filetype ./path/to/foobar.baz`
+          # .desktop files are located in /etc/profiles/per-user/${user}/share/applications/*.desktop
+          # xdg.mimeApps.defaultApplications = {
+          #   "application/foobar" = [ "org.some.App.desktop" ];
+          # };
+
+          xdg = {
+
+            enable = true;
+            mimeApps.enable = true;
+            localBinInPath = true;
+
+            userDirs = {
+              enable = true;
+              createDirectories = true;
+              desktop = null;
+              documents = null;
+              download = "${config.home.homeDirectory}/incoming";
+              # TODO: Handle Music/Libation (audiobooks)
+              # music = null;
+              pictures = null;
+              projects = "${config.home.homeDirectory}/sandbox";
+              publicShare = null;
+              templates = null;
+              videos = null;
+              extraConfig.SCREENSHOTS = "${config.home.homeDirectory}/screenshots";
+            };
+          };
+        };
+      };
+  };
 }

@@ -1,8 +1,24 @@
 {
   flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
+
+      {
+        options.traits.mpv = {
+          enable = lib.mkEnableOption "mpv" // {
+            default = box.isStation or false;
+          };
+        };
+      };
+
     homeModules.default =
       {
         config,
+        nixosConfig,
         lib,
         pkgs,
         box ? null,
@@ -10,17 +26,13 @@
       }:
 
       let
-        cfg = config.traits.hm.mpv;
+        cfg = nixosConfig.traits.mpv;
       in
       {
-        options.traits.hm.mpv = {
-          enable = lib.mkEnableOption "mpv" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           home.packages = [
+
             pkgs.playerctl
 
             # for Emacs’ org-pomodoro
@@ -54,9 +66,11 @@
           };
 
           programs = {
+
             mangohud.enable = true;
 
             mpv = {
+
               enable = true;
               scripts = [ pkgs.mpvScripts.mpris ];
 

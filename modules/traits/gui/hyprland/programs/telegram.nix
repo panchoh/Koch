@@ -1,17 +1,18 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.telegram-desktop
         ];
@@ -24,6 +25,7 @@
           |> lib.flip lib.attrsets.genAttrs (_scheme: "telegram.desktop.desktop");
 
         wayland.windowManager.hyprland.settings = {
+
           workspace_rule = [
             {
               workspace = "special:Telegram";

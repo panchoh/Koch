@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.command-not-found;
+      cfg = config.traits.command-not-found;
     in
     {
-      options.traits.os.command-not-found = {
+      options.traits.command-not-found = {
         enable = lib.mkEnableOption "command-not-found" // {
           default = box.isStation or false;
         };

@@ -8,20 +8,23 @@
       }:
 
       let
-        cfg = config.traits.os.ssh;
+        cfg = config.traits.ssh;
       in
       {
-        options.traits.os.ssh = {
+        options.traits.ssh = {
           enable = lib.mkEnableOption "OpenSSH and Mosh" // {
             default = true;
           };
         };
 
         config = lib.mkIf cfg.enable {
+
           programs = {
+
             mosh.enable = true;
 
             ssh.knownHosts = {
+
               # obtained by running `ssh-keyscan -t ed25519 github.com`
               "github.com".publicKey =
                 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
@@ -29,6 +32,7 @@
           };
 
           services.openssh = {
+
             enable = true;
             startWhenNeeded = true;
 
@@ -49,7 +53,7 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
         box ? null,
@@ -57,15 +61,9 @@
       }:
 
       let
-        cfg = config.traits.hm.ssh;
+        cfg = nixosConfig.traits.ssh;
       in
       {
-        options.traits.hm.ssh = {
-          enable = lib.mkEnableOption "OpenSSH" // {
-            default = true;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           home.file =
@@ -78,11 +76,13 @@
             };
 
             ssh = {
+
               enable = true;
               enableDefaultConfig = false;
               package = pkgs.openssh;
 
               settings = {
+
                 "helium he" = {
                   Hostname = "helium";
                   LocalForward = [ "8443 127.0.0.1:443" ];

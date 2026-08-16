@@ -1,20 +1,24 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       box ? null,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         wayland.windowManager.hyprland = {
+
           settings = {
+
             config = {
+
               # https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/
               general.layout = "scrolling";
 
@@ -28,6 +32,7 @@
                 wrap_swapcol = false;
               };
             };
+
             bind =
               (
                 {

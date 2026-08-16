@@ -9,16 +9,17 @@
     }:
 
     let
-      cfg = config.traits.os.console;
+      cfg = config.traits.console;
     in
     {
-      options.traits.os.console = {
+      options.traits.console = {
         enable = lib.mkEnableOption "console" // {
           default = box.isStation or false;
         };
       };
 
       config = lib.mkIf cfg.enable {
+
         services.xserver.xkb = {
           model = "pc104";
           layout = "us,us";

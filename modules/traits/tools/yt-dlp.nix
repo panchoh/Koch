@@ -1,38 +1,52 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.yt-dlp;
-    in
-    {
-      options.traits.hm.yt-dlp = {
-        enable = lib.mkEnableOption "yt-dlp" // {
-          default = box.isStation or false;
+      {
+        options.traits.yt-dlp = {
+          enable = lib.mkEnableOption "yt-dlp" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        programs = {
-          aria2.enable = true;
-          yt-dlp = {
-            enable = true;
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
 
-            settings = {
-              embed-metadata = true;
-              embed-thumbnail = true;
-              embed-subs = true;
-              sub-langs = "all";
-              downloader = "aria2c";
-              downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
+      let
+        cfg = nixosConfig.traits.yt-dlp;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          programs = {
+
+            aria2.enable = true;
+
+            yt-dlp = {
+
+              enable = true;
+
+              settings = {
+                embed-metadata = true;
+                embed-thumbnail = true;
+                embed-subs = true;
+                sub-langs = "all";
+                downloader = "aria2c";
+                downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
+              };
             };
           };
         };
       };
-    };
+  };
 }

@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.hyprland;
+        cfg = config.traits.hyprland;
       in
       {
-        options.traits.os.hyprland = {
+        options.traits.hyprland = {
           enable = lib.mkEnableOption "Hyprland" // {
             default = box.isStation or false;
           };
@@ -26,24 +26,20 @@
     homeModules.default =
       {
         config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.hyprland;
+        cfg = nixosConfig.traits.hyprland;
       in
       {
-        options.traits.hm.hyprland = {
-          enable = lib.mkEnableOption "Hyprland" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           home = {
+
             packages = [
               pkgs.d-spy
             ];

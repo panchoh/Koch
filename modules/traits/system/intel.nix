@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.intel;
+      cfg = config.traits.intel;
     in
     {
-      options.traits.os.intel = {
+      options.traits.intel = {
         enable = lib.mkEnableOption "intel" // {
           # REVIEW: when eventually available, set to config.hardware.facter.detected.graphics.intel.enable
           default = config.hardware.facter.detected.graphics.enable;

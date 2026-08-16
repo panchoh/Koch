@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.qmk;
+        cfg = config.traits.qmk;
       in
       {
-        options.traits.os.qmk = {
+        options.traits.qmk = {
           enable = lib.mkEnableOption "QMK" // {
             default = box.isStation or false;
           };
@@ -25,24 +25,18 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.qmk;
+        cfg = nixosConfig.traits.qmk;
       in
       {
-        options.traits.hm.qmk = {
-          enable = lib.mkEnableOption "QMK" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           home.packages = [
             pkgs.qmk
             pkgs.qmk_hid

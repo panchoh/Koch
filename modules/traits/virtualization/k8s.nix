@@ -9,20 +9,28 @@
       }:
 
       let
-        cfg = config.traits.os.k8s;
+        cfg = config.traits.k8s;
       in
       {
-        options.traits.os.k8s = {
+        options.traits.k8s = {
           enable = lib.mkEnableOption "Kubernetes" // {
+
             # REVIEW: re-enable when https://nixpk.gs/pr-tracker.html?pr=552589 lands
             default = false;
             # default = !(box.isStation or true);
           };
         };
 
+        options.traits.k8s-clients = {
+          enable = lib.mkEnableOption "Kubernetes (Home Manager)" // {
+            default = true;
+          };
+        };
+
         # https://nixos.org/manual/nixos/unstable/#sec-kubernetes
 
         config = lib.mkIf cfg.enable {
+
           # REVIEW: Remove when https://nixpkgs-tracker.ocfox.me/?pr=TBD gets through
           systemd.services.kube-certmgr-bootstrap.enableStrictShellChecks = false;
 
@@ -43,7 +51,7 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
         box ? null,
@@ -51,16 +59,11 @@
       }:
 
       let
-        cfg = config.traits.hm.k8s;
+        cfg = nixosConfig.traits.k8s-clients;
       in
       {
-        options.traits.hm.k8s = {
-          enable = lib.mkEnableOption "Kubernetes" // {
-            default = true;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           home.packages = [
             pkgs.cri-tools
             pkgs.kubectl # TODO: deploy only on master node(s)

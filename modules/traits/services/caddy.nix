@@ -8,10 +8,10 @@
     }:
 
     let
-      cfg = config.traits.os.caddy;
+      cfg = config.traits.caddy;
     in
     {
-      options.traits.os.caddy = {
+      options.traits.caddy = {
         enable = lib.mkEnableOption "Caddy" // {
           default = false;
         };

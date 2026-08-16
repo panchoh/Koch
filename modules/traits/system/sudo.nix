@@ -7,10 +7,10 @@
     }:
 
     let
-      cfg = config.traits.os.sudo;
+      cfg = config.traits.sudo;
     in
     {
-      options.traits.os.sudo = {
+      options.traits.sudo = {
         enable = lib.mkEnableOption "sudo" // {
           default = true;
         };

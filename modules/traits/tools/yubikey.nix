@@ -10,16 +10,17 @@
       }:
 
       let
-        cfg = config.traits.os.yubikey;
+        cfg = config.traits.yubikey;
       in
       {
-        options.traits.os.yubikey = {
+        options.traits.yubikey = {
           enable = lib.mkEnableOption "YubiKey" // {
             default = box.isStation or false;
           };
         };
 
         config = lib.mkIf cfg.enable {
+
           hardware.gpgSmartcards.enable = true;
 
           nixpkgs.config.allowUnfreePackages = [ "scmccid" ];
@@ -30,6 +31,7 @@
           };
 
           security = {
+
             pam = {
               u2f = {
                 enable = true;
@@ -47,25 +49,20 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.yubikey;
+        cfg = nixosConfig.traits.yubikey;
       in
       {
-        options.traits.hm.yubikey = {
-          enable = lib.mkEnableOption "YubiKey" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           home.packages = [
+
             pkgs.pam_u2f
             pkgs.pamtester
             pkgs.libfido2

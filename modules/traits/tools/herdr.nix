@@ -1,39 +1,51 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.herdr;
-    in
-    {
-      options.traits.hm.herdr = {
-        enable = lib.mkEnableOption "herdr" // {
-          default = true;
+      {
+        options.traits.herdr = {
+          enable = lib.mkEnableOption "herdr" // {
+            default = true;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        programs.herdr = {
-          enable = true;
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
 
-          settings = {
-            onboarding = false;
+      let
+        cfg = nixosConfig.traits.herdr;
+      in
+      {
+        config = lib.mkIf cfg.enable {
 
-            remote.manage_ssh_config = false;
+          programs.herdr = {
 
-            # REVIEW: if herdr becomes supported by stylix
-            theme.name = "dracula";
+            enable = true;
 
-            update = {
-              version_check = false;
-              manifest_check = false;
+            settings = {
+              onboarding = false;
+
+              remote.manage_ssh_config = false;
+
+              # REVIEW: if herdr becomes supported by stylix
+              theme.name = "dracula";
+
+              update = {
+                version_check = false;
+                manifest_check = false;
+              };
             };
           };
         };
       };
-    };
+  };
 }

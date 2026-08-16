@@ -1,36 +1,46 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.games.gnome-chess;
-    in
-    {
-      options.traits.hm.games.gnome-chess = {
-        enable = lib.mkEnableOption "GNOME Chess" // {
-          default = box.isStation or false;
-        };
-      };
-
-      config = lib.mkIf cfg.enable {
-
-        home.packages = [
-          pkgs.gnome-chess
-          pkgs.stockfish
-        ];
-
-        # https://wiki.nixos.org/wiki/GNOME
-        dconf.settings = {
-          "org/gnome/Chess" = {
-            show-numbering = true;
+      {
+        options.traits.games.gnome-chess = {
+          enable = lib.mkEnableOption "GNOME Chess" // {
+            default = box.isStation or false;
           };
         };
       };
-    };
+
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.games.gnome-chess;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          home.packages = [
+            pkgs.gnome-chess
+            pkgs.stockfish
+          ];
+
+          # https://wiki.nixos.org/wiki/GNOME
+          dconf.settings = {
+            "org/gnome/Chess" = {
+              show-numbering = true;
+            };
+          };
+        };
+      };
+  };
 }

@@ -1,23 +1,26 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
+
           # For notify-send, used by programs.foot.settings.desktop-notifications.command’s default value
           pkgs.libnotify
         ];
 
         programs.foot = {
+
           enable = true;
           server.enable = true;
 
@@ -34,6 +37,7 @@
         };
 
         wayland.windowManager.hyprland.settings = {
+
           animation = [
             {
               leaf = "specialWorkspace";

@@ -1,31 +1,44 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.nix-init;
-    in
-    {
-      options.traits.hm.nix-init = {
-        enable = lib.mkEnableOption "nix-init" // {
-          default = box.isStation or false;
-        };
-      };
-
-      config = lib.mkIf cfg.enable {
-        programs.nix-init = {
-          enable = true;
-
-          settings = {
-            commit = true;
-            maintainers = [ box.githubUser ];
+      {
+        options.traits.nix-init = {
+          enable = lib.mkEnableOption "nix-init" // {
+            default = box.isStation or false;
           };
         };
       };
-    };
+
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        box ? null,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.nix-init;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          programs.nix-init = {
+
+            enable = true;
+
+            settings = {
+              commit = true;
+              maintainers = [ box.githubUser ];
+            };
+          };
+        };
+      };
+  };
 }

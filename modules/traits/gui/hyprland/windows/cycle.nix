@@ -1,96 +1,95 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
-        wayland.windowManager.hyprland = {
-          # https://wiki.hypr.land/Configuring/Advanced-and-Cool/Uncommon-tips-and-tricks/#per-layout-bindings
-          # https://wiki.hypr.land/Configuring/Basics/Binds/#multiple-binds-to-one-key
-          extraConfig = ''
-            local function layout_bind(bind_table)
-                return function ()
-                    local workspace = hl.get_active_special_workspace() or
-                                      hl.get_active_workspace()
 
-                    if not workspace then
-                        return
-                    end
+        # https://wiki.hypr.land/Configuring/Advanced-and-Cool/Uncommon-tips-and-tricks/#per-layout-bindings
+        # https://wiki.hypr.land/Configuring/Basics/Binds/#multiple-binds-to-one-key
+        wayland.windowManager.hyprland.extraConfig = ''
+          local function layout_bind(bind_table)
+              return function ()
+                  local workspace = hl.get_active_special_workspace() or
+                                    hl.get_active_workspace()
 
-                    local action = bind_table[workspace.tiled_layout]
+                  if not workspace then
+                      return
+                  end
 
-                    if type(action) == "function" then
-                        action(workspace)
-                    elseif action then
-                        hl.dispatch(action)
-                    end
-                end
-            end
+                  local action = bind_table[workspace.tiled_layout]
 
-            -- Tracks Hyprland’s internal cycle direction, per workspace
-            -- (regular and special workspaces use disjoint id ranges, confirmed
-            -- via `hyprctl repl`, so a flat table keyed on id is safe).
-            -- Must be updated whenever we request a direction flip on that workspace.
-            local cycling_forward_by_workspace = {}
+                  if type(action) == "function" then
+                      action(workspace)
+                  elseif action then
+                      hl.dispatch(action)
+                  end
+              end
+          end
 
-            local function cycle(workspace, opts)
-                opts = opts or {}
+          -- Tracks Hyprland’s internal cycle direction, per workspace
+          -- (regular and special workspaces use disjoint id ranges, confirmed
+          -- via `hyprctl repl`, so a flat table keyed on id is safe).
+          -- Must be updated whenever we request a direction flip on that workspace.
+          local cycling_forward_by_workspace = {}
 
-                local backward = opts.backward == true
-                local forward = not backward
+          local function cycle(workspace, opts)
+              opts = opts or {}
 
-                local ws_id = workspace.id
-                local cycling_forward = cycling_forward_by_workspace[ws_id]
+              local backward = opts.backward == true
+              local forward = not backward
 
-                if cycling_forward == nil then
-                    cycling_forward = true
-                end
+              local ws_id = workspace.id
+              local cycling_forward = cycling_forward_by_workspace[ws_id]
 
-                local needs_flipping = forward ~= cycling_forward
+              if cycling_forward == nil then
+                  cycling_forward = true
+              end
 
-                if needs_flipping then
-                    cycling_forward_by_workspace[ws_id] = forward
-                end
+              local needs_flipping = forward ~= cycling_forward
 
-                hl.dispatch(hl.dsp.window.cycle_next({ next = not needs_flipping }))
-                hl.dispatch(hl.dsp.window.bring_to_top())
-                hl.dispatch(hl.dsp.layout("fit_into_view"))
-            end
+              if needs_flipping then
+                  cycling_forward_by_workspace[ws_id] = forward
+              end
 
-            local function cycle_backward(workspace)
-                cycle(workspace, { backward = true })
-            end
+              hl.dispatch(hl.dsp.window.cycle_next({ next = not needs_flipping }))
+              hl.dispatch(hl.dsp.window.bring_to_top())
+              hl.dispatch(hl.dsp.layout("fit_into_view"))
+          end
 
-            local function cycle_forward(workspace)
-                cycle(workspace)
-            end
+          local function cycle_backward(workspace)
+              cycle(workspace, { backward = true })
+          end
 
-            -- Shared per-direction action tables, so the two binds for each
-            -- direction (Tab-family + bracket-family) can’t drift out of sync.
-            local forward_actions = {
-                scrolling = cycle_forward,
-                monocle = hl.dsp.layout("cyclenext"),
-            }
+          local function cycle_forward(workspace)
+              cycle(workspace)
+          end
 
-            local backward_actions = {
-                scrolling = cycle_backward,
-                monocle = hl.dsp.layout("cycleprev"),
-            }
+          -- Shared per-direction action tables, so the two binds for each
+          -- direction (Tab-family + bracket-family) can’t drift out of sync.
+          local forward_actions = {
+              scrolling = cycle_forward,
+              monocle = hl.dsp.layout("cyclenext"),
+          }
 
-            hl.bind("SUPER + SHIFT + Tab", layout_bind(backward_actions))
-            hl.bind("SUPER + bracketleft", layout_bind(backward_actions))
+          local backward_actions = {
+              scrolling = cycle_backward,
+              monocle = hl.dsp.layout("cycleprev"),
+          }
 
-            hl.bind("SUPER + Tab", layout_bind(forward_actions))
-            hl.bind("SUPER + bracketright", layout_bind(forward_actions))
-          '';
-        };
+          hl.bind("SUPER + SHIFT + Tab", layout_bind(backward_actions))
+          hl.bind("SUPER + bracketleft", layout_bind(backward_actions))
+
+          hl.bind("SUPER + Tab", layout_bind(forward_actions))
+          hl.bind("SUPER + bracketright", layout_bind(forward_actions))
+        '';
       };
     };
 }

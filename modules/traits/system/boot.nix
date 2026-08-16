@@ -9,20 +9,23 @@
     }:
 
     let
-      cfg = config.traits.os.boot;
+      cfg = config.traits.boot;
     in
     {
-      options.traits.os.boot = {
+      options.traits.boot = {
         enable = lib.mkEnableOption "boot" // {
           default = true;
         };
       };
 
       config = lib.mkIf cfg.enable {
+
         boot = {
+
           tmp.useTmpfs = true;
 
           loader = {
+
             efi.canTouchEfiVariables = true;
             timeout = 0;
 

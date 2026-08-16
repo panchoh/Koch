@@ -57,7 +57,7 @@
         hasWideDisplay = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-12wshi7
-          { traits.os.caddy.enable = true; }
+          { traits.caddy.enable = true; }
         ];
       }
 
@@ -90,8 +90,9 @@
 
           # BUG: facter does not detect the Bluetooth® controller on aluminium
           { config.hardware.facter.detected.bluetooth.enable = true; }
+
+          { traits.gopass.enable = false; }
         ];
-        extraHomeModules = [ { traits.hm.gopass.enable = false; } ];
       }
 
       {
@@ -102,7 +103,7 @@
         hasMedia = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          { traits.os.minecraft.enable = true; }
+          { traits.minecraft.enable = true; }
         ];
       }
 

@@ -9,10 +9,10 @@
       }:
 
       let
-        cfg = config.traits.os.less;
+        cfg = config.traits.less;
       in
       {
-        options.traits.os.less = {
+        options.traits.less = {
           enable = lib.mkEnableOption "less" // {
             default = box.isStation or false;
           };
@@ -25,24 +25,19 @@
 
     homeModules.default =
       {
-        config,
+        nixosConfig,
         lib,
-        box ? null,
         ...
       }:
 
       let
-        cfg = config.traits.hm.less;
+        cfg = nixosConfig.traits.less;
       in
       {
-        options.traits.hm.less = {
-          enable = lib.mkEnableOption "less" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           programs.less = {
+
             enable = true;
 
             options = lib.mkMerge [
@@ -62,6 +57,7 @@
                 use-color = true;
                 wheel-lines = 3;
               }
+
               # Ordering issue fixed on https://github.com/nix-community/home-manager/pull/8204
               (lib.mkAfter {
                 color = [

@@ -1,18 +1,20 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       box ? null,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         wayland.windowManager.hyprland.settings = {
+
           # REVIEW: https://github.com/hyprwm/Hyprland/discussions/15047
           # Currently, default workspace gets ID 2, not 1
           workspace_rule = [

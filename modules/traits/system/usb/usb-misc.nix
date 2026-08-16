@@ -8,18 +8,20 @@
     }:
 
     let
-      cfg = config.traits.os.usb-misc;
+      cfg = config.traits.usb-misc;
     in
     {
-      options.traits.os.usb-misc = {
-        enable = lib.mkEnableOption "misc usb devices" // {
+      options.traits.usb-misc = {
+        enable = lib.mkEnableOption "misc USB devices" // {
           default = true;
         };
       };
 
       config = lib.mkIf cfg.enable {
+
         services.udev.packages = [
           (pkgs.writeTextFile rec {
+
             name = "98-usb-misc.rules";
             destination = "/etc/udev/rules.d/${name}";
 

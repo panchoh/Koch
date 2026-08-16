@@ -2,16 +2,18 @@
   flake.homeModules.default =
     {
       config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.grim # for org-download-screenshot
           pkgs.slurp # for org-download-screenshot
@@ -26,6 +28,7 @@
         ];
 
         programs.satty = {
+
           enable = true;
 
           settings.general = {

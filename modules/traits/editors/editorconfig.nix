@@ -1,33 +1,46 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.editorconfig;
-    in
-    {
-      options.traits.hm.editorconfig = {
-        enable = lib.mkEnableOption "EditorConfig" // {
-          default = box.isStation or false;
+      {
+        options.traits.editorconfig = {
+          enable = lib.mkEnableOption "EditorConfig" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        editorconfig = {
-          enable = true;
-          # REVIEW: these are global
-          # settings = {
-          #   "*" = {
-          #     indent_style = "tab";
-          #     indent_size = 4;
-          #   };
-          # };
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.editorconfig;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          editorconfig = {
+
+            enable = true;
+
+            # REVIEW: these are global
+            # settings = {
+            #   "*" = {
+            #     indent_style = "tab";
+            #     indent_size = 4;
+            #   };
+            # };
+          };
         };
       };
-    };
+  };
 }

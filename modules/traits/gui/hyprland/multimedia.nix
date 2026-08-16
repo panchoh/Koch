@@ -1,17 +1,19 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       ...
     }:
 
     let
-      cfg = config.traits.hm.hyprland;
+      cfg = nixosConfig.traits.hyprland;
     in
     {
       config = lib.mkIf cfg.enable {
+
         wayland.windowManager.hyprland.settings.bind = [
+
           # Multimedia
           # https://wiki.hypr.land/Configuring/Basics/Binds/#media
 

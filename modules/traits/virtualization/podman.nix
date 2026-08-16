@@ -9,16 +9,17 @@
     }:
 
     let
-      cfg = config.traits.os.podman;
+      cfg = config.traits.podman;
     in
     {
-      options.traits.os.podman = {
+      options.traits.podman = {
         enable = lib.mkEnableOption "Podman" // {
           default = true;
         };
       };
 
       config = lib.mkIf cfg.enable {
+
         environment.systemPackages = [
           pkgs.dive
           pkgs.podman-tui
@@ -32,6 +33,7 @@
         users.users.${box.userName or "alice"}.extraGroups = [ "podman" ];
 
         virtualisation = {
+
           podman = {
             enable = true;
             dockerCompat = true;

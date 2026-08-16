@@ -9,21 +9,30 @@
       }:
 
       let
-        cfg = config.traits.os.mpd;
+        cfg = config.traits.mpd-alsa;
       in
       {
-        options.traits.os.mpd = {
-          enable = lib.mkEnableOption "MPD" // {
+        options.traits.mpd-alsa = {
+          enable = lib.mkEnableOption "MPD (ALSA-only)" // {
             default = !(box.isStation or true) && (box.hasMedia or false);
           };
         };
 
+        options.traits.mpd = {
+          enable = lib.mkEnableOption "MPD" // {
+            default = ((box.isStation or false) && (!config.traits.mpd-alsa.enable));
+          };
+        };
+
         config = lib.mkIf cfg.enable {
+
           services.mpd = {
+
             enable = true;
             startWhenNeeded = true;
 
             settings = {
+
               music_directory = "/srv/media/audio";
 
               audio_output = [
@@ -46,25 +55,23 @@
     homeModules.default =
       {
         config,
+        nixosConfig,
         lib,
         box ? null,
         ...
       }:
       let
-        cfg = config.traits.hm.mpd;
+        cfg = nixosConfig.traits.mpd;
       in
       {
-        options.traits.hm.mpd = {
-          enable = lib.mkEnableOption "MPD" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
+
           services = {
+
             mpd-mpris.enable = true;
 
             mpd = {
+
               enable = true;
               musicDirectory = if !(box.hasMedia or true) then config.xdg.userDirs.music else "/srv/media/audio";
               network.startWhenNeeded = true;

@@ -1,17 +1,18 @@
 {
   flake.homeModules.default =
     {
-      config,
+      nixosConfig,
       lib,
       pkgs,
       ...
     }:
 
     let
-      cfg = config.traits.hm.git;
+      cfg = nixosConfig.traits.git;
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.git-absorb
         ];

@@ -1,24 +1,35 @@
 {
-  flake.homeModules.default =
-    {
-      config,
-      lib,
-      box ? null,
-      ...
-    }:
+  flake = {
+    nixosModules.default =
+      {
+        lib,
+        box ? null,
+        ...
+      }:
 
-    let
-      cfg = config.traits.hm.k9s;
-    in
-    {
-      options.traits.hm.k9s = {
-        enable = lib.mkEnableOption "K9s" // {
-          default = box.isStation or false;
+      {
+        options.traits.k9s = {
+          enable = lib.mkEnableOption "K9s" // {
+            default = box.isStation or false;
+          };
         };
       };
 
-      config = lib.mkIf cfg.enable {
-        programs.k9s.enable = true;
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        ...
+      }:
+
+      let
+        cfg = nixosConfig.traits.k9s;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+
+          programs.k9s.enable = true;
+        };
       };
-    };
+  };
 }
