@@ -135,6 +135,9 @@
             # https://github.com/blacknon/hwatch
             pkgs.hwatch
 
+            # https://watchexec.github.io/
+            pkgs.watchexec
+
             pkgs.recode
 
             pkgs.whois
