@@ -26,12 +26,12 @@ tasks:
   nixos-rebuild-switch:
     desc: Rebuild and switch to the new NixOS configuration
     cmds:
-      - run0 nixos-rebuild switch --verbose --print-build-logs
+      - nixos-rebuild switch --elevate=run0 --diff --verbose --print-build-logs
 
   nixos-rebuild-test:
     desc: Test the new NixOS configuration without switching
     cmds:
-      - run0 nixos-rebuild test --verbose --print-build-logs
+      - nixos-rebuild test --elevate=run0 --diff --verbose --print-build-logs
 
   nixos-rebuild-build:
     desc: Build the new NixOS configuration
