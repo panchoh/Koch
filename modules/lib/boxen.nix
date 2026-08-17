@@ -8,6 +8,7 @@
     let
       defaults = {
         stateVersion = "26.11";
+        system = "x86_64-linux"; # FIXME: apps-disko-and-funk depends on it #facter
         facter = ./facter-defaults.json;
         hostName = "nixos";
         deployGroups = [ ];
