@@ -3,7 +3,7 @@
     {
       nixosConfig,
       lib,
-      # pkgs,
+      pkgs,
       ...
     }:
 
@@ -13,9 +13,9 @@
     {
       config = lib.mkIf cfg.enable {
         home.packages = [
+
           # https://mstoeckl.com/notes/gsoc/blog.html
-          # REVIEW: https://nixpk.gs/pr-tracker.html?pr=552268
-          # pkgs.waypipe
+          pkgs.waypipe
         ];
       };
     };
