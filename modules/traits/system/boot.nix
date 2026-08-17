@@ -31,6 +31,7 @@
 
             systemd-boot = {
               enable = true;
+              editor = false;
               consoleMode = "keep";
               memtest86.enable = true;
               configurationLimit = 5;
