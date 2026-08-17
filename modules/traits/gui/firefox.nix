@@ -25,119 +25,125 @@
 
       let
         cfg = nixosConfig.traits.firefox;
+        stylixEnabled = nixosConfig.traits.stylix.enable;
       in
       {
-        config = lib.mkIf cfg.enable {
+        config = lib.mkIf cfg.enable (
 
-          home.sessionVariables = {
-            MOZ_USE_XINPUT2 = "1";
-          };
+          (lib.optionalAttrs nixosConfig.traits.stylix.enable {
+            # https://stylix.danth.me/options/modules/firefox.html?highlight=firefox#firefox-and-its-derivatives
+            stylix.targets.firefox.profileNames = lib.mkIf stylixEnabled [ "default" ];
+          })
 
-          # https://stylix.danth.me/options/modules/firefox.html?highlight=firefox#firefox-and-its-derivatives
-          stylix.targets.firefox.profileNames = [ "default" ];
+          // {
 
-          xdg.mimeApps.associations.removed."application/pdf" = "firefox.desktop";
-
-          # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
-          # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/firefox.nix
-          # https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/modules/home/apps/firefox/default.nix?ref_type=heads
-          programs.firefox = {
-            enable = true;
-
-            profiles.default = {
-              id = 0;
-              containersForce = true;
+            home.sessionVariables = {
+              MOZ_USE_XINPUT2 = "1";
             };
 
-            policies = {
-              # https://mozilla.github.io/policy-templates
-              # about:policies#documentation
-              AppAutoUpdate = false;
-              BackgroundAppUpdate = false;
-              DisableAccounts = true;
-              DisableAppUpdate = true;
-              DisableBuiltinPDFViewer = true;
-              DisableFeedbackCommands = true;
-              DisableFirefoxAccounts = true;
-              DisableFirefoxScreenshots = true;
-              DisableFirefoxStudies = true;
-              DisablePocket = true;
-              DisableProfileImport = true;
-              DisableSetDesktopBackground = true;
-              DisableSystemAddonUpdate = true;
-              DisableTelemetry = true;
-              DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
-              DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
-              DNSOverHTTPS.Enabled = 0;
-              DontCheckDefaultBrowser = true;
+            xdg.mimeApps.associations.removed."application/pdf" = "firefox.desktop";
 
-              EnableTrackingProtection = {
-                Value = true;
-                Locked = true;
-                Cryptomining = true;
-                Fingerprinting = true;
+            # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
+            # https://github.com/Misterio77/nix-config/blob/main/home/misterio/features/desktop/common/firefox.nix
+            # https://gitlab.com/usmcamp0811/dotfiles/-/blob/nixos/modules/home/apps/firefox/default.nix?ref_type=heads
+            programs.firefox = {
+
+              enable = true;
+
+              profiles.default = {
+                id = 0;
+                containersForce = true;
               };
 
-              Homepage.StartPage = "none";
-              NewTabPage = false;
-              NoDefaultBookmarks = true;
-              OfferToSaveLoginsDefault = false;
-              OfferToSaveLogins = false;
-              OverrideFirstRunPage = "";
-              OverridePostUpdatePage = "";
-              PasswordManagerEnabled = false;
-              PDFjs.Enabled = false;
-              SearchBar = "unified"; # alternative: "separate"
+              policies = {
+                # https://mozilla.github.io/policy-templates
+                # about:policies#documentation
+                AppAutoUpdate = false;
+                BackgroundAppUpdate = false;
+                DisableAccounts = true;
+                DisableAppUpdate = true;
+                DisableBuiltinPDFViewer = true;
+                DisableFeedbackCommands = true;
+                DisableFirefoxAccounts = true;
+                DisableFirefoxScreenshots = true;
+                DisableFirefoxStudies = true;
+                DisablePocket = true;
+                DisableProfileImport = true;
+                DisableSetDesktopBackground = true;
+                DisableSystemAddonUpdate = true;
+                DisableTelemetry = true;
+                DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
+                DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
+                DNSOverHTTPS.Enabled = 0;
+                DontCheckDefaultBrowser = true;
 
-              SecurityDevices = {
-                Add = {
-                  "YubiKey/SmartCard" = "${pkgs.opensc}/lib/opensc-pkcs11.so";
+                EnableTrackingProtection = {
+                  Value = true;
+                  Locked = true;
+                  Cryptomining = true;
+                  Fingerprinting = true;
                 };
+
+                Homepage.StartPage = "none";
+                NewTabPage = false;
+                NoDefaultBookmarks = true;
+                OfferToSaveLoginsDefault = false;
+                OfferToSaveLogins = false;
+                OverrideFirstRunPage = "";
+                OverridePostUpdatePage = "";
+                PasswordManagerEnabled = false;
+                PDFjs.Enabled = false;
+                SearchBar = "unified"; # alternative: "separate"
+
+                SecurityDevices = {
+                  Add = {
+                    "YubiKey/SmartCard" = "${pkgs.opensc}/lib/opensc-pkcs11.so";
+                  };
+                };
+
+                Preferences =
+                  let
+                    lock-true = {
+                      Value = true;
+                      Status = "locked";
+                    };
+                    lock-false = {
+                      Value = false;
+                      Status = "locked";
+                    };
+                    lock-strict = {
+                      Value = "strict";
+                      Status = "locked";
+                    };
+                  in
+                  {
+                    "browser.display.use_document_fonts" = 1; # Force stylix fonts on all pages
+                    "browser.sessionstore.resume_from_crash" = false;
+                    "dom.security.https_only_mode" = true;
+                    "dom.security.https_only_mode_ever_enabled" = true;
+                    "browser.contentblocking.category" = lock-strict;
+                    "extensions.pocket.enabled" = lock-false;
+                    "extensions.screenshots.disabled" = lock-true;
+                    "browser.topsites.contile.enabled" = lock-false;
+                    "browser.formfill.enable" = lock-false;
+                    "browser.search.suggest.enabled" = lock-false;
+                    "browser.search.suggest.enabled.private" = lock-false;
+                    "browser.urlbar.suggest.searches" = lock-false;
+                    "browser.urlbar.showSearchSuggestionsFirst" = lock-false;
+                    "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
+                    "browser.newtabpage.activity-stream.feeds.snippets" = lock-false;
+                    "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
+                    "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = lock-false;
+                    "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = lock-false;
+                    "browser.newtabpage.activity-stream.section.highlights.includeVisited" = lock-false;
+                    "browser.newtabpage.activity-stream.showSponsored" = lock-false;
+                    "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
+                    "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
+                  };
               };
-
-              Preferences =
-                let
-                  lock-true = {
-                    Value = true;
-                    Status = "locked";
-                  };
-                  lock-false = {
-                    Value = false;
-                    Status = "locked";
-                  };
-                  lock-strict = {
-                    Value = "strict";
-                    Status = "locked";
-                  };
-                in
-                {
-                  "browser.display.use_document_fonts" = 1; # Force stylix fonts on all pages
-                  "browser.sessionstore.resume_from_crash" = false;
-                  "dom.security.https_only_mode" = true;
-                  "dom.security.https_only_mode_ever_enabled" = true;
-                  "browser.contentblocking.category" = lock-strict;
-                  "extensions.pocket.enabled" = lock-false;
-                  "extensions.screenshots.disabled" = lock-true;
-                  "browser.topsites.contile.enabled" = lock-false;
-                  "browser.formfill.enable" = lock-false;
-                  "browser.search.suggest.enabled" = lock-false;
-                  "browser.search.suggest.enabled.private" = lock-false;
-                  "browser.urlbar.suggest.searches" = lock-false;
-                  "browser.urlbar.showSearchSuggestionsFirst" = lock-false;
-                  "browser.newtabpage.activity-stream.feeds.section.topstories" = lock-false;
-                  "browser.newtabpage.activity-stream.feeds.snippets" = lock-false;
-                  "browser.newtabpage.activity-stream.section.highlights.includePocket" = lock-false;
-                  "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = lock-false;
-                  "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = lock-false;
-                  "browser.newtabpage.activity-stream.section.highlights.includeVisited" = lock-false;
-                  "browser.newtabpage.activity-stream.showSponsored" = lock-false;
-                  "browser.newtabpage.activity-stream.system.showSponsored" = lock-false;
-                  "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock-false;
-                };
             };
-          };
-        };
+          }
+        );
       };
   };
-
 }
