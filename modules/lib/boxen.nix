@@ -58,6 +58,7 @@
         hasWideDisplay = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-12wshi7
+          { services.thermald.enable = false; }
           { traits.caddy.enable = true; }
         ];
       }
@@ -110,6 +111,7 @@
         hasMedia = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+          { services.thermald.enable = false; }
           { traits.minecraft.enable = true; }
         ];
       }
@@ -120,7 +122,10 @@
         macvlanAddr = "1c:69:7a:06:76:c0";
         facter = ./facter-calcium.json;
         hasMedia = true;
-        extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+          { services.thermald.enable = false; }
+        ];
       }
 
       {
@@ -128,7 +133,10 @@
         macvlanAddr = "1c:69:7a:a7:e4:e5";
         facter = ./facter-scandium.json;
         isStation = true;
-        extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+          { services.thermald.enable = false; }
+        ];
       }
 
       {
@@ -136,7 +144,10 @@
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:a7:ad:ec";
         facter = ./facter-titanium.json;
-        extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+          { services.thermald.enable = false; }
+        ];
       }
 
       {
@@ -145,7 +156,10 @@
         macvlanAddr = "1c:69:7a:a7:a8:a9";
         facter = ./facter-vanadium.json;
         diskDevice = "/dev/sda";
-        extraModules = [ inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh ];
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+          { services.thermald.enable = false; }
+        ];
       }
 
       # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
