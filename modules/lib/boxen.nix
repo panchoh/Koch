@@ -71,7 +71,13 @@
         hasCamera = true;
         hasWideDisplay = true;
         hasExternalMonitor = true;
-        extraModules = [ inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490 ];
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
+
+          # REVIEW: re-enable when hyprpolkitagent supports it
+          # https://redirect.github.com/hyprwm/hyprpolkitagent/issues/24
+          { config.hardware.facter.detected.fingerprint.enable = false; }
+        ];
       }
 
       {
