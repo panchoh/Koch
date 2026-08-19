@@ -43,7 +43,7 @@
             })
           ];
 
-          home.file.".manglrc".source =
+          home.file.".manglrc".text =
             let
               # https://github.com/zigalenarcic/mangl#manglrc
               defaults = {
@@ -78,7 +78,7 @@
                 lib.mapAttrsToList (name: value: "${name}: ${toString value}") config
               );
             in
-            pkgs.writeText ".manglrc" configText;
+            configText;
         };
       };
   };
