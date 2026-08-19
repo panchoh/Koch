@@ -246,7 +246,10 @@
                       winborder = "rounded";
                     };
 
-                    statusline.lualine.enable = true;
+                    statusline.lualine = {
+                      enable = true;
+                      integrations.breadcrumbs.nvim-navic.enable = true;
+                    };
 
                     theme = {
                       enable = true;
@@ -258,7 +261,6 @@
 
                     ui = {
                       borders.enable = true;
-                      breadcrumbs.enable = true;
                       noice.enable = true;
                     };
 
