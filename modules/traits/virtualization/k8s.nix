@@ -4,7 +4,7 @@
       {
         config,
         lib,
-        # box ? null,
+        box ? null,
         ...
       }:
 
@@ -14,10 +14,7 @@
       {
         options.traits.k8s = {
           enable = lib.mkEnableOption "Kubernetes" // {
-
-            # REVIEW: re-enable when https://nixpk.gs/pr-tracker.html?pr=552589 lands
-            default = false;
-            # default = !(box.isStation or true);
+            default = !(box.isStation or true);
           };
         };
 
