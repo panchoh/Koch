@@ -27,6 +27,11 @@
 
         services.gpg-agent.pinentry.package = config.programs.wayprompt.package;
 
+        systemd.user.services.gpg-agent.Unit.X-Reload-Triggers = [
+          config.services.gpg-agent.pinentry.package
+          config.xdg.configFile."wayprompt/config.ini".source
+        ];
+
         wayland.windowManager.hyprland.settings.layer_rule = [
           {
             match.namespace = "^nowayprompt$";
