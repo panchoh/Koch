@@ -13,6 +13,7 @@
       config = lib.mkIf cfg.enable {
 
         # https://nixos.org/manual/nixos/unstable/#sec-running-nixos-tests
+        # https://nixos.org/manual/nixos/unstable/#sec-running-nixos-tests-requirements
         nix.settings = {
 
           auto-allocate-uids = true;
