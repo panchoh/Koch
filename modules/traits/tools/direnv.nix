@@ -33,28 +33,29 @@
 
         config = lib.mkIf cfg.enable {
 
-          programs.direnv = {
+          programs = {
 
-            enable = true;
+            starship.settings.direnv.disabled = false;
 
-            config = {
+            direnv = {
 
-              global = {
-                disable_stdin = true;
-                strict_env = true;
-                hide_env_diff = true;
-              };
+              enable = true;
 
-              whitelist = {
+              config = {
+
+                global = {
+                  disable_stdin = true;
+                  strict_env = true;
+                  hide_env_diff = true;
+                };
+
                 # TODO: extract path/username; look for disko-and-funk
-                exact = [
-                  "~/sandbox/panchoh/Koch"
-                ];
+                whitelist.exact = [ "~/sandbox/panchoh/Koch" ];
               };
-            };
 
-            # REVIEW: drop if https://github.com/nix-community/home-manager/issues/9822 gets fixed
-            nix-direnv.enable = true;
+              # REVIEW: drop if https://github.com/nix-community/home-manager/issues/9822 gets fixed
+              nix-direnv.enable = true;
+            };
           };
         };
       };
