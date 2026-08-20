@@ -27,15 +27,10 @@
           intel-gpu-tools.enable = true;
 
           graphics.extraPackages = [
-
-            # https://wiki.nixos.org/wiki/Intel_Graphics
-            pkgs.vpl-gpu-rt
-
             # https://nixos.wiki/wiki/Accelerated_Video_Playback
             pkgs.libva-vdpau-driver
             pkgs.libvdpau-va-gl
           ];
-
         };
       };
     };
