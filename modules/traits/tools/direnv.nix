@@ -53,6 +53,7 @@
               };
             };
 
+            # REVIEW: drop if https://github.com/nix-community/home-manager/issues/9822 gets fixed
             nix-direnv.enable = true;
           };
         };
