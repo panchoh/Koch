@@ -34,6 +34,13 @@
             presets = [ "nerd-font-symbols" ];
 
             settings = {
+
+              directory = {
+                truncate_to_repo = false;
+                truncation_length = 3; # Shows org/repo/worktree
+                truncation_symbol = "… /";
+              };
+
               hostname.ssh_only = false;
               fossil_branch.symbol = " ";
               git_branch.symbol = " ";
