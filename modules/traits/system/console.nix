@@ -28,8 +28,6 @@
         };
 
         console = {
-          earlySetup = true;
-          font = "ter-powerline-v24n";
           packages = [ pkgs.powerline-fonts ];
           useXkbConfig = true;
         };
