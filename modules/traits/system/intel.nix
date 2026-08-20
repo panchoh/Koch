@@ -34,7 +34,6 @@
             # https://nixos.wiki/wiki/Accelerated_Video_Playback
             pkgs.intel-ocl # TODO: add only for older intel gpus
             pkgs.intel-compute-runtime
-            pkgs.intel-media-driver
             pkgs.libva-vdpau-driver
             pkgs.libvdpau-va-gl
           ];
