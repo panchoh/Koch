@@ -82,16 +82,14 @@
               };
 
               # https://github.com/mpv-player/mpv/issues/12082#issuecomment-1666545541
-              defaultProfiles = [ (if !(box.hasBeefyGPU or true) then "fast" else "gpu-hq") ];
+              defaultProfiles = [ (if !(box.hasBeefyGPU or true) then "fast" else "high-quality") ];
 
               config = {
                 fullscreen = true;
                 sub-auto = "fuzzy";
 
-                # vo = "gpu-next";
-                vo = "gpu";
-                # gpu-api = "vulkan";
                 gpu-context = "waylandvk";
+                hwdec = "vaapi";
 
                 # https://github.com/mpv-player/mpv/issues/8981
                 # hdr-compute-peak = false;
