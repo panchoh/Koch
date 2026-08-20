@@ -3,7 +3,6 @@
     {
       config,
       lib,
-      pkgs,
       ...
     }:
 
@@ -22,16 +21,7 @@
 
         nixpkgs.config.allowUnfreePackages = [ "intel-ocl" ];
 
-        hardware = {
-
-          intel-gpu-tools.enable = true;
-
-          graphics.extraPackages = [
-            # https://nixos.wiki/wiki/Accelerated_Video_Playback
-            pkgs.libva-vdpau-driver
-            pkgs.libvdpau-va-gl
-          ];
-        };
+        hardware.intel-gpu-tools.enable = true;
       };
     };
 }
