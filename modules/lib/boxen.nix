@@ -75,6 +75,10 @@
         extraModules = [
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
 
+          # NOTE: should be whiskey-lake, but comet-lake sets hardware.intelgpu.computeRuntime = "legacy";
+          # whereas whiskey-lake does not, being an older generation.
+          inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
+
           # REVIEW: re-enable when hyprpolkitagent supports it
           # https://redirect.github.com/hyprwm/hyprpolkitagent/issues/24
           { config.hardware.facter.detected.fingerprint.enable = false; }
