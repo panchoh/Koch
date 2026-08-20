@@ -4,7 +4,6 @@
       config,
       lib,
       pkgs,
-      box ? null,
       ...
     }:
 
@@ -50,7 +49,7 @@
           initrd = {
             verbose = false;
             systemd.enable = true;
-            kernelModules = [ "btrfs" ] ++ lib.optionals (box.isStation or false) [ "i915" ];
+            kernelModules = [ "btrfs" ];
           };
 
           consoleLogLevel = 0;
