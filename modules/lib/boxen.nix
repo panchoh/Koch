@@ -66,6 +66,7 @@
         hasWideDisplay = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
+          { hardware.trackpoint.emulateWheel = false; }
 
           # NOTE: should be whiskey-lake, but comet-lake sets hardware.intelgpu.computeRuntime = "legacy";
           # whereas whiskey-lake does not, being an older generation.
