@@ -98,6 +98,17 @@
       }
 
       {
+        hostName = "phosphorus";
+        macvlanAddr = "1c:69:7a:a7:e4:e5";
+        facter = ./facter-phosphorus.json;
+        isStation = true;
+        extraModules = [
+          inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
+          { services.thermald.enable = false; }
+        ];
+      }
+
+      {
         hostName = "potassium";
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:02:8d:23";
@@ -114,17 +125,6 @@
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:06:76:c0";
         facter = ./facter-calcium.json;
-        extraModules = [
-          inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          { services.thermald.enable = false; }
-        ];
-      }
-
-      {
-        hostName = "scandium";
-        macvlanAddr = "1c:69:7a:a7:e4:e5";
-        facter = ./facter-scandium.json;
-        isStation = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
           { services.thermald.enable = false; }

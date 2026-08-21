@@ -53,7 +53,7 @@ nixos-rebuild switch --elevate=run0 --diff --verbose --print-build-logs # or -SL
 ** Remote
 *** Using ~nixos-rebuild~
 #+begin_src shell
-nixos-rebuild switch --no-reexec --elevate=run0 --ask-elevate-password --target-host scandium --diff --verbose --print-build-logs # or -SLv --diff
+nixos-rebuild switch --no-reexec --elevate=run0 --ask-elevate-password --target-host phosphorus --diff --verbose --print-build-logs # or -SLv --diff
 #+end_src
 
 *** Using ~deploy-rs~
