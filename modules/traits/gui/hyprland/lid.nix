@@ -24,7 +24,6 @@
       {
         nixosConfig,
         lib,
-        box ? null,
         ...
       }:
 
@@ -59,20 +58,24 @@
                 }
               );
 
-            extraConfig = lib.optionalString box.hasExternalMonitor or false ''
-              hl.on("monitor.layout_changed", function()
-                  local internal_enabled = hl.get_monitor("eDP-1")
-                  local monitors = hl.get_monitors()
-                  local should_disable = #monitors > 1 and monitors[1].name ~= "FALLBACK"
-                  local should_enable = monitors[1] and monitors[1].name == "FALLBACK"
+            extraConfig =
+              let
+                singleMonitor = builtins.length (nixosConfig.hardware.facter.report.hardware.monitor or [ ]) == 1;
+              in
+              lib.optionalString (!singleMonitor) ''
+                hl.on("monitor.layout_changed", function()
+                    local internal_enabled = hl.get_monitor("eDP-1")
+                    local monitors = hl.get_monitors()
+                    local should_disable = #monitors > 1 and monitors[1].name ~= "FALLBACK"
+                    local should_enable = monitors[1] and monitors[1].name == "FALLBACK"
 
-                  if internal_enabled and should_disable then
-                      hl.monitor({output = "eDP-1", disabled = true })
-                  elseif not internal_enabled and should_enable then
-                      hl.monitor({output = "eDP-1", disabled = false })
-                  end
-              end)
-            '';
+                    if internal_enabled and should_disable then
+                        hl.monitor({output = "eDP-1", disabled = true })
+                    elseif not internal_enabled and should_enable then
+                        hl.monitor({output = "eDP-1", disabled = false })
+                    end
+                end)
+              '';
           };
         };
       };

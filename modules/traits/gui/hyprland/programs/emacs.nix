@@ -17,19 +17,23 @@
 
           # REVIEW: https://github.com/hyprwm/Hyprland/discussions/15047
           # Currently, default workspace gets ID 2, not 1
-          workspace_rule = [
-            {
-              workspace = 1;
-              monitor = if box.hasExternalMonitor or false then box.externalMonitorID or "DP-2" else "DP-1";
-              default = true;
-              default_name = "Doom";
-              on_created_empty =
-                if (box.isLaptop or false) && (box.hasExternalMonitor or false) then
-                  ''hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs''
-                else
-                  "doom-emacs";
-            }
-          ];
+          workspace_rule =
+            let
+              singleMonitor = builtins.length (nixosConfig.hardware.facter.report.hardware.monitor or [ ]) == 1;
+            in
+            [
+              {
+                workspace = 1;
+                monitor = if singleMonitor then "DP-1" else "DP-2";
+                default = true;
+                default_name = "Doom";
+                on_created_empty =
+                  if (box.isLaptop or false) && !singleMonitor then
+                    ''hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs''
+                  else
+                    "doom-emacs";
+              }
+            ];
 
           window_rule = [
             {

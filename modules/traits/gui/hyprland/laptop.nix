@@ -25,7 +25,10 @@
             no_rounding = true;
             decorate = false;
             on_created_empty =
-              if (!box.hasExternalMonitor or true) then
+              let
+                singleMonitor = builtins.length (nixosConfig.hardware.facter.report.hardware.monitor or [ ]) == 1;
+              in
+              if singleMonitor then
                 "doom-emacs"
               else
                 ''hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null || doom-emacs'';
