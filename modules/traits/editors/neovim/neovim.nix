@@ -221,6 +221,8 @@
 
                     mini.pick.enable = true;
 
+                    git.neogit.enable = true;
+
                     options = {
                       # Tab handling and autoindenting
                       autoindent = true;
