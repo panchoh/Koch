@@ -2,15 +2,15 @@
   flake = {
     nixosModules.default =
       {
+        config,
         lib,
-        box ? null,
         ...
       }:
 
       {
         options.traits.snapshot = {
           enable = lib.mkEnableOption "Snapshot" // {
-            default = box.hasCamera or false;
+            default = config.hardware.facter.report.hardware or { } ? camera;
           };
         };
       };

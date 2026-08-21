@@ -17,7 +17,6 @@
         isLaptop = false;
         isStation = false;
         isRestricted = false;
-        hasCamera = false;
         hasBeefyGPU = false;
         hasWideDisplay = false;
         diskDevice = "/dev/nvme0n1";
@@ -67,7 +66,6 @@
         facter = ./facter-magnesium.json;
         isLaptop = true;
         isStation = true;
-        hasCamera = true;
         hasWideDisplay = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
@@ -88,7 +86,6 @@
         facter = ./facter-aluminium.json;
         isLaptop = true;
         isStation = true;
-        hasCamera = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
         userDesc = "Alberto Peón Horrillo";
