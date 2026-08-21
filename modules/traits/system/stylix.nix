@@ -85,12 +85,16 @@
             #   package = pkgs.openmoji-color;
             # };
 
-            sizes = lib.mapAttrs (_name: value: if box.isLaptop or false then value - 2 else value) {
-              desktop = 14;
-              applications = 14;
-              terminal = 14;
-              popups = 12;
-            };
+            sizes =
+              let
+                isLaptop = config.hardware.facter.report.hardware.system.form_factor or { } == "laptop";
+              in
+              lib.mapAttrs (_name: value: if isLaptop then value - 2 else value) {
+                desktop = 14;
+                applications = 14;
+                terminal = 14;
+                popups = 12;
+              };
           };
         };
       };

@@ -10,6 +10,7 @@
 
     let
       cfg = config.traits.networking;
+      isLaptop = config.hardware.facter.report.hardware.system.form_factor or { } == "laptop";
     in
     {
       options.traits.networking = {
@@ -19,7 +20,7 @@
       };
 
       config = lib.mkIf cfg.enable {
-        environment.systemPackages = lib.optionals (box.isLaptop or false) [
+        environment.systemPackages = lib.optionals isLaptop [
           pkgs.iw
           pkgs.iwgtk
         ];
@@ -47,7 +48,7 @@
 
           useDHCP = false;
           enableIPv6 = false;
-          wireless.iwd.enable = box.isLaptop or false;
+          wireless.iwd.enable = isLaptop;
         };
 
         services = {
@@ -69,7 +70,7 @@
 
         systemd.network = {
           enable = true;
-          wait-online.anyInterface = box.isLaptop or false;
+          wait-online.anyInterface = isLaptop;
 
           netdevs = {
             "10-mv0" = {

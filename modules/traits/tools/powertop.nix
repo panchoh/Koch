@@ -2,15 +2,15 @@
   flake = {
     nixosModules.default =
       {
+        config,
         lib,
-        box ? null,
         ...
       }:
 
       {
         options.traits.powertop = {
           enable = lib.mkEnableOption "PowerTOP" // {
-            default = box.isLaptop or false;
+            default = config.hardware.facter.report.hardware.system.form_factor or { } == "laptop";
           };
         };
       };

@@ -3,7 +3,6 @@
     {
       nixosConfig,
       lib,
-      box ? null,
       ...
     }:
 
@@ -19,7 +18,9 @@
           # Currently, default workspace gets ID 2, not 1
           workspace_rule =
             let
-              singleMonitor = builtins.length (nixosConfig.hardware.facter.report.hardware.monitor or [ ]) == 1;
+              facterHardwareReport = nixosConfig.hardware.facter.report.hardware;
+              isLaptop = facterHardwareReport.system.form_factor or { } == "laptop";
+              singleMonitor = builtins.length (facterHardwareReport.monitor or [ ]) == 1;
             in
             [
               {
@@ -28,7 +29,7 @@
                 default = true;
                 default_name = "Doom";
                 on_created_empty =
-                  if (box.isLaptop or false) && !singleMonitor then
+                  if isLaptop && !singleMonitor then
                     ''hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs''
                   else
                     "doom-emacs";

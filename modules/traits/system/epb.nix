@@ -4,13 +4,13 @@
       config,
       lib,
       pkgs,
-      box ? null,
       ...
     }:
 
     let
       cfg = config.traits.epb;
-      policy = if box.isLaptop or false then "--turbo-enable 0 power" else "performance";
+      isLaptop = config.hardware.facter.report.hardware.system.form_factor or { } == "laptop";
+      policy = if isLaptop then "--turbo-enable 0 power" else "performance";
     in
     {
       options.traits.epb = {
@@ -20,11 +20,13 @@
       };
 
       config = lib.mkIf cfg.enable {
+
         # https://docs.kernel.org/admin-guide/pm/intel_epb.html
         # https://bbs.archlinux.org/viewtopic.php?id=270199
         # https://stackoverflow.com/questions/58243712/how-to-install-systemd-service-on-nixos
         # cat /sys/devices/system/cpu/cpu*/power/energy_perf_bias
         systemd.services.epb = {
+
           enable = true;
           description = "Run x86_energy_perf_policy at boot";
           wantedBy = [ "multi-user.target" ];

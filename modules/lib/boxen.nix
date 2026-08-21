@@ -14,7 +14,6 @@
         deployGroups = [ ];
         macvlanAddr = "de:ad:be:ef:00:00";
         timeZone = "Europe/Madrid";
-        isLaptop = false;
         isStation = false;
         isRestricted = false;
         hasBeefyGPU = false;
@@ -63,7 +62,6 @@
         hostName = "magnesium";
         macvlanAddr = "00:2b:67:11:27:06";
         facter = ./facter-magnesium.json;
-        isLaptop = true;
         isStation = true;
         hasWideDisplay = true;
         extraModules = [
@@ -83,7 +81,6 @@
         hostName = "aluminium";
         macvlanAddr = "68:5b:35:a7:2f:4c";
         facter = ./facter-aluminium.json;
-        isLaptop = true;
         isStation = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
