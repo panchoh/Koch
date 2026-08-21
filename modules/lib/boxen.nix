@@ -71,6 +71,10 @@
           # whereas whiskey-lake does not, being an older generation.
           inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
 
+          # REVIEW: uncomment when https://github.com/NixOS/nixos-hardware/pull/2001 gets merged
+          # https://github.com/NixOS/nixos-hardware/issues/992#issuecomment-4105165706
+          # { imports = [ "${inputs.nixos-hardware}/common/gpu/intel/whiskey-lake" ]; }
+
           # REVIEW: re-enable when hyprpolkitagent supports it
           # https://redirect.github.com/hyprwm/hyprpolkitagent/issues/24
           { config.hardware.facter.detected.fingerprint.enable = false; }
