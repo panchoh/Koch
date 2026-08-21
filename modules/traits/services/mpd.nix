@@ -12,11 +12,15 @@
         cfg = config.traits.mpd-alsa;
       in
       {
-        options.traits.mpd-alsa = {
-          enable = lib.mkEnableOption "MPD (ALSA-only)" // {
-            default = !(box.isStation or true) && (box.hasMedia or false);
+        options.traits.mpd-alsa =
+          let
+            hasMediaDrive = builtins.length (config.hardware.facter.report.hardware.disk or [ ]) > 1;
+          in
+          {
+            enable = lib.mkEnableOption "MPD (ALSA-only)" // {
+              default = !(box.isStation or true) && hasMediaDrive;
+            };
           };
-        };
 
         options.traits.mpd = {
           enable = lib.mkEnableOption "MPD" // {
@@ -57,7 +61,6 @@
         config,
         nixosConfig,
         lib,
-        box ? null,
         ...
       }:
       let
@@ -73,7 +76,11 @@
             mpd = {
 
               enable = true;
-              musicDirectory = if !(box.hasMedia or true) then config.xdg.userDirs.music else "/srv/media/audio";
+              musicDirectory =
+                if builtins.length (nixosConfig.hardware.facter.report.hardware.disk or [ ]) > 1 then
+                  "/srv/media/audio"
+                else
+                  config.xdg.userDirs.music;
               network.startWhenNeeded = true;
 
               extraConfig = ''

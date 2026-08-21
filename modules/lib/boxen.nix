@@ -20,7 +20,6 @@
         hasBeefyGPU = false;
         hasWideDisplay = false;
         diskDevice = "/dev/nvme0n1";
-        hasMedia = false;
         userName = "pancho";
         userDesc = "pancho horrillo";
         userEmail = "pancho@pancho.name";
@@ -106,7 +105,6 @@
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:02:8d:23";
         facter = ./facter-potassium.json;
-        hasMedia = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
           { services.thermald.enable = false; }
@@ -119,7 +117,6 @@
         deployGroups = [ "k8s" ];
         macvlanAddr = "1c:69:7a:06:76:c0";
         facter = ./facter-calcium.json;
-        hasMedia = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
           { services.thermald.enable = false; }

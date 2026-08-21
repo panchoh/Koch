@@ -3,7 +3,6 @@
     {
       config,
       lib,
-      box ? null,
       ...
     }:
 
@@ -13,7 +12,7 @@
     {
       options.traits.media-drive = {
         enable = lib.mkEnableOption "big media drive" // {
-          default = box.hasMedia or false;
+          default = builtins.length (config.hardware.facter.report.hardware.disk or [ ]) > 1;
         };
       };
 
