@@ -77,7 +77,7 @@
 
           # REVIEW: re-enable when hyprpolkitagent supports it
           # https://redirect.github.com/hyprwm/hyprpolkitagent/issues/24
-          { config.hardware.facter.detected.fingerprint.enable = false; }
+          { hardware.facter.detected.fingerprint.enable = false; }
         ];
       }
 
@@ -108,7 +108,7 @@
           # }
 
           # BUG: facter does not detect the Bluetooth® controller on aluminium
-          { config.hardware.facter.detected.bluetooth.enable = true; }
+          { hardware.facter.detected.bluetooth.enable = true; }
 
           { traits.gopass.enable = false; }
         ];
