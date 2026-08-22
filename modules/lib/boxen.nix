@@ -102,6 +102,7 @@
           #   };
 
           #   nixpkgs.config.allowUnfreePackages = [
+          #     "intel-ocl"
           #     "facetimehd-firmware"
           #     "facetimehd-calibration"
           #   ];
