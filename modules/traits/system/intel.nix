@@ -18,9 +18,6 @@
       };
 
       config = lib.mkIf cfg.enable {
-
-        nixpkgs.config.allowUnfreePackages = [ "intel-ocl" ];
-
         hardware.intel-gpu-tools.enable = true;
       };
     };
