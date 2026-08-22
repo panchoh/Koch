@@ -94,6 +94,19 @@
         extraModules = [
           inputs.nixos-hardware.nixosModules.apple-macbook-air-5
 
+          # REVIEW: uncomment when facetimehd driver gets updated to work with linux 7.2.0
+          # {
+          #   hardware.facetimehd = {
+          #     enable = true;
+          #     withCalibration = true;
+          #   };
+
+          #   nixpkgs.config.allowUnfreePackages = [
+          #     "facetimehd-firmware"
+          #     "facetimehd-calibration"
+          #   ];
+          # }
+
           # BUG: facter does not detect the Bluetooth® controller on aluminium
           { config.hardware.facter.detected.bluetooth.enable = true; }
 
