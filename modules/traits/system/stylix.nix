@@ -79,11 +79,11 @@
               package = pkgs.iosevka-bin;
             };
 
-            # REVIEW: build failure
-            # emoji = {
-            #   name = "OpenMoji Color";
-            #   package = pkgs.openmoji-color;
-            # };
+            # Default Emoji font is noto-fonts-color-emoji
+            emoji = {
+              name = "OpenMoji Color"; # https://openmoji.org/
+              package = pkgs.openmoji-color;
+            };
 
             sizes =
               let
