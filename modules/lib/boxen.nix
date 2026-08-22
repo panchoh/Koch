@@ -53,7 +53,6 @@
         hasWideDisplay = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-12wshi7
-          { services.thermald.enable = false; }
           { traits.caddy.enable = true; }
         ];
       }
@@ -109,7 +108,6 @@
         isStation = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          { services.thermald.enable = false; }
         ];
       }
 
@@ -120,7 +118,6 @@
         facter = ./facter-potassium.json;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          { services.thermald.enable = false; }
           { traits.minecraft.enable = true; }
         ];
       }
@@ -132,7 +129,6 @@
         facter = ./facter-calcium.json;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          { services.thermald.enable = false; }
         ];
       }
 
@@ -143,7 +139,6 @@
         facter = ./facter-titanium.json;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          { services.thermald.enable = false; }
         ];
       }
 
@@ -155,7 +150,6 @@
         diskDevice = "/dev/sda";
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          { services.thermald.enable = false; }
         ];
       }
 
