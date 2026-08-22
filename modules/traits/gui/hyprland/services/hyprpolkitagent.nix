@@ -15,13 +15,13 @@
 
         services.hyprpolkitagent.enable = true;
 
-        # NOTE: it does not work; further debugging is needed
+        # REVIEW: config file feature present only in tip, must await for next release
         xdg.configFile."hyprpolkitagent/hyprpolkitagent.conf".text = lib.hm.generators.toHyprconf {
           attrs = {
             general = {
-              password_field_width = 120;
-              window_width = 1200;
-              window_height = 800;
+              password_field_width = 680;
+              window_width = 800;
+              window_height = 440;
               show_details = true;
             };
           };
