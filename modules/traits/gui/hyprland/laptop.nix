@@ -12,8 +12,7 @@
     {
       config = lib.mkIf cfg.enable {
         wayland.windowManager.hyprland.settings.workspace_rule =
-          lib.optionals
-            (nixosConfig.hardware.facter.report.hardware.system.system.form_factor or { } == "laptop")
+          lib.optionals (nixosConfig.hardware.facter.report.hardware.system.form_factor or { } == "laptop")
             [
               {
                 workspace = "name:coding";
