@@ -20,19 +20,21 @@
             let
               facterHardwareReport = nixosConfig.hardware.facter.report.hardware;
               isLaptop = facterHardwareReport.system.form_factor or { } == "laptop";
+              isDesktop = facterHardwareReport.system.form_factor or { } == "desktop";
               singleMonitor = builtins.length (facterHardwareReport.monitor or [ ]) == 1;
+              multiMonitor = builtins.length (facterHardwareReport.monitor or [ ]) > 1;
             in
-            [
+            lib.optionals (isDesktop || (isLaptop && multiMonitor)) [
               {
                 workspace = 1;
                 monitor = if singleMonitor then "DP-1" else "DP-2";
                 default = true;
                 default_name = "Doom";
                 on_created_empty =
-                  if isLaptop && !singleMonitor then
-                    ''hyprctl monitors -j | jq --raw-output --exit-status 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs''
+                  if singleMonitor then
+                    "doom-emacs"
                   else
-                    "doom-emacs";
+                    ''hyprctl monitors -j | jq --exit-status --raw-output 'any(.[]; .name | test("^DP-[0-9]$"))' > /dev/null && doom-emacs'';
               }
             ];
 
