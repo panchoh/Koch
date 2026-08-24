@@ -4,7 +4,7 @@
       {
         config,
         lib,
-        box ? null,
+        # box ? null,
         ...
       }:
 
@@ -14,7 +14,9 @@
       {
         options.traits.k8s = {
           enable = lib.mkEnableOption "Kubernetes" // {
-            default = !(box.isStation or true);
+            # REVIEW: disable until swap volumes are dropped
+            default = false;
+            # default = !(box.isStation or true);
           };
         };
 
