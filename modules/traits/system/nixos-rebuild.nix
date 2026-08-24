@@ -20,12 +20,11 @@
 
       config = lib.mkIf cfg.enable {
 
-        # Set password manually by running: # gpasswd staff
-        users.groups.staff = { };
+        users.groups.deploy = { };
 
         users.users.deploy = {
           description = "Remote deployment automation user";
-          group = "staff";
+          group = "deploy";
           isSystemUser = true;
           shell = pkgs.bashNonInteractive;
 
@@ -37,7 +36,7 @@
 
         nix.settings = {
           allowed-users = [ "@wheel" ];
-          trusted-users = [ "@staff" ];
+          trusted-users = [ "@deploy" ];
         };
 
         security.polkit = {
@@ -47,7 +46,7 @@
           extraConfig = ''
             polkit.addRule(function(action, subject) {
               if (action.id == "org.freedesktop.systemd1.manage-units" &&
-                  subject.isInGroup("staff")) {
+                  subject.isInGroup("deploy")) {
                   return polkit.Result.YES;
               }
             });
