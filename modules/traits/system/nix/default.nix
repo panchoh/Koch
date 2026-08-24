@@ -32,19 +32,13 @@
 
           channel.enable = false;
 
+          # https://nixos.org/manual/nix/unstable/command-ref/conf-file
           settings = {
-            # https://nixos.org/manual/nix/unstable/command-ref/conf-file
+
             auto-optimise-store = true;
             use-xdg-base-directories = true;
             keep-outputs = true;
             show-trace = true;
-
-            # NOTE: This would allow nixos-rebuild remotely with a non-trusted-user
-            # Not ideal from the security standpoint, though.
-            # require-sigs = false;
-
-            allowed-users = [ ];
-            trusted-users = [ "@wheel" ];
 
             experimental-features = [
               "nix-command"
