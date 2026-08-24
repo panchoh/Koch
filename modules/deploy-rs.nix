@@ -7,30 +7,35 @@
 
 {
   flake = {
+    deploy = {
 
-    # REVIEW:
-    # deploy.sudo = "run0 --user";
-    deploy.interactiveSudo = true;
-    deploy.nodes =
-      let
-        mkDeployNode = box: {
-          hostname = box.hostName;
-          profiles.system = {
-            sshUser = box.userName;
-            user = "root";
-            fastConnection = true;
-            groups = box.deployGroups;
-            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${box.hostName};
+      sudo = "run0 --user";
+
+      nodes =
+        let
+          mkDeployNode = box: {
+
+            hostname = box.hostName;
+
+            profiles.system = {
+
+              sshUser = "deploy";
+              user = "root";
+              fastConnection = true;
+              groups = box.deployGroups;
+
+              # TODO: abstract system (perSystem?)
+              path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${box.hostName};
+            };
           };
-        };
-      in
-      self.lib.boxen
-      |> map (box: lib.nameValuePair box.hostName (mkDeployNode box))
-      |> builtins.listToAttrs;
+        in
+        self.lib.boxen
+        |> map (box: lib.nameValuePair box.hostName (mkDeployNode box))
+        |> builtins.listToAttrs;
+    };
 
-    checks = builtins.mapAttrs (
-      _system: deployLib: deployLib.deployChecks self.deploy
-    ) inputs.deploy-rs.lib;
+    checks =
+      inputs.deploy-rs.lib |> builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy);
 
     nixosModules.default =
       {
