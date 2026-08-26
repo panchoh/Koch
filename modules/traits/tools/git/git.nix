@@ -125,6 +125,7 @@
               gfa = "git fetch --no-all";
               gl = "git log";
               glo = "git log --oneline";
+              glp = "git log --patch";
               gls = "git log --show-signature";
               gm = "git merge";
               gP = "git pull";
