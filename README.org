@@ -47,13 +47,13 @@ nix store optimise --verbose
 * Updating
 ** Self
 #+begin_src shell
-nixos-rebuild switch --elevate=run0 --diff --verbose --print-build-logs # or -SLv --diff
+nixos-rebuild switch --elevate=run0 --diff --verbose --print-build-logs # or --diff -vL
 #+end_src
 
 ** Remote
 *** Using ~nixos-rebuild~
 #+begin_src shell
-nixos-rebuild switch --no-reexec --elevate=run0 --ask-elevate-password --target-host phosphorus --diff --verbose --print-build-logs # or -SLv --diff
+nixos-rebuild switch --elevate=run0 --no-reexec --target-host phosphorus --diff --verbose --print-build-logs # or --diff -vL
 #+end_src
 
 *** Using ~deploy-rs~
