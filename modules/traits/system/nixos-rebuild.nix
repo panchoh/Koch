@@ -39,6 +39,8 @@
           trusted-users = [ "@deploy" ];
         };
 
+        environment.variables.NIX_SSHOPTS = "-l deploy";
+
         security.polkit = {
 
           enable = true;
