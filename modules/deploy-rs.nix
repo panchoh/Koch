@@ -24,8 +24,7 @@
               fastConnection = true;
               groups = box.deployGroups;
 
-              # TODO: abstract system (perSystem?)
-              path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${box.hostName};
+              path = inputs.deploy-rs.lib.${box.system}.activate.nixos self.nixosConfigurations.${box.hostName};
             };
           };
         in
