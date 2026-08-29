@@ -9,10 +9,10 @@
     }:
 
     let
-      cfg = config.traits.os.nixos-rebuild;
+      cfg = config.traits.nixos-rebuild;
     in
     {
-      options.traits.os.nixos-rebuild = {
+      options.traits.nixos-rebuild = {
         enable = lib.mkEnableOption "nixos-rebuild" // {
           default = true;
         };
