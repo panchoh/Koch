@@ -58,6 +58,7 @@
 
               shellAliases = {
                 e = "$EDITOR --no-wait";
+                cdf = "cd (dirname (realpath /etc/nixos/flake.nix))";
               };
             };
 
