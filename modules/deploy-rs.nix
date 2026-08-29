@@ -19,7 +19,7 @@
 
             profiles.system = {
 
-              sshUser = "deploy";
+              sshUser = "deploy"; # REVIEW: dep traits/deploy
               user = "root";
               fastConnection = true;
               groups = box.deployGroups;

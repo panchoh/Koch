@@ -3,8 +3,6 @@
     {
       config,
       lib,
-      pkgs,
-      box ? null,
       ...
     }:
 
@@ -19,41 +17,9 @@
       };
 
       config = lib.mkIf cfg.enable {
-
-        users.groups.deploy = { };
-
-        users.users.deploy = {
-          description = "Remote deployment automation user";
-          group = "deploy";
-          isSystemUser = true;
-          shell = pkgs.bashNonInteractive;
-
-          # FIXME: fragile
-          openssh.authorizedKeys.keys = [
-            "restrict ${(builtins.attrValues box.pubKeys) |> lib.reverseList |> builtins.head}"
-          ];
-        };
-
-        nix.settings = {
-          allowed-users = [ "@wheel" ];
-          trusted-users = [ "@deploy" ];
-        };
-
-        environment.variables.NIX_SSHOPTS = "-l deploy";
-
-        security.polkit = {
-
-          enable = true;
-
-          extraConfig = ''
-            polkit.addRule(function(action, subject) {
-              if (action.id == "org.freedesktop.systemd1.manage-units" &&
-                  subject.isInGroup("deploy")) {
-                  return polkit.Result.YES;
-              }
-            });
-          '';
-        };
+        # REVIEW:
+        # system.tools.nixos-rebuild.enable =
+        #   config.nix.enable && !config.traits.nh.enable && !config.system.disableInstallerTools;
       };
     };
 }
