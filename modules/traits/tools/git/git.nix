@@ -133,6 +133,7 @@
               gpf = "git push --force-with-lease";
               gr = "git remote --verbose show";
               grn = "git remote --verbose show -n";
+              gs = "git status --verbose";
             };
           };
         };
