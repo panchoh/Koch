@@ -18,7 +18,10 @@
 
       config = lib.mkIf cfg.enable {
 
-        security.sudo.execWheelOnly = true;
+        security.sudo = {
+          enable = !config.security.run0.enable;
+          execWheelOnly = true;
+        };
 
         nixpkgs.config.packageOverrides = pkgs: {
           sudo = pkgs.sudo.override { withInsults = true; };
