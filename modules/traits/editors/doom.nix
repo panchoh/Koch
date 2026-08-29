@@ -222,6 +222,7 @@
             pkgs.nix-diff
             pkgs.nvd
 
+            pkgs.dix
             pkgs.nixpkgs-review
             pkgs.nix-output-monitor
             pkgs.nix-fast-build
