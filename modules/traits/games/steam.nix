@@ -49,12 +49,24 @@
       in
       {
         config = lib.mkIf cfg.enable {
+
           home.packages = [
             pkgs.steamcmd
             pkgs.steam-run
             pkgs.steam-tui
             pkgs.protonup-qt
           ];
+
+          # https://wiki.hypr.land/configuring/extra/xwayland/#hidpi-xwayland
+          wayland.windowManager.hyprland.extraConfig = ''
+            -- unscale Xwayland
+            hl.config({ xwayland = { force_zero_scaling = true } })
+
+            -- toolkit-specific scale
+            hl.env("GDK_SCALE", "2")
+            hl.env("XCURSOR_SIZE", "32")
+            hl.env("STEAM_FORCE_DESKTOPUI_SCALING", "2")
+          '';
         };
       };
   };
