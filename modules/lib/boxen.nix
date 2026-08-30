@@ -189,6 +189,7 @@
 
             services.xserver.videoDrivers = [ "nvidia" ];
           }
+          { traits.steam.enable = true; }
         ];
       }
 
