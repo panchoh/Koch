@@ -368,7 +368,6 @@
           "retbleed",
           "gds",
           "spectre_v2_user",
-          "old_microcode",
           "vmscape"
         ],
         "power_management": [
@@ -385,6 +384,7 @@
         "fpu_exception": false,
         "cpuid_level": 22,
         "write_protect": false,
+        "tlb_size": 29637,
         "clflush_size": 64,
         "cache_alignment": 64,
         "address_sizes": {
@@ -668,7 +668,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.1 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -678,11 +678,11 @@
         },
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:00:14.0",
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
+        "model": "Linux 7.2.1 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-0:1.0",
         "sysfs_bus_id": "1-0:1.0",
         "resources": [
@@ -730,7 +730,7 @@
         "driver_modules": [
           "usbcore"
         ],
-        "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00"
+        "module_alias": "usb:v1D6Bp0002d0702dc09dsc00dp01ic09isc00ip00in00"
       },
       {
         "index": 29,
@@ -755,7 +755,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.1 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -765,11 +765,11 @@
         },
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:00:14.0",
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
+        "model": "Linux 7.2.1 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-0:1.0",
         "sysfs_bus_id": "2-0:1.0",
         "detail": {
@@ -807,7 +807,7 @@
         "driver_modules": [
           "usbcore"
         ],
-        "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00"
+        "module_alias": "usb:v1D6Bp0003d0702dc09dsc00dp03ic09isc00ip00in00"
       }
     ],
     "memory": [
@@ -1841,7 +1841,7 @@
           287762808898,
           292057776195,
           326417514564,
-          141733920844
+          158913790028
         ]
       },
       {
