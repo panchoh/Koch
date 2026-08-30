@@ -30,7 +30,7 @@
         config = lib.mkIf cfg.enable {
 
           programs.fish.interactiveShellInit = ''
-            if not test -f ~/.silent
+            if not set --query SSH_CONNECTION; and not test -f ~/.silent
                 echo
                 fortune -a
                 echo
