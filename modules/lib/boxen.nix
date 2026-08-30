@@ -172,6 +172,26 @@
         ];
       }
 
+      {
+        hostName = "selenium";
+        macvlanAddr = "c8:d3:ff:43:8f:70";
+        facter = ./facter-selenium.json;
+        isStation = true;
+        hasBeefyGPU = true;
+        extraModules = [
+          {
+            hardware.nvidia.open = true;
+
+            nixpkgs.config.allowUnfreePackages = [
+              "nvidia-settings"
+              "nvidia-x11"
+            ];
+
+            services.xserver.videoDrivers = [ "nvidia" ];
+          }
+        ];
+      }
+
       # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
       # {
       #   system = "aarch64-linux";
