@@ -32,7 +32,7 @@ gpg-connect-agent 'DELETE_KEY <KEYGRIP>' /bye # さようなら
 
 ** Final steps
 
-2. Manage your ssh key and then let Home Manager finish the setup
+2. Manage your SSH key and then let Home Manager finish the setup
  #+begin_src shell
 run0 systemctl restart home-manager-pancho.service
 #+end_src
@@ -46,23 +46,34 @@ nix store optimise --verbose
 
 * Updating
 ** Self
+*** With =nh=
+#+begin_src shell
+NH_ELEVATION_STRATEGY=run0 nh os switch --verbose --print-build-logs # or -vL
+#+end_src
+
+*** With =nixos-rebuild=
 #+begin_src shell
 nixos-rebuild switch --elevate=run0 --diff --verbose --print-build-logs # or --diff -vL
 #+end_src
 
 ** Remote
-*** Using ~nixos-rebuild~
+*** With =nh=
+#+begin_src shell
+nh os switch --target-host silicon --verbose --print-build-logs # or -vL
+#+end_src
+
+*** With =nixos-rebuild=
 #+begin_src shell
 nixos-rebuild switch --elevate=run0 --no-reexec --target-host phosphorus --diff --verbose --print-build-logs # or --diff -vL
 #+end_src
 
-*** Using ~deploy-rs~
+*** With =deploy-rs=
 **** Single host
 #+begin_src shell
-z Koch; deploy .#silicon
+cdf; deploy .#silicon
 #+end_src
 
 **** A group of boxen
 #+begin_src shell
-z Koch; deploy --groups k8s
+cdf; deploy --groups k8s
 #+end_src
