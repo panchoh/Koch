@@ -23,11 +23,19 @@
               isDesktop = facterHardwareReport.system.form_factor or { } == "desktop";
               singleMonitor = builtins.length (facterHardwareReport.monitor or [ ]) == 1;
               multiMonitor = builtins.length (facterHardwareReport.monitor or [ ]) > 1;
+              gpus = facterHardwareReport.graphics_card or [ ];
+              hasNvidia = builtins.any (gpu: (gpu.vendor.name or "") == "nVidia Corporation") gpus;
             in
             lib.optionals (isDesktop || (isLaptop && multiMonitor)) [
               {
                 workspace = 1;
-                monitor = if singleMonitor then "DP-1" else "DP-2";
+                monitor =
+                  if hasNvidia then
+                    "HDMI-A-1"
+                  else if singleMonitor then
+                    "DP-1"
+                  else
+                    "DP-2";
                 default = true;
                 default_name = "Doom";
                 on_created_empty =
