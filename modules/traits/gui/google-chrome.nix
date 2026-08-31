@@ -12,10 +12,6 @@
         cfg = config.traits.google-chrome;
       in
       {
-        imports = [
-          ./_google-chrome.nix
-        ];
-
         options.traits.google-chrome = {
           enable = lib.mkEnableOption "Google Chrome" // {
             default = box.isStation or false;
@@ -28,13 +24,11 @@
 
           programs.google-chrome = {
 
-            # Seen on stylix and nixpkgs:
-            # This enables policies without installing the browser. Policies take up a
-            # negligible amount of space, so it's reasonable to have this always on.
-            # https://chromeenterprise.google/policies/
-            enable = true;
+            enable = true ;
 
-            extraOpts = {
+            commandLineArgs = [ "--ozone-platform=wayland" ];
+
+            policies = {
               "AlwaysOpenPdfExternally" = true; # Force Google Chrome to download PDFs instead of opening them
               "AutofillAddressEnabled" = false;
               "AutofillCreditCardEnabled" = false;
@@ -74,13 +68,7 @@
       in
       {
         config = lib.mkIf cfg.enable {
-
           xdg.mimeApps.associations.removed."application/pdf" = "google-chrome.desktop";
-
-          programs.google-chrome = {
-            enable = true;
-            commandLineArgs = [ "--ozone-platform=wayland" ];
-          };
         };
       };
   };
