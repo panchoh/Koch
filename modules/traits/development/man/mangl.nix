@@ -37,7 +37,6 @@
             # man -w behaves like manpath
             (pkgs.writeShellApplication {
               name = "manpath";
-              meta.mainProgram = "manpath";
               runtimeInputs = [ pkgs.mandoc ];
               text = "exec man -w";
             })

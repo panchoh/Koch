@@ -28,7 +28,6 @@
             (pkgs.writeShellApplication {
 
               name = "gh-barewt";
-              meta.mainProgram = "gh-barewt";
 
               derivationArgs = {
                 pname = "gh-barewt";
