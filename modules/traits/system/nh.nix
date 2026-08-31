@@ -31,12 +31,15 @@
       {
         config = lib.mkIf cfg.enable {
 
-          home.packages = [
-            pkgs.dix
-            pkgs.nix-output-monitor
-          ];
+          home = {
 
-          home.sessionVariables.NH_SHOW_ACTIVATION_LOGS = true;
+            packages = [
+              pkgs.dix
+              pkgs.nix-output-monitor
+            ];
+
+            sessionVariables.NH_SHOW_ACTIVATION_LOGS = true;
+          };
 
           programs.nh = {
 
