@@ -60,7 +60,6 @@
     homeModules.default =
       {
         nixosConfig,
-        pkgs,
         lib,
         ...
       }:
@@ -70,37 +69,10 @@
       in
       {
         config = lib.mkIf cfg.enable {
-
           home.sessionVariables = {
-
-            # TODO: report upstream the divergence from the desired behaviour
-            # NH_ELEVATION_STRATEGY = "passwordless";
-
+            NH_ELEVATION_STRATEGY = "passwordless";
             NH_SSHOPTS = "-l deploy";
             NIX_SSHOPTS = "-l deploy";
-          };
-
-          # REVIEW: drop wrapper if this ever gets fixed
-          # Notes: see above
-          programs.nh.package = pkgs.symlinkJoin {
-            name = "nh";
-            paths = [ pkgs.nh ];
-            nativeBuildInputs = [ pkgs.makeWrapper ];
-            inherit (pkgs.nh) meta;
-            postBuild = ''
-              wrapProgram $out/bin/nh \
-                --run '
-                for arg in "$@"; do
-                    if [[ $arg == --target-host || $arg == --target-host=* ]]; then
-                        export NH_ELEVATION_STRATEGY=passwordless
-                        break
-                    fi
-                done
-              '
-            '';
-            passthru = {
-              inherit (pkgs.hm) version;
-            };
           };
         };
       };
