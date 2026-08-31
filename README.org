@@ -77,3 +77,14 @@ cdf; deploy .#silicon
 #+begin_src shell
 cdf; deploy --groups k8s
 #+end_src
+
+* Garbage Collection
+** With =nh=
+#+begin_src shell
+nh clean all --keep-one --optimise
+#+end_src
+
+** With task
+#+begin_src shell
+task pristine
+#+end_src
