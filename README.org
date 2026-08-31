@@ -48,7 +48,7 @@ nix store optimise --verbose
 ** Self
 *** With =nh=
 #+begin_src shell
-NH_ELEVATION_STRATEGY=run0 nh os switch --verbose --print-build-logs # or -vL
+nh os switch --verbose --print-build-logs # or -vL
 #+end_src
 
 *** With =nixos-rebuild=
