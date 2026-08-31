@@ -27,7 +27,6 @@
             lib.getExe (
               pkgs.writeShellApplication {
                 name = "setup";
-                meta.mainProgram = "setup";
 
                 runtimeInputs = [
                   pkgs.efibootmgr
