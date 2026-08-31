@@ -190,6 +190,7 @@
             services.xserver.videoDrivers = [ "nvidia" ];
           }
           { traits.steam.enable = true; }
+          { traits.heroic.enable = true; }
         ];
       }
 
