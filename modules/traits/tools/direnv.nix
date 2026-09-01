@@ -16,8 +16,10 @@
 
     homeModules.default =
       {
+        config,
         nixosConfig,
         lib,
+        box ? null,
         ...
       }:
 
@@ -49,8 +51,10 @@
                   hide_env_diff = true;
                 };
 
-                # TODO: extract path/username; look for disko-and-funk
-                whitelist.exact = [ "~/sandbox/panchoh/Koch" ];
+                whitelist = {
+                  exact = [ "${config.xdg.userDirs.projects}/${box.flakeGithubUser}/${box.flakeRepoName}" ];
+                  prefix = [ "${config.xdg.userDirs.projects}/${box.githubUser}" ];
+                };
               };
             };
           };
