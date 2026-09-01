@@ -52,9 +52,6 @@
                 # TODO: extract path/username; look for disko-and-funk
                 whitelist.exact = [ "~/sandbox/panchoh/Koch" ];
               };
-
-              # REVIEW: drop if https://github.com/nix-community/home-manager/issues/9822 gets fixed
-              nix-direnv.enable = true;
             };
           };
         };
