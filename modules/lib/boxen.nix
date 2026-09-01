@@ -23,6 +23,7 @@
         userDesc = "pancho horrillo";
         userEmail = "pancho@pancho.name";
         githubUser = "panchoh";
+        flakeGithubUser = "panchoh";
         flakeRepoName = "Koch";
         gpgSigningKey = "4430F5028B19FAF4A40EC4E811E0447D4ABBA7D0";
         virtualHost = "canalplus.pancho.name";
