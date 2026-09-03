@@ -71,8 +71,7 @@
               # Pick one:
               # emacs = pkgs.emacs-igc-pgtk;
               # emacs = pkgs.emacs-git-pgtk;
-              emacs = pkgs.emacs31-pgtk;
-              # emacs = pkgs.emacs30-pgtk;
+              emacs = pkgs.emacs-pgtk;
               # emacs = config.programs.emacs.package;
 
               experimentalFetchTree = true;
