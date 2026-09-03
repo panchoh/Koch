@@ -36,8 +36,7 @@
             # Pick one:
             # package = pkgs.emacs-igc-pgtk;
             # package = pkgs.emacs-git-pgtk;
-            package = pkgs.emacs31-pgtk;
-            # package = pkgs.emacs30-pgtk;
+            package = pkgs.emacs-pgtk;
             # package = config.programs.doom-emacs.emacs;
 
             extraPackages = epkgs: [
