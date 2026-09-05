@@ -80,7 +80,6 @@
               extraPackages = epkgs: [
                 epkgs.eglot-booster
                 epkgs.nix-ts-mode
-                epkgs.ghostel
                 epkgs.vterm
                 epkgs.treesit-grammars.with-all-grammars
               ];
