@@ -4,7 +4,7 @@
       {
         config,
         lib,
-        # box ? null,
+        box ? null,
         ...
       }:
 
@@ -14,9 +14,7 @@
       {
         options.traits.k8s = {
           enable = lib.mkEnableOption "Kubernetes" // {
-            # REVIEW: disable until swap volumes are dropped
-            default = false;
-            # default = !(box.isStation or true);
+            default = !(box.isStation or true);
           };
         };
 
@@ -34,8 +32,9 @@
           systemd.services.kube-certmgr-bootstrap.enableStrictShellChecks = false;
 
           # Kubelet does not support running with swap
-          # TODO: this doesn't prevent swapon from being run on bootup!
+          # https://wiki.nixos.org/wiki/Swap#Disable_swap
           swapDevices = lib.mkForce [ ];
+          boot.kernelParams = [ "systemd.swap=0" ];
 
           services.kubernetes = {
             masterAddress = "localhost";
