@@ -7,6 +7,7 @@
 
     {
       devShells.default = pkgs.mkShellNoCC {
+
         name = "Koch";
 
         packages = [
