@@ -184,9 +184,7 @@
             # TODO: finish setting up nheko and/or fractalfor Matrix comms
             # pkgs.nheko
             # pkgs.fractal
-            # REVIEW: uncomment when fixed upstream
-            # https://github.com/NixOS/nixpkgs/issues/537728
-            # pkgs.session-desktop
+            pkgs.session-desktop
 
             pkgs.wormhole-william
 
