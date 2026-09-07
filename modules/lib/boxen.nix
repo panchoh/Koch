@@ -196,6 +196,9 @@
       }
 
       # FIXME: this flake is still x86_64 centric, so it can't yet configure my Raspberry Pi 4
+      # https://wiki.nixos.org/wiki/NixOS_on_ARM/Raspberry_Pi_4
+      # https://wiki.nixos.org/wiki/NixOS_on_ARM/Raspberry_Pi#Installation
+      # https://wiki.nixos.org/wiki/NixOS_on_ARM/Installation#SD_card_images_(SBCs_and_similar_platforms)
       # {
       #   system = "aarch64-linux";
       #   hostName = "neon";
