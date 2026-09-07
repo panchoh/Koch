@@ -12,7 +12,7 @@
     in
     {
       config = lib.mkIf cfg.enable {
-        services.dbus.packages = [ pkgs.gcr ]; # for pinentry-gnome3
+        services.dbus.packages = [ pkgs.gcr_3 ]; # for pinentry-gnome3
       };
     };
 
