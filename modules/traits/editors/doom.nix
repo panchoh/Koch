@@ -224,6 +224,7 @@
             pkgs.nixpkgs-review
             pkgs.nix-output-monitor
             pkgs.nix-fast-build
+            pkgs.nix-inspect
           ];
 
           home.sessionVariables = {
