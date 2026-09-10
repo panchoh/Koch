@@ -40,7 +40,6 @@
     autofirma-nix.inputs.nix-unit.inputs.nixpkgs.follows = "nixpkgs";
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
-    nix-doom-emacs-unstraightened.inputs.systems.follows = "systems";
     nix-doom-emacs-unstraightened.inputs.doomdir.url = "github:panchoh/doom";
     nowayprompt.url = "github:nilp0inter/nowayprompt";
     nowayprompt.inputs.flake-parts.follows = "flake-parts";
