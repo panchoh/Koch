@@ -114,9 +114,6 @@
                 };
             };
 
-            # https://github.com/mateusauler/git-worktree-switcher
-            git-worktree-switcher.enable = true;
-
             fish.shellAbbrs = {
               g = "git";
               gb = "git branch --verbose --verbose";
