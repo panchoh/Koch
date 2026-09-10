@@ -210,6 +210,8 @@
             pkgs.python312Packages.pytest
             pkgs.pyenv
 
+            pkgs.sbcl # Common Lisp
+
             pkgs.nil # nix language server
             pkgs.nixd
             pkgs.nixfmt
