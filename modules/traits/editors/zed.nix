@@ -44,10 +44,12 @@
               {
                 context = "VimControl && !menu";
                 bindings = {
+                  "space b d" = "workspace::CloseItemInAllPanes";
                   "space c a" = "editor::ToggleCodeActions";
                   "space f f" = "file_finder::Toggle";
                   "space f s" = "workspace::Save";
                   "space f p" = "zed::OpenSettings";
+                  "space g g" = "git_panel::ToggleFocus";
                   "space o p" = "project_panel::ToggleFocus";
                   "space o t" = "terminal_panel::ToggleFocus";
                   "space q q" = "zed::Quit";
