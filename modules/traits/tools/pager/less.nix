@@ -37,6 +37,7 @@
       {
         config = lib.mkIf cfg.enable {
 
+          programs.lesspipe.enable = true;
           programs.less = {
 
             enable = true;

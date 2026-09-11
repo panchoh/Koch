@@ -13,6 +13,7 @@
     in
     {
       config = lib.mkIf cfg.enable {
+
         home.packages = [
           pkgs.gg-jj
         ];
@@ -27,11 +28,22 @@
             enable = true;
 
             settings = {
+
               ui = {
                 default-command = "log";
+              }
+              // lib.optionalAttrs nixosConfig.traits.less.enable {
                 pager.command = [
                   "less"
                   "--+clear-screen"
+                  "--quit-if-one-screen"
+                ];
+              }
+              // lib.optionalAttrs nixosConfig.traits.moor.enable {
+                pager.command = [
+                  "moor"
+                  "--no-clear-on-exit"
+                  "--no-clear-on-exit-margin=2"
                   "--quit-if-one-screen"
                 ];
               };

@@ -34,12 +34,19 @@
             enable = true;
 
             config = {
+
               italic-text = "always";
+              paging = "always";
+              style = "full";
+            }
+            // lib.optionalAttrs nixosConfig.traits.moor.enable {
+              pager = "moor --quit-if-one-screen";
+            }
+            // lib.optionalAttrs (!nixosConfig.traits.moor.enable) {
+
               # https://github.com/sharkdp/bat/issues/376
               # pager = "less --+status-column";
               terminal-width = "-2";
-              paging = "always";
-              style = "full";
             };
 
             extraPackages = with pkgs.bat-extras; [
