@@ -28,12 +28,6 @@
         cfg = nixosConfig.traits.direnv;
       in
       {
-        options.traits.direnv = {
-          enable = lib.mkEnableOption "direnv" // {
-            default = true;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           programs = {

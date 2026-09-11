@@ -22,7 +22,6 @@
         nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
 
@@ -30,12 +29,6 @@
         cfg = nixosConfig.traits.mdb;
       in
       {
-        options.traits.mdb = {
-          enable = lib.mkEnableOption "m" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           home = {
