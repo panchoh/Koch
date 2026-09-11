@@ -1,46 +1,49 @@
 {
-  flake.nixosModules.default =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
+  flake = {
 
-    let
-      cfg = config.traits.hyprland;
-    in
-    {
-      config = lib.mkIf cfg.enable {
-        services.dbus.packages = [ pkgs.gcr_3 ]; # for pinentry-gnome3
+    nixosModules.default =
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
+
+      let
+        cfg = config.traits.hyprland;
+      in
+      {
+        config = lib.mkIf cfg.enable {
+          services.dbus.packages = [ pkgs.gcr_3 ]; # for pinentry-gnome3
+        };
       };
-    };
 
-  flake.homeModules.default =
-    {
-      nixosConfig,
-      lib,
-      pkgs,
-      ...
-    }:
+    homeModules.default =
+      {
+        nixosConfig,
+        lib,
+        pkgs,
+        ...
+      }:
 
-    let
-      cfg = nixosConfig.traits.hyprland;
-    in
-    {
-      config = lib.mkIf cfg.enable {
+      let
+        cfg = nixosConfig.traits.hyprland;
+      in
+      {
+        config = lib.mkIf cfg.enable {
 
-        services.gpg-agent.pinentry.package = lib.mkDefault pkgs.pinentry-gnome3;
+          services.gpg-agent.pinentry.package = lib.mkDefault pkgs.pinentry-gnome3;
 
-        wayland.windowManager.hyprland.settings.window_rule = [
-          {
-            match.class = "^gcr-prompter$";
-            no_anim = true;
-            xray = true;
-            dim_around = true;
-            stay_focused = true;
-          }
-        ];
+          wayland.windowManager.hyprland.settings.window_rule = [
+            {
+              match.class = "^gcr-prompter$";
+              no_anim = true;
+              xray = true;
+              dim_around = true;
+              stay_focused = true;
+            }
+          ];
+        };
       };
-    };
+  };
 }

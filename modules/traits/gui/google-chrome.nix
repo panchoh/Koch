@@ -1,5 +1,6 @@
 {
   flake = {
+
     nixosModules.default =
       {
         config,
@@ -24,7 +25,7 @@
 
           programs.google-chrome = {
 
-            enable = true ;
+            enable = true;
 
             commandLineArgs = [ "--ozone-platform=wayland" ];
 

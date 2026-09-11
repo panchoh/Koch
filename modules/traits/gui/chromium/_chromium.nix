@@ -19,6 +19,7 @@ in
   ###### interface
 
   options = {
+
     programs.chromium = {
       enable = lib.mkEnableOption "policies for Chromium and Brave";
 
