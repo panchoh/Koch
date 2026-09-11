@@ -75,7 +75,11 @@
                   autoSetupRebase = "remote";
                 };
 
-                core.pager = "less --+clear-screen --quit-if-one-screen";
+                core.pager =
+                  if nixosConfig.traits.moor.enable then
+                    "moor --no-clear-on-exit --no-clear-on-exit-margin=2 --quit-if-one-screen"
+                  else
+                    "less --+clear-screen --quit-if-one-screen";
                 difftool.prompt = false;
 
                 fetch = {
