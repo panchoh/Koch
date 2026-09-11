@@ -21,7 +21,6 @@
         config,
         nixosConfig,
         lib,
-        box ? null,
         ...
       }:
 
@@ -29,12 +28,6 @@
         cfg = nixosConfig.traits.gnupg;
       in
       {
-        options.traits.gnupg = {
-          enable = lib.mkEnableOption "GnuPG" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           programs.gpg = {

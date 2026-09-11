@@ -21,19 +21,12 @@
         nixosConfig,
         lib,
         pkgs,
-        box ? null,
         ...
       }:
       let
         cfg = nixosConfig.traits.bat;
       in
       {
-        options.traits.bat = {
-          enable = lib.mkEnableOption "bat" // {
-            default = box.isStation or false;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           programs.bat = {

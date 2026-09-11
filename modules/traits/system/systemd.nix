@@ -56,12 +56,6 @@
         cfg = nixosConfig.traits.systemd;
       in
       {
-        options.traits.systemd = {
-          enable = lib.mkEnableOption "systemd" // {
-            default = true;
-          };
-        };
-
         config = lib.mkIf cfg.enable {
 
           home.packages = [
