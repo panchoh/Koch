@@ -87,6 +87,7 @@
         macvlanAddr = "68:5b:35:a7:2f:4c";
         facter = ./facter-aluminium.json;
         isStation = true;
+        isRestricted = true;
         diskDevice = "/dev/sda";
         userName = "alpro";
         userDesc = "Alberto Peón Horrillo";
@@ -121,6 +122,7 @@
         macvlanAddr = "1c:69:7a:a7:e4:e5";
         facter = ./facter-phosphorus.json;
         isStation = true;
+        isRestricted = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
           inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
@@ -178,6 +180,7 @@
         macvlanAddr = "c8:d3:ff:43:8f:70";
         facter = ./facter-selenium.json;
         isStation = true;
+        isRestricted = true;
         hasBeefyGPU = true;
         extraModules = [
           {
@@ -190,8 +193,8 @@
 
             services.xserver.videoDrivers = [ "nvidia" ];
           }
-          { traits.steam.enable = true; }
-          { traits.heroic.enable = true; }
+          # { traits.steam.enable = true; }
+          # { traits.heroic.enable = true; }
         ];
       }
 
