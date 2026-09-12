@@ -74,21 +74,6 @@ tasks:
     cmds:
       - run0 nix profile wipe-history --profile /nix/var/nix/profiles/system
 
-  list-home-manager-history:
-    desc: Display the history of Home Manager profiles
-    cmds:
-      - nix profile history --profile ~/.local/state/nix/profiles/home-manager
-
-  diff-home-manager-closures:
-    desc: Show differences between Home Manager profile closures
-    cmds:
-      - nix profile diff-closures --profile ~/.local/state/nix/profiles/home-manager
-
-  wipe-home-manager-history:
-    desc: Clear the history of Home Manager profiles
-    cmds:
-      - nix profile wipe-history --profile ~/.local/state/nix/profiles/home-manager
-
   wipe-vm:
     desc: Clear the VM build and the disk image
     cmds:
@@ -100,10 +85,9 @@ tasks:
       - nix store gc --verbose --auto-optimise-store
 
   gc-all:
-    desc: Wipe NixOS and Home Manager histories, then run garbage collection
+    desc: Wipe NixOS history, then run garbage collection
     cmds:
       - task: wipe-nixos-history
-      - task: wipe-home-manager-history
       - task: gc
 
   store-optimise:
