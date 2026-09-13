@@ -20,6 +20,8 @@
 
           enable = true;
 
+          enableFishIntegration = true;
+
           settings = {
 
             # https://worktrunk.dev/config/#first-run-prompts
