@@ -53,6 +53,7 @@
             pkgs.gitg
             pkgs.gti
             pkgs.gitui
+            pkgs.gitte
             pkgs.gittyup
             pkgs.gource
             pkgs.lazygit
