@@ -34,7 +34,7 @@
               output = "desc:Dell Inc. DELL U4025QW B1MKH34";
               mode = "highrr";
               position = "auto";
-              scale = "auto";
+              scale = 1.25;
               bitdepth = 10;
               cm = "auto";
               # REVIEW: not enabling VRR since apparently it’s only supported via HDMI
