@@ -184,7 +184,7 @@
 
               new_network = {
                 show_all = "a";
-                connect_hidden = "";
+                connect_hidden = "n";
               };
             };
 
