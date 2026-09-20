@@ -108,6 +108,8 @@
               autosave = "on_focus_change";
               always_treat_brackets_as_autoclosed = true;
               # base_keymap = "Emacs";
+              colorize_brackets = true;
+              cursor_animation.enabled = true;
               disable_ai = true;
 
               features = {
@@ -120,10 +122,14 @@
                 metrics = false;
               };
 
-              vim_mode = true;
+              # helix_mode = true; # https://zed.dev/docs/helix
+              vim_mode = true; # https://zed.dev/docs/vim
+              vim.toggle_relative_line_numbers = true;
+
               ui_font_size = lib.mkForce 16;
               buffer_font_size = lib.mkForce 16;
               lsp.gopls.initialization_options.gofumpt = true;
+              # markdown_preview.open_markdown_files_in_preview = true;
             };
           };
         };
