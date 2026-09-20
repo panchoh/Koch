@@ -135,4 +135,70 @@
         };
       };
     };
+
+  flake.homeModules.default =
+    {
+      nixosConfig,
+      lib,
+      ...
+    }:
+
+    let
+      cfg = nixosConfig.traits.networking;
+      isLaptop = nixosConfig.hardware.facter.report.hardware.system.form_factor or { } == "laptop";
+    in
+    {
+      config = lib.mkIf (cfg.enable && isLaptop) {
+
+        programs.impala = {
+
+          enable = true;
+
+          settings = {
+
+            ascii = false;
+            switch = "r";
+            mode = "station";
+            esc_quit = false;
+
+            device = {
+              infos = "i";
+              toggle_power = "o";
+            };
+
+            access_point = {
+              start = "n";
+              stop = "x";
+            };
+
+            station = {
+
+              toggle_scanning = "s";
+
+              known_network = {
+                toggle_autoconnect = "t";
+                remove = "d";
+                show_all = "a";
+                share = "p";
+              };
+
+              new_network = {
+                show_all = "a";
+                connect_hidden = "";
+              };
+            };
+
+            theme = {
+              background = "dark gray";
+              border = "green";
+              text_color = "white";
+              hidden_color = "dark gray";
+              info_color = "green";
+              warning_color = "yellow";
+              error_color = "red";
+            };
+          };
+        };
+      };
+    };
 }
