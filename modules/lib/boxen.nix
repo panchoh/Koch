@@ -125,7 +125,6 @@
         isRestricted = true;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
         ];
       }
 
@@ -136,7 +135,6 @@
         facter = ./facter-potassium.json;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
           { traits.minecraft.enable = true; }
         ];
       }
@@ -148,7 +146,6 @@
         facter = ./facter-calcium.json;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
         ];
       }
 
@@ -159,7 +156,6 @@
         facter = ./facter-titanium.json;
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
         ];
       }
 
@@ -171,7 +167,6 @@
         diskDevice = "/dev/sda";
         extraModules = [
           inputs.nixos-hardware.nixosModules.intel-nuc-8i7beh
-          inputs.nixos-hardware.nixosModules.common-gpu-intel-comet-lake
         ];
       }
 
