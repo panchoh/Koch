@@ -433,11 +433,11 @@
         "nixpkgs": []
       },
       "locked": {
-        "lastModified": 1790614133,
-        "narHash": "sha256-RYGV5QI4logLSwTZT0JFsm8ME0V6ehj1G8k60uKlQGE=",
+        "lastModified": 1790657029,
+        "narHash": "sha256-dzsCRMi2ToBSQPA7bfthCfjKWyUB98mFNFpz1zw/3ms=",
         "owner": "marienz",
         "repo": "nix-doom-emacs-unstraightened",
-        "rev": "ea5e0482923c3f41fcfe5e185da64de292ba87cb",
+        "rev": "8099e7a6294d2d9e1bbd2dd9750767f2192a81df",
         "type": "github"
       },
       "original": {
