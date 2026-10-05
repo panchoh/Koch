@@ -29,7 +29,6 @@
             config = {
 
               allowUnfreePackages = [
-                "aspell-dict-en-science"
                 "symbola"
                 "terraform"
                 "joypixels"
@@ -121,8 +120,6 @@
 
             (pkgs.aspellWithDicts (dicts: [
               dicts.en
-              dicts.en-computers
-              dicts.en-science
             ]))
 
             pkgs.languagetool
