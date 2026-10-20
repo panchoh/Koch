@@ -144,11 +144,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1792420374,
-        "narHash": "sha256-i5dTwfPglZYE1zpg2IvBq+n0wDxMdrLwgHuRxZmO6Tw=",
+        "lastModified": 1792446739,
+        "narHash": "sha256-eINUtQW48bf9G3EYprthHMll8VDKxaXQP52TZFuwMmE=",
         "owner": "serokell",
         "repo": "deploy-rs",
-        "rev": "26e0f241b1b7c6b1717fc7babc4852192886bbc0",
+        "rev": "1cec0527bd09074bbee6d4461900ce5d58267217",
         "type": "github"
       },
       "original": {
@@ -364,11 +364,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792438393,
-        "narHash": "sha256-C9hsBAUY/K7W7+CBSRdrT7XaX/ulVm3RuRBJNjmEM/A=",
+        "lastModified": 1792467281,
+        "narHash": "sha256-l1aACVdR3Wm6V0MGoTKqUg2tPKVNKGAVoz22jJ4QDw4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b74e23e34d3172802fdd60d4a1a01978f95e1898",
+        "rev": "5bf02bcfede52ca95f693069ac28ace376942c05",
         "type": "github"
       },
       "original": {
@@ -531,11 +531,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1792094642,
-        "narHash": "sha256-LPFRbrCWWyNsdQLO3SX1B/5UMkFK0hfe7bZR6lENvpc=",
-        "rev": "fe13242281a67641c0102cdb1087f0ebe586c7df",
+        "lastModified": 1792210252,
+        "narHash": "sha256-EFOYkCb5ZNtbPx1NInawzi4y/6JRdHia0ag0CbJoMNY=",
+        "rev": "09063bd1f2b36fd9fd793c36dfade7bd40a93dfc",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1093333.fe13242281a6/nixexprs.tar.zst"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1095516.09063bd1f2b3/nixexprs.tar.zst"
       },
       "original": {
         "id": "nixpkgs",
@@ -604,11 +604,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792175215,
-        "narHash": "sha256-XD64JVLV8iE4lR+W5gkTweEaT+SBwOrSy0+le2WgITI=",
+        "lastModified": 1792450766,
+        "narHash": "sha256-tQPke0OIaFboQjxQPJL7a+pNzH1ZH1qQif046uo9Rf4=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "a736b60b1e2019931168979951c94dc46e342957",
+        "rev": "1d1a8c826837858404292e9336977f0d9131fb9b",
         "type": "github"
       },
       "original": {
