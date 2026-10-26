@@ -46,11 +46,7 @@
             "udev.log_level=3"
           ];
 
-          initrd = {
-            verbose = false;
-            systemd.enable = true;
-            kernelModules = [ "btrfs" ];
-          };
+          initrd.kernelModules = [ "btrfs" ];
 
           consoleLogLevel = 0;
         };
