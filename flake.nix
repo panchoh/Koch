@@ -36,10 +36,10 @@
     deploy-rs.inputs.flake-compat.follows = "flake-compat";
     deploy-rs.inputs.utils.inputs.systems.follows = "systems";
     autofirma-nix.url = "github:nix-community/autofirma-nix/develop";
-    autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
-    autofirma-nix.inputs.flake-parts.follows = "flake-parts";
-    autofirma-nix.inputs.home-manager.follows = "home-manager";
-    autofirma-nix.inputs.nix-unit.inputs.nixpkgs.follows = "nixpkgs";
+    # autofirma-nix.inputs.nixpkgs.follows = "nixpkgs";
+    # autofirma-nix.inputs.flake-parts.follows = "flake-parts";
+    # autofirma-nix.inputs.home-manager.follows = "home-manager";
+    # autofirma-nix.inputs.nix-unit.inputs.nixpkgs.follows = "nixpkgs";
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
     nix-doom-emacs-unstraightened.inputs.doomdir.url = "github:panchoh/doom";
