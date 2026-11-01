@@ -24,42 +24,40 @@
           ]
           |> lib.flip lib.attrsets.genAttrs (_scheme: "telegram.desktop.desktop");
 
-        wayland.windowManager.hyprland.settings = {
+        wayland.windowManager.hyprland = {
 
-          workspace_rule = [
-            {
-              workspace = "special:Telegram";
-              on_created_empty = "Telegram";
-            }
-          ];
+          extraConfig = ''workspace_programs["special:Telegram"] = { "Telegram", {} }'';
 
-          window_rule = [
-            {
-              match.class = "^org\\.telegram\\.desktop$";
-              workspace = "special:Telegram silent";
-            }
-          ];
+          settings = {
 
-          bind =
-            {
-              # Select to special:Telegram workspace
-              "SUPER + Minus" = ''hl.dsp.workspace.toggle_special("Telegram")'';
-
-              # Move to special:Telegram workspace
-              "SUPER + SHIFT + Minus" = ''hl.dsp.window.move({ workspace = "special:Telegram" })'';
-
-              # Evict to special:Telegram workspace
-              "SUPER + CONTROL + Minus" =
-                ''hl.dsp.window.move({ workspace = "special:Telegram", follow = false })'';
-            }
-            |> lib.mapAttrsToList (
-              keys: dispatcher: {
-                _args = [
-                  keys
-                  (lib.generators.mkLuaInline dispatcher)
-                ];
+            window_rule = [
+              {
+                match.class = "^org\\.telegram\\.desktop$";
+                workspace = "special:Telegram silent";
               }
-            );
+            ];
+
+            bind =
+              {
+                # Select to special:Telegram workspace
+                "SUPER + Minus" = ''hl.dsp.workspace.toggle_special("Telegram")'';
+
+                # Move to special:Telegram workspace
+                "SUPER + SHIFT + Minus" = ''hl.dsp.window.move({ workspace = "special:Telegram" })'';
+
+                # Evict to special:Telegram workspace
+                "SUPER + CONTROL + Minus" =
+                  ''hl.dsp.window.move({ workspace = "special:Telegram", follow = false })'';
+              }
+              |> lib.mapAttrsToList (
+                keys: dispatcher: {
+                  _args = [
+                    keys
+                    (lib.generators.mkLuaInline dispatcher)
+                  ];
+                }
+              );
+          };
         };
       };
     };

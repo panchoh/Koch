@@ -36,50 +36,48 @@
           };
         };
 
-        wayland.windowManager.hyprland.settings = {
+        wayland.windowManager.hyprland = {
 
-          animation = [
-            {
-              leaf = "specialWorkspace";
-              enabled = true;
-              speed = 8;
-              bezier = "default";
-              style = "slidefadevert 20%";
-            }
-          ];
+          extraConfig = ''workspace_programs["special:Foot"] = { "foot", {} }'';
 
-          workspace_rule = [
-            {
-              workspace = "special:Foot";
-              on_created_empty = "foot";
-            }
-          ];
+          settings = {
 
-          bind = [
-            {
-              _args = [
-                "SUPER + SUPER_L"
-                (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("footclient")'')
-                { release = true; }
-              ];
-            }
-          ]
-          ++ (
-            {
-              # "SUPER + SHIFT + Return" = ''hl.dsp.exec_cmd("footclient")'';
-              "SUPER + grave" = ''hl.dsp.workspace.toggle_special("Foot")'';
-              "SUPER + SHIFT + grave" = ''hl.dsp.window.move({ workspace = "special:Foot" })'';
-              "SUPER + CONTROL + grave" = ''hl.dsp.window.move({ workspace = "special:Foot", follow = false })'';
-            }
-            |> lib.mapAttrsToList (
-              keys: dispatcher: {
+            animation = [
+              {
+                leaf = "specialWorkspace";
+                enabled = true;
+                speed = 8;
+                bezier = "default";
+                style = "slidefadevert 20%";
+              }
+            ];
+
+            bind = [
+              {
                 _args = [
-                  keys
-                  (lib.generators.mkLuaInline dispatcher)
+                  "SUPER + SUPER_L"
+                  (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("footclient")'')
+                  { release = true; }
                 ];
               }
-            )
-          );
+            ]
+            ++ (
+              {
+                # "SUPER + SHIFT + Return" = ''hl.dsp.exec_cmd("footclient")'';
+                "SUPER + grave" = ''hl.dsp.workspace.toggle_special("Foot")'';
+                "SUPER + SHIFT + grave" = ''hl.dsp.window.move({ workspace = "special:Foot" })'';
+                "SUPER + CONTROL + grave" = ''hl.dsp.window.move({ workspace = "special:Foot", follow = false })'';
+              }
+              |> lib.mapAttrsToList (
+                keys: dispatcher: {
+                  _args = [
+                    keys
+                    (lib.generators.mkLuaInline dispatcher)
+                  ];
+                }
+              )
+            );
+          };
         };
       };
     };

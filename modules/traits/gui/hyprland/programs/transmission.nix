@@ -37,42 +37,40 @@
 
           xdg.mimeApps.defaultApplications."x-scheme-handler/magnet" = "transmission-gtk.desktop";
 
-          wayland.windowManager.hyprland.settings = {
+          wayland.windowManager.hyprland = {
 
-            workspace_rule = [
-              {
-                workspace = "special:Transmission";
-                on_created_empty = "transmission-gtk";
-              }
-            ];
+            extraConfig = ''workspace_programs["special:Transmission"] = { "transmission-gtk", {} }'';
 
-            window_rule = [
-              {
-                match.class = "^com\\.transmissionbt\\.transmission_\\d+_\\d+$";
-                workspace = "special:Transmission silent";
-              }
-            ];
+            settings = {
 
-            bind =
-              {
-                # Select to special:Transmission workspace
-                "SUPER + Equal" = ''hl.dsp.workspace.toggle_special("Transmission")'';
-
-                # Move to special:Transmission workspace
-                "SUPER + SHIFT + Equal" = ''hl.dsp.window.move({ workspace = "special:Transmission" })'';
-
-                # Evict to special:Transmission workspace
-                "SUPER + CONTROL + Equal" =
-                  ''hl.dsp.window.move({ workspace = "special:Transmission", follow = false })'';
-              }
-              |> lib.mapAttrsToList (
-                keys: dispatcher: {
-                  _args = [
-                    keys
-                    (lib.generators.mkLuaInline dispatcher)
-                  ];
+              window_rule = [
+                {
+                  match.class = "^com\\.transmissionbt\\.transmission_\\d+_\\d+$";
+                  workspace = "special:Transmission silent";
                 }
-              );
+              ];
+
+              bind =
+                {
+                  # Select to special:Transmission workspace
+                  "SUPER + Equal" = ''hl.dsp.workspace.toggle_special("Transmission")'';
+
+                  # Move to special:Transmission workspace
+                  "SUPER + SHIFT + Equal" = ''hl.dsp.window.move({ workspace = "special:Transmission" })'';
+
+                  # Evict to special:Transmission workspace
+                  "SUPER + CONTROL + Equal" =
+                    ''hl.dsp.window.move({ workspace = "special:Transmission", follow = false })'';
+                }
+                |> lib.mapAttrsToList (
+                  keys: dispatcher: {
+                    _args = [
+                      keys
+                      (lib.generators.mkLuaInline dispatcher)
+                    ];
+                  }
+                );
+            };
           };
         };
       };
