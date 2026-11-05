@@ -19,12 +19,35 @@
         ];
 
         programs = {
+
           difftastic.jujutsu.enable = true;
           delta.enableJujutsuIntegration = true;
           mergiraf.enableJujutsuIntegration = true;
           jjui.enable = true;
 
+          starship = {
+
+            # https://github.com/dmmulroy/jj-starship
+            extraPackages = [ pkgs.jj-starship ];
+
+            settings = {
+
+              git_branch.disabled = true;
+              git_status.disabled = true;
+
+              custom.jj = {
+                when = "jj-starship detect";
+                shell = [
+                  "jj-starship"
+                  "--jj-symbol=󱗆 "
+                ];
+                format = "$output ";
+              };
+            };
+          };
+
           jujutsu = {
+
             enable = true;
 
             settings = {
