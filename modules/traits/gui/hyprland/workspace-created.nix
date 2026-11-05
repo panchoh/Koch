@@ -20,16 +20,23 @@
           workspace_programs = {}
 
           hl.on("workspace.created", function(ws)
+              -- ws might not be empty if created by a window_rule that moves a window there
               if not ws.is_empty then return end
 
-              local program = workspace_programs[ws.name]
+              local ws_target = ws.id or ws.name
+              if not ws_target then return end
+
+              local program = workspace_programs[tostring(ws_target)]
               if program == nil then return end
 
               local cmd, rules = table.unpack(program)
               -- shallow-copy the rules table so we can add the workspace to it
               local rules2 = {}
               for k, v in pairs(rules) do rules2[k] = v end
-              rules2.workspace = ws.name .. " silent"
+
+              -- ws might not be the active one, if created via a rule
+              rules2.workspace = ws_target .. " silent"
+
               -- run it!
               hl.exec_cmd(cmd, rules2)
           end)
