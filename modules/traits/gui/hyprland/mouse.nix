@@ -65,7 +65,6 @@
                 # Float window with SUPER + LMB and dragging less than 10 px
                 (lib.generators.mkLuaInline "hl.dsp.window.float()")
                 {
-                  mouse = true;
                   click = true;
                 }
               ];
