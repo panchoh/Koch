@@ -188,7 +188,11 @@
             pkgs.stylelint-lsp
             pkgs.jsbeautifier
 
-            pkgs.semgrep
+            # REVIEW:
+            # https://github.com/NixOS/nixpkgs/pull/580821
+            # https://nixpk.gs/pr-tracker.html?pr=580821
+            # https://nixpkgs-tracker.ocfox.me/?pr=580821
+            # pkgs.semgrep
             pkgs.ripgrep-all
 
             pkgs.universal-ctags
