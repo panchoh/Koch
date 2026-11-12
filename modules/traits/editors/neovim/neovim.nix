@@ -68,7 +68,7 @@
       in
       {
         imports = [
-          inputs.nvf.homeManagerModules.default
+          inputs.nvf.homeModules.default
         ];
 
         config = lib.mkIf cfg.enable (
