@@ -99,7 +99,4 @@
         };
       };
     };
-
-  # REVIEW: Drop when https://github.com/nix-community/stylix/pull/2501 lands
-  flake.homeModules.default.stylix.targets.rofi.enable = false;
 }
