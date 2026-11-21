@@ -19,6 +19,7 @@
       {
         nixosConfig,
         lib,
+        pkgs,
         ...
       }:
 
@@ -27,6 +28,10 @@
       in
       {
         config = lib.mkIf cfg.enable {
+
+          home.packages = [
+            pkgs.herdr-desktop
+          ];
 
           programs.herdr = {
 
