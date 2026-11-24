@@ -17,19 +17,20 @@
       cfg = nixosConfig.traits.hyprland;
     in
     {
+      imports = [ inputs.nowayprompt.homeModules.stylix ];
+
       config = lib.mkIf cfg.enable {
 
-        programs.wayprompt = {
+        programs.nowayprompt = {
           enable = true;
-          package = inputs.nowayprompt.packages.${pkgs.stdenv.hostPlatform.system}.nowayprompt;
           settings.general.pin-square-amount = 32;
         };
 
-        services.gpg-agent.pinentry.package = config.programs.wayprompt.package;
+        services.gpg-agent.pinentry.package = config.programs.nowayprompt.package;
 
         systemd.user.services.gpg-agent.Unit.X-Reload-Triggers = [
           config.services.gpg-agent.pinentry.package
-          config.xdg.configFile."wayprompt/config.ini".source
+          config.xdg.configFile."nowayprompt/config.ini".source
         ];
 
         wayland.windowManager.hyprland.settings.layer_rule = [
