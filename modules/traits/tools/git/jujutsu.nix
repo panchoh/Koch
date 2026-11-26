@@ -71,10 +71,9 @@
                 ];
               };
 
-              git = {
-                colocate = false;
-                sign-on-push = true;
-              };
+              git.colocate = false;
+
+              revsets.git-sign-on-push = "~signed() & mine()";
 
               signing = {
                 behavior = "drop";
