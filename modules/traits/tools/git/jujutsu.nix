@@ -52,6 +52,11 @@
 
             settings = {
 
+              aliases.init = [
+                "git"
+                "init"
+              ];
+
               ui = {
                 default-command = "log";
               }
